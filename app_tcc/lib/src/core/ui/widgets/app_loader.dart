@@ -8,7 +8,7 @@ class AppLoader extends StatelessWidget {
    @override
    Widget build(BuildContext context) {
        return Center(
-        child: LoadingAnimationWidget.threeArchedCircle(color: Colors.black, size: 70),
+        child: LoadingAnimationWidget.threeArchedCircle(color: Colors.blue, size: 70),
        );
   }
 }

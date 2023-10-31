@@ -1,5 +1,6 @@
-import 'package:asyncstate/asyncstate.dart';
+//import 'package:asyncstate/asyncstate.dart';
 import 'package:flutter/material.dart';
+import 'package:tcc_app/src/features/auth/login/login_page.dart';
 
 class SplashPage extends StatefulWidget {
 
@@ -15,7 +16,6 @@ class SplashPage extends StatefulWidget {
 #fbb4b3;
 #e6a4ac
 #f8cec1;
-
 */
 
 
@@ -55,15 +55,36 @@ class _SplashPageState extends State<SplashPage> {
         //   child: 
           body: Center(
             child: AnimatedOpacity(
-              duration: const Duration(seconds: 3),
+              duration: const Duration(seconds: 1),
               curve: Curves.easeIn,
               opacity: _animationOpacityLogo,
+              onEnd: () {
+                Navigator.of(context).pushAndRemoveUntil(
+                  PageRouteBuilder(
+                    settings: const RouteSettings(name: '/auth/login'),
+                    pageBuilder: (
+                      context, 
+                      animation, 
+                      secondaryAnimation,
+                    ) {
+                      return const LoginPage();
+                    },
+                    transitionsBuilder: (_, animation, __, child) {
+                      return FadeTransition(opacity: animation, child: child,);
+                    }
+                  ), (route) => false
+                );
+              },
               child: AnimatedContainer(
-                duration: Duration(seconds: 3),
+                duration: const Duration(seconds: 3),
                 width: _logoAnimationWidth,
                 height: _logoAnimationHeight,
                 curve: Curves.linearToEaseOut,
-                child: Image.asset('assets/images/imgLogo.png', fit: BoxFit.cover)
+                child: Image.asset(
+                  'assets/images/imgLogo.png', 
+                  //'assets/images/img_logo.png',
+                  fit: BoxFit.cover
+                )
               )
             ),
           )
