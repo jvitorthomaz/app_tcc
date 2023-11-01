@@ -17,18 +17,20 @@ sealed class UserModel {
 
   factory UserModel.fromMap(Map<String, dynamic> json) {
     return switch (json['profile']) {
-      'ADM' => UserModelAdm.fromMap(json),
-      'EMPLOYEE' => UserModelEmployee.fromMap(json),
+
+      'ADM' => AdmUserModel.fromMap(json),
+      'EMPLOYEE' => EmployeeUserModel.fromMap(json),
       _ => throw FormatException('Invalid UserModel JSON: $json')
+
     };
   }
 }
 
-final class UserModelAdm extends UserModel {
+final class AdmUserModel extends UserModel {
   final List<String>? workDays;
   final List<int>? workHours;
 
-  UserModelAdm({
+  AdmUserModel({
     required super.id,
     required super.name,
     required super.email,
@@ -39,7 +41,7 @@ final class UserModelAdm extends UserModel {
     this.workHours, 
   });
 
-  factory UserModelAdm.fromMap(Map<String, dynamic> json) {
+  factory AdmUserModel.fromMap(Map<String, dynamic> json) {
     // Validação do json que esta vindo do backend
     return switch (json) {
       {
@@ -50,7 +52,7 @@ final class UserModelAdm extends UserModel {
         //'telefone': final String telefone,
 
       } =>
-        UserModelAdm(
+        AdmUserModel(
           id: id,
           name: name,
           email: email,
@@ -67,12 +69,12 @@ final class UserModelAdm extends UserModel {
 
 }
 
-final class UserModelEmployee extends UserModel {
+final class EmployeeUserModel extends UserModel {
   final int placeId;
   final List<String> workDays;
   final List<int> workHours;
 
-  UserModelEmployee({
+  EmployeeUserModel({
     required super.id,
     required super.name,
     required super.email,
@@ -84,7 +86,7 @@ final class UserModelEmployee extends UserModel {
     super.avatar, 
   });
 
-  factory UserModelEmployee.fromMap(Map<String, dynamic> json) {
+  factory EmployeeUserModel.fromMap(Map<String, dynamic> json) {
     return switch (json) {
       {
         'id': final int id,
@@ -96,7 +98,7 @@ final class UserModelEmployee extends UserModel {
         'work_days': final List workDays,
         'work_hours': final List workHours,
       } =>
-        UserModelEmployee(
+        EmployeeUserModel(
           id: id,
           name: name,
           email: email,
@@ -107,7 +109,7 @@ final class UserModelEmployee extends UserModel {
           avatar: json['avatar'],
           placeId: placeId, 
         ),
-      _ => throw ArgumentError('Invalid UserModelEmployee JSON: $json'),
+      _ => throw ArgumentError('Invalid EmployeeUserModel JSON: $json'),
     };
   }
 }

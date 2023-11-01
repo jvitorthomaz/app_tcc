@@ -50,5 +50,48 @@ final userLoginServiceProvider = Provider<UserLoginService>.internal(
 );
 
 typedef UserLoginServiceRef = ProviderRef<UserLoginService>;
+String _$getMeHash() => r'7fb91ceaae63dadb01f42bb3721c09782ac62cc0';
+
+/// See also [getMe].
+@ProviderFor(getMe)
+final getMeProvider = FutureProvider<UserModel>.internal(
+  getMe,
+  name: r'getMeProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$getMeHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef GetMeRef = FutureProviderRef<UserModel>;
+String _$placesRepositoryHash() => r'665868acc9681446b5328fb85650f40494257c1e';
+
+/// See also [placesRepository].
+@ProviderFor(placesRepository)
+final placesRepositoryProvider = Provider<PlacesRepository>.internal(
+  placesRepository,
+  name: r'placesRepositoryProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$placesRepositoryHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef PlacesRepositoryRef = ProviderRef<PlacesRepository>;
+String _$getAdmPlaceHash() => r'7ce018f656872cdd86e652eb4c2b3b684572bc51';
+
+/// See also [getAdmPlace].
+@ProviderFor(getAdmPlace)
+final getAdmPlaceProvider = FutureProvider<PlaceModel>.internal(
+  getAdmPlace,
+  name: r'getAdmPlaceProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$getAdmPlaceHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef GetAdmPlaceRef = FutureProviderRef<PlaceModel>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

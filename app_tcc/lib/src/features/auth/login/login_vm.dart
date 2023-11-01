@@ -4,6 +4,7 @@ import 'package:tcc_app/src/core/exceptions/service_exception.dart';
 import 'package:tcc_app/src/core/functionalPrograming/either.dart';
 import 'package:tcc_app/src/core/providers/aplication_providers.dart';
 import 'package:tcc_app/src/features/auth/login/login_state.dart';
+import 'package:tcc_app/src/models/users_model.dart';
 
 part 'login_vm.g.dart';
 
@@ -24,17 +25,18 @@ class LoginVm extends _$LoginVm {
     // Buscar os dados do usuarios logados
     // Fazer analise para o tipo de login (Adm ou funcionario)
 
-    //     //! Invalidando os caches para evitar o Login com o usuário errado
-    //     ref.invalidate(getMeProvider);
-    //     ref.invalidate(getMyBarbershopProvider);
+        // Invalidação dos caches para evitar o Login com o usuário errado
+        ref.invalidate(getMeProvider);
+        ref.invalidate(getAdmPlaceProvider);
 
-    //     final userModel = await ref.read(getMeProvider.future);
-    //     switch(userModel) {
-    //       case UserModelADM():
-    //         state = state.copyWith(status: LoginStateStatus.admLogin);
-    //       case UserModelEmployee():
-    //         state = state.copyWith(status: LoginStateStatus.employeeLogin);
-    //     }
+        final userModel = await ref.read(getMeProvider.future);
+        switch(userModel) {
+          case AdmUserModel():
+            state = state.copyWith(status: LoginStateStatus.admLogin);
+            
+          case EmployeeUserModel():
+            state = state.copyWith(status: LoginStateStatus.employeeLogin);
+        }
       break;
     //case Failure(:final exception):
     case Failure(exception: ServiceException(:final message)):
