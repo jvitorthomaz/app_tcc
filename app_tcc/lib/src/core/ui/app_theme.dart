@@ -30,7 +30,7 @@ sealed class AppTheme {
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         foregroundColor: Colors.white,
-        backgroundColor: AppColors.colorBlue,
+        backgroundColor: AppColors.colorGreen,
         //backgroundColor: AppColors.colorGreen,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),

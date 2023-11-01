@@ -1,5 +1,6 @@
 //import 'package:asyncstate/asyncstate.dart';
 import 'package:flutter/material.dart';
+import 'package:tcc_app/src/core/ui/constants.dart';
 import 'package:tcc_app/src/features/auth/login/login_page.dart';
 
 class SplashPage extends StatefulWidget {
@@ -46,7 +47,7 @@ class _SplashPageState extends State<SplashPage> {
         //   decoration: const BoxDecoration(
         //     image: DecorationImage(
         //       image: AssetImage(
-        //         'assets/images/background_image_chair.jpg',
+        //         AppImages.backgroundImage,
         //       ),
         //       opacity: 0.2,
         //       fit: BoxFit.cover,
@@ -81,8 +82,7 @@ class _SplashPageState extends State<SplashPage> {
                 height: _logoAnimationHeight,
                 curve: Curves.linearToEaseOut,
                 child: Image.asset(
-                  'assets/images/imgLogo.png', 
-                  //'assets/images/img_logo.png',
+                  AppImages.imgLogo,
                   fit: BoxFit.cover
                 )
               )

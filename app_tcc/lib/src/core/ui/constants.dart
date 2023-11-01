@@ -16,3 +16,10 @@ sealed class AppColors {
 sealed class AppFonts {
   static const fontPopins = 'Poppins';
 }
+
+sealed class AppImages {
+  static const backgroundImage = 'assets/images/background_image_chair.jpg';
+  static const imgLogo = 'assets/images/img_logo.png';
+  //static const imgLogo = 'assets/images/imgLogo.png';
+  static const avatarImage = 'assets/images/avatar.png';
+}
