@@ -3,7 +3,7 @@ import 'package:asyncstate/asyncstate.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:tcc_app/src/core/functionalPrograming/either.dart';
 import 'package:tcc_app/src/core/providers/aplication_providers.dart';
-import 'package:tcc_app/src/features/auth/register/user_register_provider.dart';
+import 'package:tcc_app/src/features/auth/register/register_user/user_register_provider.dart';
 
 part 'user_register_vm.g.dart';
 

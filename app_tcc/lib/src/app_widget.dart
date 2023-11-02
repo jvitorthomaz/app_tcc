@@ -4,7 +4,8 @@ import 'package:tcc_app/src/core/ui/app_nav_global_key.dart';
 import 'package:tcc_app/src/core/ui/app_theme.dart';
 import 'package:tcc_app/src/core/ui/widgets/app_loader.dart';
 import 'package:tcc_app/src/features/auth/login/login_page.dart';
-import 'package:tcc_app/src/features/auth/register/user_register_page.dart';
+import 'package:tcc_app/src/features/auth/register/register_clinic/place_register_page.dart';
+import 'package:tcc_app/src/features/auth/register/register_user/user_register_page.dart';
 import 'package:tcc_app/src/features/splash/splash_page.dart';
 
 class AppWidget extends StatelessWidget {
@@ -27,7 +28,7 @@ class AppWidget extends StatelessWidget {
             '/':(_) => const SplashPage(),
             '/auth/login': (_) => const LoginPage(),
             '/auth/register/user': (_) => const UserRegisterPage(),
-            '/auth/register/place': (_) => const Center(child:  Text('Cadastrar Local page')),
+            '/auth/register/place': (_) => const PlaceRegisterPage(),
             '/home/admUser': (_) => const Text('Adm'),
             '/home/employeeUser': (_) => const Text('Employee'),
           },

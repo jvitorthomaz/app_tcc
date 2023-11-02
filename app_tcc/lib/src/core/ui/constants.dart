@@ -7,6 +7,8 @@ sealed class AppColors {
   static const colorGreyLight = Color(0xFFB07B01);
   static const colorBlue = Colors.blue;
   static const colorGreen = Colors.green;
+  static const colorGreenLight = Colors.lightGreen;
+
   static const colorRed = Color(0xFFEB1212);
   static const colorBlack = Colors.black;
    static const colorWhite = Colors.white;
