@@ -5,6 +5,7 @@ import 'package:dio/dio.dart';
 import 'package:tcc_app/src/core/exceptions/auth_exception.dart';
 import 'package:tcc_app/src/core/exceptions/repository_exception.dart';
 import 'package:tcc_app/src/core/functionalPrograming/either.dart';
+import 'package:tcc_app/src/core/functionalPrograming/nil.dart';
 import 'package:tcc_app/src/core/restClient/rest_client.dart';
 import 'package:tcc_app/src/models/users_model.dart';
 import 'package:tcc_app/src/repositories/user/user_repository.dart';
@@ -60,10 +61,37 @@ class UserRepositoryImpl implements UserRespository {
       );
       
     } on ArgumentError catch (e, s){
-      log('Json Inválido');
+      log('Json Inválido', error: e, stackTrace: s);
 
       return Failure(
         RepositoryException(message: e.message)
+      );
+
+    }
+  }
+
+  @override
+  Future<Either<RepositoryException, Nil>> registerUserAdm(
+    ({String email, String name, String password}) userData
+  ) async{
+    try {
+      await restClient.unAuth.post(
+        '/users',
+        data: {
+          'name': userData.name,
+          'email': userData.email,
+          'password': userData.password,
+          'profile': 'ADM'
+        },
+      );
+      return Success(nil);
+
+    } on DioException catch (e, s) {
+      log('Erro ao registrar usuário do tipo administrador', error: e, stackTrace: s);
+      return Failure(
+        RepositoryException(
+          message: 'Erro ao registrar usuário do tipo administrador'
+        )
       );
 
     }

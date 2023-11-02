@@ -27,6 +27,7 @@ class AppWidget extends StatelessWidget {
             '/':(_) => const SplashPage(),
             '/auth/login': (_) => const LoginPage(),
             '/auth/register/user': (_) => const UserRegisterPage(),
+            '/auth/register/place': (_) => const Center(child:  Text('Cadastrar Local page')),
             '/home/admUser': (_) => const Text('Adm'),
             '/home/employeeUser': (_) => const Text('Employee'),
           },

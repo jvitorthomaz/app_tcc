@@ -5,7 +5,7 @@ import 'package:tcc_app/src/core/exceptions/service_exception.dart';
 import 'package:tcc_app/src/core/functionalPrograming/either.dart';
 import 'package:tcc_app/src/core/functionalPrograming/nil.dart';
 import 'package:tcc_app/src/repositories/user/user_repository.dart';
-import 'package:tcc_app/src/services/user_login_service.dart';
+import 'package:tcc_app/src/services/user_login_services/user_login_service.dart';
 
 class UserLoginServiceImpl implements UserLoginService {
 

@@ -8,8 +8,8 @@ import 'package:tcc_app/src/repositories/places/places_repository.dart';
 import 'package:tcc_app/src/repositories/places/places_repository_impl.dart';
 import 'package:tcc_app/src/repositories/user/user_repository.dart';
 import 'package:tcc_app/src/repositories/user/user_repository_impl.dart';
-import 'package:tcc_app/src/services/user_login_service.dart';
-import 'package:tcc_app/src/services/user_login_service_impl.dart';
+import 'package:tcc_app/src/services/user_login_services/user_login_service.dart';
+import 'package:tcc_app/src/services/user_login_services/user_login_service_impl.dart';
 
 part 'aplication_providers.g.dart';
 
