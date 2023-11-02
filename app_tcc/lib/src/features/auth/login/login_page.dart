@@ -21,6 +21,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
   final emailEC = TextEditingController();
   final passwordEC = TextEditingController();
 
+  @override
   void dispose(){
     emailEC.dispose();
     passwordEC.dispose();
@@ -181,12 +182,17 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                               'Recuperar senha', 
                               style: TextStyle(fontSize: 12, color: AppColors.colorBlack),
                             ),
-                              Text(
-                                'Criar conta', 
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  color: AppColors.colorBlack,
-                                  fontWeight: FontWeight.w500,
+                              InkWell(
+                                onTap: () {
+                                  Navigator.of(context).pushNamed('/auth/register/user');
+                                },
+                                child: const Text(
+                                  'Criar conta', 
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: AppColors.colorBlack,
+                                    fontWeight: FontWeight.w500,
+                                  ),
                                 ),
                               )
                             ],
