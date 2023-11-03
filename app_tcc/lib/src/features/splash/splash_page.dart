@@ -1,14 +1,19 @@
 //import 'package:asyncstate/asyncstate.dart';
-import 'package:flutter/material.dart';
-import 'package:tcc_app/src/core/ui/constants.dart';
-import 'package:tcc_app/src/features/auth/login/login_page.dart';
+import 'dart:developer';
 
-class SplashPage extends StatefulWidget {
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tcc_app/src/core/ui/constants.dart';
+import 'package:tcc_app/src/core/ui/helpers/messages_helper.dart';
+import 'package:tcc_app/src/features/auth/login/login_page.dart';
+import 'package:tcc_app/src/features/splash/splash_page_vm.dart';
+
+class SplashPage extends ConsumerStatefulWidget {
 
   const SplashPage({ super.key });
 
   @override
-  State<SplashPage> createState() => _SplashPageState();
+  ConsumerState<SplashPage> createState() => _SplashPageState();
 }
 
 /*
@@ -20,7 +25,7 @@ class SplashPage extends StatefulWidget {
 */
 
 
-class _SplashPageState extends State<SplashPage> {
+class _SplashPageState extends ConsumerState<SplashPage> {
   var _scale = 10.0;
   var _animationOpacityLogo = 0.0;
 
@@ -38,57 +43,83 @@ class _SplashPageState extends State<SplashPage> {
     super.initState();
   }
 
+   void _redirect(String routeName) {}
+
    @override
    Widget build(BuildContext context) {
-      return Scaffold(
-        backgroundColor: Colors.white,
-        //Tirar imagem e deixar cor de fundo igual ã da tela de login
-        // body: DecoratedBox(
-        //   decoration: const BoxDecoration(
-        //     image: DecorationImage(
-        //       image: AssetImage(
-        //         AppImages.backgroundImage,
-        //       ),
-        //       opacity: 0.2,
-        //       fit: BoxFit.cover,
-        //     )
-        //   ),
-        //   child: 
-          body: Center(
-            child: AnimatedOpacity(
-              duration: const Duration(seconds: 1),
-              curve: Curves.easeIn,
-              opacity: _animationOpacityLogo,
-              onEnd: () {
-                Navigator.of(context).pushAndRemoveUntil(
-                  PageRouteBuilder(
-                    settings: const RouteSettings(name: '/auth/login'),
-                    pageBuilder: (
-                      context, 
-                      animation, 
-                      secondaryAnimation,
-                    ) {
-                      return const LoginPage();
-                    },
-                    transitionsBuilder: (_, animation, __, child) {
-                      return FadeTransition(opacity: animation, child: child,);
-                    }
-                  ), (route) => false
-                );
-              },
-              child: AnimatedContainer(
-                duration: const Duration(seconds: 3),
-                width: _logoAnimationWidth,
-                height: _logoAnimationHeight,
-                curve: Curves.linearToEaseOut,
-                child: Image.asset(
-                  AppImages.imgLogo,
-                  fit: BoxFit.cover
-                )
+
+      ref.listen(splashPageVmProvider, (_, state) {
+        state.whenOrNull(
+          error: (error, stackTrace) {
+            log('Erro ao Validar', error: error, stackTrace: stackTrace);
+
+            MessagesHelper.showErrorSnackBar('Erro ao Validar o login', context);
+            Navigator.of(context).pushNamedAndRemoveUntil('/auth/login', (route) => false);
+          },
+
+          data: (data) {
+            switch (data) {
+              case SplashPageState.loggedAdm:
+                Navigator.of(context).pushNamedAndRemoveUntil('/home/admUser', (route) => false);
+
+              case SplashPageState.loggedEmployee:
+                Navigator.of(context).pushNamedAndRemoveUntil('/home/employeeUser', (route) => false);
+
+              case _:
+                Navigator.of(context).pushNamedAndRemoveUntil('/auth/login', (route) => false);
+            }
+          },
+        );
+    });
+    return Scaffold(
+      backgroundColor: Colors.white,
+      //Tirar imagem e deixar cor de fundo igual ã da tela de login
+      // body: DecoratedBox(
+      //   decoration: const BoxDecoration(
+      //     image: DecorationImage(
+      //       image: AssetImage(
+      //         AppImages.backgroundImage,
+      //       ),
+      //       opacity: 0.2,
+      //       fit: BoxFit.cover,
+      //     )
+      //   ),
+      //   child: 
+        body: Center(
+          child: AnimatedOpacity(
+            duration: const Duration(seconds: 3),
+            curve: Curves.easeIn,
+            opacity: _animationOpacityLogo,
+            onEnd: () {
+              Navigator.of(context).pushAndRemoveUntil(
+                PageRouteBuilder(
+                  settings: const RouteSettings(name: '/auth/login'),
+                  pageBuilder: (
+                    context, 
+                    animation, 
+                    secondaryAnimation,
+                  ) {
+                    return const LoginPage();
+                  },
+                  transitionsBuilder: (_, animation, __, child) {
+                    return FadeTransition(opacity: animation, child: child,);
+                  }
+                ), (route) => false
+              );
+            },
+            child: AnimatedContainer(
+              duration: const Duration(seconds: 3),
+              width: _logoAnimationWidth,
+              height: _logoAnimationHeight,
+              curve: Curves.linearToEaseOut,
+              child: Image.asset(
+                AppImages.imgLogo,
+                fit: BoxFit.cover
               )
-            ),
-          )
-        //)
-      );
+            )
+          ),
+        )
+      //)
+    );
   }
 }
