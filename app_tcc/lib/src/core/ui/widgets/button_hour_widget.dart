@@ -47,7 +47,7 @@ class _HourButtonState extends State<HourButton> {
 
     final textColor = selected ? Colors.white : AppColors.colorGrey;
     var buttonColor = selected ? AppColors.colorGreenLight : Colors.white;
-    final buttonBorderColor = selected ? AppColors.colorGreenLight : AppColors.colorGrey;
+    final buttonBorderColor = selected ? AppColors.colorGreen : AppColors.colorGrey;
 
     final disableTime = enabledTimes != null && !enabledTimes.contains(value);
 

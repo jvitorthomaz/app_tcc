@@ -18,14 +18,13 @@ class ButtonDay extends StatefulWidget {
 }
 
 class _ButtonDayState extends State<ButtonDay> {
-  var selected = false;
+  var selectedButton = false;
 
   @override
   Widget build(BuildContext context) {
-    final textColor = selected ? Colors.white : AppColors.colorGrey;
-    var buttonColor = selected ? AppColors.colorGreenLight : Colors.white;
-    final buttonBorderColor =
-        selected ? AppColors.colorGreenLight : AppColors.colorGrey;
+    final textColor = selectedButton ? Colors.white : AppColors.colorGrey;
+    var buttonColor = selectedButton ? AppColors.colorGreenLight : Colors.white;
+    final buttonBorderColor = selectedButton ? AppColors.colorGreen : AppColors.colorGrey;
 
     final ButtonDay(:enabledDays, :label) = widget;
 
@@ -43,7 +42,7 @@ class _ButtonDayState extends State<ButtonDay> {
             : () {
                 widget.onDaySelected(label);
                 setState(() {
-                  selected = !selected;
+                  selectedButton = !selectedButton;
                 });
               },
         child: Container(

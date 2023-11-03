@@ -8,14 +8,14 @@ abstract interface class PlacesRepository {
 
   Future<Either<RepositoryException, PlaceModel>> getAdmPlace(UserModel userModel);
 
-  // Future<Either<RepositoryException, Nil>> save(
-  //   ({
-  //     String name, 
-  //     String email,
-  //     List<String> openingDays,
-  //     List<int> openingHours,
-  //   }) 
-  //   data
-  // );
+  Future<Either<RepositoryException, Nil>> savePlace(
+    ({
+      String name, 
+      String email,
+      List<String> openingDays,
+      List<int> openingHours,
+    }) 
+    data
+  );
 
 }

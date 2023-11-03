@@ -1,4 +1,6 @@
 
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:tcc_app/src/core/exceptions/repository_exception.dart';
 import 'package:tcc_app/src/core/functionalPrograming/either.dart';
@@ -35,9 +37,29 @@ class PlacesRepositoryImpl implements PlacesRepository{
     }
   }
 
-  // @override
-  // Future<Either<RepositoryException, Nil>> save(({String email, String name, List<String> openingDays, List<int> openingHours}) data) {
-   
-  // }
-  
+  @override
+  Future<Either<RepositoryException, Nil>> savePlace(
+    ({String email, String name, List<String> openingDays, List<int> openingHours}) data
+  ) async{
+    try {
+      await restClient.auth.post('/place', data: {
+        'user_id': '#userAuthRef',
+        'name': data.name,
+        'email': data.email,
+        'opening_days': data.openingDays,
+        'opening_hours': data.openingHours,
+      });
+
+      return Success(nil);
+
+    } on DioException catch (e, s) {
+      log('Erro ao registrar o estabelecimento', error: e, stackTrace: s);
+
+      return Failure(
+        RepositoryException(
+          message: 'Erro ao registrar o estabelecimento'
+        )
+      );
+    }
+  }
 }
