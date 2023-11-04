@@ -52,6 +52,19 @@ sealed class AppTheme {
       )
     ),
 
+    outlinedButtonTheme: OutlinedButtonThemeData(
+      style: OutlinedButton.styleFrom(
+        side: const BorderSide(
+          color: AppColors.colorGreen,
+          width: 1
+        ),
+        foregroundColor: AppColors.colorGreen,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10)
+        )
+      )
+    ),
+
     fontFamily: AppFonts.fontPopins,
 
   );
