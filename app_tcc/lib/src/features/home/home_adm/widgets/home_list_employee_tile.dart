@@ -5,17 +5,17 @@ import 'package:tcc_app/src/models/users_model.dart';
 
 class HomeListEmployeeTile extends StatelessWidget {
 
-  //final UserModel employee;
+  final UserModel employee;
 
   const HomeListEmployeeTile({
     super.key,
-    //required this.employee,
+    required this.employee,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 250,
+      width: 260, //MediaQuery.of(context).size.width*0.5,
       height: 150,
       margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
       padding: const EdgeInsets.all(10),
@@ -34,7 +34,8 @@ class HomeListEmployeeTile extends StatelessWidget {
                   final avatar ? => NetworkImage(avatar),
                   _ => const AssetImage(AppImages.avatarImage),
                 } as ImageProvider,
-              )),
+              )
+            ),
           ),
           const SizedBox(
             width: 10,
@@ -45,10 +46,10 @@ class HomeListEmployeeTile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text(
-                  'Nome e sobrenome',
-                  //employee.name,
-                  style: TextStyle(
+                 Text(
+                  //'Nome e sobrenome',
+                  employee.name,
+                  style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
                   ),

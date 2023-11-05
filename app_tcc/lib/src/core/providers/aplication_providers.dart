@@ -1,7 +1,10 @@
 
+import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tcc_app/src/core/functionalPrograming/either.dart';
 import 'package:tcc_app/src/core/restClient/rest_client.dart';
+import 'package:tcc_app/src/core/ui/app_nav_global_key.dart';
 import 'package:tcc_app/src/models/place_model.dart';
 import 'package:tcc_app/src/models/users_model.dart';
 import 'package:tcc_app/src/repositories/places/places_repository.dart';
@@ -48,4 +51,17 @@ Future<PlaceModel> getAdmPlace(GetAdmPlaceRef ref) async {
     Success(value: final place) => place,
     Failure(:final exception) => throw exception,
   };
+}
+
+@riverpod
+Future<void> logout(LogoutRef ref) async {
+  final preferences = await SharedPreferences.getInstance();
+  preferences.clear();
+
+  ref.invalidate(getMeProvider);
+  ref.invalidate(getAdmPlaceProvider);
+
+  Navigator.of(AppNavGlobalKey.instance.navKey.currentContext!)
+    .pushNamedAndRemoveUntil('/auth/login', (route) => false);
+  
 }

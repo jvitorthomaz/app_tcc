@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tcc_app/src/core/providers/aplication_providers.dart';
 import 'package:tcc_app/src/core/ui/app_icons.dart';
 import 'package:tcc_app/src/core/ui/constants.dart';
+import 'package:tcc_app/src/core/ui/widgets/app_loader.dart';
+import 'package:tcc_app/src/features/home/home_adm/home_adm_vm.dart';
 
 class HomeHeader extends ConsumerWidget {
   final bool showFilter;
@@ -16,7 +19,7 @@ class HomeHeader extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    //final clinic = ref.watch();
+    final clinicInfo = ref.watch(getAdmPlaceProvider);
 
     return Container(
       padding: const EdgeInsets.fromLTRB(26, 50, 26, 20),
@@ -40,10 +43,11 @@ class HomeHeader extends ConsumerWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // clinic.maybeWhen(
-          //   data: (clinicData) {
-              //return 
-              Row(
+          //Deixa opcional os atributos
+          clinicInfo.maybeWhen(
+            data: (clinicInfoData) {
+              return Row(
+                //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const CircleAvatar(
                     backgroundColor: Color(0xffbdbdbd),
@@ -54,8 +58,7 @@ class HomeHeader extends ConsumerWidget {
                   ),
                   Flexible(
                     child: Text(
-                      'Nome Adm Clinica',
-                      //clinicData.name,
+                      clinicInfoData.name,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
                         color: Colors.white,
@@ -78,25 +81,29 @@ class HomeHeader extends ConsumerWidget {
                       ),
                     ),
                   ),
+                  // const SizedBox(
+                  //   width: 10,
+                  // ),
                   IconButton(
                     onPressed: () {
-                      //ref.read(.notifier).logout();
+                      ref.read(homeAdmVmProvider.notifier).logout();
                     },
                     icon: const Icon(
                       AppIcons.exitAppIcon,
-                      color: AppColors.colorGreen,
+                      color: Colors.white,
                       size: 32,
                     ),
                   )
                 ],
-              ),
-          //   },
-          //   orElse: () {
-          //     return const Center(
-          //       //child: AppLoader(),
-          //     );
-          //   },
-          // ),
+              );
+            },
+            
+            orElse: () {
+              return const Center(
+                child: AppLoader(),
+              );
+            },
+          ),
           const SizedBox(
             height: 10,
           ),
