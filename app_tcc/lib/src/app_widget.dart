@@ -6,6 +6,7 @@ import 'package:tcc_app/src/core/ui/widgets/app_loader.dart';
 import 'package:tcc_app/src/features/auth/login/login_page.dart';
 import 'package:tcc_app/src/features/auth/register/register_clinic/place_register_page.dart';
 import 'package:tcc_app/src/features/auth/register/register_user/user_register_page.dart';
+import 'package:tcc_app/src/features/employee/register/employee_register_page.dart';
 import 'package:tcc_app/src/features/home/home_adm/home_adm_page.dart';
 import 'package:tcc_app/src/features/splash/splash_page.dart';
 
@@ -32,6 +33,7 @@ class AppWidget extends StatelessWidget {
             '/auth/register/place': (_) => const PlaceRegisterPage(),
             '/home/admUser': (_) => const HomeAdmPage(),
             '/home/employeeUser': (_) => const Text('Employee'),
+            '/employee/registerEmployee':(_) => const EmployeeRegisterPage(),
           },
         );
       }

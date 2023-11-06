@@ -23,6 +23,7 @@ class HomeAdmVm extends _$HomeAdmVm{
       case Success(value: final employeesData) :
         final employees = <UserModel>[];
 
+        //Usuario adm tbm é colaborador?
         if(me case AdmUserModel(workDays: _?, workHours: _?)) {
           employees.add(me);
         }
@@ -43,3 +44,4 @@ class HomeAdmVm extends _$HomeAdmVm{
   //Future<void> logout() => ref.watch(logoutProvider.future).asyncLoader();
   
 }
+

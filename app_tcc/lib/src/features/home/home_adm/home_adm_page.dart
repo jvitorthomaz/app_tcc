@@ -24,7 +24,7 @@ class HomeAdmPage extends ConsumerWidget {
           shape: const CircleBorder(),
           backgroundColor: AppColors.colorGreen,
           onPressed: () async {
-            // await context.pushNamed('/employee/register');
+             await Navigator.of(context).pushNamed('/employee/registerEmployee');
             // ref.invalidate(getMeProvider);  
             // ref.invalidate(homeAdmVmProvider);
           },

@@ -27,10 +27,10 @@ class HomeListEmployeeTile extends StatelessWidget {
         children: [
           Container(
             width: 50,
-            height: 50,
+            height: 60,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: switch ('url') {
+                image: switch (employee.avatar) {
                   final avatar ? => NetworkImage(avatar),
                   _ => const AssetImage(AppImages.avatarImage),
                 } as ImageProvider,
@@ -41,8 +41,7 @@ class HomeListEmployeeTile extends StatelessWidget {
             width: 10,
           ),
           Expanded(
-            child: 
-            Column(
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -53,6 +52,9 @@ class HomeListEmployeeTile extends StatelessWidget {
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
                   ),
+                ),
+                const SizedBox(
+                   height: 10,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
