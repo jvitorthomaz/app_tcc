@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tcc_app/src/core/providers/aplication_providers.dart';
 import 'package:tcc_app/src/core/ui/app_icons.dart';
 import 'package:tcc_app/src/core/ui/constants.dart';
 import 'package:tcc_app/src/core/ui/widgets/app_loader.dart';
@@ -24,10 +25,11 @@ class HomeAdmPage extends ConsumerWidget {
           shape: const CircleBorder(),
           backgroundColor: AppColors.colorGreen,
           onPressed: () async {
-             await Navigator.of(context).pushNamed('/employee/registerEmployee');
-            // ref.invalidate(getMeProvider);  
-            // ref.invalidate(homeAdmVmProvider);
+            await Navigator.of(context).pushNamed('/employee/registerEmployee');
+            ref.invalidate(getMeProvider);  
+            ref.invalidate(homeAdmVmProvider);
           },
+          
           child: const CircleAvatar(
             backgroundColor: Colors.white,
             maxRadius: 16,

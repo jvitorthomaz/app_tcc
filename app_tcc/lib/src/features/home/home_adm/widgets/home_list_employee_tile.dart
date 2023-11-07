@@ -25,21 +25,21 @@ class HomeListEmployeeTile extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Container(
-            width: 50,
-            height: 60,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: switch (employee.avatar) {
-                  final avatar ? => NetworkImage(avatar),
-                  _ => const AssetImage(AppImages.avatarImage),
-                } as ImageProvider,
-              )
-            ),
-          ),
-          const SizedBox(
-            width: 10,
-          ),
+          // Container(
+          //   width: 50,
+          //   height: 60,
+          //   decoration: BoxDecoration(
+          //     image: DecorationImage(
+          //       image: switch (employee.avatar) {
+          //         final avatar ? => NetworkImage(avatar),
+          //         _ => const AssetImage(AppImages.avatarImage),
+          //       } as ImageProvider,
+          //     )
+          //   ),
+          // ),
+          // const SizedBox(
+          //   width: 10,
+          // ),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -66,8 +66,8 @@ class HomeListEmployeeTile extends StatelessWidget {
                       onPressed: () {
                         //context.pushNamed('/schedule', arguments: employee);
                       },
-                      child: Text('Agendamento', 
-                        style: TextStyle(fontSize: 12),
+                      child: Text('Fazer Agendamento', 
+                        //style: TextStyle(fontSize: 12),
                       ),
                     ),
                     // const SizedBox(

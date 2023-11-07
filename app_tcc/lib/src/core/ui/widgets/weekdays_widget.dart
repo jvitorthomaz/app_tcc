@@ -9,8 +9,8 @@ class WeekdaysWidget extends StatelessWidget {
 
   const WeekdaysWidget({
     super.key,
-    required this.onDayPressed,
     this.enabledDays,
+    required this.onDayPressed,
   });
 
   @override

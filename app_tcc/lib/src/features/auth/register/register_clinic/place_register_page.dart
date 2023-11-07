@@ -100,7 +100,7 @@ class _PlaceRegisterPageState extends ConsumerState<PlaceRegisterPage> {
                  height: 25,
               ),
           
-              HoursPanel(
+              HoursWidget(
                 startTime: 8, 
                 endTime: 19, 
                 onHourPressed: (int value){

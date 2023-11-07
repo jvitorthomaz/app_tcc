@@ -43,19 +43,35 @@ class HomeHeader extends ConsumerWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.end,
+          //   children: [
+          //      IconButton(
+          //           onPressed: () {
+          //             ref.read(homeAdmVmProvider.notifier).logout();
+          //           },
+          //           icon: const Icon(
+          //             AppIcons.exitAppIcon,
+          //             color: Colors.white,
+          //             size: 25,
+          //           ),
+          //         )
+
+          //   ],
+          // ),
           //Deixa opcional os atributos
           clinicInfo.maybeWhen(
             data: (clinicInfoData) {
               return Row(
                 //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const CircleAvatar(
-                    backgroundColor: Color(0xffbdbdbd),
-                    child: SizedBox.shrink(),
-                  ),
-                  const SizedBox(
-                    width: 18,
-                  ),
+                  // const CircleAvatar(
+                  //   backgroundColor: Color(0xffbdbdbd),
+                  //   child: SizedBox.shrink(),
+                  // ),
+                  // const SizedBox(
+                  //   width: 18,
+                  // ),
                   Flexible(
                     child: Text(
                       clinicInfoData.name,
@@ -81,9 +97,10 @@ class HomeHeader extends ConsumerWidget {
                       ),
                     ),
                   ),
-                  // const SizedBox(
-                  //   width: 10,
-                  // ),
+                  
+                  const SizedBox(
+                    width: 120,
+                  ),
                   IconButton(
                     onPressed: () {
                       ref.read(homeAdmVmProvider.notifier).logout();
@@ -132,22 +149,22 @@ class HomeHeader extends ConsumerWidget {
               height: 20,
             ),
           ),
-          Offstage(
-            offstage: !showFilter,
-            child: TextFormField(
-              decoration: const InputDecoration(
-                label: Text('Buscar Colaborador'),
-                suffixIcon: Padding(
-                  padding: EdgeInsets.only(right: 20.0),
-                  child: Icon(
-                    AppIcons.searchIcon,
-                    color: AppColors.colorGreen,
-                    size: 26,
-                  ),
-                ),
-              ),
-            ),
-          )
+          // Offstage(
+          //   offstage: !showFilter,
+          //   child: TextFormField(
+          //     decoration: const InputDecoration(
+          //       label: Text('Buscar Colaborador'),
+          //       suffixIcon: Padding(
+          //         padding: EdgeInsets.only(right: 20.0),
+          //         child: Icon(
+          //           AppIcons.searchIcon,
+          //           color: AppColors.colorGreen,
+          //           size: 26,
+          //         ),
+          //       ),
+          //     ),
+          //   ),
+          // )
         ],
       ),
     );

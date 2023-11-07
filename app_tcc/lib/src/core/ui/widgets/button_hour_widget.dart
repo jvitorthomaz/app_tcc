@@ -49,10 +49,10 @@ class _HourButtonState extends State<HourButton> {
     var buttonColor = selected ? AppColors.colorGreenLight : Colors.white;
     final buttonBorderColor = selected ? AppColors.colorGreen : AppColors.colorGrey;
 
-    final disableTime = enabledTimes != null && !enabledTimes.contains(value);
+    final bool disableTime = enabledTimes != null && !enabledTimes.contains(value);
 
     if (disableTime) {
-      buttonColor = Colors.grey[400]!;
+      buttonColor = Colors.grey[350]!;
     }
 
     return InkWell(

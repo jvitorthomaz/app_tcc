@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:tcc_app/src/core/ui/constants.dart';
 import 'package:tcc_app/src/core/ui/widgets/button_hour_widget.dart';
 
-class HoursPanel extends StatefulWidget {
+class HoursWidget extends StatefulWidget {
   final List<int>? enabledTimes;
   final int startTime;
   final int endTime;
   final ValueChanged<int> onHourPressed;
   final bool singleSelection;
 
-  const HoursPanel({
+  const HoursWidget({
     super.key,
     required this.startTime,
     required this.endTime,
@@ -17,7 +17,7 @@ class HoursPanel extends StatefulWidget {
     this.enabledTimes,
   }) : singleSelection = false;
 
-  const HoursPanel.singleSelection({
+  const HoursWidget.singleSelection({
     super.key,
     required this.startTime,
     required this.endTime,
@@ -26,15 +26,15 @@ class HoursPanel extends StatefulWidget {
   }) : singleSelection = true;
 
   @override
-  State<HoursPanel> createState() => _HoursPanelState();
+  State<HoursWidget> createState() => _HoursWidgetState();
 }
 
-class _HoursPanelState extends State<HoursPanel> {
+class _HoursWidgetState extends State<HoursWidget> {
   int? lastSelection;
 
   @override
   Widget build(BuildContext context) {
-    final HoursPanel(:singleSelection) = widget;
+    final HoursWidget(:singleSelection) = widget;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -54,6 +54,7 @@ class _HoursPanelState extends State<HoursPanel> {
           children: [
             for (int i = widget.startTime; i <= widget.endTime; i++)
               HourButton(
+                //enabledTimes: enabledTimes,
                 label: '${i.toString().padLeft(2, '0')}:00',
                 value: i,
                 timeSelected: lastSelection,

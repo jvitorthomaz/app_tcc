@@ -99,7 +99,29 @@
       "name": "Vitor Adm",
       "email": "vitor@email.com",
       "password": "123123",
-      "profile": "ADM"
+      "profile": "ADM",
+      "work_days": ["Seg", "Ter", "Qua", "Qui", "Sex"],
+      "work_hours": [9, 10, 11, 14, 15, 16, 17, 18, 13]
+    },
+    {
+      "id": 19,
+      "name": "Colaborador 1",
+      "email": "colaborador1@emai.com",
+      "password": "123123",
+      "place_id": 3,
+      "profile": "EMPLOYEE",
+      "work_days": ["Seg", "Ter", "Qua", "Qui", "Sex"],
+      "work_hours": [9, 10, 11, 13, 14, 15, 16]
+    },
+    {
+      "id": 20,
+      "name": "Colaborador 2",
+      "email": "colaborador2@email.com",
+      "password": "123123",
+      "place_id": 3,
+      "profile": "EMPLOYEE",
+      "work_days": ["Seg", "Qua", "Sex"],
+      "work_hours": [9, 10, 11, 13, 14, 15, 16, 17]
     }
   ],
   "adm_users": [],

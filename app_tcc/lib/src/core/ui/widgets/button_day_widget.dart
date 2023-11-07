@@ -28,9 +28,10 @@ class _ButtonDayState extends State<ButtonDay> {
 
     final ButtonDay(:enabledDays, :label) = widget;
 
-    final disableDay = enabledDays != null && !enabledDays.contains(label);
+    final bool disableDay = enabledDays != null && !enabledDays.contains(label);
+
     if (disableDay) {
-      buttonColor = Colors.grey[400]!;
+      buttonColor = Colors.grey[350]!;
     }
 
     return Padding(

@@ -98,7 +98,18 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                             height: 180,
                           ),
                           const SizedBox(
-                             height: 30,
+                             height: 5,
+                          ),
+                          const Text(
+                            'MyClinic App', 
+                            style: TextStyle(
+                              color: AppColors.colorGreenLight, 
+                              fontSize: 30, 
+                              fontWeight: FontWeight.bold
+                            ),
+                          ),
+                          const SizedBox(
+                             height: 15,
                           ),
 
 
