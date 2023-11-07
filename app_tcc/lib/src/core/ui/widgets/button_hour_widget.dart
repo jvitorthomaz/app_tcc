@@ -40,6 +40,7 @@ class _HourButtonState extends State<HourButton> {
     if (singleSelection) {
       if(timeSelected != null && timeSelected == value) {
         selected = true;
+        
       } else {
         selected = false;
       }

@@ -107,5 +107,22 @@ final logoutProvider = AutoDisposeFutureProvider<void>.internal(
 );
 
 typedef LogoutRef = AutoDisposeFutureProviderRef<void>;
+String _$schedulesRepositoryHash() =>
+    r'd5dd18c1329ff8829461e4146eba7c9514cf5314';
+
+/// See also [schedulesRepository].
+@ProviderFor(schedulesRepository)
+final schedulesRepositoryProvider =
+    AutoDisposeProvider<SchedulesRepository>.internal(
+  schedulesRepository,
+  name: r'schedulesRepositoryProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$schedulesRepositoryHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef SchedulesRepositoryRef = AutoDisposeProviderRef<SchedulesRepository>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

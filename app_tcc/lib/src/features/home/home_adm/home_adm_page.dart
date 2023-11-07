@@ -11,6 +11,7 @@ import 'package:tcc_app/src/features/home/home_adm/home_adm_vm.dart';
 import 'package:tcc_app/src/features/home/home_adm/widgets/home_list_employee_tile.dart';
 import 'package:tcc_app/src/features/home/widgets/home_header.dart';
 
+// TODO - padding: const EdgeInsets.fromLTRB(10, 10, 10, 100),
 class HomeAdmPage extends ConsumerWidget {
 
   const HomeAdmPage({ super.key });
@@ -55,18 +56,21 @@ class HomeAdmPage extends ConsumerWidget {
         // )
         body: homeState.when(
           data: (HomeAdmState data) {
-            return CustomScrollView(
-              slivers: [
-                const SliverToBoxAdapter(
-                  child: HomeHeader(),
-                ),
-                SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                    (context, index) => HomeListEmployeeTile(employee: data.employees[index]),
-                    childCount: data.employees.length,
-                  )
-                ),
-              ],
+            return Padding(
+              padding: const EdgeInsets.fromLTRB(0, 0, 0, 65),
+              child: CustomScrollView(
+                slivers: [
+                  const SliverToBoxAdapter(
+                    child: HomeHeader(),
+                  ),
+                  SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                      (context, index) => HomeListEmployeeTile(employee: data.employees[index]),
+                      childCount: data.employees.length,
+                    )
+                  ),
+                ],
+              ),
             );
           },
           error: (error, stackTrace) {

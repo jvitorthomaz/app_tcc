@@ -23,7 +23,7 @@ class HomeHeader extends ConsumerWidget {
 
     return Container(
       padding: const EdgeInsets.fromLTRB(26, 50, 26, 20),
-      margin: const EdgeInsets.only(bottom: 20),
+      //margin: const EdgeInsets.only(bottom: 20),
       width: MediaQuery.sizeOf(context).width,
       decoration: const BoxDecoration(
         //color: Colors.white,
@@ -93,7 +93,7 @@ class HomeHeader extends ConsumerWidget {
                         color: Colors.white,
                         //color: AppColors.colorGreen,
                         fontSize: 16,
-                        fontWeight: FontWeight.w800,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                   ),
@@ -139,7 +139,7 @@ class HomeHeader extends ConsumerWidget {
             'Faça um Agendamento',
             style: TextStyle(
               color: Colors.white,
-              fontWeight: FontWeight.w800,
+              fontWeight: FontWeight.w600,
               fontSize: 20,
             ),
           ),

@@ -35,6 +35,7 @@ class _HoursWidgetState extends State<HoursWidget> {
   @override
   Widget build(BuildContext context) {
     final HoursWidget(:singleSelection) = widget;
+    
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -54,7 +55,7 @@ class _HoursWidgetState extends State<HoursWidget> {
           children: [
             for (int i = widget.startTime; i <= widget.endTime; i++)
               HourButton(
-                //enabledTimes: enabledTimes,
+                //enabledTimes: widget.enabledTimes,
                 label: '${i.toString().padLeft(2, '0')}:00',
                 value: i,
                 timeSelected: lastSelection,
@@ -64,8 +65,10 @@ class _HoursWidgetState extends State<HoursWidget> {
                     if (singleSelection) {
                       if(lastSelection == timeSelected) {
                         lastSelection = null;
+
                       } else {
                         lastSelection = timeSelected;
+
                       }
                     }
                   });

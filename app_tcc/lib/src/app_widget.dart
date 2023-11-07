@@ -8,6 +8,7 @@ import 'package:tcc_app/src/features/auth/register/register_clinic/place_registe
 import 'package:tcc_app/src/features/auth/register/register_user/user_register_page.dart';
 import 'package:tcc_app/src/features/employee/register/employee_register_page.dart';
 import 'package:tcc_app/src/features/home/home_adm/home_adm_page.dart';
+import 'package:tcc_app/src/features/schedules/schedules_page.dart';
 import 'package:tcc_app/src/features/splash/splash_page.dart';
 
 class AppWidget extends StatelessWidget {
@@ -20,6 +21,7 @@ class AppWidget extends StatelessWidget {
       customLoader: const AppLoader(),
       builder: (AsyncNavigatorObserver){
         return MaterialApp(
+          debugShowCheckedModeBanner: false,
           title: 'App',
           theme: AppTheme.themeData,
 
@@ -34,6 +36,7 @@ class AppWidget extends StatelessWidget {
             '/home/admUser': (_) => const HomeAdmPage(),
             '/home/employeeUser': (_) => const Text('Employee'),
             '/employee/registerEmployee':(_) => const EmployeeRegisterPage(),
+            '/schedule': (_) => const SchedulesPage(),
           },
         );
       }

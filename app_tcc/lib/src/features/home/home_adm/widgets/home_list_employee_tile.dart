@@ -64,7 +64,7 @@ class HomeListEmployeeTile extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 10)
                       ),
                       onPressed: () {
-                        //context.pushNamed('/schedule', arguments: employee);
+                        Navigator.of(context).pushNamed('/schedule', arguments: employee);
                       },
                       child: Text('Fazer Agendamento', 
                         //style: TextStyle(fontSize: 12),

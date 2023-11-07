@@ -9,6 +9,8 @@ import 'package:tcc_app/src/models/place_model.dart';
 import 'package:tcc_app/src/models/users_model.dart';
 import 'package:tcc_app/src/repositories/places/places_repository.dart';
 import 'package:tcc_app/src/repositories/places/places_repository_impl.dart';
+import 'package:tcc_app/src/repositories/schedules/schedules_repository.dart';
+import 'package:tcc_app/src/repositories/schedules/schedules_repository_impl.dart';
 import 'package:tcc_app/src/repositories/user/user_repository.dart';
 import 'package:tcc_app/src/repositories/user/user_repository_impl.dart';
 import 'package:tcc_app/src/services/user_login_services/user_login_service.dart';
@@ -19,13 +21,16 @@ part 'aplication_providers.g.dart';
 @Riverpod(keepAlive: true)
 RestClient restClient(RestClientRef ref) => RestClient();
 
+
 @Riverpod(keepAlive: true)
 UserRespository userRespository(UserRespositoryRef ref) => 
   UserRepositoryImpl(restClient: ref.read(restClientProvider));
 
+
 @Riverpod(keepAlive: true)
 UserLoginService userLoginService(UserLoginServiceRef ref) => 
   UserLoginServiceImpl(userRespository: ref.read(userRespositoryProvider));
+
 
 @Riverpod(keepAlive: true)
 Future<UserModel> getMe(GetMeRef ref) async{
@@ -37,9 +42,11 @@ Future<UserModel> getMe(GetMeRef ref) async{
   };
 }
 
+
 @Riverpod(keepAlive: true)
 PlacesRepository placesRepository(PlacesRepositoryRef ref) => 
   PlacesRepositoryImpl(restClient: ref.watch(restClientProvider));
+
 
 @Riverpod(keepAlive: true)
 Future<PlaceModel> getAdmPlace(GetAdmPlaceRef ref) async {
@@ -53,6 +60,7 @@ Future<PlaceModel> getAdmPlace(GetAdmPlaceRef ref) async {
   };
 }
 
+
 @riverpod
 Future<void> logout(LogoutRef ref) async {
   final preferences = await SharedPreferences.getInstance();
@@ -65,3 +73,7 @@ Future<void> logout(LogoutRef ref) async {
     .pushNamedAndRemoveUntil('/auth/login', (route) => false);
   
 }
+
+@riverpod
+SchedulesRepository schedulesRepository(SchedulesRepositoryRef ref) => 
+  SchedulesRepositoryImpl(restClient: ref.read(restClientProvider));
