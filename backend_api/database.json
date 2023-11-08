@@ -189,6 +189,14 @@
       "client_name": "Cliente 1",
       "date": "2023-11-10T00:00:00.000Z",
       "time": 14
+    },
+    {
+      "id": 3,
+      "place_id": 3,
+      "user_id": 18,
+      "client_name": "Novo cliente",
+      "date": "2023-11-13T00:00:00.000Z",
+      "time": 9
     }
   ]
 }

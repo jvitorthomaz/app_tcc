@@ -37,6 +37,7 @@ class SplashPageVm extends _$SplashPageVm {
         
       }
     }
+    
     return SplashPageState.login;
   }
 }

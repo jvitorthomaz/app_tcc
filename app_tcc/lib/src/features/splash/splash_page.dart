@@ -87,6 +87,7 @@ class _SplashPageState extends ConsumerState<SplashPage> {
 
             case _:
               //Navigator.of(context).pushNamedAndRemoveUntil('/auth/login', (route) => false);
+              //Future.delayed(Duration(seconds: 3));
               _redirectRoute('/auth/login');
           }
         },
@@ -115,21 +116,21 @@ class _SplashPageState extends ConsumerState<SplashPage> {
               setState(() {
                 endAnimation = true;
               });
-              // Navigator.of(context).pushAndRemoveUntil(
-              //   PageRouteBuilder(
-              //     settings: const RouteSettings(name: '/auth/login'),
-              //     pageBuilder: (
-              //       context, 
-              //       animation, 
-              //       secondaryAnimation,
-              //     ) {
-              //       return const LoginPage();
-              //     },
-              //     transitionsBuilder: (_, animation, __, child) {
-              //       return FadeTransition(opacity: animation, child: child,);
-              //     }
-              //   ), (route) => false
-              // );
+              Navigator.of(context).pushAndRemoveUntil(
+                PageRouteBuilder(
+                  settings: const RouteSettings(name: '/auth/login'),
+                  pageBuilder: (
+                    context, 
+                    animation, 
+                    secondaryAnimation,
+                  ) {
+                    return const LoginPage();
+                  },
+                  transitionsBuilder: (_, animation, __, child) {
+                    return FadeTransition(opacity: animation, child: child,);
+                  }
+                ), (route) => false
+              );
             },
             child: AnimatedContainer(
               duration: const Duration(seconds: 3),

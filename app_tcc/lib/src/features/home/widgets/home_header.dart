@@ -63,13 +63,13 @@ class HomeHeader extends ConsumerWidget {
           clinicInfo.maybeWhen(
             data: (clinicInfoData) {
               return Row(
-                //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   // const CircleAvatar(
                   //   backgroundColor: Color(0xffbdbdbd),
                   //   child: SizedBox.shrink(),
                   // ),
-                  // const SizedBox(
+                  // const Siz  edBox(
                   //   width: 18,
                   // ),
                   Flexible(
@@ -78,29 +78,29 @@ class HomeHeader extends ConsumerWidget {
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
                         color: Colors.white,
-                        fontSize: 14,
+                        fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    width: 18,
-                  ),
-                  const Expanded(
-                    child: Text(
-                      'editar',
-                      style: TextStyle(
-                        color: Colors.white,
-                        //color: AppColors.colorGreen,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
+                  // const SizedBox(
+                  //   width: 18,
+                  // ),
+                  // const Expanded(
+                  //   child: Text(
+                  //     'editar',
+                  //     style: TextStyle(
+                  //       color: Colors.white,
+                  //       //color: AppColors.colorGreen,
+                  //       fontSize: 16,
+                  //       fontWeight: FontWeight.w600,
+                  //     ),
+                  //   ),
+                  // ),
                   
-                  const SizedBox(
-                    width: 120,
-                  ),
+                  // const SizedBox(
+                  //   width: 120,
+                  // ),
                   IconButton(
                     onPressed: () {
                       ref.read(homeAdmVmProvider.notifier).logout();
@@ -122,24 +122,24 @@ class HomeHeader extends ConsumerWidget {
             },
           ),
           const SizedBox(
-            height: 10,
+            height: 5,
           ),
           const Text(
-            'Bem Vindo',
+            'Olá!',
             style: TextStyle(
               color: Colors.white,
-              fontWeight: FontWeight.w500,
-              fontSize: 18,
+              fontWeight: FontWeight.w600,
+              fontSize: 20,
             ),
           ),
-          const SizedBox(
-            height: 20,
-          ),
+          // const SizedBox(
+          //   height: 20,
+          // ),
           const Text(
             'Faça um Agendamento',
             style: TextStyle(
               color: Colors.white,
-              fontWeight: FontWeight.w600,
+              fontWeight: FontWeight.w500,
               fontSize: 20,
             ),
           ),
@@ -151,7 +151,7 @@ class HomeHeader extends ConsumerWidget {
           ),
           // Offstage(
           //   offstage: !showFilter,
-          //   child: TextFormField(
+          //   child: TextField(
           //     decoration: const InputDecoration(
           //       label: Text('Buscar Colaborador'),
           //       suffixIcon: Padding(

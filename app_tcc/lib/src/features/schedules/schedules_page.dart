@@ -7,6 +7,7 @@ import 'package:tcc_app/src/core/ui/helpers/forms_helper.dart';
 import 'package:tcc_app/src/core/ui/helpers/messages_helper.dart';
 import 'package:tcc_app/src/core/ui/widgets/hours_widget.dart';
 import 'package:tcc_app/src/core/ui/widgets/user_avatar_widget.dart';
+import 'package:tcc_app/src/features/schedules/schedules_state.dart';
 import 'package:tcc_app/src/features/schedules/schedules_vm.dart';
 import 'package:tcc_app/src/features/schedules/widgets/schedules_calendar.dart';
 import 'package:tcc_app/src/models/users_model.dart';
@@ -37,22 +38,39 @@ class _SchedulesPageState extends ConsumerState<SchedulesPage> {
 
    @override
    Widget build(BuildContext context) {
+
     final userModel = ModalRoute.of(context)!.settings.arguments as UserModel;
     final schedulesVm = ref.watch(schedulesVmProvider.notifier);
 
     final employeeData = switch (userModel) {
       AdmUserModel(:final workDays, :final workHours) => (
-          workDays: workDays!,
-          workHours: workHours!,
-        ),
+        workDays: workDays!,
+        workHours: workHours!,
+      ),
+
       EmployeeUserModel(:final workDays, :final workHours) => (
-          workDays: workDays,
-          workHours: workHours,
-        ),
+        workDays: workDays,
+        workHours: workHours,
+      ),
     };
+    
+    ref.listen(
+      schedulesVmProvider.select((state) => state.status),
+      (_, status) {
+        switch (status) {
+          case SchedulesStateStatus.initial:
+            break;
 
-
-
+          case SchedulesStateStatus.success:
+            MessagesHelper.showSuccessSnackBar('O agendamento foi concluido com sucesso!', context);
+            Navigator.of(context).pop();
+       
+          case SchedulesStateStatus.error:
+            MessagesHelper.showErrorSnackBar('Ocorreu um erro ao realizar o agendamento.', context);
+        
+        }
+      },
+    );
 
     return Scaffold(
         appBar: AppBar(title: const Text('Novo agendamento'),),
@@ -142,6 +160,7 @@ class _SchedulesPageState extends ConsumerState<SchedulesPage> {
                   const SizedBox(
                     height: 24,
                   ),
+
                   HoursWidget.singleSelection(
                     startTime: 8,
                     endTime: 19,

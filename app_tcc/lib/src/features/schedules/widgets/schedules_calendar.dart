@@ -26,6 +26,7 @@ class _SchedulesCalendarState extends State<SchedulesCalendar> {
   DateTime? selectedDay;
   late final List<int> weekDaysEnabled;
 
+  
   int convertWeekDay(String weekDay) => switch (weekDay.toLowerCase()) {
     'seg' => DateTime.monday,
     'ter' => DateTime.tuesday,
