@@ -10,7 +10,19 @@ part 'employee_schedules_vm.g.dart';
 
 @riverpod
 class EmployeeSchedulesVm extends _$EmployeeSchedulesVm{
-    @override
+
+  // @override
+  // Future<List<SchedulesModel>> build(int userId, DateTime date) async {
+  //   final scheduleListResult = await _getSchedules(userId, date);
+
+  //   return switch (scheduleListResult) {
+  //     Success(value: final schedules) => schedules,
+  //     Failure(:final exception) => throw Exception(exception),
+  //   };
+
+  // }
+  
+  @override
   Future<List<SchedulesModel>> build(int userId, DateTime date) async =>
     switch (await _getSchedules(userId, date)) {
       Success(value: final schedules) => schedules,
@@ -20,13 +32,22 @@ class EmployeeSchedulesVm extends _$EmployeeSchedulesVm{
   Future<void> changeDate(int userId, DateTime date) async =>
     state = switch (await _getSchedules(userId, date)) {
       Success(value: final schedules) => AsyncData(schedules),
+
       Failure(:final exception) =>
         AsyncError(Exception(exception), StackTrace.current),
     };
 
+  // Future<Either<RepositoryException, List<SchedulesModel>>> _getSchedules(
+  //   int userId,
+  //   DateTime date,
+  // ) {
+  //   final repository = ref.read(schedulesRepositoryProvider);
+  //   return repository.findScheduleByDate((userId: userId, date: date));
+  // }
+
   Future<Either<RepositoryException, List<SchedulesModel>>> _getSchedules(
     int userId,
     DateTime date,
-  ) => 
-    ref.read(schedulesRepositoryProvider).findScheduleByDate((userId: userId, date: date));
+  ) => ref.read(schedulesRepositoryProvider).findScheduleByDate((userId: userId, date: date));
+
 }

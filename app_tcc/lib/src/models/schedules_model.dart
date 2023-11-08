@@ -1,6 +1,13 @@
 
 class SchedulesModel {
-    SchedulesModel({
+  final int id;
+  final int placeId;
+  final int userId;
+  final int hour;
+  final String clientName;
+  final DateTime date;
+
+  SchedulesModel({
     required this.id,
     required this.placeId,
     required this.userId,
@@ -11,6 +18,8 @@ class SchedulesModel {
 
   factory SchedulesModel.fromMap(Map<String, dynamic> json) {
     switch (json) {
+
+      //recebe 
       case {
         'id': int id,
         'place_id': int placeId,
@@ -19,6 +28,8 @@ class SchedulesModel {
         'date': String scheduleDate,
         'time': int hour,
       }:
+
+      //retorna
       return SchedulesModel(
         id: id,
         placeId: placeId,
@@ -31,8 +42,4 @@ class SchedulesModel {
         throw ArgumentError('Invalid JSON: $json');
     }
   }
-
-  final int id, placeId, userId, hour;
-  final String clientName;
-  final DateTime date;
 }

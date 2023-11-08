@@ -1,5 +1,6 @@
 import 'package:asyncstate/asyncstate.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:tcc_app/src/core/ui/app_nav_global_key.dart';
 import 'package:tcc_app/src/core/ui/app_theme.dart';
 import 'package:tcc_app/src/core/ui/widgets/app_loader.dart';
@@ -9,6 +10,7 @@ import 'package:tcc_app/src/features/auth/register/register_user/user_register_p
 import 'package:tcc_app/src/features/employee/mySchedules/employee_schedules_page.dart';
 import 'package:tcc_app/src/features/employee/register/employee_register_page.dart';
 import 'package:tcc_app/src/features/home/home_adm/home_adm_page.dart';
+import 'package:tcc_app/src/features/home/home_employee/home_employee_page.dart';
 import 'package:tcc_app/src/features/schedules/schedules_page.dart';
 import 'package:tcc_app/src/features/splash/splash_page.dart';
 
@@ -35,12 +37,19 @@ class AppWidget extends StatelessWidget {
             '/auth/register/user': (_) => const UserRegisterPage(),
             '/auth/register/place': (_) => const PlaceRegisterPage(),
             '/home/admUser': (_) => const HomeAdmPage(),
-            '/home/employeeUser': (_) => const Text('Employee'),
+            '/home/employeeUser': (_) => const HomeEmployeePage(),
             '/employee/registerEmployee':(_) => const EmployeeRegisterPage(),
             '/employee/schedulesEmployee':(_) => const EmployeeSchedulesPage(),
             '/schedule': (_) => const SchedulesPage(),
             
           },
+          localizationsDelegates: const [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          locale: const Locale('pt', 'BR'),
+          supportedLocales: const [Locale('pt', 'BR')],
         );
       }
     );

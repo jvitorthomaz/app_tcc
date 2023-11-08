@@ -10,6 +10,7 @@ part 'schedules_vm.g.dart';
 
 @riverpod
 class SchedulesVm extends _$SchedulesVm{
+  
   @override
   SchedulesState build() => SchedulesState.initial();
 

@@ -51,11 +51,12 @@ class SchedulesRepositoryImpl  implements SchedulesRepository{
         'date': filter.date.toIso8601String(),
       });
 
-      final schedules = data.map((res) => SchedulesModel.fromMap(res)).toList();
+      final schedules = data.map((s) => SchedulesModel.fromMap(s)).toList();
       return Success(schedules);
 
     } on DioException catch (e, s) {
       log('Erro ao buscar agendamentos de uma data', error: e, stackTrace: s);
+
       return Failure(
         RepositoryException(
           message: 'Erro ao buscar agendamentos de uma data'
@@ -64,6 +65,7 @@ class SchedulesRepositoryImpl  implements SchedulesRepository{
 
     } on ArgumentError catch (e, s) {
       log('Json Invalido', error: e, stackTrace: s);
+  
       return Failure(RepositoryException(message: 'Json Invalido'));
     }
   }

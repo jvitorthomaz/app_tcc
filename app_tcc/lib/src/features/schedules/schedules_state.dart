@@ -6,7 +6,6 @@ enum SchedulesStateStatus {
   error;
 }
 
-
 class SchedulesState {
   final SchedulesStateStatus status;
   final int? scheduleTime;

@@ -31,11 +31,11 @@ class _EmployeeSchedulesPageState extends ConsumerState<EmployeeSchedulesPage> {
 
   @override
   Widget build(BuildContext context) {
+    //final UserModel(id: userId, :name) = ModalRoute.of(context)!.settings.arguments as UserModel;
     final UserModel(id: userId, :name) = ModalRoute.of(context)?.settings.arguments as UserModel;
 
     final scheduleAsync = ref.watch(
       employeeSchedulesVmProvider(userId, dateSelected)
-      //employeeScheduleVMProvider(userId, dateSelected),
     );
 
     return Scaffold(
@@ -55,15 +55,19 @@ class _EmployeeSchedulesPageState extends ConsumerState<EmployeeSchedulesPage> {
             ),
           ),
           const SizedBox(height: 50),
+
+          // passa por todos os 3 processos
           scheduleAsync.when(
             loading: () => const AppLoader(),
+
             error: (e, s) {
-              const errorMessage = 'Erro ao carregar agendamento';
+              const errorMessage = 'Houve um erro ao carregar os agendamentos.';
               log(errorMessage, error: e, stackTrace: s);
               return const Center(
                 child: Text(errorMessage),
               );
             },
+
             data: (schedules) => Expanded(
 
               child: SfCalendar(
@@ -80,7 +84,7 @@ class _EmployeeSchedulesPageState extends ConsumerState<EmployeeSchedulesPage> {
                 //     (context, calendarAppointmentDetails) {
                 //   return Container(
                 //     decoration: BoxDecoration(
-                //       color: ColorConstants.colorBrown,
+                //       color: AppColors.colorGreenLight,
                 //       shape: BoxShape.rectangle,
                 //       borderRadius: BorderRadius.circular(5),
                 //     ),
@@ -101,14 +105,24 @@ class _EmployeeSchedulesPageState extends ConsumerState<EmployeeSchedulesPage> {
                     ignoreFirstLoad = false;
                     return;
                   }
+
+                  // ref.read(
+                  //   employeeSchedulesVmProvider(userId, dateSelected).notifier,
+                  // ).changeDate(
+                  //   userId,
+                  //   viewChangedDetails.visibleDates.first,
+                  // );
+
                   final employeeSchedule = ref.read(
                     employeeSchedulesVmProvider(userId, dateSelected).notifier,
                   );
+
                   employeeSchedule.changeDate(
                     userId,
                     viewChangedDetails.visibleDates.first,
                   );
                 },
+
                 onTap: (calendarTapDetails) {
                   if (
                     calendarTapDetails.appointments?.isNotEmpty ?? false

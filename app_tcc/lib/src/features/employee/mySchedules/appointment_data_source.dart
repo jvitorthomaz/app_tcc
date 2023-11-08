@@ -3,6 +3,8 @@ import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:tcc_app/src/core/ui/constants.dart';
 import 'package:tcc_app/src/models/schedules_model.dart';
 
+// TODO => tempo do agendamento de forma dinamica
+
 class AppointmentDataSource extends CalendarDataSource{
   AppointmentDataSource({
     required this.schedules,
@@ -11,24 +13,27 @@ class AppointmentDataSource extends CalendarDataSource{
   final List<SchedulesModel> schedules;
 
   @override
-  List<dynamic>? get appointments => schedules.map((e) {
-    final SchedulesModel(
-      date: DateTime(:year, :month, :day),
-      :hour,
-      :clientName,
-    ) = e;
+  List<dynamic>? get appointments { 
+    return schedules.map((e) {
 
-    final startTime = DateTime(year, month, day, hour, 0, 0);
-    final endTime = DateTime(year, month, day, hour + 1, 0, 0);
+      final SchedulesModel(
+        date: DateTime(:year, :month, :day),
+        :hour,
+        :clientName,
+      ) = e;
 
-    return Appointment(
-      color: AppColors.colorGreen,
-      startTime: startTime,
-      endTime: endTime,
-      subject: clientName,
-    );
-  }).toList();
+      final startTime = DateTime(year, month, day, hour, 0, 0);
+      final endTime = DateTime(year, month, day, hour + 1, 0, 0);
 
-  
-  
+      return Appointment(
+        color: AppColors.colorGreen,
+        startTime: startTime,
+        endTime: endTime,
+        subject: clientName,
+      );
+
+    }).toList();
+
+  }
+
 }
