@@ -6,6 +6,7 @@ import 'package:tcc_app/src/core/exceptions/repository_exception.dart';
 import 'package:tcc_app/src/core/functionalPrograming/either.dart';
 import 'package:tcc_app/src/core/functionalPrograming/nil.dart';
 import 'package:tcc_app/src/core/restClient/rest_client.dart';
+import 'package:tcc_app/src/models/schedules_model.dart';
 import 'package:tcc_app/src/repositories/schedules/schedules_repository.dart';
 
 class SchedulesRepositoryImpl  implements SchedulesRepository{
@@ -38,30 +39,33 @@ class SchedulesRepositoryImpl  implements SchedulesRepository{
     }
   }
 
-  // @override
-  // Future<Either<RepositoryExeception, List<SchedulesModel>>> findScheduleByDate(
-  //     ({
-  //       DateTime date,
-  //       int userId,
-  //     }) filter) async {
-  //   try {
-  //     final Response(:List data) =
-  //         await restClient.auth.get('/schedules', queryParameters: {
-  //       'user_id': filter.userId,
-  //       'date': filter.date.toIso8601String(),
-  //     });
-  //     final schedules = data.map((res) => SchedulesModel.fromMap(res)).toList();
-  //     return Success(schedules);
-  //   } on DioException catch (e, s) {
-  //     log('Erro ao buscar agendamentos de uma data', error: e, stackTrace: s);
-  //     return Failure(RepositoryExeception(
-  //         message: 'Erro ao buscar agendamentos de uma data'));
-  //   } on ArgumentError catch (e, s) {
-  //     log('Json Invalido', error: e, stackTrace: s);
-  //     return Failure(RepositoryExeception(message: 'Json Invalido'));
-  //   }
-  //}
+  @override
+  Future<Either<RepositoryException, List<SchedulesModel>>> findScheduleByDate(
+  ({
+    DateTime date,
+    int userId,
+  }) filter) async {
+    try {
+      final Response(:List data) = await restClient.auth.get('/schedules', queryParameters: {
+        'user_id': filter.userId,
+        'date': filter.date.toIso8601String(),
+      });
 
+      final schedules = data.map((res) => SchedulesModel.fromMap(res)).toList();
+      return Success(schedules);
 
+    } on DioException catch (e, s) {
+      log('Erro ao buscar agendamentos de uma data', error: e, stackTrace: s);
+      return Failure(
+        RepositoryException(
+          message: 'Erro ao buscar agendamentos de uma data'
+        )
+      );
+
+    } on ArgumentError catch (e, s) {
+      log('Json Invalido', error: e, stackTrace: s);
+      return Failure(RepositoryException(message: 'Json Invalido'));
+    }
+  }
   
 }

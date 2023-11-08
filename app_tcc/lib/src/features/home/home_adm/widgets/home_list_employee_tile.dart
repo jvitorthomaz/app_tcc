@@ -78,6 +78,7 @@ class HomeListEmployeeTile extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 10)
                       ),
                       onPressed: () {
+                        Navigator.of(context).pushNamed('/employee/schedulesEmployee', arguments: employee);
                         //context.pushNamed('/employee/schedule', arguments: employee);
                       },
                       child: const Text('Ver Agenda'),
