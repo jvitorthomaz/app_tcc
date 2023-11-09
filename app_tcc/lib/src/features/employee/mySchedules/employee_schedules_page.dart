@@ -132,33 +132,93 @@ class _EmployeeSchedulesPageState extends ConsumerState<EmployeeSchedulesPage> {
                       builder: (context) {
                         final dateFormat = DateFormat('dd//MM/yyyy HH:mm');
                         return SizedBox(
-                          height: 200,
+                          height: 300,
                           child: Center(
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                // Text(
-                                //   'Cliente:',
-                                //   style: const TextStyle(
-                                //     color: AppColors.colorGreen,
-                                //     fontSize: 12,
-                                //     fontWeight: FontWeight.bold,
-                                //   ),
-                                // ),
-                                Text(
-                                  // ignore: avoid_dynamic_calls
-                                  'Nome do Cliente: ${calendarTapDetails.appointments!.first.subject}\n',
-                                  style: const TextStyle(
-                                    fontSize: 16,
-                                  ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      'Detalhes do Agendamento',
+                                       style: const TextStyle(
+                                        color: AppColors.colorGreen,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                      )
+                                    ),
+
+                                  ],
                                 ),
 
-                                Text(
-                                  'Horário: ${dateFormat.format(calendarTapDetails.date ?? DateTime.now())}',
-                                  style: const TextStyle(
-                                    fontSize: 16,
-                                  ),
+                                const SizedBox(
+                                   height: 30,
                                 ),
+
+                                Row(
+                                  children: [
+                                    const SizedBox(
+                                       width: 10,
+                                    ),
+                                    const Text(
+                                      'Cliente: ',
+                                      style:  TextStyle(
+                                        color: AppColors.colorGreen,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    Text(
+                                      // ignore: avoid_dynamic_calls
+                                      '${calendarTapDetails.appointments!.first.subject}',
+                                      style: const TextStyle(
+                                        fontSize: 14,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+
+                                const SizedBox(
+                                   height: 20,
+                                ),
+                                
+                                Row(
+                                  children: [
+                                    const SizedBox(
+                                       width: 10,
+                                    ),
+                                    const Text(
+                                      'Data e Horário: ',
+                                      style: TextStyle(
+                                        color: AppColors.colorGreen,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    Text(
+                                      '${dateFormat.format(calendarTapDetails.date ?? DateTime.now())}',
+                                      style: const TextStyle(
+                                        fontSize: 14,
+                                      ),
+                                    )
+
+                                  ],
+                                )
+                                // Text(
+                                //   // ignore: avoid_dynamic_calls
+                                //   'Nome do Cliente: ${calendarTapDetails.appointments!.first.subject}\n',
+                                //   style: const TextStyle(
+                                //     fontSize: 16,
+                                //   ),
+                                // ),
+
+                                // Text(
+                                //   'Horário: ${dateFormat.format(calendarTapDetails.date ?? DateTime.now())}',
+                                //   style: const TextStyle(
+                                //     fontSize: 16,
+                                //   ),
+                                //),
                               ],
                             ),
                           ),
