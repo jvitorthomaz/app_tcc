@@ -44,11 +44,13 @@ class SchedulesRepositoryImpl  implements SchedulesRepository{
   ({
     DateTime date,
     int userId,
+    //int idSchedule
   }) filter) async {
     try {
       final Response(:List data) = await restClient.auth.get('/schedules', queryParameters: {
         'user_id': filter.userId,
         'date': filter.date.toIso8601String(),
+        //'id' : filter.idSchedule
       });
 
       final schedules = data.map((s) => SchedulesModel.fromMap(s)).toList();
@@ -68,6 +70,26 @@ class SchedulesRepositoryImpl  implements SchedulesRepository{
   
       return Failure(RepositoryException(message: 'Json Invalido'));
     }
+  }
+  
+  @override
+  Future<Either<RepositoryException, Nil>> deleteSchedule(int idSchedule) async {
+    try {
+      final response = await restClient.auth.delete(
+        '/schedules/$idSchedule', 
+        //queryParameters: {'id': ${scheduleData.idSchedule}}
+      );
+
+      return Success(nil);
+
+    } on DioException catch (e, s) {
+      log('Erro Deletar Agendamento', error: e, stackTrace: s);
+
+      return Failure(
+        RepositoryException(message: 'Erro Deletar Agendamento')
+      );
+    } 
+
   }
   
 }

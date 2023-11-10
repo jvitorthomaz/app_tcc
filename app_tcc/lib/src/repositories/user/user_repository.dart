@@ -38,4 +38,6 @@ abstract interface class UserRespository {
     }) userModel
   );    
 
+  Future<Either<RepositoryException, Nil>> deleteUser( int idUser );
+
 }

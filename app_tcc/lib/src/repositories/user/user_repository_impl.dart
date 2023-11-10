@@ -177,7 +177,7 @@ class UserRepositoryImpl implements UserRespository {
       await restClient.auth.post('/users/', data: {
         'name': userModel.name,
         'email': userModel.email,
-        'password': userModel.password,
+        'password': userModel.password, //MyClinic#123!
         'place_id': userModel.placeId,
         'profile': 'EMPLOYEE',
         'work_days': userModel.workDays,
@@ -201,5 +201,24 @@ class UserRepositoryImpl implements UserRespository {
       );
     }
   
+  }
+  
+  @override
+  Future<Either<RepositoryException, Nil>> deleteUser(int idUser) async{
+    try {
+      final response = await restClient.auth.delete(
+        '/users/$idUser', 
+        //queryParameters: {'id': ${scheduleData.idSchedule}}
+      );
+
+      return Success(nil);
+
+    } on DioException catch (e, s) {
+      log('Erro Deletar Usuario', error: e, stackTrace: s);
+
+      return Failure(
+        RepositoryException(message: 'Erro Deletar Usuario')
+      );
+    } 
   }
 }

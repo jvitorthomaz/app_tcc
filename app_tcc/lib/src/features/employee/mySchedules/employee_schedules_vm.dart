@@ -1,4 +1,5 @@
 
+import 'package:asyncstate/asyncstate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:tcc_app/src/core/exceptions/repository_exception.dart';
@@ -49,5 +50,35 @@ class EmployeeSchedulesVm extends _$EmployeeSchedulesVm{
     int userId,
     DateTime date,
   ) => ref.read(schedulesRepositoryProvider).findScheduleByDate((userId: userId, date: date));
+
+
+
+    Future<void> deleteScheduleVm(int idSchedule) async {
+      final asyncLoaderHandler = AsyncLoaderHandler()..start();
+
+      // final scheduleRepository = ref.read(schedulesRepositoryProvider);
+      // final PlaceModel(id: placeId) = await ref.watch(getAdmPlaceProvider.future);
+
+      // final dto = (
+      //   placeId: placeId,
+      //   userId: userModel.id,
+      //   clientName: clientName,
+      //   date: scheduleDate!,
+      //   time: scheduleTime!,
+      // );
+      final scheduleRepository = ref.read(schedulesRepositoryProvider);
+      final deleteScheduleResult = await scheduleRepository.deleteSchedule(idSchedule);
+
+      // switch (deleteScheduleResult) {
+      //   case Success():
+      //     state = state.copyWith(status: SchedulesStateStatus.success);
+
+      //   case Failure():
+      //     state = state.copyWith(status: SchedulesStateStatus.error);
+          
+      // }
+
+      asyncLoaderHandler.close();
+    }
 
 }

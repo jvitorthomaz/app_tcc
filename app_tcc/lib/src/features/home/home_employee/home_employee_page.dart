@@ -17,6 +17,7 @@ class HomeEmployeePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final userModelAsync = ref.watch(getMeProvider);
+    
 
     return Scaffold(
         body: userModelAsync.when(
@@ -78,6 +79,7 @@ class HomeEmployeePage extends ConsumerWidget {
                           children: [
                             Consumer(
                               builder: (context, ref, child) {
+                                
                                 final totalAsync = ref.watch(
                                   getTotalSchedulesTodayProvider(id)
                                 );

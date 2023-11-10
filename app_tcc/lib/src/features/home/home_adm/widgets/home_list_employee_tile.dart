@@ -45,16 +45,31 @@ class HomeListEmployeeTile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                 Text(
-                  //'Nome e sobrenome',
-                  employee.name,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
+                 Row(
+                   children: [
+                    Expanded(
+                      child: Text(
+                        employee.name,
+                        //maxLines: 2,
+                        softWrap: true,
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                       width: 10,
+                    ),
+                     const Icon(
+                      AppIcons.editIcon,
+                      size: 15,
+                      color: AppColors.colorGreen,
+                    ),
+                   ],
+                 ),
                 const SizedBox(
-                   height: 10,
+                   height: 25,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -75,7 +90,7 @@ class HomeListEmployeeTile extends StatelessWidget {
                     // ),
                     OutlinedButton(
                       style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(horizontal: 10)
+                        padding: const EdgeInsets.symmetric(horizontal: 15)
                       ),
                       onPressed: () {
                         Navigator.of(context).pushNamed('/employee/schedulesEmployee', arguments: employee);
@@ -83,20 +98,10 @@ class HomeListEmployeeTile extends StatelessWidget {
                       },
                       child: const Text('Ver Agenda'),
                     ),
-                    // const SizedBox(
-                    //    width: 5,
-                    // ),
-                    const Icon(
-                      AppIcons.editIcon,
-                      size: 16,
-                      color: AppColors.colorGreen,
-                    ),
-                    // const SizedBox(
-                    //    width: 5,
-                    // ),
+                  
                     const Icon(
                       AppIcons.trashIcon,
-                      size: 16,
+                      size: 25,
                       color: AppColors.colorRed,
                     ),
                   ],

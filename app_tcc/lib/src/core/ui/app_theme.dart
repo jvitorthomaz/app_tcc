@@ -52,6 +52,18 @@ sealed class AppTheme {
       )
     ),
 
+    //   elevatedButtonTheme: ElevatedButtonThemeData(
+    //   style: ElevatedButton.styleFrom(
+    //     foregroundColor: Colors.white,
+    //     backgroundColor: AppColors.colorRed,
+    //     //backgroundColor: AppColors.colorGreen,
+    //     shape: RoundedRectangleBorder(
+    //       borderRadius: BorderRadius.circular(10),
+    //     )
+    //   )
+    // ),
+    
+
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
         side: const BorderSide(

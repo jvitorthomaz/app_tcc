@@ -16,7 +16,12 @@ abstract interface class SchedulesRepository {
 
   Future<Either<RepositoryException, List<SchedulesModel>>> findScheduleByDate(
     ({
+      //int idSchedule,
       DateTime date,
       int userId,
-    }) filter );
+      
+    }) filter 
+  );
+
+  Future<Either<RepositoryException, Nil>> deleteSchedule( int idSchedule );
 }
