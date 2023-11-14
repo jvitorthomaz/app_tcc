@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tcc_app/src/core/ui/constants.dart';
+import 'package:tcc_app/src/core/ui/defaults_snackbar/show_snackbar.dart';
 import 'package:tcc_app/src/core/ui/helpers/forms_helper.dart';
 import 'package:tcc_app/src/core/ui/helpers/messages_helper.dart';
 import 'package:tcc_app/src/features/auth/login/login_state.dart';
 import 'package:tcc_app/src/features/auth/login/login_vm.dart';
+import 'package:tcc_app/src/repositories/user/auth_repository_impl.dart';
 import 'package:validatorless/validatorless.dart';
 
 class LoginPage extends ConsumerStatefulWidget {
@@ -20,6 +22,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
   final formKey = GlobalKey<FormState>();
   final emailEC = TextEditingController();
   final passwordEC = TextEditingController();
+
+    AuthRepositoryImpl authRepository = AuthRepositoryImpl();
 
   @override
   void dispose(){
@@ -189,10 +193,15 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
-                              Text(
-                              'Recuperar senha', 
-                              style: TextStyle(fontSize: 12, color: AppColors.colorBlack),
-                            ),
+                               InkWell(
+                                onTap: () {
+                                  handleForgotPassword();
+                                },
+                                child: const Text(
+                                  'Redefinir senha', 
+                                  style: TextStyle(fontSize: 12, color: AppColors.colorBlack),
+                                ),
+                              ),
                               InkWell(
                                 onTap: () {
                                   Navigator.of(context).pushNamed('/auth/register/user');
@@ -230,6 +239,64 @@ class _LoginPageState extends ConsumerState<LoginPage> {
           ),
         )
       //),
+    );
+  }
+
+    handleForgotPassword() {
+        String email = emailEC.text;
+    showDialog(
+      context: context,
+      builder: (context) {
+        TextEditingController redefincaoSenhaController =
+          TextEditingController(text: email);
+
+        return AlertDialog(
+          backgroundColor: AppColors.colorWhite,
+          title: const Text(
+            "Confirme o e-mail para redefinição de senha",
+            style: TextStyle(
+              fontSize: 16,
+              color: AppColors.colorBlack,
+            ),
+          ),
+          content: TextFormField(
+            controller: redefincaoSenhaController,
+            decoration: const InputDecoration(label: Text("Confirme o e-mail")),
+          ),
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(8))
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                authRepository
+                    .redefinicaoSenha(email: redefincaoSenhaController.text)
+                    .then((String? erro) {
+                  if (erro == null) {
+                    showSnackBar(
+                      context: context,
+                      mensagem: "E-mail de redefinição enviado!",
+                      isErro: false,
+                    );
+                  } else {
+                    showSnackBar(context: context, mensagem: erro);
+                  }
+
+                  Navigator.pop(context);
+                });
+              },
+              child: const Text(
+                "Redefinir senha",
+                style: TextStyle(
+                  fontSize: 16,
+                  color: AppColors.colorGreen,
+                ),
+              ),
+            ),
+          ],
+        );
+        
+      },
     );
   }
 }

@@ -69,6 +69,8 @@ Future<void> logout(LogoutRef ref) async {
   ref.invalidate(getMeProvider);
   ref.invalidate(getAdmPlaceProvider);
 
+  //signOut();
+
   Navigator.of(AppNavGlobalKey.instance.navKey.currentContext!)
     .pushNamedAndRemoveUntil('/auth/login', (route) => false);
   

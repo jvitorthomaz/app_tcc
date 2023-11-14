@@ -36,6 +36,16 @@ class PlaceModel {
         _ => throw ArgumentError('Invalid Error')
     };
   }
+
+  // Map<String, dynamic> toMap(){
+  //   return {
+  //     'name': name,
+  //     'email': email,
+  //     'opening_days': openingDays,
+  //     'opening_hours': openingHours,
+
+  //   };
+  // }
 }
 
 /* [

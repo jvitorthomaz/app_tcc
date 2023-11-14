@@ -20,6 +20,7 @@ class HomeHeader extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final clinicInfo = ref.watch(getAdmPlaceProvider);
+    final myInfo = ref.watch(getMeProvider);
 
     return Container(
       padding: const EdgeInsets.fromLTRB(26, 50, 26, 20),
@@ -63,7 +64,7 @@ class HomeHeader extends ConsumerWidget {
           clinicInfo.maybeWhen(
             data: (clinicInfoData) {
               return Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   // const CircleAvatar(
                   //   backgroundColor: Color(0xffbdbdbd),
@@ -124,7 +125,7 @@ class HomeHeader extends ConsumerWidget {
           const SizedBox(
             height: 5,
           ),
-          const Text(
+           const Text(
             'Olá!',
             style: TextStyle(
               color: Colors.white,

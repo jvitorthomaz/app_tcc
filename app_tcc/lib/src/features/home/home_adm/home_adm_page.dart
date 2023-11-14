@@ -22,6 +22,7 @@ class HomeAdmPage extends ConsumerWidget {
 
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.white,
         floatingActionButton: FloatingActionButton(
           shape: const CircleBorder(),
           backgroundColor: AppColors.colorGreen,
@@ -88,7 +89,30 @@ class HomeAdmPage extends ConsumerWidget {
             return const AppLoader();
           },
         ),
+      //   bottomNavigationBar: BottomNavigationBar(
+      //   items: const <BottomNavigationBarItem>[
+      //     BottomNavigationBarItem(
+      //       icon: Icon(
+      //         AppIcons.addNewEmplyeeeIcon,
+      //         color: AppColors.colorGreen,
+      //       ),
+      //       label: 'Adicionar Colaborador',
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(
+      //         AppIcons.addNewEmplyeeeIcon,
+      //         color: AppColors.colorGreen,
+      //       ),
+      //       label: 'Adicionar Colaborador',
+      //     ),
+         
+      //   ],
+      //   // currentIndex: _selectedIndex,
+      //   // selectedItemColor: Colors.red[800],
+      //   // onTap: _onItemTapped,
+      // ),
       ),
+      
     );
   }
 }

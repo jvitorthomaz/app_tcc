@@ -40,4 +40,10 @@ abstract interface class UserRespository {
 
   Future<Either<RepositoryException, Nil>> deleteUser( int idUser );
 
+  //Future<String?> redefinicaoSenha({required String email});
+
+  //Future<String?> singOut();
+
+
+
 }

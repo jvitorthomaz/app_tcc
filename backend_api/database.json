@@ -318,6 +318,14 @@
       "client_name": "Nome de novo cliente",
       "date": "2023-11-15T00:00:00.000Z",
       "time": 14
+    },
+    {
+      "id": 21,
+      "place_id": 3,
+      "user_id": "18",
+      "client_name": "Cliente do colaborador teste postman update",
+      "date": "2023-11-09T00:00:00.000Z",
+      "time": 12
     }
   ]
 }

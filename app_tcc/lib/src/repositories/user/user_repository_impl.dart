@@ -12,6 +12,7 @@ import 'package:tcc_app/src/repositories/user/user_repository.dart';
 
 class UserRepositoryImpl implements UserRespository {
 
+  //final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final RestClient restClient;
 
   UserRepositoryImpl({
@@ -21,10 +22,16 @@ class UserRepositoryImpl implements UserRespository {
   @override
   Future<Either<AuthException, String>> login(String email, String password) async{
     try {
+      // final credential = await _firebaseAuth.signInWithEmailAndPassword(
+      //   email: email, 
+      //   password: password
+      // );
+
       final Response(:data) = await restClient.unAuth.post('/auth', data: {
         'email': email,
         'password': password,
       });
+      
       return Success(data['access_token']);
 
     } on DioException catch (e, s) {
@@ -43,6 +50,18 @@ class UserRepositoryImpl implements UserRespository {
       return Failure(AuthError(message: 'Erro ao realizar login'));
       
     }
+    // on FirebaseAuthException catch (e) {
+
+    //   switch (e.code) {
+    //     case "user-not-found":
+    //     return Failure(AuthError(message: 'O e-mail não está cadastrado.'));
+          
+    //     case "wrong-password":
+    //     return Failure(AuthError(message: 'Senha incorreta.'));
+    //   }
+    //   return Failure(AuthError(message: e.code));
+
+    // }
   }
 
   
@@ -74,6 +93,10 @@ class UserRepositoryImpl implements UserRespository {
   Future<Either<RepositoryException, Nil>> registerUserAdm(
     ({String email, String name, String password}) userData
   ) async{
+      // UserCredential userCredential = await _firebaseAuth.createUserWithEmailAndPassword(
+      //   email: userData.email,
+      //   password: userData.password,
+      // );
     try {
       await restClient.unAuth.post(
         '/users',
@@ -95,6 +118,22 @@ class UserRepositoryImpl implements UserRespository {
       );
 
     }
+    // on FirebaseAuthException catch (e) {
+      
+    //   switch (e.code) {
+    //     case "email-already-in-use":
+    //     return Failure(
+    //       RepositoryException(
+    //         message: 'O e-mail já está em uso.'
+    //       )
+    //     );
+    //   }
+    //   return Failure(
+    //     RepositoryException(
+    //       message: 'Erro ao registrar usuário do tipo administrador: ${e.code}'
+    //     )
+    //   );
+    // }
   }
   
   @override
@@ -174,6 +213,11 @@ class UserRepositoryImpl implements UserRespository {
   ) async{
     try {
 
+      // UserCredential userCredential = await _firebaseAuth.createUserWithEmailAndPassword(
+      //   email: userModel.email,
+      //   password: userModel.password,
+      // );
+
       await restClient.auth.post('/users/', data: {
         'name': userModel.name,
         'email': userModel.email,
@@ -200,12 +244,35 @@ class UserRepositoryImpl implements UserRespository {
         )
       );
     }
+
+    // on FirebaseAuthException catch (e) {
+      
+    //   switch (e.code) {
+    //     case "email-already-in-use":
+    //     return Failure(
+    //       RepositoryException(
+    //         message: 'O e-mail já está em uso.'
+    //       )
+    //     );
+    //   }
+    //   return Failure(
+    //     RepositoryException(
+    //       message: 'Erro ao registrar usuário do tipo administrador: ${e.code}'
+    //     )
+    //   );
+    // }
   
   }
   
   @override
   Future<Either<RepositoryException, Nil>> deleteUser(int idUser) async{
     try {
+      // await _firebaseAuth.signInWithEmailAndPassword(
+      //   email: _firebaseAuth.currentUser!.email!,
+      //   password: senha,
+      // );
+      // await _firebaseAuth.currentUser!.delete();
+
       final response = await restClient.auth.delete(
         '/users/$idUser', 
         //queryParameters: {'id': ${scheduleData.idSchedule}}
@@ -220,5 +287,30 @@ class UserRepositoryImpl implements UserRespository {
         RepositoryException(message: 'Erro Deletar Usuario')
       );
     } 
+    // on FirebaseAuthException catch (e) {
+    //   return e.code;
+    // }
   }
+
+  //   Future<String?> redefinicaoSenha({required String email}) async {
+  //   try {
+  //     await _firebaseAuth.sendPasswordResetEmail(email: email);
+  //   } on FirebaseAuthException catch (e) {
+  //     if (e.code == "user-not-found") {
+  //       return "E-mail não cadastrado.";
+  //     }
+  //     return e.code;
+  //   }
+  //   return null;
+  // }
+
+  //   Future<String?> signOut() async {
+  //   try {
+  //     await _firebaseAuth.signOut();
+      
+  //   } on FirebaseAuthException catch (e) {
+  //     return e.code;
+  //   }
+  //   return '';
+  // }
 }
