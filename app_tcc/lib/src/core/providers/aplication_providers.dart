@@ -65,11 +65,11 @@ Future<PlaceModel> getAdmPlace(GetAdmPlaceRef ref) async {
 Future<void> logout(LogoutRef ref) async {
   final preferences = await SharedPreferences.getInstance();
   preferences.clear();
+  
+  await ref.read(userRespositoryProvider).signOut();
 
   ref.invalidate(getMeProvider);
   ref.invalidate(getAdmPlaceProvider);
-
-  //signOut();
 
   Navigator.of(AppNavGlobalKey.instance.navKey.currentContext!)
     .pushNamedAndRemoveUntil('/auth/login', (route) => false);

@@ -32,7 +32,7 @@ abstract interface class UserRespository {
       int placeId,
       String name,
       String email,
-      String password,
+      //String password,
       List<String> workDays,
       List<int> workHours,
     }) userModel
@@ -42,7 +42,7 @@ abstract interface class UserRespository {
 
   //Future<String?> redefinicaoSenha({required String email});
 
-  //Future<String?> singOut();
+  Future<String?> signOut();
 
 
 

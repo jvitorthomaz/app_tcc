@@ -23,7 +23,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
   final emailEC = TextEditingController();
   final passwordEC = TextEditingController();
 
-    AuthRepositoryImpl authRepository = AuthRepositoryImpl();
+  AuthRepositoryImpl authRepository = AuthRepositoryImpl();
 
   @override
   void dispose(){
@@ -36,6 +36,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
   Widget build(BuildContext context) {
     //notifier é a view model, é a classe
     final LoginVm(:login) = ref.watch(loginVmProvider.notifier);
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
 
     // Provider é o estado
     ref.listen(loginVmProvider, (_, state) {
@@ -195,7 +197,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                             children: [
                                InkWell(
                                 onTap: () {
-                                  handleForgotPassword();
+                                  handleForgotPassword(height, width);
                                 },
                                 child: const Text(
                                   'Redefinir senha', 
@@ -242,61 +244,135 @@ class _LoginPageState extends ConsumerState<LoginPage> {
     );
   }
 
-    handleForgotPassword() {
-        String email = emailEC.text;
-    showDialog(
+  handleForgotPassword(height, width) {
+
+    // return Theme(
+    //       data: ThemeData(dialogBackgroundColor: Colors.white),
+    String email = emailEC.text;
+    
+    return showDialog(
       context: context,
       builder: (context) {
         TextEditingController redefincaoSenhaController =
           TextEditingController(text: email);
-
-        return AlertDialog(
-          backgroundColor: AppColors.colorWhite,
-          title: const Text(
-            "Confirme o e-mail para redefinição de senha",
-            style: TextStyle(
-              fontSize: 16,
-              color: AppColors.colorBlack,
-            ),
-          ),
-          content: TextFormField(
-            controller: redefincaoSenhaController,
-            decoration: const InputDecoration(label: Text("Confirme o e-mail")),
-          ),
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(8))
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                authRepository
-                    .redefinicaoSenha(email: redefincaoSenhaController.text)
-                    .then((String? erro) {
-                  if (erro == null) {
-                    showSnackBar(
-                      context: context,
-                      mensagem: "E-mail de redefinição enviado!",
-                      isErro: false,
-                    );
-                  } else {
-                    showSnackBar(context: context, mensagem: erro);
-                  }
-
-                  Navigator.pop(context);
-                });
-              },
-              child: const Text(
-                "Redefinir senha",
-                style: TextStyle(
-                  fontSize: 16,
-                  color: AppColors.colorGreen,
+        var height = MediaQuery.of(context).size.height;
+        var width = MediaQuery.of(context).size.width;
+        return SizedBox(
+          child: AlertDialog(
+            insetPadding: EdgeInsets.all(10),
+            backgroundColor:Colors.white,
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  "Redefinição de senha",
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: AppColors.colorBlack,
+                  ),
                 ),
+                IconButton(onPressed:() {Navigator.pop(context);}, icon: const Icon(Icons.close,color: AppColors.colorRed))
+              ],
+            ),
+            content: SizedBox(
+              //width: 300,
+              height: 70,
+              width: width *0.9,
+              child: Column(
+                children: [
+                  const SizedBox(
+                     height: 10,
+                  ),
+                  TextFormField(
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: AppColors.colorBlack,
+                    ),
+                    controller: redefincaoSenhaController,
+                    decoration: const InputDecoration(
+                      label: Text("Confirme seu e-mail"),
+                      contentPadding: EdgeInsets.all(8),
+                    ),
+                  ),
+                ],
               ),
             ),
-          ],
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(8))
+            ),
+            actions: [
+              Column(
+                children: [
+                  const SizedBox(
+                     height: 10,
+                  ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: Size.fromHeight(50),
+                    ),
+                    onPressed: (){
+                        authRepository
+                          .redefinicaoSenha(email: redefincaoSenhaController.text)
+                          .then((String? erro) {
+        
+                        if (erro == null) {
+                          showSnackBar(
+                            context: context,
+                            mensagem: "E-mail de redefinição enviado!",
+                            isErro: false,
+                          );
+        
+                        } else {
+                          showSnackBar(context: context, mensagem: erro);
+                        }
+        
+                        Navigator.pop(context);
+                      });
+                     
+        
+                    }, 
+                    child: Text(
+                    'Redefinir Senha', style: TextStyle(
+                        fontSize: 16,)
+                    
+                    ),
+                  ),
+                  const SizedBox(
+                     height: 15,
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      authRepository
+                          .redefinicaoSenha(email: redefincaoSenhaController.text)
+                          .then((String? erro) {
+                        if (erro == null) {
+                          showSnackBar(
+                            context: context,
+                            mensagem: "E-mail de redefinição enviado!",
+                            isErro: false,
+                          );
+                        } else {
+                          showSnackBar(context: context, mensagem: erro);
+                        }
+        
+                        Navigator.pop(context);
+                      });
+                    },
+                    child: const Text(
+                      "Voltar",
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: AppColors.colorBlack,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         );
         
       },
-    );
+    );   
   }
 }

@@ -2,6 +2,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tcc_app/src/core/constants/local_storage_keys.dart';
 import 'package:tcc_app/src/core/providers/aplication_providers.dart';
+import 'package:tcc_app/src/features/splash/screen_router_authentication.dart';
 import 'package:tcc_app/src/models/users_model.dart';
 
 part 'splash_page_vm.g.dart';
@@ -26,6 +27,8 @@ class SplashPageVm extends _$SplashPageVm {
 
       try {
         final userModel = await ref.watch(getMeProvider.future);
+        
+        //chamar stream builder aqui?
 
         return switch (userModel) {
           AdmUserModel() => SplashPageState.loggedAdm,

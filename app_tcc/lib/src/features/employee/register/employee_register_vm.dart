@@ -71,7 +71,7 @@ class EmployeeRegisterVm extends _$EmployeeRegisterVm{
         placeId: id,
         name: name!,
         email: email!,
-        password: password!,
+        //password: password!,//
         workDays: workdays,
         workHours: workhours
       );

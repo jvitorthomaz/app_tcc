@@ -47,6 +47,9 @@ dependencies:
   top_snackbar_flutter: ^3.1.0
   table_calendar: ^3.0.9
   intl: ^0.18.1
+  firebase_core: ^2.22.0
+  firebase_auth: ^4.14.0
+  uuid: ^3.0.7
   syncfusion_flutter_calendar: ^23.1.44
 
 dev_dependencies:

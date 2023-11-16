@@ -1,12 +1,7 @@
-
-// import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:flutter/material.dart';
-// import 'package:my_clinic_app/src/core/exceptions/auth_exception.dart';
-// import 'package:my_clinic_app/src/core/functionalPrograming/either.dart';
-// import 'package:my_clinic_app/src/features/auth/login/login_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthRepositoryImpl {
-  // final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
   //   Future<Either<AuthException, String>> entrarUsuario({required String email, required String senha}) async {
   //   try {
@@ -41,16 +36,16 @@ class AuthRepositoryImpl {
   //   //return null;
   // }
 
-  
+  //Fazer Update User
   Future<String?> redefinicaoSenha({required String email}) async {
-    // try {
-    //   await _firebaseAuth.sendPasswordResetEmail(email: email);
-    // } on FirebaseAuthException catch (e) {
-    //   if (e.code == "user-not-found") {
-    //     return "E-mail não cadastrado.";
-    //   }
-    //   return e.code;
-    // }
+    try {
+      await _firebaseAuth.sendPasswordResetEmail(email: email);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == "user-not-found") {
+        return "E-mail não cadastrado.";
+      }
+      return e.code;
+    }
     return null;
   }
 

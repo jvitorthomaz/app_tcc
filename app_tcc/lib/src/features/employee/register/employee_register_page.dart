@@ -56,7 +56,7 @@ class _EmployeeRegisterPageState extends ConsumerState<EmployeeRegisterPage> {
             Navigator.of(context).pop();
 
           case EmployeeRegisterStateStatus.error:
-            MessagesHelper.showErrorSnackBar('Ocorreu um erro ao registrar colaborador. Tente novamente.', context);
+            MessagesHelper.showErrorSnackBar('Ocorreu um erro. Verifique os dados inseridos e tente novamente.', context);
         }
       }
     );
@@ -159,26 +159,26 @@ class _EmployeeRegisterPageState extends ConsumerState<EmployeeRegisterPage> {
                                 label: Text('E-mail')
                               ),
                             ),
-                            const SizedBox(
-                              height: 24,
-                            ),
-                            TextFormField(
-                              onTapOutside: (_) => context.unfocus(),
-                              controller: passwordEC,
-                              validator: isAdm
-                                  ? null
-                                  : Validatorless.multiple([
-                                      Validatorless.required('A senha é obrigatória'),
-                                      Validatorless.min(
-                                        6,
-                                        'Senha deve conter no mínimo 6 caracteres'
-                                      ),
-                                    ]),
-                              obscureText: true,
-                              decoration: const InputDecoration(
-                                label: Text('Senha')
-                              ),
-                            )
+                            // const SizedBox(
+                            //   height: 24,
+                            // ),
+                            // TextFormField(
+                            //   onTapOutside: (_) => context.unfocus(),
+                            //   controller: passwordEC,
+                            //   validator: isAdm
+                            //       ? null
+                            //       : Validatorless.multiple([
+                            //           Validatorless.required('A senha é obrigatória'),
+                            //           Validatorless.min(
+                            //             6,
+                            //             'Senha deve conter no mínimo 6 caracteres'
+                            //           ),
+                            //         ]),
+                            //   obscureText: true,
+                            //   decoration: const InputDecoration(
+                            //     label: Text('Senha')
+                            //   ),
+                            // )
                           ],
                         ),
                       ),
@@ -235,12 +235,12 @@ class _EmployeeRegisterPageState extends ConsumerState<EmployeeRegisterPage> {
 
                               final name = nameEC.text;
                               final email = emailEC.text;
-                              final password = passwordEC.text;
+                              //final password = passwordEC.text;
 
                               employeeRegisterVm.register(
                                 name: name,
                                 email: email,
-                                password: password
+                                //password: password
                               );
                           }
                         }, 

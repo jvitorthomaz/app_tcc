@@ -88,10 +88,15 @@ class HomeListEmployeeTile extends StatelessWidget {
                             onTap: () {
                               //trocarCondominio();
                             },
+                             leading: const Icon(
+                              AppIcons.editIcon,
+                              size: 18,
+                              color: AppColors.colorGreen,
+                            ),
                             title: const Text(
                               'Editar Colaborador',
                               //textAlign: TextAlign.center,
-                              style: TextStyle(color: AppColors.colorGreen, fontSize: 16, fontWeight: FontWeight.w600),
+                              style: TextStyle(color: AppColors.colorGreen, fontSize: 14, fontWeight: FontWeight.w600),
                             ),
                           ),
                         ),
@@ -102,10 +107,15 @@ class HomeListEmployeeTile extends StatelessWidget {
                             onTap: () {
                               //trocarCondominio();
                             },
+                            leading: const Icon(
+                              AppIcons.trashIcon,
+                              size: 18,
+                              color: AppColors.colorRed,
+                            ),
                             title: const Text(
                               'Excluir Colaborador',
                               //textAlign: TextAlign.center,
-                              style: TextStyle(color: AppColors.colorRed, fontSize: 16, fontWeight: FontWeight.w600),
+                              style: TextStyle(color: AppColors.colorRed, fontSize: 14, fontWeight: FontWeight.w600),
                             ),
                           ),
                         ),

@@ -48,7 +48,7 @@ class _UserRegisterPageState extends ConsumerState<UserRegisterPage> {
 
         case UserRegisterStateStatus.error:
           MessagesHelper.showErrorSnackBar(
-            'Erro ao registrar usuário do tipo administrador', 
+            'Houve um erro! Verifique os campos digitados.', 
             context
           );
       }

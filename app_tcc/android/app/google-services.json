@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "680393092729",
+    "project_id": "myclinic-appv1",
+    "storage_bucket": "myclinic-appv1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:680393092729:android:d438a4b05d0fa34454aea8",
+        "android_client_info": {
+          "package_name": "com.example.my_clinic_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxwjCgUn5XPTIwb1169gUz7nmGgjucA38"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:680393092729:android:110b9a01a3be22fd54aea8",
+        "android_client_info": {
+          "package_name": "com.example.tcc_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxwjCgUn5XPTIwb1169gUz7nmGgjucA38"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

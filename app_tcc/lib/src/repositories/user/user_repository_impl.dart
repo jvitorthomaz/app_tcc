@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:tcc_app/src/core/exceptions/auth_exception.dart';
 import 'package:tcc_app/src/core/exceptions/repository_exception.dart';
 import 'package:tcc_app/src/core/functionalPrograming/either.dart';
@@ -12,7 +13,7 @@ import 'package:tcc_app/src/repositories/user/user_repository.dart';
 
 class UserRepositoryImpl implements UserRespository {
 
-  //final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   final RestClient restClient;
 
   UserRepositoryImpl({
@@ -22,15 +23,16 @@ class UserRepositoryImpl implements UserRespository {
   @override
   Future<Either<AuthException, String>> login(String email, String password) async{
     try {
-      // final credential = await _firebaseAuth.signInWithEmailAndPassword(
-      //   email: email, 
-      //   password: password
-      // );
 
       final Response(:data) = await restClient.unAuth.post('/auth', data: {
         'email': email,
         'password': password,
       });
+
+      final credential = await _firebaseAuth.signInWithEmailAndPassword(
+        email: email, 
+        password: password
+      );
       
       return Success(data['access_token']);
 
@@ -50,18 +52,18 @@ class UserRepositoryImpl implements UserRespository {
       return Failure(AuthError(message: 'Erro ao realizar login'));
       
     }
-    // on FirebaseAuthException catch (e) {
+    on FirebaseAuthException catch (e) {
 
-    //   switch (e.code) {
-    //     case "user-not-found":
-    //     return Failure(AuthError(message: 'O e-mail não está cadastrado.'));
+      switch (e.code) {
+        case "user-not-found":
+        return Failure(AuthError(message: 'O e-mail não está cadastrado.'));
           
-    //     case "wrong-password":
-    //     return Failure(AuthError(message: 'Senha incorreta.'));
-    //   }
-    //   return Failure(AuthError(message: e.code));
+        case "wrong-password":
+        return Failure(AuthError(message: 'Senha incorreta.'));
+      }
+      return Failure(AuthError(message: e.code));
 
-    // }
+    }
   }
 
   
@@ -93,11 +95,14 @@ class UserRepositoryImpl implements UserRespository {
   Future<Either<RepositoryException, Nil>> registerUserAdm(
     ({String email, String name, String password}) userData
   ) async{
-      // UserCredential userCredential = await _firebaseAuth.createUserWithEmailAndPassword(
-      //   email: userData.email,
-      //   password: userData.password,
-      // );
     try {
+      UserCredential userCredential = await _firebaseAuth.createUserWithEmailAndPassword(
+        email: userData.email,
+        password: userData.password,
+      );
+      
+      await userCredential.user!.updateDisplayName(userData.name);
+
       await restClient.unAuth.post(
         '/users',
         data: {
@@ -107,6 +112,7 @@ class UserRepositoryImpl implements UserRespository {
           'profile': 'ADM'
         },
       );
+
       return Success(nil);
 
     } on DioException catch (e, s) {
@@ -118,22 +124,22 @@ class UserRepositoryImpl implements UserRespository {
       );
 
     }
-    // on FirebaseAuthException catch (e) {
+    on FirebaseAuthException catch (e) {
       
-    //   switch (e.code) {
-    //     case "email-already-in-use":
-    //     return Failure(
-    //       RepositoryException(
-    //         message: 'O e-mail já está em uso.'
-    //       )
-    //     );
-    //   }
-    //   return Failure(
-    //     RepositoryException(
-    //       message: 'Erro ao registrar usuário do tipo administrador: ${e.code}'
-    //     )
-    //   );
-    // }
+      switch (e.code) {
+        case "email-already-in-use":
+        return Failure(
+          RepositoryException(
+            message: 'O e-mail já está em uso.'
+          )
+        );
+      }
+      return Failure(
+        RepositoryException(
+          message: 'Erro ao registrar usuário do tipo administrador: ${e.code}'
+        )
+      );
+    }
   }
   
   @override
@@ -209,19 +215,26 @@ class UserRepositoryImpl implements UserRespository {
   
   @override
   Future<Either<RepositoryException, Nil>> registerNewEmployee(
-    ({String email, String name, String password, int placeId, List<String> workDays, List<int> workHours}) userModel
+    ({
+      String email, 
+      String name, 
+      //String password, 
+      int placeId, 
+      List<String> workDays, 
+      List<int> workHours
+    }) userModel
   ) async{
     try {
 
-      // UserCredential userCredential = await _firebaseAuth.createUserWithEmailAndPassword(
-      //   email: userModel.email,
-      //   password: userModel.password,
-      // );
+      UserCredential userCredential = await _firebaseAuth.createUserWithEmailAndPassword(
+        email: userModel.email,
+        password: 'MyClinic#123!', //userModel.password,
+      );
 
       await restClient.auth.post('/users/', data: {
         'name': userModel.name,
         'email': userModel.email,
-        'password': userModel.password, //MyClinic#123!
+        'password': 'MyClinic#123!', //userModel.password, //MyClinic#123!
         'place_id': userModel.placeId,
         'profile': 'EMPLOYEE',
         'work_days': userModel.workDays,
@@ -244,23 +257,22 @@ class UserRepositoryImpl implements UserRespository {
         )
       );
     }
-
-    // on FirebaseAuthException catch (e) {
+    on FirebaseAuthException catch (e) {
       
-    //   switch (e.code) {
-    //     case "email-already-in-use":
-    //     return Failure(
-    //       RepositoryException(
-    //         message: 'O e-mail já está em uso.'
-    //       )
-    //     );
-    //   }
-    //   return Failure(
-    //     RepositoryException(
-    //       message: 'Erro ao registrar usuário do tipo administrador: ${e.code}'
-    //     )
-    //   );
-    // }
+      switch (e.code) {
+        case "email-already-in-use":
+        return Failure(
+          RepositoryException(
+            message: 'O e-mail já está em uso.'
+          )
+        );
+      }
+      return Failure(
+        RepositoryException(
+          message: 'Erro ao registrar usuário do tipo colaborador: ${e.code}'
+        )
+      );
+    }
   
   }
   
@@ -279,7 +291,7 @@ class UserRepositoryImpl implements UserRespository {
       );
 
       return Success(nil);
-
+;
     } on DioException catch (e, s) {
       log('Erro Deletar Usuario', error: e, stackTrace: s);
 
@@ -304,13 +316,15 @@ class UserRepositoryImpl implements UserRespository {
   //   return null;
   // }
 
-  //   Future<String?> signOut() async {
-  //   try {
-  //     await _firebaseAuth.signOut();
+  Future<String?> signOut() async {
+    try {
+      print('--------------\n Chega aqui \n ------------');
+      await _firebaseAuth.signOut();
       
-  //   } on FirebaseAuthException catch (e) {
-  //     return e.code;
-  //   }
-  //   return '';
-  // }
+    } on FirebaseAuthException catch (e) {
+      return e.code;
+    }
+    return '';
+  }
+  
 }
