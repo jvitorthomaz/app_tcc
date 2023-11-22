@@ -1,7 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tcc_app/src/core/constants/local_storage_keys.dart';
 import 'package:tcc_app/src/core/exceptions/auth_exception.dart';
 import 'package:tcc_app/src/core/exceptions/service_exception.dart';
+import 'package:tcc_app/src/core/exceptions/user_exists_exception.dart';
+import 'package:tcc_app/src/core/exceptions/user_not_exists_exception.dart';
 import 'package:tcc_app/src/core/functionalPrograming/either.dart';
 import 'package:tcc_app/src/core/functionalPrograming/nil.dart';
 import 'package:tcc_app/src/repositories/user/user_repository.dart';
@@ -15,6 +18,17 @@ class UserLoginServiceImpl implements UserLoginService {
 
   @override
   Future<Either<ServiceException, Nil>> execute(String email, String password) async {
+
+      // final firebaseAuth = FirebaseAuth.instance;
+
+      // final userMethods = await firebaseAuth.fetchSignInMethodsForEmail(email);
+
+      // print('=====================');
+      // print(userMethods);
+      // print('=====================');
+      // if (userMethods.isNotEmpty) {
+      //   throw UserNotExistsException();
+      // }
     
     final loginResult = await userRespository.login(email, password);
 

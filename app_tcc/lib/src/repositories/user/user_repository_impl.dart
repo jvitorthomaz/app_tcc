@@ -24,15 +24,15 @@ class UserRepositoryImpl implements UserRespository {
   Future<Either<AuthException, String>> login(String email, String password) async{
     try {
 
-      final Response(:data) = await restClient.unAuth.post('/auth', data: {
-        'email': email,
-        'password': password,
-      });
-
       final credential = await _firebaseAuth.signInWithEmailAndPassword(
         email: email, 
         password: password
       );
+
+      final Response(:data) = await restClient.unAuth.post('/auth', data: {
+        'email': email,
+        'password': password,
+      });
       
       return Success(data['access_token']);
 
@@ -275,6 +275,47 @@ class UserRepositoryImpl implements UserRespository {
     }
   
   }
+
+    @override
+  Future<Either<RepositoryException, Nil>> updateEmployee(
+    ({int employeeId, List<String> workDays, List<int> workHours}) userModel
+  ) async{
+    try {
+      // final userModelResult = await me();
+
+      final int employeeId = userModel.employeeId;
+
+      // switch (userModelResult) {
+      //   case Success(value: UserModel(:var id)):
+      //     userId = id;
+          
+      //   case Failure(:var exception):
+      //     return Failure(exception);
+      // }
+
+      await restClient.auth.put('/users/$employeeId', data: {
+        //'name': userModel.name,
+        'work_days': userModel.workDays,
+        'work_hours': userModel.workHours,
+      });
+
+      return Success(nil);
+
+    } on DioException catch (e, s) {
+
+      log(
+        'Erro ao inserir administrador como colaborador',
+        error: e, 
+        stackTrace: s
+      );
+
+      return Failure(
+        RepositoryException(
+          message: 'Erro ao inserir administrador como colaborador'
+        )
+      );
+    }
+  }
   
   @override
   Future<Either<RepositoryException, Nil>> deleteUser(int idUser) async{
@@ -291,7 +332,6 @@ class UserRepositoryImpl implements UserRespository {
       );
 
       return Success(nil);
-;
     } on DioException catch (e, s) {
       log('Erro Deletar Usuario', error: e, stackTrace: s);
 

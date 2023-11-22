@@ -125,31 +125,32 @@ class HomeHeader extends ConsumerWidget {
           const SizedBox(
             height: 5,
           ),
-           const Text(
-            'Olá!',
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.w600,
-              fontSize: 20,
-            ),
-          ),
-          // const SizedBox(
-          //   height: 20,
+
+          //  const Text(
+          //   'Olá!',
+          //   style: TextStyle(
+          //     color: Colors.white,
+          //     fontWeight: FontWeight.w600,
+          //     fontSize: 20,
+          //   ),
           // ),
-          const Text(
-            'Faça um Agendamento',
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.w500,
-              fontSize: 20,
-            ),
-          ),
-          Offstage(
-            offstage: !showFilter,
-            child: const SizedBox(
-              height: 20,
-            ),
-          ),
+          // // const SizedBox(
+          // //   height: 20,
+          // // ),
+          // const Text(
+          //   'Faça um Agendamento',
+          //   style: TextStyle(
+          //     color: Colors.white,
+          //     fontWeight: FontWeight.w500,
+          //     fontSize: 20,
+          //   ),
+          // ),
+          // Offstage(
+          //   offstage: !showFilter,
+          //   child: const SizedBox(
+          //     height: 20,
+          //   ),
+          // ),
           // Offstage(
           //   offstage: !showFilter,
           //   child: TextField(
@@ -166,6 +167,46 @@ class HomeHeader extends ConsumerWidget {
           //     ),
           //   ),
           // )
+          myInfo.maybeWhen(
+            data: (myInfoData) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                     Text(
+                      'Olá, ${myInfoData.name}!',
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 18,
+                      ),
+                    ),
+                    // const SizedBox(
+                    //   height: 20,
+                    // ),
+                    const Text(
+                      'Faça um Agendamento',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 18,
+                      ),
+                    ),
+                    Offstage(
+                      offstage: !showFilter,
+                      child: const SizedBox(
+                        height: 20,
+                      ),
+                    ),
+                ],
+
+              );
+            }, 
+            orElse: () {
+              return const Center(
+                child: AppLoader(),
+              );
+            }
+          )
         ],
       ),
     );

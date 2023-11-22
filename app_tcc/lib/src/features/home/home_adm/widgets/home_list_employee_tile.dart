@@ -1,22 +1,91 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tcc_app/src/core/providers/aplication_providers.dart';
 import 'package:tcc_app/src/core/ui/app_icons.dart';
 import 'package:tcc_app/src/core/ui/constants.dart';
+import 'package:tcc_app/src/core/ui/defaults_dialogs/delete_employee_dialog.dart';
+import 'package:tcc_app/src/core/ui/defaults_dialogs/exception_dialog.dart';
+import 'package:tcc_app/src/features/home/home_adm/home_adm_vm.dart';
 import 'package:tcc_app/src/models/users_model.dart';
 
 enum SampleItem {itemOne, itemTwo, itemThree,}
 
 
-class HomeListEmployeeTile extends StatelessWidget {
+class HomeListEmployeeTile extends ConsumerStatefulWidget {
 
   final UserModel employee;
+  //final EmployeeUserModel? test;//
 
   const HomeListEmployeeTile({
     super.key,
     required this.employee,
+    //this.test,//
   });
 
   @override
+  ConsumerState<HomeListEmployeeTile> createState() => _HomeListEmployeeTileState();
+}
+
+class _HomeListEmployeeTileState extends ConsumerState<HomeListEmployeeTile> {
+
+
+  @override
   Widget build(BuildContext context) {
+    final homeState = ref.watch(homeAdmVmProvider);
+    final me = ref.watch(getMeProvider);
+
+    deleteUser(idUserSelected, profile) {
+      bool isCurrentUser = false;
+      //   if(me case UserModel(:final id)) {
+      //     isCurrentUser == true;
+      //   }
+      me.maybeWhen(
+        data: (meData){
+          meData.id.toString() == idUserSelected.toString() ?
+           isCurrentUser = true 
+          :
+           isCurrentUser = false;
+          
+        },
+        orElse:(){
+          showExceptionDialog(context, content: 'Ocorreu um erro ao excluir o agendamento.');
+        }
+      );
+
+      isCurrentUser  ?
+        showDeleteEmployeeDialog(
+          context, 
+          isAdmUser: true,
+          
+        )
+      :
+        showDeleteEmployeeDialog(
+          context, 
+          isAdmUser: false,
+          content: "Você esta excluindo um colaborador da sua clínica! Essa ação é irreversível! \n\nVocê deseja realmente executar essa operação?"
+        ).then((value) {
+          if(value != null) {
+            if (value) {
+          
+              ref.read(homeAdmVmProvider.notifier).deleteUserVm(idUserSelected);
+
+              //employeeSchedule.deleteScheduleVm(idScheduleSelected);
+              print('Deletou o usuario de id ${idUserSelected}');
+            // ref.invalidate(getMeProvider);  
+              ref.invalidate(homeAdmVmProvider);
+              
+              // ref.invalidate(getTotalSchedulesTodayProvider(userId));
+              // ref.invalidate(getTotalSchedulesTomorrowProvider(userId));
+              // ref.invalidate(employeeSchedulesVmProvider(userId, dateSelected));   
+            
+            } 
+          }
+      
+        }).catchError((error){
+            showExceptionDialog(context, content: 'Ocorreu um erro ao excluir o agendamento.');
+        },);
+    }
+
     return Container(
       width: 260, //MediaQuery.of(context).size.width*0.5,
       height: 120,
@@ -54,7 +123,7 @@ class HomeListEmployeeTile extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Text(
-                        employee.name,
+                        widget.employee.name,
                         overflow: TextOverflow.ellipsis,
                         //maxLines: 2,
                         softWrap: true,
@@ -86,7 +155,33 @@ class HomeListEmployeeTile extends StatelessWidget {
                           child: ListTile(
                             //shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                             onTap: () {
-                              //trocarCondominio();
+                              //;
+                            },
+                             leading: const Icon(
+                              Icons.person_2_outlined,
+                              size: 24,
+                              color: AppColors.colorGreen,
+                            ),
+                            title: const Text(
+                              'Ver Perfil',
+                              //textAlign: TextAlign.center,
+                              style: TextStyle(color: AppColors.colorGreen, fontSize: 14, fontWeight: FontWeight.w600),
+                            ),
+                          ),
+                        ),
+                        PopupMenuItem<SampleItem>(
+                          value: SampleItem.itemTwo,
+                          child: ListTile(
+                            //shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                            onTap: () async{
+                              Navigator.of(context).pop();
+                              await Navigator.of(context).pushNamed(
+                                '/employee/updateEmployee', 
+                                arguments: widget.employee // widget.test 
+                              );
+                              ref.invalidate(getMeProvider);  
+                              // ref.invalidate(homeAdmVmProvider);
+                              ref.invalidate(getAdmPlaceProvider);
                             },
                              leading: const Icon(
                               AppIcons.editIcon,
@@ -102,10 +197,14 @@ class HomeListEmployeeTile extends StatelessWidget {
                         ),
                       
                         PopupMenuItem<SampleItem>(
-                          value: SampleItem.itemTwo,
+                          value: SampleItem.itemThree,
                           child: ListTile(
                             onTap: () {
-                              //trocarCondominio();
+                              Navigator.of(context).pop();
+                             
+                              deleteUser(widget.employee.id, widget.employee);
+
+                              //deleteUserSelected(widget.employee.id);
                             },
                             leading: const Icon(
                               AppIcons.trashIcon,
@@ -146,7 +245,7 @@ class HomeListEmployeeTile extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 10)
                       ),
                       onPressed: () {
-                        Navigator.of(context).pushNamed('/schedule', arguments: employee);
+                        Navigator.of(context).pushNamed('/schedule', arguments: widget.employee);
                       },
                       child: const Text('Fazer Agendamento', 
                         //style: TextStyle(fontSize: 12),
@@ -160,7 +259,7 @@ class HomeListEmployeeTile extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 30)
                       ),
                       onPressed: () {
-                        Navigator.of(context).pushNamed('/employee/schedulesEmployee', arguments: employee);
+                        Navigator.of(context).pushNamed('/employee/schedulesEmployee', arguments: widget.employee);
                         //context.pushNamed('/employee/schedule', arguments: employee);
                       },
                       child: const Text('Ver Agenda'),

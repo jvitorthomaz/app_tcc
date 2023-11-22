@@ -5,12 +5,14 @@ class ButtonDay extends StatefulWidget {
   final List<String>? enabledDays;
   final String label;
   final ValueChanged<String> onDaySelected;
+  final button;//
 
   const ButtonDay({
     super.key,
     required this.label,
     required this.onDaySelected,
     this.enabledDays,
+    this.button //
   });
 
   @override
@@ -19,12 +21,14 @@ class ButtonDay extends StatefulWidget {
 
 class _ButtonDayState extends State<ButtonDay> {
   var selectedButton = false;
+  
 
   @override
   Widget build(BuildContext context) {
     final textColor = selectedButton ? Colors.white : AppColors.colorGrey;
     var buttonColor = selectedButton ? AppColors.colorGreenLight : Colors.white;
     final buttonBorderColor = selectedButton ? AppColors.colorGreen : AppColors.colorGrey;
+
 
     final ButtonDay(:enabledDays, :label) = widget;
 

@@ -8,19 +8,23 @@ enum HomeAdmStateStatus {
 class HomeAdmState {
   final HomeAdmStateStatus status;
   final List<UserModel> employees;
+  //final List<EmployeeUserModel> modelEmployees;//
 
     HomeAdmState({
     required this.status,
-    required this.employees
+    required this.employees,
+    //required this.modelEmployees,//
   });
 
   HomeAdmState copyWith({
     HomeAdmStateStatus? status,
-    List<UserModel>? employees    
+    List<UserModel>? employees,    
+    //List<EmployeeUserModel>? modelEmployees//
   }) {
     return HomeAdmState(
       status: status ?? this.status,
-      employees: employees ?? this.employees
+      employees: employees ?? this.employees,
+      //modelEmployees: modelEmployees ?? this.modelEmployees//
     );
   }
 }

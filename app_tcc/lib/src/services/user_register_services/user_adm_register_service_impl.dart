@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:tcc_app/src/core/exceptions/service_exception.dart';
+import 'package:tcc_app/src/core/exceptions/user_exists_exception.dart';
 import 'package:tcc_app/src/core/functionalPrograming/either.dart';
 import 'package:tcc_app/src/core/functionalPrograming/nil.dart';
 import 'package:tcc_app/src/repositories/user/user_repository.dart';
@@ -16,6 +18,17 @@ class UserAdmRegisterServiceImpl implements UserAdmRegisterService{
   
   @override
   Future<Either<ServiceException, Nil>> execute(({String email, String name, String password}) userData) async{
+      // final firebaseAuth = FirebaseAuth.instance;
+
+      // final userMethods = await firebaseAuth.fetchSignInMethodsForEmail(userData.email);
+
+      // print('=====================');
+      // print(userMethods);
+      // print('=====================');
+      // if (userMethods.isNotEmpty) {
+      //   throw UserExistsException();
+      // }
+
     final registerResult = await userRepository.registerUserAdm(userData);
 
     switch(registerResult) {

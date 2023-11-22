@@ -190,26 +190,26 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                           ),
         
                           const SizedBox(
-                             height: 20,
+                             height: 50,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
-                               InkWell(
-                                onTap: () {
-                                  handleForgotPassword(height, width);
-                                },
-                                child: const Text(
-                                  'Redefinir senha', 
-                                  style: TextStyle(fontSize: 12, color: AppColors.colorBlack),
-                                ),
-                              ),
+                              //  InkWell(
+                              //   onTap: () {
+                              //     handleForgotPassword(height, width);
+                              //   },
+                              //   child: const Text(
+                              //     'Redefinir senha', 
+                              //     style: TextStyle(fontSize: 12, color: AppColors.colorBlack),
+                              //   ),
+                              // ),
                               InkWell(
                                 onTap: () {
                                   Navigator.of(context).pushNamed('/auth/register/user');
                                 },
                                 child: const Text(
-                                  'Criar conta', 
+                                  'Criar nova conta', 
                                   style: TextStyle(
                                     fontSize: 12,
                                     color: AppColors.colorBlack,

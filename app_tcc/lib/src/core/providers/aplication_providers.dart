@@ -79,3 +79,5 @@ Future<void> logout(LogoutRef ref) async {
 @riverpod
 SchedulesRepository schedulesRepository(SchedulesRepositoryRef ref) => 
   SchedulesRepositoryImpl(restClient: ref.read(restClientProvider));
+
+  

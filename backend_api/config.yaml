@@ -1,5 +1,6 @@
 name: Json Rest Server
 port: 8080
+#host: 192.168.0.12
 host: 192.168.1.184
 #host: 192.168.0.2 
 #host: 192.168.0.14

@@ -20,6 +20,7 @@ class HomeAdmPage extends ConsumerWidget {
    Widget build(BuildContext context, WidgetRef ref) {
     final homeState = ref.watch(homeAdmVmProvider);
 
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
@@ -66,7 +67,10 @@ class HomeAdmPage extends ConsumerWidget {
                   ),
                   SliverList(
                     delegate: SliverChildBuilderDelegate(
-                      (context, index) => HomeListEmployeeTile(employee: data.employees[index]),
+                      (context, index) => HomeListEmployeeTile(
+                        employee: data.employees[index],
+                        //test:  data.modelEmployees[index],
+                      ),
                       childCount: data.employees.length,
                     )
                   ),

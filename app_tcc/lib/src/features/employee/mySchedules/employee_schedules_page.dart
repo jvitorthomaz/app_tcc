@@ -42,6 +42,7 @@ class _EmployeeSchedulesPageState extends ConsumerState<EmployeeSchedulesPage> {
     );
 
     deleteScheduleSelected(idScheduleSelected) {
+      
       showConfirmationDialog(
         context, 
         isDeleteDialog: true,
