@@ -23,5 +23,16 @@ abstract interface class SchedulesRepository {
     }) filter 
   );
 
+      Future<Either<RepositoryException, Nil>> updateSchedule(
+    ({
+      //String name,
+      //int placeId, 
+      int scheduleId,
+      String clientName, 
+      DateTime date, 
+      int time,
+    }) scheduleData
+  );
+
   Future<Either<RepositoryException, Nil>> deleteSchedule( int idSchedule );
 }

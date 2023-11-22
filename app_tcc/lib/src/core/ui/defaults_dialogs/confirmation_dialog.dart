@@ -11,18 +11,24 @@ Future<dynamic>showConfirmationDialog(BuildContext context, {
     context: context,
     builder: ((context) {
       return AlertDialog(
-        title: Text(
-          title,
-          style: isDeleteDialog 
-          ? const TextStyle(
-              fontSize: 18,
-              color: AppColors.colorRed,
-            )
-          
-          : const TextStyle(
-              fontSize: 18,
-              color: AppColors.colorGreen,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              title,
+              style: isDeleteDialog 
+              ? const TextStyle(
+                  fontSize: 18,
+                  color: AppColors.colorRed,
+                )
+              
+              : const TextStyle(
+                  fontSize: 18,
+                  color: AppColors.colorGreen,
+                ),
             ),
+            IconButton(onPressed:() {Navigator.pop(context);}, icon: const Icon(Icons.close,color: AppColors.colorBlack))
+          ],
         ),
 
         content: Text(

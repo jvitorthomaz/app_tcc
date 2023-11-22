@@ -13,6 +13,8 @@ import 'package:tcc_app/src/features/employee/mySchedules/employee_schedules_vm.
 import 'package:tcc_app/src/features/home/home_employee/home_employee_provider.dart';
 import 'package:tcc_app/src/models/users_model.dart';
 
+//DESFAZER ALTERAÇÕES NESSE
+
 class EmployeeSchedulesPage extends ConsumerStatefulWidget {
 
   const EmployeeSchedulesPage({ super.key });
@@ -35,7 +37,10 @@ class _EmployeeSchedulesPageState extends ConsumerState<EmployeeSchedulesPage> {
   @override
   Widget build(BuildContext context) {
     //final UserModel(id: userId, :name) = ModalRoute.of(context)!.settings.arguments as UserModel;
-    final UserModel(id: userId, :name) = ModalRoute.of(context)?.settings.arguments as UserModel;
+    //final UserModel(id: userId, :name) = ModalRoute.of(context)?.settings.arguments as UserModel;
+    final userModel = ModalRoute.of(context)!.settings.arguments as UserModel;
+    final userId = userModel.id;
+    final name = userModel.name;
 
     final scheduleAsync = ref.watch(
       employeeSchedulesVmProvider(userId, dateSelected)
@@ -235,7 +240,16 @@ class _EmployeeSchedulesPageState extends ConsumerState<EmployeeSchedulesPage> {
                                         padding: const EdgeInsets.symmetric(horizontal: 15)
                                       ),
                                       onPressed: () {
-                                        //Navigator.of(context).pushNamed('/schedule', arguments: employee);
+                                        print(calendarTapDetails.appointments!.first.id);
+                                        //Navigator.pop(context);
+                                        Navigator.of(context).pushNamed(
+                                          '/employee/updateSchedule', 
+                                          arguments: [userModel, calendarTapDetails.appointments!.first]
+                                        );
+
+                                        ref.invalidate(getTotalSchedulesTodayProvider(userId));
+                                        ref.invalidate(getTotalSchedulesTomorrowProvider(userId));
+                                        ref.invalidate(employeeSchedulesVmProvider(userId, dateSelected));   
                                       },
                                       child: const Text('Editar Agendamento', 
                                         //style: TextStyle(fontSize: 12),

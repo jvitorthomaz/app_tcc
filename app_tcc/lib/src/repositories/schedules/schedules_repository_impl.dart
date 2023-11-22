@@ -71,6 +71,50 @@ class SchedulesRepositoryImpl  implements SchedulesRepository{
       return Failure(RepositoryException(message: 'Json Invalido'));
     }
   }
+
+
+    @override
+  Future<Either<RepositoryException, Nil>> updateSchedule(
+    ({int scheduleId, String clientName, DateTime date, int time,}) scheduleData
+  ) async{
+    try {
+      // final userModelResult = await me();
+
+      final int scheduleId = scheduleData.scheduleId;
+
+      // switch (userModelResult) {
+      //   case Success(value: UserModel(:var id)):
+      //     userId = id;
+          
+      //   case Failure(:var exception):
+      //     return Failure(exception);
+      // }
+
+      await restClient.auth.put('/schedules/$scheduleId', data: {
+        //'name': userModel.name,
+          'client_name': scheduleData.clientName,
+          'date': scheduleData.date.toIso8601String(),
+          'time': scheduleData.time,
+      });
+
+      return Success(nil);
+
+    } on DioException catch (e, s) {
+
+      log(
+        'Erro ao editar agendamento',
+        error: e, 
+        stackTrace: s
+      );
+
+      return Failure(
+        RepositoryException(
+          message: 'Erro ao editar agendamento'
+        )
+      );
+    }
+  }
+
   
   @override
   Future<Either<RepositoryException, Nil>> deleteSchedule(int idSchedule) async {

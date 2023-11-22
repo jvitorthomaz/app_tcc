@@ -6,22 +6,23 @@ import 'package:tcc_app/src/core/ui/constants.dart';
 import 'package:tcc_app/src/core/ui/helpers/forms_helper.dart';
 import 'package:tcc_app/src/core/ui/helpers/messages_helper.dart';
 import 'package:tcc_app/src/core/ui/widgets/hours_widget.dart';
-import 'package:tcc_app/src/core/ui/widgets/user_avatar_widget.dart';
-import 'package:tcc_app/src/features/schedules/schedules_state.dart';
-import 'package:tcc_app/src/features/schedules/schedules_vm.dart';
-import 'package:tcc_app/src/features/schedules/widgets/schedules_calendar.dart';
+import 'package:tcc_app/src/features/employee/updateSchedule/update_schedule_state.dart';
+import 'package:tcc_app/src/features/employee/updateSchedule/update_schedule_vm.dart';
+import 'package:tcc_app/src/features/employee/updateSchedule/widgets/update_schedules_calendar.dart';
+
+import 'package:tcc_app/src/models/schedules_model.dart';
 import 'package:tcc_app/src/models/users_model.dart';
 import 'package:validatorless/validatorless.dart';
 
-class SchedulesPage extends ConsumerStatefulWidget {
+class UpdateSchedulesPage extends ConsumerStatefulWidget {
 
-  const SchedulesPage({ super.key });
+  const UpdateSchedulesPage({ super.key });
 
   @override
-  ConsumerState<SchedulesPage> createState() => _SchedulesPageState();
+  ConsumerState<UpdateSchedulesPage> createState() => _UpdateSchedulesPageState();
 }
 
-class _SchedulesPageState extends ConsumerState<SchedulesPage> {
+class _UpdateSchedulesPageState extends ConsumerState<UpdateSchedulesPage> {
 
   var dateFormat = DateFormat('dd/MM/yyyy');
   var showCalendar = false;
@@ -35,12 +36,19 @@ class _SchedulesPageState extends ConsumerState<SchedulesPage> {
     dateEC.dispose();
     super.dispose();
   }
+  
 
    @override
    Widget build(BuildContext context) {
+    List<dynamic> args = ModalRoute.of(context)!.settings.arguments as List<dynamic>;
+    final userModel = args[0] as UserModel;
+    final scheduleModel = args[1] ;
 
-    final userModel = ModalRoute.of(context)!.settings.arguments as UserModel;
-    final schedulesVm = ref.watch(schedulesVmProvider.notifier);
+
+    // final userModel = ModalRoute.of(context)!.settings.arguments[0] as UserModel;
+    // final scheduleModel = ModalRoute.of(context)!.settings.arguments as SchedulesModel;
+
+    final schedulesVm = ref.watch(updateSchedulesVmProvider.notifier);
 
     final employeeData = switch (userModel) {
       AdmUserModel(:final workDays, :final workHours) => (
@@ -53,27 +61,46 @@ class _SchedulesPageState extends ConsumerState<SchedulesPage> {
         workHours: workHours,
       ),
     };
+
+      setState(() {
+        clientEC.text = scheduleModel.subject;
+        //dateEC.text = '${scheduleModel.startTime}';
+        //dateEC.text = '${dateFormat.format(scheduleModel.startTime)}';
+        // nameEC.text = employeeUserModel.name;
+        // emailEC.text = employeeUserModel.email;
+        
+      });
+
+      // print('------------------------------');
+      // print('------------------------------');
+      // print('${clientEC.text}--');
+      // print('${dateEC.text}-----');
+      // print(scheduleModel.id);
+      // print('------------------------------');
+      // print('------------------------------');
+
+
     
     ref.listen(
-      schedulesVmProvider.select((state) => state.status),
+      updateSchedulesVmProvider.select((state) => state.status),
       (_, status) {
         switch (status) {
-          case SchedulesStateStatus.initial:
+          case UpdateSchedulesStateStatus.initial:
             break;
 
-          case SchedulesStateStatus.success:
-            MessagesHelper.showSuccessSnackBar('O agendamento foi concluido com sucesso!', context);
+          case UpdateSchedulesStateStatus.success:
+            MessagesHelper.showSuccessSnackBar('O agendamento foi editado com sucesso!', context);
             Navigator.of(context).pop();
        
-          case SchedulesStateStatus.error:
-            MessagesHelper.showErrorSnackBar('Ocorreu um erro ao realizar o agendamento.', context);
+          case UpdateSchedulesStateStatus.error:
+            MessagesHelper.showErrorSnackBar('Ocorreu um erro ao editar o agendamento.', context);
         
         }
       },
     );
 
     return Scaffold(
-        appBar: AppBar(title: const Text('Novo agendamento'),),
+        appBar: AppBar(title: const Text('Editar agendamento'),),
         body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(10),
@@ -120,8 +147,8 @@ class _SchedulesPageState extends ConsumerState<SchedulesPage> {
                       });
                       context.unfocus();
                     },
-                    decoration: const InputDecoration(
-                      label: Text('Selecione uma data'),
+                    decoration:  InputDecoration(
+                      label: Text('${dateFormat.format(scheduleModel.startTime)}', style: TextStyle(color: Colors.black),),
                       hintText: 'Selecione uma data',
                       floatingLabelBehavior: FloatingLabelBehavior.never,
                       suffixIcon: Icon(
@@ -138,7 +165,7 @@ class _SchedulesPageState extends ConsumerState<SchedulesPage> {
                         const SizedBox(
                           height: 19,
                         ),
-                        SchedulesCalendar(
+                        UpdateSchedulesCalendar(
                           cancelPressed: () {
                             setState(() {
                               showCalendar = false;
@@ -146,11 +173,20 @@ class _SchedulesPageState extends ConsumerState<SchedulesPage> {
                             });
                           },
                           onOkPressed: (DateTime value) {
+                            
                             setState(() {
                               dateEC.text = dateFormat.format(value);
                               schedulesVm.deteSelected(value);
                               showCalendar = false;
+                             
                             });
+                              print('------------------------------');
+                              print('------------------------------');
+                              print('${clientEC.text}--');
+                              print('${dateEC.text}-----');
+                              print(scheduleModel.id);
+                              print('------------------------------');
+                              print('------------------------------');
                           },
                           workDays: employeeData.workDays,
                         ),
@@ -167,6 +203,7 @@ class _SchedulesPageState extends ConsumerState<SchedulesPage> {
                     onHourPressed: schedulesVm.hourSelect,
                     enabledTimes: employeeData.workHours,
                   ),
+
                   const SizedBox(
                     height: 24,
                   ),
@@ -183,12 +220,13 @@ class _SchedulesPageState extends ConsumerState<SchedulesPage> {
                         case true:
                           // //   login(emailEC.text, passwordEC.text);
                           final hourSelected = ref.watch(
-                            schedulesVmProvider.select((state) => state.scheduleTime != null),
+                            updateSchedulesVmProvider.select((state) => state.scheduleTime != null),
                           );
                           if (hourSelected) {
-                            schedulesVm.register(
+                            schedulesVm.update(
                             userModel: userModel,
-                            clientName: clientEC.text,
+                            clientName: clientEC.text, 
+                            scheduleId: scheduleModel.id,
                           );
           
                           } else {
@@ -196,7 +234,7 @@ class _SchedulesPageState extends ConsumerState<SchedulesPage> {
                           }
                       }
                     },
-                    child: const Text('AGENDAR'),
+                    child: const Text('EDITAR'),
                   )
                 
                 ],

@@ -70,7 +70,7 @@ class EmployeeUpdateVm extends _$EmployeeUpdateVm{
 
     // } else {
 
-      final PlaceModel(:id) = await ref.watch(getAdmPlaceProvider.future);
+      //final PlaceModel(:id) = await ref.watch(getAdmPlaceProvider.future);
 
       final dtoRegisterEmployee = (
         //placeId: id,

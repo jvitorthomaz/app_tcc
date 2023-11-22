@@ -29,7 +29,7 @@ Future<dynamic>showDeleteEmployeeDialog(BuildContext context, {
                     color: AppColors.colorRed,
                   ),
               ),
-               IconButton(onPressed:() {Navigator.pop(context);}, icon: const Icon(Icons.close,color: AppColors.colorRed))
+              IconButton(onPressed:() {Navigator.pop(context);}, icon: const Icon(Icons.close,color: AppColors.colorBlack))
             ],
           ),
       
@@ -78,7 +78,7 @@ Future<dynamic>showDeleteEmployeeDialog(BuildContext context, {
                     color: AppColors.colorRed,
                   ),
               ),
-               IconButton(onPressed:() {Navigator.pop(context);}, icon: const Icon(Icons.close,color: AppColors.colorRed))
+               IconButton(onPressed:() {Navigator.pop(context);}, icon: const Icon(Icons.close,color: AppColors.colorBlack))
             ],
           ),
       

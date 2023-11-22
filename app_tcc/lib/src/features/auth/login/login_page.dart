@@ -271,7 +271,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                     color: AppColors.colorBlack,
                   ),
                 ),
-                IconButton(onPressed:() {Navigator.pop(context);}, icon: const Icon(Icons.close,color: AppColors.colorRed))
+                IconButton(onPressed:() {Navigator.pop(context);}, icon: const Icon(Icons.close,color: AppColors.colorBlack))
               ],
             ),
             content: SizedBox(

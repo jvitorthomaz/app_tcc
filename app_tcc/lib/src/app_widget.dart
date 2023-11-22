@@ -10,6 +10,7 @@ import 'package:tcc_app/src/features/auth/register/register_user/user_register_p
 import 'package:tcc_app/src/features/employee/mySchedules/employee_schedules_page.dart';
 import 'package:tcc_app/src/features/employee/register/employee_register_page.dart';
 import 'package:tcc_app/src/features/employee/updateEmployee/employee_update_page.dart';
+import 'package:tcc_app/src/features/employee/updateSchedule/update_schedule_page.dart';
 import 'package:tcc_app/src/features/home/home_adm/home_adm_page.dart';
 import 'package:tcc_app/src/features/home/home_employee/home_employee_page.dart';
 import 'package:tcc_app/src/features/schedules/schedules_page.dart';
@@ -43,6 +44,7 @@ class AppWidget extends StatelessWidget {
             '/employee/schedulesEmployee':(_) => const EmployeeSchedulesPage(),
             '/employee/updateEmployee': (_) => const EmployeeUpdatePage(),
             '/schedule': (_) => const SchedulesPage(),
+            '/employee/updateSchedule': (_) => const UpdateSchedulesPage()
             
           },
           localizationsDelegates: const [

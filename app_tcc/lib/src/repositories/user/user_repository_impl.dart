@@ -276,7 +276,7 @@ class UserRepositoryImpl implements UserRespository {
   
   }
 
-    @override
+  @override
   Future<Either<RepositoryException, Nil>> updateEmployee(
     ({int employeeId, List<String> workDays, List<int> workHours}) userModel
   ) async{
@@ -304,14 +304,14 @@ class UserRepositoryImpl implements UserRespository {
     } on DioException catch (e, s) {
 
       log(
-        'Erro ao inserir administrador como colaborador',
+        'Erro ao editar colaborador',
         error: e, 
         stackTrace: s
       );
 
       return Failure(
         RepositoryException(
-          message: 'Erro ao inserir administrador como colaborador'
+          message: 'Erro ao editar colaborador'
         )
       );
     }
