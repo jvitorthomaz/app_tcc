@@ -12,6 +12,7 @@ import 'package:tcc_app/src/core/ui/widgets/user_avatar_widget.dart';
 import 'package:tcc_app/src/core/ui/widgets/weekdays_widget.dart';
 import 'package:tcc_app/src/features/employee/register/employee_register_state.dart';
 import 'package:tcc_app/src/features/employee/register/employee_register_vm.dart';
+import 'package:tcc_app/src/features/home/home_adm/home_adm_vm.dart';
 import 'package:tcc_app/src/models/place_model.dart';
 import 'package:validatorless/validatorless.dart';
 
@@ -53,6 +54,7 @@ class _EmployeeRegisterPageState extends ConsumerState<EmployeeRegisterPage> {
           case EmployeeRegisterStateStatus.success:
             MessagesHelper.showSuccessSnackBar('O Colaborador foi cadastrado com sucesso.', context);
             // Future.delayed(Duration(seconds: 1));
+            //Navigator.of(context).pushNamed('/home/admUser');
             Navigator.of(context).pop();
 
           case EmployeeRegisterStateStatus.error:
@@ -242,6 +244,8 @@ class _EmployeeRegisterPageState extends ConsumerState<EmployeeRegisterPage> {
                                 email: email,
                                 //password: password
                               );
+                                          ref.invalidate(getMeProvider);  
+                                          ref.invalidate(homeAdmVmProvider);
                           }
                         }, 
                         child: Text('Cadastrar')

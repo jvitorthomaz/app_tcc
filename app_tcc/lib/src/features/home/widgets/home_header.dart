@@ -23,7 +23,7 @@ class HomeHeader extends ConsumerWidget {
     final myInfo = ref.watch(getMeProvider);
 
     return Container(
-      padding: const EdgeInsets.fromLTRB(26, 50, 26, 20),
+      padding: const EdgeInsets.fromLTRB(26, 0, 26, 20),
       //margin: const EdgeInsets.only(bottom: 20),
       width: MediaQuery.sizeOf(context).width,
       decoration: const BoxDecoration(
@@ -84,6 +84,7 @@ class HomeHeader extends ConsumerWidget {
                       ),
                     ),
                   ),
+                  
                   // const SizedBox(
                   //   width: 18,
                   // ),

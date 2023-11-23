@@ -143,6 +143,7 @@ class _UpdateSchedulesPageState extends ConsumerState<UpdateSchedulesPage> {
                     onTap: () {
                       setState(() {
                         showCalendar = true;
+                        //schedulesVm.deteSelected(scheduleModel.startTime);
                         //showCalendar = !showCalendar;
                       });
                       context.unfocus();
@@ -189,6 +190,7 @@ class _UpdateSchedulesPageState extends ConsumerState<UpdateSchedulesPage> {
                               print('------------------------------');
                           },
                           workDays: employeeData.workDays,
+                          currentScheduleDay: scheduleModel.startTime, //dateFormat.format(scheduleModel.startTime),
                         ),
                       ],
                     ),

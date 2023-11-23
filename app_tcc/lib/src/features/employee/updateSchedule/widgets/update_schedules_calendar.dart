@@ -7,12 +7,14 @@ class UpdateSchedulesCalendar extends StatefulWidget{
   final VoidCallback cancelPressed;
   final ValueChanged<DateTime> onOkPressed;
   final List<String> workDays;
+  final DateTime? currentScheduleDay;
 
   const UpdateSchedulesCalendar({
     Key? key,
     required this.cancelPressed,
     required this.onOkPressed,
-    required this.workDays,
+    required this.workDays, 
+    this.currentScheduleDay,
   }) : super(key: key);
 
   @override
@@ -56,8 +58,8 @@ class _UpdateSchedulesCalendarState extends State<UpdateSchedulesCalendar> {
           TableCalendar(
             availableGestures: AvailableGestures.none,
             headerStyle: const HeaderStyle(titleCentered: true),
-            focusedDay: DateTime.now(),
-            //currentDay: DateTime.now(),
+            focusedDay: widget.currentScheduleDay!,
+            currentDay: widget.currentScheduleDay!,//DateTime.now(), 
             firstDay: DateTime.utc(2015, 04, 20),
             lastDay: DateTime.now().add(const Duration(days: 365 * 10)),
             calendarFormat: CalendarFormat.month,
@@ -75,6 +77,7 @@ class _UpdateSchedulesCalendarState extends State<UpdateSchedulesCalendar> {
               });
             },
             calendarStyle: const CalendarStyle(
+              
               selectedDecoration: BoxDecoration(
                 color: AppColors.colorGreen, shape: BoxShape.circle
               ),

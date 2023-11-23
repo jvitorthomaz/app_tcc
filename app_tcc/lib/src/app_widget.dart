@@ -44,7 +44,9 @@ class AppWidget extends StatelessWidget {
             '/employee/schedulesEmployee':(_) => const EmployeeSchedulesPage(),
             '/employee/updateEmployee': (_) => const EmployeeUpdatePage(),
             '/schedule': (_) => const SchedulesPage(),
-            '/employee/updateSchedule': (_) => const UpdateSchedulesPage()
+            '/employee/updateSchedule': (_) => const UpdateSchedulesPage(),
+            '/profile': (_) => const Center(child: Text('tela de perfil')),
+            '/profileEmployee': (_) => const Center(child: Text('tela de perfil Adm')),
             
           },
           localizationsDelegates: const [

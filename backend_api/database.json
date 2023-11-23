@@ -115,6 +115,46 @@
       "profile": "EMPLOYEE",
       "work_days": ["Seg", "Ter", "Qua", "Qui", "Sex"],
       "work_hours": [9, 10, 11, 13, 14, 15, 16, 17, 18]
+    },
+    {
+      "id": 32,
+      "name": "Funcionario 3333",
+      "email": "func3@gmail.com",
+      "password": "123123",
+      "profile": "Employee",
+      "place_id": 3,
+      "work_days": ["Seg", "Qua", "Sex"],
+      "work_hours": [9, 10, 11, 13]
+    },
+    {
+      "id": 33,
+      "name": "colaborador Drawe",
+      "email": "drawer@email.com",
+      "password": "MyClinic#123!",
+      "place_id": 4,
+      "profile": "EMPLOYEE",
+      "work_days": ["Seg", "Ter", "Qua", "Qui", "Sex"],
+      "work_hours": [9, 10, 11, 13, 14, 15, 16, 17, 18]
+    },
+    {
+      "id": 34,
+      "name": "drawer",
+      "email": "drawer2@email.com",
+      "password": "MyClinic#123!",
+      "place_id": 4,
+      "profile": "EMPLOYEE",
+      "work_days": ["Seg", "Ter", "Qua", "Qui", "Sex"],
+      "work_hours": [10, 11, 13, 14, 15, 16, 17, 18]
+    },
+    {
+      "id": 35,
+      "name": "D3",
+      "email": "d3@email.com",
+      "password": "MyClinic#123!",
+      "place_id": 4,
+      "profile": "EMPLOYEE",
+      "work_days": ["Seg", "Ter", "Qua", "Qui", "Sex"],
+      "work_hours": [9, 10, 11, 13, 14, 15, 16, 17, 18]
     }
   ],
   "adm_users": [],
@@ -223,6 +263,14 @@
       "user_id": 26,
       "client_name": "cliente teste",
       "date": "2023-12-04T00:00:00.000Z",
+      "time": 18
+    },
+    {
+      "id": 12,
+      "place_id": 4,
+      "user_id": 21,
+      "client_name": "cliente teste postman",
+      "date": "2023-11-24T00:00:00.000Z",
       "time": 18
     }
   ]

@@ -3,9 +3,12 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tcc_app/src/core/providers/aplication_providers.dart';
+import 'package:tcc_app/src/core/ui/app_icons.dart';
 import 'package:tcc_app/src/core/ui/constants.dart';
+import 'package:tcc_app/src/core/ui/drawers/drawer_employee.dart';
 import 'package:tcc_app/src/core/ui/widgets/app_loader.dart';
 import 'package:tcc_app/src/core/ui/widgets/user_avatar_widget.dart';
+import 'package:tcc_app/src/features/home/home_adm/home_adm_vm.dart';
 import 'package:tcc_app/src/features/home/home_employee/home_employee_provider.dart';
 import 'package:tcc_app/src/features/home/widgets/home_header.dart';
 import 'package:tcc_app/src/models/users_model.dart';
@@ -20,6 +23,26 @@ class HomeEmployeePage extends ConsumerWidget {
     
 
     return Scaffold(
+        drawer: DrawerEmployee(),
+        appBar: AppBar(
+          title: const Text('Área de Trabalho', 
+            style: TextStyle(color: Colors.white),
+          ), 
+          backgroundColor: AppColors.colorGreen,
+          iconTheme: IconThemeData(color: Colors.white),
+          actions: [
+            IconButton(
+              onPressed: () {
+                ref.read(homeAdmVmProvider.notifier).logout();
+              },
+              icon: const Icon(
+                AppIcons.exitAppIcon,
+                color: Colors.white,
+                size: 30,
+              ),
+            )
+          ],
+        ),
         body: userModelAsync.when(
         error: (e, s) {
           const errorMessage = 'Erro ao carregar página';
