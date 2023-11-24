@@ -13,6 +13,7 @@ import 'package:tcc_app/src/features/employee/updateEmployee/employee_update_pag
 import 'package:tcc_app/src/features/employee/updateSchedule/update_schedule_page.dart';
 import 'package:tcc_app/src/features/home/home_adm/home_adm_page.dart';
 import 'package:tcc_app/src/features/home/home_employee/home_employee_page.dart';
+import 'package:tcc_app/src/features/profile/update_password/user_update_password_page.dart';
 import 'package:tcc_app/src/features/schedules/schedules_page.dart';
 import 'package:tcc_app/src/features/splash/splash_page.dart';
 
@@ -47,6 +48,7 @@ class AppWidget extends StatelessWidget {
             '/employee/updateSchedule': (_) => const UpdateSchedulesPage(),
             '/profile': (_) => const Center(child: Text('tela de perfil')),
             '/profileEmployee': (_) => const Center(child: Text('tela de perfil Adm')),
+            '/updatePassword': (_) => const UserUpdatePasswordPage(),
             
           },
           localizationsDelegates: const [

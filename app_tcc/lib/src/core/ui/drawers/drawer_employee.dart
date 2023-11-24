@@ -56,7 +56,8 @@ class _DrawerEmployeeState extends ConsumerState<DrawerEmployee> {
 
               ListTile(
                 leading: const Icon(
-                  Icons.person_2_outlined,
+                  //Icons.person_2_outlined,
+                  Icons.mode_edit,
                   color: Colors.green,
                 ),
                 title: const Text("Editar Perfil"),
@@ -83,8 +84,8 @@ class _DrawerEmployeeState extends ConsumerState<DrawerEmployee> {
                   color: Colors.green,
                 ),
                 title: const Text("Alterar senha"),
-                onTap: () {
-                  //showSenhaConfirmacaoDialog(context: context, email: "");
+                onTap: () async{
+                  await Navigator.of(context).pushNamed('/updatePassword');
                 },
               ),
 

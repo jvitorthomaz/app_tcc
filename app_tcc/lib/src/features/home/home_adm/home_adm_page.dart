@@ -84,21 +84,41 @@ class HomeAdmPage extends ConsumerWidget {
           data: (HomeAdmState data) {
             return Padding(
               padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-              child: CustomScrollView(
-                slivers: [
-                  const SliverToBoxAdapter(
-                    child: HomeHeader(),
-                  ),
-                  SliverList(
-                    delegate: SliverChildBuilderDelegate(
-                      (context, index) => HomeListEmployeeTile(
-                        employee: data.employees[index],
-                        //test:  data.modelEmployees[index],
-                      ),
-                      childCount: data.employees.length,
-                    )
-                  ),
-                ],
+              child: 
+              // (data.employees.isEmpty)
+              // ? const Center(
+              //     child: Text(
+              //       "Sua Clínica ainda não possui colaboradores cadastrados",
+              //       textAlign: TextAlign.center,
+              //       style: TextStyle(fontSize: 18),
+              //     ),
+              //   )
+              // : 
+              RefreshIndicator(
+                onRefresh: () async{
+                  // const AppLoader();
+                  // Future.delayed(Duration(seconds: 1));
+                  // return ref.invalidate(homeAdmVmProvider);
+                  Navigator.of(context).pushNamed('/home/admUser');
+                  
+
+                },
+                child: CustomScrollView(
+                  slivers: [
+                    const SliverToBoxAdapter(
+                      child: HomeHeader(),
+                    ),
+                    SliverList(
+                      delegate: SliverChildBuilderDelegate(
+                        (context, index) => HomeListEmployeeTile(
+                          employee: data.employees[index],
+                          //test:  data.modelEmployees[index],
+                        ),
+                        childCount: data.employees.length,
+                      )
+                    ),
+                  ],
+                ),
               ),
             );
           },

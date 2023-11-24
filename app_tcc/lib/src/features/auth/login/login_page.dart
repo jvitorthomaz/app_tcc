@@ -194,6 +194,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               //  InkWell(
                               //   onTap: () {
@@ -209,11 +210,11 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                                   Navigator.of(context).pushNamed('/auth/register/user');
                                 },
                                 child: const Text(
-                                  'Criar nova conta', 
+                                  'Cadastrar nova clínica', 
                                   style: TextStyle(
-                                    fontSize: 12,
+                                    fontSize: 16,
                                     color: AppColors.colorBlack,
-                                    fontWeight: FontWeight.w500,
+                                    fontWeight: FontWeight.w400,
                                   ),
                                 ),
                               )

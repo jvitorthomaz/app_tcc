@@ -57,7 +57,8 @@ class _DrawerAdmState extends ConsumerState<DrawerAdm> {
 
               ListTile(
                 leading: const Icon(
-                  Icons.person_2_outlined,
+                  // Icons.person_2_outlined,
+                  Icons.mode_edit,
                   color: Colors.green,
                 ),
                 title: const Text("Editar Perfil"),
@@ -80,7 +81,8 @@ class _DrawerAdmState extends ConsumerState<DrawerAdm> {
 
                 ListTile(
                 leading: const Icon(
-                  Icons.work_outline,
+                  // Icons.work_outline,
+                  Icons.edit,
                   color: Colors.green,
                 ),
                 title: const Text("Editar Clinica"),
@@ -97,8 +99,8 @@ class _DrawerAdmState extends ConsumerState<DrawerAdm> {
                   color: Colors.green,
                 ),
                 title: const Text("Alterar senha"),
-                onTap: () {
-                  //showSenhaConfirmacaoDialog(context: context, email: "");
+                onTap: () async{
+                  await Navigator.of(context).pushNamed('/updatePassword');
                 },
               ),
 
@@ -140,28 +142,56 @@ class _DrawerAdmState extends ConsumerState<DrawerAdm> {
               Expanded(
                 child: Align(
                   alignment: FractionalOffset.bottomCenter,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: Size.fromHeight(55),
+                  child: 
+                    InkWell(
+                      onTap: () async{
+                        //Navigator.of(context).pop();
+                        await Navigator.of(context).pushNamed('/employee/registerEmployee');
+                        ref.invalidate(getMeProvider);  
+                        ref.invalidate(homeAdmVmProvider);
+                      },
+                      child:  const Row(
+                         mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Icon(Icons.person_add, color: AppColors.colorGreen,size: 22),
+                          SizedBox(
+                            width: 7,
+                          ),
+                          Text(
+                            'Adicionar Colaborador', 
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: AppColors.colorGreen,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          Icon(Icons.chevron_right, color: AppColors.colorGreen, size: 24,),
+                        ],
+                      ),
                     ),
-                    onPressed: () async{
-                      //Navigator.of(context).pop();
-                      await Navigator.of(context).pushNamed('/employee/registerEmployee');
-                      ref.invalidate(getMeProvider);  
-                      ref.invalidate(homeAdmVmProvider);
+                  // ElevatedButton(
+                  //   style: ElevatedButton.styleFrom(
+                  //     minimumSize: Size.fromHeight(55),
+                  //   ),
+                  //   onPressed: () async{
+                  //     //Navigator.of(context).pop();
+                  //     await Navigator.of(context).pushNamed('/employee/registerEmployee');
+                  //     ref.invalidate(getMeProvider);  
+                  //     ref.invalidate(homeAdmVmProvider);
                 
-                    }, 
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text('Adicionar Colaborador'),
-                        const SizedBox(
-                          width: 5,
-                        ),
-                        Icon(Icons.person_add),
-                      ],
-                    ),
-                  ),
+                  //   }, 
+                  //   child: Row(
+                  //     mainAxisAlignment: MainAxisAlignment.center,
+                  //     children: [
+                  //       Text('Adicionar Colaborador'),
+                  //       const SizedBox(
+                  //         width: 5,
+                  //       ),
+                  //       Icon(Icons.person_add),
+                  //     ],
+                  //   ),
+                  // ),
                 ),
               ),
             ],

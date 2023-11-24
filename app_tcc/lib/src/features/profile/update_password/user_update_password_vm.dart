@@ -5,26 +5,26 @@ import 'package:tcc_app/src/core/functionalPrograming/either.dart';
 import 'package:tcc_app/src/core/providers/aplication_providers.dart';
 import 'package:tcc_app/src/features/auth/register/register_user/user_register_provider.dart';
 
-part 'user_register_vm.g.dart';
+part 'user_update_password_vm.g.dart';
 
-enum UserRegisterStateStatus{
+enum UserUpdatePasswordStateStatus{
   initial, 
   success, 
   error
 }
 
 @riverpod
-class UserRegisterVm extends _$UserRegisterVm{
+class UserUpdatePasswordVm extends _$UserUpdatePasswordVm{
   
   @override
-  UserRegisterStateStatus build() => UserRegisterStateStatus.initial;
+  UserUpdatePasswordStateStatus build() => UserUpdatePasswordStateStatus.initial;
 
   Future<void> register({
     required String name,
     required String email,
     required String password,
   }) async {
-    final userAdmRegisterService = ref.watch(userAdmRegisterServiceProvider);
+   final userAdmRegisterService = ref.watch(userAdmRegisterServiceProvider);//
 
     final userDTO = (
       name: name,
@@ -37,10 +37,10 @@ class UserRegisterVm extends _$UserRegisterVm{
     switch(registerResult) {
       case Success():
         ref.invalidate(getMeProvider);
-        state = UserRegisterStateStatus.success;
+        state = UserUpdatePasswordStateStatus.success;
 
       case Failure():
-        state = UserRegisterStateStatus.error;  
+        state = UserUpdatePasswordStateStatus.error;  
         
     }
 

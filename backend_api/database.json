@@ -145,16 +145,6 @@
       "profile": "EMPLOYEE",
       "work_days": ["Seg", "Ter", "Qua", "Qui", "Sex"],
       "work_hours": [10, 11, 13, 14, 15, 16, 17, 18]
-    },
-    {
-      "id": 35,
-      "name": "D3",
-      "email": "d3@email.com",
-      "password": "MyClinic#123!",
-      "place_id": 4,
-      "profile": "EMPLOYEE",
-      "work_days": ["Seg", "Ter", "Qua", "Qui", "Sex"],
-      "work_hours": [9, 10, 11, 13, 14, 15, 16, 17, 18]
     }
   ],
   "adm_users": [],
