@@ -316,6 +316,56 @@ class UserRepositoryImpl implements UserRespository {
       );
     }
   }
+
+
+  @override
+  Future<Either<RepositoryException, Nil>> updateLoggedUserPassword(
+    ({int userId, String password}) userModel
+  ) async{
+    try {
+
+      final int userId = userModel.userId;
+
+      final user = _firebaseAuth.currentUser;
+      await user?.updatePassword(userModel.password);
+
+      await restClient.auth.put('/users/$userId', data: {
+        //'name': userModel.name,
+        'password': userModel.password
+      });
+
+      return Success(nil);
+
+    } 
+      on FirebaseAuthException catch (e, s) {
+      
+      log(
+        'Erro ao alterar senha de usuário: ${e.code}',
+        error: e, 
+        stackTrace: s
+      );
+      return Failure(
+        RepositoryException(
+          message: 'Erro ao alterar senha de usuário: ${e.code}'
+        )
+      );
+    }
+    
+    on DioException catch (e, s) {
+
+      log(
+        'Erro ao alterar senha de colaborador',
+        error: e, 
+        stackTrace: s
+      );
+
+      return Failure(
+        RepositoryException(
+          message: 'Erro ao alterar senha de colaborador'
+        )
+      );
+    }
+  }
   
   @override
   Future<Either<RepositoryException, Nil>> deleteUser(int idUser) async{
@@ -356,6 +406,7 @@ class UserRepositoryImpl implements UserRespository {
   //   return null;
   // }
 
+  @override
   Future<String?> signOut() async {
     try {
       print('--------------\n Chega aqui \n ------------');

@@ -85,6 +85,7 @@ class _DrawerEmployeeState extends ConsumerState<DrawerEmployee> {
                 ),
                 title: const Text("Alterar senha"),
                 onTap: () async{
+                  Navigator.of(context).pop();
                   await Navigator.of(context).pushNamed('/updatePassword');
                 },
               ),

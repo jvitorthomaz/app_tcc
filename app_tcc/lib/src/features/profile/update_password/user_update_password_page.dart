@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tcc_app/src/core/ui/defaults_snackbar/show_snackbar.dart';
 import 'package:tcc_app/src/core/ui/helpers/forms_helper.dart';
 import 'package:tcc_app/src/core/ui/helpers/messages_helper.dart';
 import 'package:tcc_app/src/features/auth/register/register_user/user_register_vm.dart';
@@ -36,25 +37,30 @@ class _UserUpdatePasswordPageState extends ConsumerState<UserUpdatePasswordPage>
   @override
   Widget build(BuildContext context) {
 
-    final userRegisterVm = ref.watch(userRegisterVmProvider.notifier);
+    final userUpdatePasswordVm = ref.watch(userUpdatePasswordVmProvider.notifier);
 
-    // ref.listen(userRegisterVmProvider, (_, state) {
-    //   switch (state) {
-    //     case UserUpdatePasswordStateStatus.initial:
-    //       break;
-    //     case UserUpdatePasswordStateStatus.success:
-    //       print('----------------\n----------------\nEntrou no case\n--------------\n--------------');
-    //       Navigator.of(context).pushNamed('/auth/register/place',);
-    //       //Navigator.of(context).pushNamedAndRemoveUntil('/auth/register/place', (route) => false);
+    ref.listen(userUpdatePasswordVmProvider, (_, state) {
+      switch (state) {
+        case UserUpdatePasswordStateStatus.initial:
+          break;
+        case UserUpdatePasswordStateStatus.success:
+          print('----------------\n----------------\nEntrou no case\n--------------\n--------------');
+            showSnackBar(
+              context: context,
+              mensagem: "Senha alterada com sucesso!",
+              isErro: false,
+            );
+          Navigator.of(context).pop();
+          //Navigator.of(context).pushNamedAndRemoveUntil('/auth/register/place', (route) => false);
 
-    //     case UserUpdatePasswordStateStatus.error:
-    //       MessagesHelper.showErrorSnackBar(
-    //         'Houve um erro! Verifique os campos digitados.', 
-    //         context
-    //       );
-    //   }
+        case UserUpdatePasswordStateStatus.error:
+          MessagesHelper.showErrorSnackBar(
+            'Houve um erro! Verifique os campos digitados.', 
+            context
+          );
+      }
 
-    // });
+    });
 
     return Scaffold(
       appBar: AppBar(
@@ -177,17 +183,16 @@ class _UserUpdatePasswordPageState extends ConsumerState<UserUpdatePasswordPage>
                     minimumSize: const Size.fromHeight(55)
                   ),
                   onPressed: () {
-                    // switch (formKey.currentState?.validate()) {
-                    //   case null || false:
-                    //     MessagesHelper.showErrorSnackBar('Formulário inválido', context);
+                    switch (formKey.currentState?.validate()) {
+                      case null || false:
+                        MessagesHelper.showErrorSnackBar('Formulário inválido', context);
                         
-                    //   case true:
-                    //     userRegisterVm.register(
-                    //       // name: nameEC.text,
-                    //       email: emailEC.text,
-                    //       password: passwordEC.text
-                    //     );
-                    // }
+                      case true:
+                        userUpdatePasswordVm.updateLoggedUserPassword(
+                          // name: nameEC.text,
+                          password: newPasswordEC.text
+                        );
+                    }
                   },
                   child: const Text('ALTERAR SENHA'),
                 )

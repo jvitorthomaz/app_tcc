@@ -38,12 +38,19 @@ abstract interface class UserRespository {
     }) userModel
   );    
 
-    Future<Either<RepositoryException, Nil>> updateEmployee(
+  Future<Either<RepositoryException, Nil>> updateEmployee(
     ({
       //String name,
       int employeeId,
       List<String> workDays,
       List<int> workHours,
+    }) userModel
+  );
+
+  Future<Either<RepositoryException, Nil>> updateLoggedUserPassword(
+    ({
+      int userId,
+      String password
     }) userModel
   );
 

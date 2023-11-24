@@ -100,6 +100,7 @@ class _DrawerAdmState extends ConsumerState<DrawerAdm> {
                 ),
                 title: const Text("Alterar senha"),
                 onTap: () async{
+                  Navigator.of(context).pop();
                   await Navigator.of(context).pushNamed('/updatePassword');
                 },
               ),
