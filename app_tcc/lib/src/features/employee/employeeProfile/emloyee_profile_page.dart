@@ -8,9 +8,9 @@ import 'package:tcc_app/src/core/ui/widgets/app_loader.dart';
 import 'package:tcc_app/src/models/place_model.dart';
 import 'package:tcc_app/src/models/users_model.dart';
 
-class MyProfilePage extends ConsumerWidget {
+class EmployeeProfilePage extends ConsumerWidget {
 
-  const MyProfilePage({ super.key });
+  const EmployeeProfilePage({ super.key });
 
 
   @override

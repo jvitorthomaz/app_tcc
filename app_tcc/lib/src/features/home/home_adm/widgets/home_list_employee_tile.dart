@@ -97,21 +97,6 @@ class _HomeListEmployeeTileState extends ConsumerState<HomeListEmployeeTile> {
       ),
       child: Row(
         children: [
-          // Container(
-          //   width: 50,
-          //   height: 60,
-          //   decoration: BoxDecoration(
-          //     image: DecorationImage(
-          //       image: switch (employee.avatar) {
-          //         final avatar ? => NetworkImage(avatar),
-          //         _ => const AssetImage(AppImages.avatarImage),
-          //       } as ImageProvider,
-          //     )
-          //   ),
-          // ),
-          // const SizedBox(
-          //   width: 10,
-          // ),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -121,6 +106,21 @@ class _HomeListEmployeeTileState extends ConsumerState<HomeListEmployeeTile> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    // Container(
+                    //   width: 40,
+                    //   height: 40,
+                    //   decoration: BoxDecoration(
+                    //     image: DecorationImage(
+                    //       image: switch (widget.employee.avatar) {
+                    //         final avatar ? => NetworkImage(avatar),
+                    //         _ => const AssetImage(AppImages.avatarImage),
+                    //       } as ImageProvider,
+                    //     )
+                    //   ),
+                    // ),
+                    // const SizedBox(
+                    //   width: 10,
+                    // ),
                     Expanded(
                       child: Text(
                         widget.employee.name,
@@ -154,7 +154,9 @@ class _HomeListEmployeeTileState extends ConsumerState<HomeListEmployeeTile> {
                           value: SampleItem.itemOne,
                           child: ListTile(
                             //shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                            onTap: () {
+                            onTap: () async{
+                              Navigator.of(context).pop();
+                              await Navigator.of(context).pushNamed('/employeeProfile', arguments: widget.employee);
                               //;
                             },
                              leading: const Icon(
@@ -164,7 +166,6 @@ class _HomeListEmployeeTileState extends ConsumerState<HomeListEmployeeTile> {
                             ),
                             title: const Text(
                               'Ver Perfil',
-                              //textAlign: TextAlign.center,
                               style: TextStyle(color: AppColors.colorGreen, fontSize: 14, fontWeight: FontWeight.w600),
                             ),
                           ),
@@ -172,7 +173,6 @@ class _HomeListEmployeeTileState extends ConsumerState<HomeListEmployeeTile> {
                         PopupMenuItem<SampleItem>(
                           value: SampleItem.itemTwo,
                           child: ListTile(
-                            //shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                             onTap: () async{
                               Navigator.of(context).pop();
                               await Navigator.of(context).pushNamed(
@@ -190,7 +190,6 @@ class _HomeListEmployeeTileState extends ConsumerState<HomeListEmployeeTile> {
                             ),
                             title: const Text(
                               'Editar Colaborador',
-                              //textAlign: TextAlign.center,
                               style: TextStyle(color: AppColors.colorGreen, fontSize: 14, fontWeight: FontWeight.w600),
                             ),
                           ),
@@ -201,9 +200,7 @@ class _HomeListEmployeeTileState extends ConsumerState<HomeListEmployeeTile> {
                           child: ListTile(
                             onTap: () {
                               Navigator.of(context).pop();
-                             
                               deleteUser(widget.employee.id, widget.employee);
-
                               //deleteUserSelected(widget.employee.id);
                             },
                             leading: const Icon(
@@ -213,14 +210,12 @@ class _HomeListEmployeeTileState extends ConsumerState<HomeListEmployeeTile> {
                             ),
                             title: const Text(
                               'Excluir Colaborador',
-                              //textAlign: TextAlign.center,
                               style: TextStyle(color: AppColors.colorRed, fontSize: 14, fontWeight: FontWeight.w600),
                             ),
                           ),
                         ),
                       ],
                     ),
-
                   ],
                 ),
                 //  Expanded(
@@ -247,9 +242,7 @@ class _HomeListEmployeeTileState extends ConsumerState<HomeListEmployeeTile> {
                       onPressed: () {
                         Navigator.of(context).pushNamed('/schedule', arguments: widget.employee);
                       },
-                      child: const Text('Fazer Agendamento', 
-                        //style: TextStyle(fontSize: 12),
-                      ),
+                      child: const Text('Fazer Agendamento'),
                     ),
                     const SizedBox(
                        width: 15,

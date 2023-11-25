@@ -73,7 +73,7 @@ class _DrawerEmployeeState extends ConsumerState<DrawerEmployee> {
                   Icons.work,
                   color: Colors.green,
                 ),
-                title: const Text("Clinica"),
+                title: const Text("Clínica"),
                 onTap: () async{
                   await Navigator.of(context).pushNamed('/userClinicProfile',);
                   
@@ -121,8 +121,6 @@ class _DrawerEmployeeState extends ConsumerState<DrawerEmployee> {
                       //showSenhaConfirmacaoDialog(context: context, email: "");
                     },
                   ),
-
-
                 ],
               ),
             ],

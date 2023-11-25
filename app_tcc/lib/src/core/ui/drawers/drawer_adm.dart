@@ -78,7 +78,7 @@ class _DrawerAdmState extends ConsumerState<DrawerAdm> {
                   Icons.work,
                   color: Colors.green,
                 ),
-                title: const Text("Clinica"),
+                title: const Text("Clínica"),
                 onTap: () async{
                   await Navigator.of(context).pushNamed('/userClinicProfile',);
                 },
@@ -90,7 +90,7 @@ class _DrawerAdmState extends ConsumerState<DrawerAdm> {
                   Icons.edit,
                   color: Colors.green,
                 ),
-                title: const Text("Editar Clinica"),
+                title: const Text("Editar Clínica"),
                 onTap: () {
                   //showSenhaConfirmacaoDialog(context: context, email: "");
                 },
@@ -136,8 +136,6 @@ class _DrawerAdmState extends ConsumerState<DrawerAdm> {
                       //showSenhaConfirmacaoDialog(context: context, email: "");
                     },
                   ),
-
-
                 ],
               ),
 
