@@ -18,4 +18,15 @@ abstract interface class PlacesRepository {
     data
   );
 
+    Future<Either<RepositoryException, Nil>> updatePlace(
+    ({
+      int placeId,
+      String name, 
+      String email,
+      List<String> openingDays,
+      List<int> openingHours,
+    }) 
+    data
+  );
+
 }

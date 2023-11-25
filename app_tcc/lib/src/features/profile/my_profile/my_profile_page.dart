@@ -34,7 +34,23 @@ class MyProfilePage extends ConsumerWidget {
 
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Meu perfil'),),
+      appBar: AppBar(
+        title: const Text('Meu perfil'),
+        actions: [
+          IconButton(
+            onPressed: () async{
+              await Navigator.of(context).pushNamed('/updateProfile', arguments: userModel);
+
+            }, 
+            icon: const Icon(
+              // Icons.work_outline,
+              Icons.edit,
+              color: Colors.green,
+            ),
+          )
+
+        ],
+      ),
       
       body: 
 

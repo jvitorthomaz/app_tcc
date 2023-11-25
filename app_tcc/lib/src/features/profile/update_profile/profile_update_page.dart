@@ -55,6 +55,7 @@ class _ProfileUpdatePageState extends ConsumerState<ProfileUpdatePage> {
     final placeAsyncValue = ref.watch(getAdmPlaceProvider);
     nameEC.text = userModel.name;
     emailEC.text = userModel.email;
+    
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     // final userModel = ref.watch(getMeProvider.future);

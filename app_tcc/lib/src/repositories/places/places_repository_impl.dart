@@ -62,4 +62,31 @@ class PlacesRepositoryImpl implements PlacesRepository{
       );
     }
   }
+
+    @override
+  Future<Either<RepositoryException, Nil>> updatePlace(
+    ({int placeId, String email, String name, List<String> openingDays, List<int> openingHours}) data
+  ) async{
+    try {
+      var placeId = data.placeId;
+
+      await restClient.auth.put('/place/$placeId', data: {
+        'name': data.name,
+        'email': data.email,
+        'opening_days': data.openingDays,
+        'opening_hours': data.openingHours,
+      });
+
+      return Success(nil);
+
+    } on DioException catch (e, s) {
+      log('Erro ao atualizar o estabelecimento', error: e, stackTrace: s);
+
+      return Failure(
+        RepositoryException(
+          message: 'Erro ao atualizar o estabelecimento'
+        )
+      );
+    }
+  }
 }

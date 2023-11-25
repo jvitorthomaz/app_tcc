@@ -7,6 +7,7 @@ import 'package:tcc_app/src/core/ui/widgets/app_loader.dart';
 import 'package:tcc_app/src/features/auth/login/login_page.dart';
 import 'package:tcc_app/src/features/auth/register/register_clinic/place_register_page.dart';
 import 'package:tcc_app/src/features/auth/register/register_user/user_register_page.dart';
+import 'package:tcc_app/src/features/clinic/update_clinic_adm/place_update_page.dart';
 import 'package:tcc_app/src/features/clinic/user_clinic/user_clinic_profile.dart';
 import 'package:tcc_app/src/features/employee/employeeProfile/emloyee_profile_page.dart';
 import 'package:tcc_app/src/features/employee/mySchedules/employee_schedules_page.dart';
@@ -43,19 +44,24 @@ class AppWidget extends StatelessWidget {
             '/auth/login': (_) => const LoginPage(),
             '/auth/register/user': (_) => const UserRegisterPage(),
             '/auth/register/place': (_) => const PlaceRegisterPage(),
+
             '/home/admUser': (_) => const HomeAdmPage(),
             '/home/employeeUser': (_) => const HomeEmployeePage(),
+
             '/employee/registerEmployee':(_) => const EmployeeRegisterPage(),
             '/employee/schedulesEmployee':(_) => const EmployeeSchedulesPage(),
             '/employee/updateEmployee': (_) => const EmployeeUpdatePage(),
+
             '/schedule': (_) => const SchedulesPage(),
             '/employee/updateSchedule': (_) => const UpdateSchedulesPage(),
+
             '/myProfile': (_) => const MyProfilePage(),
             '/profileEmployee': (_) => const Center(child: Text('tela de perfil Adm')),
             '/updatePassword': (_) => const UserUpdatePasswordPage(),
             '/updateProfile': (_) => const ProfileUpdatePage(),
             '/userClinicProfile': (_) => const UserClinicProfilePage(),
             '/employeeProfile': (_) => const EmployeeProfilePage(),
+            '/updateClinic': (_) => const PlaceUpdatePage(),
             
           },
           localizationsDelegates: const [

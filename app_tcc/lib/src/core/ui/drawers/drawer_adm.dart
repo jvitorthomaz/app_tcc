@@ -26,7 +26,7 @@ class _DrawerAdmState extends ConsumerState<DrawerAdm> {
     return Drawer(
       child: myInfo.maybeWhen(
         data: (myInfoData) {
-          return ListView(
+          return Column(
             children: [
               UserAccountsDrawerHeader(
                 decoration: const BoxDecoration(
@@ -84,17 +84,17 @@ class _DrawerAdmState extends ConsumerState<DrawerAdm> {
                 },
               ),
 
-                ListTile(
-                leading: const Icon(
-                  // Icons.work_outline,
-                  Icons.edit,
-                  color: Colors.green,
-                ),
-                title: const Text("Editar Clínica"),
-                onTap: () {
-                  //showSenhaConfirmacaoDialog(context: context, email: "");
-                },
-              ),
+              //   ListTile(
+              //   leading: const Icon(
+              //     // Icons.work_outline,
+              //     Icons.edit,
+              //     color: Colors.green,
+              //   ),
+              //   title: const Text("Editar Clínica"),
+              //   onTap: () async{
+              //     await Navigator.of(context).pushNamed('/updateClinic', arguments: clinicInfo);
+              //   },
+              // ),
 
 
 
@@ -105,7 +105,7 @@ class _DrawerAdmState extends ConsumerState<DrawerAdm> {
                 ),
                 title: const Text("Alterar senha"),
                 onTap: () async{
-                  Navigator.of(context).pop();
+                  //Navigator.of(context).pop();
                   await Navigator.of(context).pushNamed('/updatePassword');
                 },
               ),
@@ -139,9 +139,9 @@ class _DrawerAdmState extends ConsumerState<DrawerAdm> {
                 ],
               ),
 
-              const SizedBox(
-                height: 150,
-              ),
+              // const SizedBox(
+              //   height: 200,
+              // ),
 
               Expanded(
                 child: Align(
@@ -197,6 +197,9 @@ class _DrawerAdmState extends ConsumerState<DrawerAdm> {
                   //   ),
                   // ),
                 ),
+              ),
+              const SizedBox(
+                 height: 50,
               ),
             ],
           );
