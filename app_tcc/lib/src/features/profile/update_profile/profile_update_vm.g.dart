@@ -1,26 +1,26 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'update_schedule_vm.dart';
+part of 'profile_update_vm.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$updateSchedulesVmHash() => r'c50c23aad2a4fa5d0db601c72dad4d30d3936ae0';
+String _$profileUpdateVmHash() => r'669439b8136daa3793d16451fdecfc0092227ee7';
 
-/// See also [UpdateSchedulesVm].
-@ProviderFor(UpdateSchedulesVm)
-final updateSchedulesVmProvider = AutoDisposeNotifierProvider<UpdateSchedulesVm,
-    UpdateSchedulesState>.internal(
-  UpdateSchedulesVm.new,
-  name: r'updateSchedulesVmProvider',
+/// See also [ProfileUpdateVm].
+@ProviderFor(ProfileUpdateVm)
+final profileUpdateVmProvider =
+    AutoDisposeNotifierProvider<ProfileUpdateVm, ProfileUpdateState>.internal(
+  ProfileUpdateVm.new,
+  name: r'profileUpdateVmProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$updateSchedulesVmHash,
+      : _$profileUpdateVmHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$UpdateSchedulesVm = AutoDisposeNotifier<UpdateSchedulesState>;
+typedef _$ProfileUpdateVm = AutoDisposeNotifier<ProfileUpdateState>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

@@ -50,7 +50,7 @@ class _DrawerAdmState extends ConsumerState<DrawerAdm> {
                 ),
                 title: const Text("Perfil"),
                 onTap: () async{
-                  await Navigator.of(context).pushNamed('/profile');
+                  await Navigator.of(context).pushNamed('/myProfile', arguments: myInfoData);
                   //showSenhaConfirmacaoDialog(context: context, email: "");
                 },
               ),
@@ -62,7 +62,12 @@ class _DrawerAdmState extends ConsumerState<DrawerAdm> {
                   color: Colors.green,
                 ),
                 title: const Text("Editar Perfil"),
-                onTap: () {
+                onTap: () async{
+                  //Navigator.of(context).pop();
+                  await Navigator.of(context).pushNamed('/updateProfile', arguments: myInfoData);
+                  ref.invalidate(getMeProvider);  
+                  ref.invalidate(homeAdmVmProvider);
+                   
                   //showSenhaConfirmacaoDialog(context: context, email: "");
                 },
               ),
@@ -74,8 +79,8 @@ class _DrawerAdmState extends ConsumerState<DrawerAdm> {
                   color: Colors.green,
                 ),
                 title: const Text("Clinica"),
-                onTap: () {
-                  //showSenhaConfirmacaoDialog(context: context, email: "");
+                onTap: () async{
+                  await Navigator.of(context).pushNamed('/userClinicProfile',);
                 },
               ),
 

@@ -145,6 +145,16 @@
       "profile": "EMPLOYEE",
       "work_days": ["Seg", "Ter", "Qua", "Qui", "Sex"],
       "work_hours": [10, 11, 13, 14, 15, 16, 17, 18]
+    },
+    {
+      "id": 35,
+      "name": "Novo colaborador teste sexta",
+      "email": "test_sexta@email.com",
+      "password": "123123",
+      "place_id": 4,
+      "profile": "EMPLOYEE",
+      "work_days": ["Seg", "Qua", "Sex"],
+      "work_hours": [10, 11, 14, 18, 15, 17, 16]
     }
   ],
   "adm_users": [],
@@ -261,6 +271,14 @@
       "user_id": 21,
       "client_name": "cliente teste postman",
       "date": "2023-11-24T00:00:00.000Z",
+      "time": 18
+    },
+    {
+      "id": 13,
+      "place_id": 4,
+      "user_id": 34,
+      "client_name": "Cliente 12",
+      "date": "2023-11-27T00:00:00.000Z",
       "time": 18
     }
   ]

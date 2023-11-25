@@ -17,6 +17,15 @@ class UpdateSchedulesVm extends _$UpdateSchedulesVm{
   @override
   UpdateSchedulesState build() => UpdateSchedulesState.initial();
 
+  void firstHour(int hour) {
+    if (hour == state.scheduleTime) {
+      state = state.copyWith(scheduleHour: () => null);
+
+    } else {
+      state = state.copyWith(scheduleHour: () => hour);
+    }
+  }
+
   void hourSelect(int hour) {
     if (hour == state.scheduleTime) {
       state = state.copyWith(scheduleHour: () => null);

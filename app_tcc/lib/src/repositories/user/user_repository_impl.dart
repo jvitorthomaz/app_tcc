@@ -66,7 +66,6 @@ class UserRepositoryImpl implements UserRespository {
     }
   }
 
-  
 
   @override
   Future<Either<RepositoryException, UserModel>> me() async{
@@ -90,6 +89,7 @@ class UserRepositoryImpl implements UserRespository {
 
     }
   }
+
 
   @override
   Future<Either<RepositoryException, Nil>> registerUserAdm(
@@ -142,6 +142,7 @@ class UserRepositoryImpl implements UserRespository {
     }
   }
   
+
   @override
   Future<Either<RepositoryException, List<UserModel>>> getEmployees(int placeId) async{
     try {
@@ -213,6 +214,7 @@ class UserRepositoryImpl implements UserRespository {
     }
   }
   
+
   @override
   Future<Either<RepositoryException, Nil>> registerNewEmployee(
     ({
@@ -276,6 +278,7 @@ class UserRepositoryImpl implements UserRespository {
   
   }
 
+
   @override
   Future<Either<RepositoryException, Nil>> updateEmployee(
     ({int employeeId, List<String> workDays, List<int> workHours}) userModel
@@ -320,18 +323,27 @@ class UserRepositoryImpl implements UserRespository {
 
   @override
   Future<Either<RepositoryException, Nil>> updateLoggedUserPassword(
-    ({int userId, String password}) userModel
+    ({int userId, String oldPassword, String newPassword}) userModel
   ) async{
+    print('old: ${userModel.oldPassword}\nnew: ${userModel.newPassword}');
     try {
 
       final int userId = userModel.userId;
 
+      final currentUser = FirebaseAuth.instance.currentUser;
+      await currentUser?.reauthenticateWithCredential(
+          EmailAuthProvider.credential(
+              email: currentUser.email!,
+              password: userModel.oldPassword,
+          ),
+      );
+
       final user = _firebaseAuth.currentUser;
-      await user?.updatePassword(userModel.password);
+      await user?.updatePassword(userModel.newPassword);
 
       await restClient.auth.put('/users/$userId', data: {
         //'name': userModel.name,
-        'password': userModel.password
+        'password': userModel.newPassword
       });
 
       return Success(nil);
@@ -350,7 +362,6 @@ class UserRepositoryImpl implements UserRespository {
         )
       );
     }
-    
     on DioException catch (e, s) {
 
       log(
@@ -394,6 +405,7 @@ class UserRepositoryImpl implements UserRespository {
     // }
   }
 
+
   //   Future<String?> redefinicaoSenha({required String email}) async {
   //   try {
   //     await _firebaseAuth.sendPasswordResetEmail(email: email);
@@ -405,6 +417,7 @@ class UserRepositoryImpl implements UserRespository {
   //   }
   //   return null;
   // }
+
 
   @override
   Future<String?> signOut() async {
@@ -418,4 +431,110 @@ class UserRepositoryImpl implements UserRespository {
     return '';
   }
   
+  @override
+  Future<Either<RepositoryException, Nil>> updateUserProfile(
+    ({int userId, String name, String email, List<String> workDays, List<int> workHours}) userModel
+  ) async{
+    try {
+      // final userModelResult = await me();
+
+    print("====================");
+    print("====================");
+    print("E-mail entrando no repository");
+    print(userModel.email);
+    print("====================");
+    print("====================");
+    print("====================");
+
+      final int userId = userModel.userId;
+
+      await _firebaseAuth.signInWithEmailAndPassword(
+        email: _firebaseAuth.currentUser!.email!,
+        password: '123123',
+      );
+
+      final currentUser = _firebaseAuth.currentUser;
+
+      // final currentUser = FirebaseAuth.instance.currentUser;
+      // await currentUser?.reauthenticateWithCredential(
+      //     EmailAuthProvider.credential(
+      //         email: currentUser.email!,
+      //         password: "123123",
+      //     ),
+      // );
+
+//      final user = await FirebaseAuth.instance.currentUser;
+//       final  authResult = await user?.reauthenticateWithCredential(
+//         EmailAuthProvider.credential(
+//           email: currentUser!.email!,
+//           password: "123123",
+//         ),
+//       );
+
+// // Then use the newly re-authenticated user
+//     await authResult?.user?.updateEmail(userModel.email);
+      // final credential = await _firebaseAuth.signInWithEmailAndPassword(
+      //   email: _firebaseAuth.currentUser!.email!,
+      //   password: '123123',
+      // );
+
+
+      await currentUser?.updateDisplayName(userModel.name);
+
+      await currentUser?.updateEmail(userModel.email);
+
+      print("====================");
+      print("====================");
+      print("atualizou o EMAIL");
+      print(userModel.email);
+      print("====================");
+      print("====================");
+      print("====================");
+      
+
+       
+      // await user?.updatePhotoURL("https://example.com/jane-q-user/profile.jpg");
+
+      // //ALTERAR EMAIL NO FIREBASE
+      // //ALTERAR NOME NO FIREBASE
+
+      await restClient.auth.put('/users/$userId', data: {
+        'name': userModel.name,
+        'email': userModel.email,
+        'work_days': userModel.workDays,
+        'work_hours': userModel.workHours,
+      });
+
+      return Success(nil);
+
+    } 
+    on FirebaseAuthException catch (e, s) {
+      
+      log(
+        'Erro ao alterar senha de usuário: ${e.code}',
+        error: e, 
+        stackTrace: s
+      );
+      return Failure(
+        RepositoryException(
+          message: 'Erro ao alterar senha de usuário: ${e.code}'
+        )
+      );
+    }
+    on DioException catch (e, s) {
+
+      log(
+        'Erro ao editar colaborador',
+        error: e, 
+        stackTrace: s
+      );
+
+      return Failure(
+        RepositoryException(
+          message: 'Erro ao editar colaborador'
+        )
+      );
+    }
+  }
+
 }

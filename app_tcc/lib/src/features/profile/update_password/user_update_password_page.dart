@@ -189,8 +189,8 @@ class _UserUpdatePasswordPageState extends ConsumerState<UserUpdatePasswordPage>
                         
                       case true:
                         userUpdatePasswordVm.updateLoggedUserPassword(
-                          // name: nameEC.text,
-                          password: newPasswordEC.text
+                          oldPassword: oldPasswordEC.text,
+                          newPassword: newPasswordEC.text
                         );
                     }
                   },

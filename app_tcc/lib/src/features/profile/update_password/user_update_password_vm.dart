@@ -19,14 +19,16 @@ class UserUpdatePasswordVm extends _$UserUpdatePasswordVm{
   UserUpdatePasswordStateStatus build() => UserUpdatePasswordStateStatus.initial;
 
   Future<void> updateLoggedUserPassword({
-    required String password,
+    required String oldPassword,
+    required String newPassword,
   }) async {
     final userUpdatePassword = ref.watch(userRespositoryProvider);//
     final userModel = await ref.watch(getMeProvider.future);
 
     final userDTO = (
       userId: userModel.id,
-      password: password,
+      oldPassword: oldPassword,
+      newPassword: newPassword,
     );
 
     final updatePasswordResult = await userUpdatePassword.updateLoggedUserPassword(userDTO); //.asyncLoader();

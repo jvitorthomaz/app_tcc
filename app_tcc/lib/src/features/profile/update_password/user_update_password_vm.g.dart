@@ -7,7 +7,7 @@ part of 'user_update_password_vm.dart';
 // **************************************************************************
 
 String _$userUpdatePasswordVmHash() =>
-    r'99f5a8f8f02d74693f4bac038f60e59b7c8d53b5';
+    r'e218d91b39368b526753add00b90ea2a7e657334';
 
 /// See also [UserUpdatePasswordVm].
 @ProviderFor(UserUpdatePasswordVm)

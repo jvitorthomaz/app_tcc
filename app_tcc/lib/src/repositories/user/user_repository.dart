@@ -50,7 +50,8 @@ abstract interface class UserRespository {
   Future<Either<RepositoryException, Nil>> updateLoggedUserPassword(
     ({
       int userId,
-      String password
+      String oldPassword,
+      String newPassword
     }) userModel
   );
 
@@ -60,6 +61,14 @@ abstract interface class UserRespository {
 
   Future<String?> signOut();
 
-
+  Future<Either<RepositoryException, Nil>> updateUserProfile(
+    ({
+      int userId,
+      String name,
+      String email,
+      List<String> workDays,
+      List<int> workHours,
+    }) userModel
+  );
 
 }

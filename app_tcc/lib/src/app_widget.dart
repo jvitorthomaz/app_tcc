@@ -7,13 +7,16 @@ import 'package:tcc_app/src/core/ui/widgets/app_loader.dart';
 import 'package:tcc_app/src/features/auth/login/login_page.dart';
 import 'package:tcc_app/src/features/auth/register/register_clinic/place_register_page.dart';
 import 'package:tcc_app/src/features/auth/register/register_user/user_register_page.dart';
+import 'package:tcc_app/src/features/clinic/user_clinic/user_clinic_profile.dart';
 import 'package:tcc_app/src/features/employee/mySchedules/employee_schedules_page.dart';
 import 'package:tcc_app/src/features/employee/register/employee_register_page.dart';
 import 'package:tcc_app/src/features/employee/updateEmployee/employee_update_page.dart';
 import 'package:tcc_app/src/features/employee/updateSchedule/update_schedule_page.dart';
 import 'package:tcc_app/src/features/home/home_adm/home_adm_page.dart';
 import 'package:tcc_app/src/features/home/home_employee/home_employee_page.dart';
+import 'package:tcc_app/src/features/profile/my_profile/my_profile_page.dart';
 import 'package:tcc_app/src/features/profile/update_password/user_update_password_page.dart';
+import 'package:tcc_app/src/features/profile/update_profile/profile_update_page.dart';
 import 'package:tcc_app/src/features/schedules/schedules_page.dart';
 import 'package:tcc_app/src/features/splash/splash_page.dart';
 
@@ -46,9 +49,11 @@ class AppWidget extends StatelessWidget {
             '/employee/updateEmployee': (_) => const EmployeeUpdatePage(),
             '/schedule': (_) => const SchedulesPage(),
             '/employee/updateSchedule': (_) => const UpdateSchedulesPage(),
-            '/profile': (_) => const Center(child: Text('tela de perfil')),
+            '/myProfile': (_) => const MyProfilePage(),
             '/profileEmployee': (_) => const Center(child: Text('tela de perfil Adm')),
             '/updatePassword': (_) => const UserUpdatePasswordPage(),
+            '/updateProfile': (_) => const ProfileUpdatePage(),
+            '/userClinicProfile': (_) => const UserClinicProfilePage(),
             
           },
           localizationsDelegates: const [

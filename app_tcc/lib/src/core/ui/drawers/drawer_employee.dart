@@ -50,7 +50,7 @@ class _DrawerEmployeeState extends ConsumerState<DrawerEmployee> {
                 ),
                 title: const Text("Perfil"),
                 onTap: () async{
-                  await Navigator.of(context).pushNamed('/profile');
+                  await Navigator.of(context).pushNamed('/myProfile', arguments: myInfoData);
                 },
               ),
 
@@ -61,8 +61,9 @@ class _DrawerEmployeeState extends ConsumerState<DrawerEmployee> {
                   color: Colors.green,
                 ),
                 title: const Text("Editar Perfil"),
-                onTap: () {
-                  //showSenhaConfirmacaoDialog(context: context, email: "");
+                onTap: () async{
+                  Navigator.of(context).pop();
+                  await Navigator.of(context).pushNamed('/updateProfile', arguments: myInfoData);
                 },
               ),
 
@@ -73,7 +74,9 @@ class _DrawerEmployeeState extends ConsumerState<DrawerEmployee> {
                   color: Colors.green,
                 ),
                 title: const Text("Clinica"),
-                onTap: () {
+                onTap: () async{
+                  await Navigator.of(context).pushNamed('/userClinicProfile',);
+                  
                   //showSenhaConfirmacaoDialog(context: context, email: "");
                 },
               ),
@@ -85,8 +88,10 @@ class _DrawerEmployeeState extends ConsumerState<DrawerEmployee> {
                 ),
                 title: const Text("Alterar senha"),
                 onTap: () async{
-                  Navigator.of(context).pop();
+                  //Navigator.of(context).pop();
                   await Navigator.of(context).pushNamed('/updatePassword');
+                  ref.invalidate(getMeProvider);  
+                  ref.invalidate(homeAdmVmProvider);
                 },
               ),
 

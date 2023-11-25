@@ -86,6 +86,8 @@ class _UpdateSchedulesPageState extends ConsumerState<UpdateSchedulesPage> {
       (_, status) {
         switch (status) {
           case UpdateSchedulesStateStatus.initial:
+            //schedulesVm.firstHour(scheduleModel.)
+
             break;
 
           case UpdateSchedulesStateStatus.success:
