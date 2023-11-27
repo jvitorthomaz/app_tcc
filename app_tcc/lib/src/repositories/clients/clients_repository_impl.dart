@@ -5,7 +5,6 @@ import 'package:tcc_app/src/core/exceptions/repository_exception.dart';
 import 'package:tcc_app/src/core/functionalPrograming/either.dart';
 import 'package:tcc_app/src/core/functionalPrograming/nil.dart';
 import 'package:tcc_app/src/core/restClient/rest_client.dart';
-import 'package:tcc_app/src/repositories/clients/clients_repository.dart';
 
 class ClientsRepositoryImpl {
 
