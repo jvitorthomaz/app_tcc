@@ -9,11 +9,13 @@ import 'package:tcc_app/src/core/functionalPrograming/either.dart';
 import 'package:tcc_app/src/core/functionalPrograming/nil.dart';
 import 'package:tcc_app/src/core/restClient/rest_client.dart';
 import 'package:tcc_app/src/models/users_model.dart';
+import 'package:tcc_app/src/repositories/user/auth_repository_impl.dart';
 import 'package:tcc_app/src/repositories/user/user_repository.dart';
 
 class UserRepositoryImpl implements UserRespository {
 
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  AuthRepositoryImpl authRepository = AuthRepositoryImpl();
   final RestClient restClient;
 
   UserRepositoryImpl({
@@ -295,6 +297,7 @@ class UserRepositoryImpl implements UserRespository {
       //   case Failure(:var exception):
       //     return Failure(exception);
       // }
+      
 
       await restClient.auth.put('/users/$employeeId', data: {
         //'name': userModel.name,
@@ -339,6 +342,7 @@ class UserRepositoryImpl implements UserRespository {
       );
 
       final user = _firebaseAuth.currentUser;
+      // await user?.updateEmail(email);
       await user?.updatePassword(userModel.newPassword);
 
       await restClient.auth.put('/users/$userId', data: {
@@ -438,72 +442,56 @@ class UserRepositoryImpl implements UserRespository {
     try {
       // final userModelResult = await me();
 
-    print("====================");
-    print("====================");
-    print("E-mail entrando no repository");
-    print(userModel.email);
-    print("====================");
-    print("====================");
-    print("====================");
-
-      final int userId = userModel.userId;
-
-      await _firebaseAuth.signInWithEmailAndPassword(
-        email: _firebaseAuth.currentUser!.email!,
-        password: '123123',
-      );
-
-      final currentUser = _firebaseAuth.currentUser;
-
-      // final currentUser = FirebaseAuth.instance.currentUser;
-      // await currentUser?.reauthenticateWithCredential(
-      //     EmailAuthProvider.credential(
-      //         email: currentUser.email!,
-      //         password: "123123",
-      //     ),
-      // );
-
-//      final user = await FirebaseAuth.instance.currentUser;
-//       final  authResult = await user?.reauthenticateWithCredential(
-//         EmailAuthProvider.credential(
-//           email: currentUser!.email!,
-//           password: "123123",
-//         ),
-//       );
-
-// // Then use the newly re-authenticated user
-//     await authResult?.user?.updateEmail(userModel.email);
-      // final credential = await _firebaseAuth.signInWithEmailAndPassword(
-      //   email: _firebaseAuth.currentUser!.email!,
-      //   password: '123123',
-      // );
-
-
-      await currentUser?.updateDisplayName(userModel.name);
-
-      await currentUser?.updateEmail(userModel.email);
-
       print("====================");
       print("====================");
-      print("atualizou o EMAIL");
+      print("E-mail entrando no repository");
       print(userModel.email);
       print("====================");
       print("====================");
       print("====================");
-      
 
-       
-      // await user?.updatePhotoURL("https://example.com/jane-q-user/profile.jpg");
+      final name = userModel.name;
+      final email = userModel.email;
+      const password = '123123';
 
-      // //ALTERAR EMAIL NO FIREBASE
-      // //ALTERAR NOME NO FIREBASE
+      await authRepository.updateUserProfileFirebase(email, name, password);
 
-      await restClient.auth.put('/users/$userId', data: {
-        'name': userModel.name,
-        'email': userModel.email,
-        'work_days': userModel.workDays,
-        'work_hours': userModel.workHours,
-      });
+      final int userId = userModel.userId;
+
+      if (userModel.workDays.isEmpty && userModel.workHours.isEmpty) {
+
+        await restClient.auth.put('/users/$userId', data: {
+          'name': userModel.name,
+          'email': userModel.email,
+        });
+        
+      } else if(userModel.workDays.isEmpty){
+
+        await restClient.auth.put('/users/$userId', data: {
+          'name': userModel.name,
+          'email': userModel.email,
+          'work_hours': userModel.workHours,
+        });
+        
+      } else if(userModel.workHours.isEmpty){
+        
+        await restClient.auth.put('/users/$userId', data: {
+          'name': userModel.name,
+          'email': userModel.email,
+          'work_days': userModel.workDays,
+        });
+
+
+      } else {
+        await restClient.auth.put('/users/$userId', data: {
+          'name': userModel.name,
+          'email': userModel.email,
+          'work_days': userModel.workDays,
+          'work_hours': userModel.workHours,
+        });
+
+      }
+
 
       return Success(nil);
 

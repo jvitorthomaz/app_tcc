@@ -103,16 +103,17 @@ class HomeHeader extends ConsumerWidget {
                   // const SizedBox(
                   //   width: 120,
                   // ),
-                  IconButton(
-                    onPressed: () {
-                      ref.read(homeAdmVmProvider.notifier).logout();
-                    },
-                    icon: const Icon(
-                      AppIcons.exitAppIcon,
-                      color: Colors.white,
-                      size: 32,
-                    ),
-                  )
+                  
+                  // IconButton(
+                  //   onPressed: () {
+                  //     ref.read(homeAdmVmProvider.notifier).logout();
+                  //   },
+                  //   icon: const Icon(
+                  //     AppIcons.exitAppIcon,
+                  //     color: Colors.white,
+                  //     size: 32,
+                  //   ),
+                  // )
                 ],
               );
             },

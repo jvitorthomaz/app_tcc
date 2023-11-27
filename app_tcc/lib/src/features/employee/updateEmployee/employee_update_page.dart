@@ -8,6 +8,7 @@ import 'package:tcc_app/src/core/ui/helpers/forms_helper.dart';
 import 'package:tcc_app/src/core/ui/helpers/messages_helper.dart';
 import 'package:tcc_app/src/core/ui/widgets/app_loader.dart';
 import 'package:tcc_app/src/core/ui/widgets/hours_widget.dart';
+import 'package:tcc_app/src/core/ui/widgets/update_hours_widget.dart';
 import 'package:tcc_app/src/core/ui/widgets/weekdays_widget.dart';
 import 'package:tcc_app/src/features/employee/register/employee_register_state.dart';
 import 'package:tcc_app/src/features/employee/register/employee_register_vm.dart';
@@ -265,7 +266,7 @@ class _EmployeeUpdatePageState extends ConsumerState<EmployeeUpdatePage> {
 
                               if (!hasWorkDays || !hasWorkHours) {
                                 MessagesHelper.showErrorSnackBar(
-                                  'Por favor, selecione os dias das semana e horário de atendimento para cadastrar', 
+                                  'Por favor, selecione os dias das semana e horário de atendimento para editar', 
                                   context,
                                 );
                                 return;

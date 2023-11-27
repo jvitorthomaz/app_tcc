@@ -34,8 +34,8 @@ class _PlaceUpdatePageState extends ConsumerState<PlaceUpdatePage> {
     super.dispose();
   }
 
-   @override
-   Widget build(BuildContext context) {
+  @override
+  Widget build(BuildContext context) {
     final placeUpdateVm = ref.watch(placeUpdateVmProvider.notifier);
     //final clinicInfo = ref.watch(getAdmPlaceProvider);
 

@@ -1,40 +1,48 @@
 import 'package:flutter/material.dart';
 import 'package:tcc_app/src/core/ui/constants.dart';
 
-class HourButton extends StatefulWidget {
+class UpdateHourButton extends StatefulWidget {
   final List<int>? enabledTimes;
+  final List<int>? preSelectedTimes;
   final String label;
   final int value;
   final ValueChanged<int> onPressed;
   final bool singleSelection;
   final int? timeSelected;
 
-  const HourButton({
+  const UpdateHourButton({
     super.key,
     this.enabledTimes,
     required this.label,
     required this.value,
     required this.onPressed,
     required this.singleSelection,
-    required this.timeSelected,
+    required this.timeSelected, this.preSelectedTimes,
   });
 
   @override
-  State<HourButton> createState() => _HourButtonState();
+  State<UpdateHourButton> createState() => _UpdateHourButtonState();
 }
 
-class _HourButtonState extends State<HourButton> {
+class _UpdateHourButtonState extends State<UpdateHourButton> {
   var selected = false;
 
   @override
+  void initState() {
+    //var buttonColor = widget.timeSelected ? AppColors.colorGreenLight : Colors.white;
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final HourButton(
+    final UpdateHourButton(
       :value,
       :label,
       :onPressed,
       :enabledTimes,
       :singleSelection,
-      :timeSelected
+      :timeSelected,
+      :preSelectedTimes
     ) = widget;
     
     if (singleSelection) {
@@ -46,9 +54,24 @@ class _HourButtonState extends State<HourButton> {
       }
     }
 
-    final textColor = selected ? Colors.white : AppColors.colorGrey;
-    var buttonColor = selected ? AppColors.colorGreenLight : Colors.white;
-    final buttonBorderColor = selected ? AppColors.colorGreen : AppColors.colorGrey;
+
+
+    bool preSeleted = preSelectedTimes != null && preSelectedTimes.contains(value);
+
+    if (preSeleted) {
+      selected = true;
+    }
+
+ 
+    var textColor = selected ? Colors.white : 
+       AppColors.colorGrey;
+
+    var buttonColor = selected ? AppColors.colorGreenLight : 
+       Colors.white;
+
+    var buttonBorderColor = selected ? AppColors.colorGreen : 
+       AppColors.colorGrey;
+
 
     final bool disableTime = enabledTimes != null && !enabledTimes.contains(value);
 
@@ -56,12 +79,16 @@ class _HourButtonState extends State<HourButton> {
       buttonColor = Colors.grey[350]!;
     }
 
+
+
     return InkWell(
       borderRadius: BorderRadius.circular(8),
       onTap: disableTime
           ? null
           : () {
               setState(() {
+                preSelectedTimes!.remove(value);
+                preSeleted  = false;
                 selected = !selected;
                 onPressed(value);
               });

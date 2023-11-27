@@ -241,7 +241,7 @@ class _EmployeeSchedulesPageState extends ConsumerState<EmployeeSchedulesPage> {
                                       ),
                                       onPressed: () {
                                         print(calendarTapDetails.appointments!.first.id);
-                                        //Navigator.pop(context);
+                                        Navigator.pop(context);
                                         Navigator.of(context).pushNamed(
                                           '/employee/updateSchedule', 
                                           arguments: [userModel, calendarTapDetails.appointments!.first]

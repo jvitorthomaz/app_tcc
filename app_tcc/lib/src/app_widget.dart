@@ -9,7 +9,7 @@ import 'package:tcc_app/src/features/auth/register/register_clinic/place_registe
 import 'package:tcc_app/src/features/auth/register/register_user/user_register_page.dart';
 import 'package:tcc_app/src/features/clinic/update_clinic_adm/place_update_page.dart';
 import 'package:tcc_app/src/features/clinic/user_clinic/user_clinic_profile.dart';
-import 'package:tcc_app/src/features/employee/employeeProfile/emloyee_profile_page.dart';
+import 'package:tcc_app/src/features/employee/employeeProfile/employee_profile_page.dart';
 import 'package:tcc_app/src/features/employee/mySchedules/employee_schedules_page.dart';
 import 'package:tcc_app/src/features/employee/register/employee_register_page.dart';
 import 'package:tcc_app/src/features/employee/updateEmployee/employee_update_page.dart';

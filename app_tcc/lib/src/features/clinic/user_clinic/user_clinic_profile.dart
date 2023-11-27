@@ -98,14 +98,14 @@ class UserClinicProfilePage extends ConsumerWidget {
                           //   ),
                           //   child: Text('Foto'),
                           // ),
-                          Divider(thickness: 1, color: AppColors.colorGreen,),
+                          
                           // Divider(thickness: 2,),
                           Container(
                             width: 350, 
                             height: 80,
                             margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                             padding: const EdgeInsets.all(10),
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               //borderRadius: BorderRadius.circular(10),
                               //border: Border.all(color: AppColors.colorGreen, width: 2),
                             ),
@@ -114,9 +114,9 @@ class UserClinicProfilePage extends ConsumerWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
+                                const Text(
                                   'Nome:',
-                                  style: const TextStyle(
+                                  style: TextStyle(
                                     color: AppColors.colorGreen,
                                     fontSize: 18,
                                     fontWeight: FontWeight.w600,
@@ -139,8 +139,7 @@ class UserClinicProfilePage extends ConsumerWidget {
                           
                           ),
 
-                          Divider(thickness: 2,color: AppColors.colorGreen,),
-                          // Divider(thickness: 2,),
+                          const Divider(thickness: 2,),
 
 
                           Container(
@@ -148,7 +147,7 @@ class UserClinicProfilePage extends ConsumerWidget {
                             height: 80,
                             margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                             padding: const EdgeInsets.all(10),
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               //borderRadius: BorderRadius.circular(10),
                               //border: Border.all(color: AppColors.colorGreen, width: 2),
                             ),
@@ -157,9 +156,9 @@ class UserClinicProfilePage extends ConsumerWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
+                                const Text(
                                   'E-mail:',
-                                  style: const TextStyle(
+                                  style:  TextStyle(
                                     color: AppColors.colorGreen,
                                     fontSize: 18,
                                     fontWeight: FontWeight.w600,
@@ -182,15 +181,14 @@ class UserClinicProfilePage extends ConsumerWidget {
                           
                           ),
 
-                          Divider(thickness: 2,color: AppColors.colorGreen,),
-                          // Divider(thickness: 2,),
+                          const Divider(thickness: 2,),
 
                           Container(
                             width: 350, 
                             //  height: 80,
                             margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                             padding: const EdgeInsets.all(10),
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               //borderRadius: BorderRadius.circular(10),
                               //border: Border.all(color: AppColors.colorGreen, width: 2),
                             ),
@@ -199,9 +197,9 @@ class UserClinicProfilePage extends ConsumerWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
+                                const Text(
                                   'Dias que a clínica abre:',
-                                  style: const TextStyle(
+                                  style: TextStyle(
                                     color: AppColors.colorGreen,
                                     fontSize: 18,
                                     fontWeight: FontWeight.w600,
@@ -211,14 +209,14 @@ class UserClinicProfilePage extends ConsumerWidget {
                                 ListView.builder(
                                   itemCount: placeModel.openingDays.length,
                                   shrinkWrap: true,
-                                  physics: NeverScrollableScrollPhysics(),
+                                  physics: const NeverScrollableScrollPhysics(),
                                   itemBuilder: (BuildContext context,int index){
                                     print(index);
                                     return Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Row(
                                         children: [
-                                          Icon(Icons.fiber_manual_record, size: 5),
+                                          const Icon(Icons.fiber_manual_record, size: 5),
                                           const SizedBox(
                                               width: 1,
                                           ),
@@ -243,8 +241,7 @@ class UserClinicProfilePage extends ConsumerWidget {
                           
                           ),
 
-                          Divider(thickness: 2,color: AppColors.colorGreen,),
-                          // Divider(thickness: 2,),
+                          const Divider(thickness: 2,),
 
 
                           Container(
@@ -252,7 +249,7 @@ class UserClinicProfilePage extends ConsumerWidget {
                             //height: 80,
                             margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                             padding: const EdgeInsets.all(10),
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               //borderRadius: BorderRadius.circular(10),
                               //border: Border.all(color: AppColors.colorGreen, width: 2),
                             ),
@@ -261,9 +258,9 @@ class UserClinicProfilePage extends ConsumerWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
+                                const Text(
                                   'Horários que a clínica abre:',
-                                  style: const TextStyle(
+                                  style: TextStyle(
                                     color: AppColors.colorGreen,
                                     fontSize: 18,
                                     fontWeight: FontWeight.w600,
@@ -272,14 +269,14 @@ class UserClinicProfilePage extends ConsumerWidget {
                                 ListView.builder(
                                   itemCount: placeModel.openingHours.length,
                                   shrinkWrap: true,
-                                  physics: NeverScrollableScrollPhysics(),
+                                  physics: const NeverScrollableScrollPhysics(),
                                   itemBuilder: (BuildContext context,int index){
                                     print(index);
                                     return Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Row(
                                         children: [
-                                          Icon(Icons.fiber_manual_record, size: 5),
+                                          const Icon(Icons.fiber_manual_record, size: 5),
                                           const SizedBox(
                                               width: 1,
                                             ),

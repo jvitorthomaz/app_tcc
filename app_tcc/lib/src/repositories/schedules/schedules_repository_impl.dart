@@ -7,11 +7,13 @@ import 'package:tcc_app/src/core/functionalPrograming/either.dart';
 import 'package:tcc_app/src/core/functionalPrograming/nil.dart';
 import 'package:tcc_app/src/core/restClient/rest_client.dart';
 import 'package:tcc_app/src/models/schedules_model.dart';
+import 'package:tcc_app/src/repositories/clients/clients_repository_impl.dart';
 import 'package:tcc_app/src/repositories/schedules/schedules_repository.dart';
 
-class SchedulesRepositoryImpl  implements SchedulesRepository{
+class SchedulesRepositoryImpl implements SchedulesRepository{
 
   final RestClient restClient;
+
 
   SchedulesRepositoryImpl(
     {required RestClient restClient}
@@ -32,9 +34,48 @@ class SchedulesRepositoryImpl  implements SchedulesRepository{
           'time': scheduleData.time,
         },
       );
+
+      final registerClientDto = (
+        clientName: scheduleData.clientName,
+        employeeId: scheduleData.userId,
+        date: scheduleData.date.toIso8601String(),
+        time: scheduleData.time,
+      );
+
+      registerClient(registerClientDto);
+
+
+      
       return Success(nil);
     } on DioException catch (e, s) {
       log('Erro ao registrar agendamento', error: e, stackTrace: s);
+      return Failure(RepositoryException(message: 'Erro ao agendar horário'));
+    }
+  }
+
+  @override
+  Future<Either<RepositoryException, Nil>> registerClient(
+    ({
+      String clientName,
+      int employeeId,
+      String date,
+      int time
+    })clientData
+
+  ) async{
+    try {
+      await restClient.auth.post(
+        '/clients',
+        data: {
+          'client_name': clientData.clientName,
+          'employee_id': clientData.employeeId,
+          'date': clientData.date,
+          'time': clientData.time,
+        },
+      );
+      return Success(nil);
+    } on DioException catch (e, s) {
+      log('Erro ao registrar cliente', error: e, stackTrace: s);
       return Failure(RepositoryException(message: 'Erro ao agendar horário'));
     }
   }

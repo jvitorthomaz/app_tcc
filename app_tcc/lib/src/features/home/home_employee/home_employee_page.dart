@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tcc_app/src/core/providers/aplication_providers.dart';
 import 'package:tcc_app/src/core/ui/app_icons.dart';
 import 'package:tcc_app/src/core/ui/constants.dart';
-import 'package:tcc_app/src/core/ui/drawers/drawer_employee.dart';
+import 'package:tcc_app/src/features/drawers/drawer_employee.dart';
 import 'package:tcc_app/src/core/ui/widgets/app_loader.dart';
 import 'package:tcc_app/src/core/ui/widgets/user_avatar_widget.dart';
 import 'package:tcc_app/src/features/home/home_adm/home_adm_vm.dart';

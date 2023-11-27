@@ -98,8 +98,7 @@ class MyProfilePage extends ConsumerWidget {
                     //   child: Text('Foto'),
                     // ),
 
-                    const Divider(thickness: 1,),
-                    // Divider(thickness: 2,color: AppColors.colorGreen,),
+                    //const Divider(thickness: 1,),
 
 
                     Container(
@@ -142,7 +141,6 @@ class MyProfilePage extends ConsumerWidget {
                     ),
 
                     const Divider(thickness: 2,),
-                    // Divider(thickness: 2,color: AppColors.colorGreen,),
 
 
                     Container(
@@ -185,7 +183,6 @@ class MyProfilePage extends ConsumerWidget {
                     ),
 
                     const Divider(thickness: 2,),
-                    // Divider(thickness: 2,color: AppColors.colorGreen,),
 
                     Container(
                       width: 350, 
@@ -244,7 +241,6 @@ class MyProfilePage extends ConsumerWidget {
                     ),
 
                     const Divider(thickness: 2,),
-                    // Divider(thickness: 2,color: AppColors.colorGreen,),
 
 
                     Container(

@@ -1,36 +1,54 @@
 import 'package:flutter/material.dart';
 import 'package:tcc_app/src/core/ui/constants.dart';
 
-class ButtonDay extends StatefulWidget {
+class UpdateButtonDay extends StatefulWidget {
   final List<String>? enabledDays;
+  final List<String>? preSelectedDays;
   final String label;
   final ValueChanged<String> onDaySelected;
   final button;//
 
-  const ButtonDay({
+  const UpdateButtonDay({
     super.key,
     required this.label,
     required this.onDaySelected,
     this.enabledDays,
-    this.button //
+    this.button, this.preSelectedDays //
   });
 
   @override
-  State<ButtonDay> createState() => _ButtonDayState();
+  State<UpdateButtonDay> createState() => _UpdateButtonDayState();
 }
 
-class _ButtonDayState extends State<ButtonDay> {
+class _UpdateButtonDayState extends State<UpdateButtonDay> {
   var selectedButton = false;
   
 
   @override
   Widget build(BuildContext context) {
-    final textColor = selectedButton ? Colors.white : AppColors.colorGrey;
-    var buttonColor = selectedButton ? AppColors.colorGreenLight : Colors.white;
-    final buttonBorderColor = selectedButton ? AppColors.colorGreen : AppColors.colorGrey;
+    final UpdateButtonDay(:enabledDays, :label, :preSelectedDays) = widget;
+
+    bool preSeleted = preSelectedDays != null && preSelectedDays.contains(label);
+
+    if (preSeleted) {
+      selectedButton = true;
+    }
+
+    var textColor = selectedButton ? Colors.white : 
+       AppColors.colorGrey;
+
+    var buttonColor = selectedButton ? AppColors.colorGreenLight : 
+      Colors.white;
+
+    var buttonBorderColor = selectedButton ? AppColors.colorGreen : 
+       AppColors.colorGrey;
+    
+    // final textColor = selectedButton ? Colors.white : AppColors.colorGrey;
+    // var buttonColor = selectedButton ? AppColors.colorGreenLight : Colors.white;
+    // final buttonBorderColor = selectedButton ? AppColors.colorGreen : AppColors.colorGrey;
 
 
-    final ButtonDay(:enabledDays, :label) = widget;
+
 
     final bool disableDay = enabledDays != null && !enabledDays.contains(label);
 
@@ -47,6 +65,8 @@ class _ButtonDayState extends State<ButtonDay> {
             : () {
                 widget.onDaySelected(label);
                 setState(() {
+                  preSelectedDays!.remove(label);
+                  preSeleted = false;
                   selectedButton = !selectedButton;
                 });
               },
@@ -64,7 +84,8 @@ class _ButtonDayState extends State<ButtonDay> {
               child: Text(
             label,
             style: TextStyle(
-                fontSize: 12, color: textColor, fontWeight: FontWeight.w500),
+              fontSize: 12, color: textColor, fontWeight: FontWeight.w500
+            ),
           )),
         ),
       ),
