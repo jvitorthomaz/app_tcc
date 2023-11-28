@@ -112,6 +112,7 @@ class HomeAdmPage extends ConsumerWidget {
                       delegate: SliverChildBuilderDelegate(
                         (context, index) => HomeListEmployeeTile(
                           employee: data.employees[index],
+                          //PASSAR INFO PROFILE PHOTO AQUI
                           //test:  data.modelEmployees[index],
                         ),
                         childCount: data.employees.length,

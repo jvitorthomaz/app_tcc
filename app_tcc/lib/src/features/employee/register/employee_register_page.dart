@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tcc_app/src/core/constants/globalConst.dart';
 import 'package:tcc_app/src/core/providers/aplication_providers.dart';
 import 'package:tcc_app/src/core/ui/constants.dart';
 import 'package:tcc_app/src/core/ui/helpers/forms_helper.dart';
@@ -105,6 +106,11 @@ class _EmployeeRegisterPageState extends ConsumerState<EmployeeRegisterPage> {
                       const SizedBox(
                         height: 30,
                       ),
+                      // Offstage(
+                      //   offstage: GlobalConst.clinicAlreadyHasADM,
+                      //   child:
+
+                      // ),
                       Row(
                         children: [
                           Checkbox.adaptive(

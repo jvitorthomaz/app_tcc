@@ -189,7 +189,8 @@ class _HomeListEmployeeTileState extends ConsumerState<HomeListEmployeeTile> {
                               color: AppColors.colorGreen,
                             ),
                             title: const Text(
-                              'Editar Colaborador',
+                              'Editar horários',
+                              //'Editar Colaborador',
                               style: TextStyle(color: AppColors.colorGreen, fontSize: 14, fontWeight: FontWeight.w600),
                             ),
                           ),

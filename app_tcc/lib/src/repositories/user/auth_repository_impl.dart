@@ -93,6 +93,12 @@ class AuthRepositoryImpl {
 
               await currentUser?.updateDisplayName(name);
               await currentUser?.updateEmail(email);
+              await currentUser?.reauthenticateWithCredential(
+                    EmailAuthProvider.credential(
+                        email: currentUser.email!,
+                        password: password,
+                    ),
+              );
 
               print("====================");
               print("====================");
@@ -138,17 +144,17 @@ class AuthRepositoryImpl {
   //   return null;
   // }
 
-  // Future<String?> removerConta({required String senha}) async {
-  //   try {
-  //     await _firebaseAuth.signInWithEmailAndPassword(
-  //       email: _firebaseAuth.currentUser!.email!,
-  //       password: senha,
-  //     );
-  //     await _firebaseAuth.currentUser!.delete();
+  Future<String?> removerConta({required String senha}) async {
+    try {
+      await _firebaseAuth.signInWithEmailAndPassword(
+        email: _firebaseAuth.currentUser!.email!,
+        password: senha,
+      );
+      await _firebaseAuth.currentUser!.delete();
       
-  //   } on FirebaseAuthException catch (e) {
-  //     return e.code;
-  //   }
-  //   return null;
-  // }
+    } on FirebaseAuthException catch (e) {
+      return e.code;
+    }
+    return null;
+  }
 }

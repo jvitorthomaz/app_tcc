@@ -25,8 +25,8 @@
       "email": "user@email.com",
       "password": "123123",
       "profile": "ADM",
-      "work_days": ["Seg", "Ter", "Qua", "Qui", "Sex", "Sab"],
-      "work_hours": [9, 10, 11, 12, 13, 14, 15, 16, 18, 17]
+      "work_days": ["Seg", "Ter", "Qua", "Qui", "Sex"],
+      "work_hours": [9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
     },
     {
       "id": 23,
@@ -64,8 +64,8 @@
       "password": "MyClinic#123!",
       "place_id": 4,
       "profile": "EMPLOYEE",
-      "work_days": [],
-      "work_hours": []
+      "work_days": ["Seg", "Ter", "Qua", "Qui", "Sex"],
+      "work_hours": [9, 10, 11, 13, 14, 15, 16, 17, 18]
     },
     {
       "id": 27,
@@ -145,25 +145,6 @@
       "profile": "EMPLOYEE",
       "work_days": ["Seg", "Ter", "Qua", "Qui", "Sex"],
       "work_hours": [10, 11, 13, 14, 15, 16, 17, 18]
-    },
-    {
-      "id": 35,
-      "name": "Novo colaborador teste sexta",
-      "email": "test_sexta@email.com",
-      "password": "123123",
-      "place_id": 4,
-      "profile": "EMPLOYEE",
-      "work_days": ["Seg"],
-      "work_hours": [9, 10, 11]
-    },
-    {
-      "id": 36,
-      "name": "novo eu",
-      "email": "jovitorthomaz@hotmail.com",
-      "password": "123123",
-      "profile": "ADM",
-      "work_days": [],
-      "work_hours": []
     }
   ],
   "adm_users": [],
@@ -189,7 +170,7 @@
       "user_id": "21",
       "name": "Clinic One ",
       "email": "clinicone@email.com",
-      "opening_days": ["Seg", "Ter", "Qua", "Qui", "Sex", "Sab"],
+      "opening_days": ["Seg", "Ter", "Qua", "Qui", "Sex"],
       "opening_hours": [9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
     },
     {
@@ -215,6 +196,14 @@
       "email": "eu@email.com",
       "opening_days": ["Seg", "Ter", "Qua", "Qui", "Sex"],
       "opening_hours": [8, 9, 10, 11, 13, 14, 15, 16, 17, 18]
+    },
+    {
+      "id": 8,
+      "user_id": "37",
+      "name": "Clinica Name",
+      "email": "clinica@email.com",
+      "opening_days": ["Seg", "Ter", "Qua", "Qui", "Sex"],
+      "opening_hours": [9, 10, 11, 13, 14, 15, 16, 17, 18]
     }
   ],
   "schedules": [
@@ -320,7 +309,7 @@
       "user_id": 21,
       "client_name": "Cliente teste 2",
       "date": "2023-11-28T00:00:00.000Z",
-      "time": 18
+      "time": 13
     },
     {
       "id": 17,
@@ -338,6 +327,13 @@
       "employee_id": 21,
       "date": "2023-11-28T00:00:00.000Z",
       "time": 9
+    },
+    {
+      "id": 2,
+      "client_name": "cliente teste aaa",
+      "employee_id": 26,
+      "date": "2023-11-28T00:00:00.000Z",
+      "time": 18
     }
   ]
 }

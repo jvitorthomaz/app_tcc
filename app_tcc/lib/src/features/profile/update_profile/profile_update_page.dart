@@ -50,14 +50,23 @@ class _ProfileUpdatePageState extends ConsumerState<ProfileUpdatePage> {
 
   @override
   Widget build(BuildContext context) {
-    final userModel = ModalRoute.of(context)!.settings.arguments as UserModel;
+    //final userModel = ModalRoute.of(context)!.settings.arguments as UserModel;
     final profileUpdateVm = ref.watch(profileUpdateVmProvider.notifier);
-    final placeAsyncValue = ref.watch(getAdmPlaceProvider);
-    nameEC.text = userModel.name;
-    emailEC.text = userModel.email;
+    final placeAsyncValue = ref.read(getAdmPlaceProvider);
+    final userModel = ModalRoute.of(context)!.settings.arguments as UserModel;
+      setState(() {
+        nameEC.text = userModel.name;
+        emailEC.text = userModel.email;
+        
+      });
+      print('${userModel.id}');
+      print('${nameEC.text}');
+      print('${emailEC.text}');
+    // nameEC.text = userModel.name;
+    // emailEC.text = userModel.email;
     
-    var height = MediaQuery.of(context).size.height;
-    var width = MediaQuery.of(context).size.width;
+    // var height = MediaQuery.of(context).size.height;
+    // var width = MediaQuery.of(context).size.width;
     // final userModel = ref.watch(getMeProvider.future);
     //final employeeUserModel = ModalRoute.of(context)!.settings.arguments as EmployeeUserModel;
 
@@ -73,21 +82,6 @@ class _ProfileUpdatePageState extends ConsumerState<ProfileUpdatePage> {
       ),
 
     };
-
-      // setState(() {
-      //   nameEC.text = userModel.name;
-      //   emailEC.text = userModel.email;
-      //   // nameEC.text = employeeUserModel.name;
-      //   // emailEC.text = employeeUserModel.email;
-        
-      // });
-      print('---------------');
-      print('---------------');
-      print('${userModel.id}');
-      print('${nameEC.text}');
-      print('${emailEC.text}');
-      print('---------------');
-      print('---------------');
 
     // final profileUpdateVm = ref.watch(profileUpdateVmProvider.notifier);
     // final placeAsyncValue = ref.watch(getAdmPlaceProvider);
@@ -158,6 +152,7 @@ class _ProfileUpdatePageState extends ConsumerState<ProfileUpdatePage> {
                             height: 24,
                           ),
                           TextFormField(
+                            readOnly: true,
                             //onTapOutside: (_) => context.unfocus(),
                             controller: nameEC,
                             validator: Validatorless.required('Nome obrigatório'),
@@ -169,6 +164,7 @@ class _ProfileUpdatePageState extends ConsumerState<ProfileUpdatePage> {
                             height: 24,
                           ),
                           TextFormField(
+                            readOnly: true,
                             //onTapOutside: (_) => context.unfocus(),
                             controller: emailEC,
                             validator: Validatorless.multiple([
@@ -228,7 +224,7 @@ class _ProfileUpdatePageState extends ConsumerState<ProfileUpdatePage> {
 
                               if (!hasWorkDays || !hasWorkHours) {
                                 MessagesHelper.showErrorSnackBar(
-                                  'Por favor, selecione os dias das semana e horário de atendimento para cadastrar', 
+                                  'Por favor, selecione os dias das semana e horário de atendimento.', 
                                   context,
                                 );
                                 return;
@@ -236,13 +232,6 @@ class _ProfileUpdatePageState extends ConsumerState<ProfileUpdatePage> {
 
                               final name = nameEC.text;
                               final email = emailEC.text;
-                              print("====================");
-                              print("====================");
-                              print("E-mail indo para VM");
-                              print(email);
-                              print("====================");
-                              print("====================");
-                              print("====================");
 
                               //final password = passwordEC.text;
 
@@ -255,10 +244,8 @@ class _ProfileUpdatePageState extends ConsumerState<ProfileUpdatePage> {
                              Navigator.of(context).pop();
                           }
                         }, 
-                        child: Text('Editar Perfil')
+                        child: const Text('Alterar'),
                       )
-                      
-              
                     ],
                   ),
                 ),
@@ -269,8 +256,10 @@ class _ProfileUpdatePageState extends ConsumerState<ProfileUpdatePage> {
       )
     );
   }
-  handleConfirmWithPassword(height, width) {
 
+
+
+  handleConfirmWithPassword(height, width) {
     // return Theme(
     //       data: ThemeData(dialogBackgroundColor: Colors.white),
     String password = passwordEC.text;

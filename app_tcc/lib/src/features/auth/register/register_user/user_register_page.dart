@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tcc_app/src/core/ui/constants.dart';
 import 'package:tcc_app/src/core/ui/helpers/forms_helper.dart';
 import 'package:tcc_app/src/core/ui/helpers/messages_helper.dart';
 import 'package:tcc_app/src/features/auth/register/register_user/user_register_vm.dart';
@@ -19,6 +20,8 @@ class _UserRegisterPageState extends ConsumerState<UserRegisterPage> {
   final nameEC = TextEditingController();
   final emailEC = TextEditingController();
   final passwordEC = TextEditingController();
+  bool obscure = true;
+  bool obscureConfirm = true;
   // final cpfEC = TextEditingController();
   // final celularEC = TextEditingController();
 
@@ -123,9 +126,16 @@ class _UserRegisterPageState extends ConsumerState<UserRegisterPage> {
                     Validatorless.required('A senha é obrigatória'),
                     Validatorless.min(6, 'A Senha deve conter no mínimo 6 caracteres'),
                   ]),
-                  obscureText: true,
+                  obscureText: obscure, //true,
                   decoration: InputDecoration(
-                    label: Text('Senha')
+                    label: Text('Senha'),
+                    suffixIcon: IconButton(
+                      onPressed: () => setState(() => obscure = !obscure),
+                      icon: Icon(
+                        obscure ? Icons.visibility : Icons.visibility_off,
+                        color: AppColors.colorGreen,
+                      )
+                    ),
                   ),
                 ),
           
@@ -140,9 +150,16 @@ class _UserRegisterPageState extends ConsumerState<UserRegisterPage> {
                       passwordEC, 'As senhas digitadas são diferentes'
                     ),
                   ]),
-                  obscureText: true,
+                  obscureText: obscureConfirm,
                   decoration: InputDecoration(
-                    label: Text('Confirmar Senha')
+                    label: Text('Confirmar Senha'),
+                    suffixIcon: IconButton(
+                      onPressed: () => setState(() => obscureConfirm = !obscureConfirm),
+                      icon: Icon(
+                        obscureConfirm ? Icons.visibility : Icons.visibility_off,
+                        color: AppColors.colorGreen,
+                      )
+                    ),
                   ),
                 ),
           

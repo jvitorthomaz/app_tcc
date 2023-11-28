@@ -1,5 +1,6 @@
 import 'package:asyncstate/asyncstate.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:tcc_app/src/core/constants/globalConst.dart';
 import 'package:tcc_app/src/core/exceptions/repository_exception.dart';
 import 'package:tcc_app/src/core/functionalPrograming/either.dart';
 import 'package:tcc_app/src/core/functionalPrograming/nil.dart';
@@ -17,7 +18,9 @@ class EmployeeRegisterVm extends _$EmployeeRegisterVm{
 
 
   void setRegisterADM(bool isRegisterAdm) {
+    //    GlobalConst.clinicAlreadyHasADM = true;
     state = state.copyWith(registerAdm: isRegisterAdm);
+
   }
 
   void addOrRemoveWorkdays(String weekDay) {

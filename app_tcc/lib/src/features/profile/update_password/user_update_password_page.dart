@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tcc_app/src/core/ui/constants.dart';
 import 'package:tcc_app/src/core/ui/defaults_snackbar/show_snackbar.dart';
 import 'package:tcc_app/src/core/ui/helpers/forms_helper.dart';
 import 'package:tcc_app/src/core/ui/helpers/messages_helper.dart';
@@ -23,6 +24,9 @@ class _UserUpdatePasswordPageState extends ConsumerState<UserUpdatePasswordPage>
   final newPasswordEC = TextEditingController();
   // final cpfEC = TextEditingController();
   // final celularEC = TextEditingController();
+  bool obscureOld = true;
+  bool obscureNew = true;
+  bool obscureConfirmNew = true;
 
   @override
   void dispose() {
@@ -98,9 +102,16 @@ class _UserUpdatePasswordPageState extends ConsumerState<UserUpdatePasswordPage>
                         Validatorless.required('A senha é obrigatória'),
                         Validatorless.min(6, 'A Senha deve conter no mínimo 6 caracteres'),
                       ]),
-                      obscureText: true,
+                      obscureText: obscureOld,
                       decoration: InputDecoration(
-                        label: Text('Senha atual')
+                        label: const Text('Senha atual'),
+                        suffixIcon: IconButton(
+                          onPressed: () => setState(() => obscureOld = !obscureOld),
+                          icon: Icon(
+                            obscureOld ? Icons.visibility : Icons.visibility_off,
+                            color: AppColors.colorGreen,
+                          )
+                        ),
                       ),
                     ),
                   ],
@@ -131,9 +142,16 @@ class _UserUpdatePasswordPageState extends ConsumerState<UserUpdatePasswordPage>
                         Validatorless.required('A senha é obrigatória'),
                         Validatorless.min(6, 'A Senha deve conter no mínimo 6 caracteres'),
                       ]),
-                      obscureText: true,
+                      obscureText: obscureNew,
                       decoration: InputDecoration(
-                        label: Text('Nova senha')
+                        label: const Text('Nova senha'),
+                        suffixIcon: IconButton(
+                          onPressed: () => setState(() => obscureNew = !obscureNew),
+                          icon: Icon(
+                            obscureNew ? Icons.visibility : Icons.visibility_off,
+                            color: AppColors.colorGreen,
+                          )
+                        ),
                       ),
                     ),
                   ],
@@ -166,9 +184,16 @@ class _UserUpdatePasswordPageState extends ConsumerState<UserUpdatePasswordPage>
                           newPasswordEC, 'As senhas digitadas são diferentes'
                         ),
                       ]),
-                      obscureText: true,
+                      obscureText: obscureConfirmNew,
                       decoration: InputDecoration(
-                        label: Text('Confirmar nova senha')
+                        label: const Text('Confirmar nova senha'),
+                        suffixIcon: IconButton(
+                          onPressed: () => setState(() => obscureConfirmNew = !obscureConfirmNew),
+                          icon: Icon(
+                            obscureConfirmNew ? Icons.visibility : Icons.visibility_off,
+                            color: AppColors.colorGreen,
+                          )
+                        ),
                       ),
                     ),
                   ],

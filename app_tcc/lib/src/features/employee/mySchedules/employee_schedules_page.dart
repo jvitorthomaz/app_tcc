@@ -239,10 +239,10 @@ class _EmployeeSchedulesPageState extends ConsumerState<EmployeeSchedulesPage> {
                                       style: ElevatedButton.styleFrom(
                                         padding: const EdgeInsets.symmetric(horizontal: 15)
                                       ),
-                                      onPressed: () {
+                                      onPressed: ()async {
                                         print(calendarTapDetails.appointments!.first.id);
                                         Navigator.pop(context);
-                                        Navigator.of(context).pushNamed(
+                                        await Navigator.of(context).pushNamed(
                                           '/employee/updateSchedule', 
                                           arguments: [userModel, calendarTapDetails.appointments!.first]
                                         );

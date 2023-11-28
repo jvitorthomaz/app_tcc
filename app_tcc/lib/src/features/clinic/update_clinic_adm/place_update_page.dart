@@ -144,6 +144,18 @@ class _PlaceUpdatePageState extends ConsumerState<PlaceUpdatePage> {
                      MessagesHelper.showErrorSnackBar('O Campos digitados estão inválidos', context);
 
                     case true:
+                      final PlaceUpdateState(
+                        openingDays: List(isNotEmpty: hasOpenigDays),
+                        openingHours: List(isNotEmpty: hasOpeningHours)
+                      ) = ref.watch(placeUpdateVmProvider);
+
+                      if (!hasOpenigDays || !hasOpenigDays) {
+                        MessagesHelper.showErrorSnackBar(
+                          'Por favor, selecione os dias das semana e horário de atendimento.', 
+                          context,
+                        );
+                        return;
+                      }
                     placeUpdateVm.update(
                       placeId: clinicData.id,
                       name: nameEC.text,

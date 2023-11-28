@@ -1,5 +1,6 @@
 sealed class UserModel {
   final int id;
+  //final String firebaseUUID;
   final String name;
   final String email;
   //final String cpf;
@@ -8,8 +9,10 @@ sealed class UserModel {
 
   UserModel({
     required this.id,
+    //required this.firebaseUUID,
     required this.name,
     required this.email,
+
     //required this.cpf,
     //required this.telefone,
     this.avatar,
@@ -32,8 +35,10 @@ final class AdmUserModel extends UserModel {
 
   AdmUserModel({
     required super.id,
+    //required super.firebaseUUID,
     required super.name,
     required super.email,
+    //required super.firebaseUUID,
     //required super.cpf,
     //required super.telefone, 
     super.avatar,
@@ -46,6 +51,7 @@ final class AdmUserModel extends UserModel {
     return switch (json) {
       {
         'id': final int id,
+        //'firebaseUUID': final String firebaseUUID,
         'name': final String name,
         'email': final String email,
         //'cpf': final String cpf,
@@ -54,6 +60,7 @@ final class AdmUserModel extends UserModel {
       } =>
         AdmUserModel(
           id: id,
+          //firebaseUUID: firebaseUUID,
           name: name,
           email: email,
           //cpf: cpf,
@@ -76,6 +83,7 @@ final class EmployeeUserModel extends UserModel {
 
   EmployeeUserModel({
     required super.id,
+    //required super.firebaseUUID,
     required super.name,
     required super.email,
     //required super.cpf,
@@ -90,6 +98,7 @@ final class EmployeeUserModel extends UserModel {
     return switch (json) {
       {
         'id': final int id,
+        //'firebaseUUID': final String firebaseUUID,
         'name': final String name,
         'email': final String email,
         //'cpf': final String cpf,
@@ -102,6 +111,7 @@ final class EmployeeUserModel extends UserModel {
           id: id,
           name: name,
           email: email,
+          //firebaseUUID: firebaseUUID,
           //cpf: cpf,
           //telefone: telefone,
           workDays: workDays.cast<String>(),

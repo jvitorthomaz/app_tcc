@@ -222,16 +222,30 @@ class _UpdateSchedulesPageState extends ConsumerState<UpdateSchedulesPage> {
                         MessagesHelper.showErrorSnackBar('Os dados estão incompletos', context);
           
                         case true:
+
+                          // final UpdateSchedulesState(
+                          //   scheduleDate: ,
+                          //   scheduleTime: ,
+                          // ) = ref.watch(updateSchedulesVmProvider);
+
+                          // if (!hasWorkDays || !hasWorkHours) {
+                          //   MessagesHelper.showErrorSnackBar(
+                          //     'Por favor, selecione os dias das semana e horário de atendimento.', 
+                          //     context,
+                          //   );
+                          //   return;
+                          // }
+                        
                           // //   login(emailEC.text, passwordEC.text);
                           final hourSelected = ref.watch(
                             updateSchedulesVmProvider.select((state) => state.scheduleTime != null),
                           );
                           if (hourSelected) {
                             schedulesVm.update(
-                            userModel: userModel,
-                            clientName: clientEC.text, 
-                            scheduleId: scheduleModel.id,
-                          );
+                              userModel: userModel,
+                              clientName: clientEC.text, 
+                              scheduleId: scheduleModel.id,
+                            );
           
                           } else {
                             MessagesHelper.showErrorSnackBar('Por favor selecione um horário de atendimento', context);

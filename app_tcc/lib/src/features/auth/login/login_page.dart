@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tcc_app/src/core/constants/globalConst.dart';
 import 'package:tcc_app/src/core/ui/constants.dart';
 import 'package:tcc_app/src/core/ui/defaults_snackbar/show_snackbar.dart';
 import 'package:tcc_app/src/core/ui/helpers/forms_helper.dart';
@@ -22,6 +23,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
   final formKey = GlobalKey<FormState>();
   final emailEC = TextEditingController();
   final passwordEC = TextEditingController();
+  bool obscure = true;
 
   AuthRepositoryImpl authRepository = AuthRepositoryImpl();
 
@@ -56,10 +58,12 @@ class _LoginPageState extends ConsumerState<LoginPage> {
 
 
         case LoginState(status: LoginStateStatus.admLogin):
+          GlobalConst.isADM = true;
           Navigator.of(context).pushNamedAndRemoveUntil('/home/admUser', (route) => false);
           break;
 
         case LoginState(status: LoginStateStatus.employeeLogin):
+          GlobalConst.isADM = false;
           Navigator.of(context).pushNamedAndRemoveUntil('/home/employeeUser', (route) => false);
           break;
 
@@ -145,14 +149,21 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                               Validatorless.required('A Senha é obrigatória'),
                               Validatorless.min(6, 'A Senha deve conter pelo menos 6 caracteres'), 
                             ]),
-                            obscureText: true,
+                            obscureText: obscure, //true,
                             controller: passwordEC,
-                            decoration: const InputDecoration(
+                            decoration: InputDecoration(
                               label: Text('Senha'),
                               hintText: 'Senha',
                               floatingLabelBehavior: FloatingLabelBehavior.never,
                               labelStyle: TextStyle(color: Colors.black),
                               hintStyle: TextStyle(color: Colors.black),
+                              suffixIcon: IconButton(
+                                onPressed: () => setState(() => obscure = !obscure),
+                                icon: Icon(
+                                  obscure ? Icons.visibility : Icons.visibility_off,
+                                  color: AppColors.colorGreen,
+                                )
+                              ),
                             ),
                           ),
                           // const SizedBox(
@@ -257,7 +268,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
         TextEditingController redefincaoSenhaController =
           TextEditingController(text: email);
         var height = MediaQuery.of(context).size.height;
-        var width = MediaQuery.of(context).size.width;
+        //var width = MediaQuery.of(context).size.width;
         return SizedBox(
           child: AlertDialog(
             insetPadding: EdgeInsets.all(10),

@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:tcc_app/src/core/constants/globalConst.dart';
 import 'package:tcc_app/src/core/providers/aplication_providers.dart';
 import 'package:tcc_app/src/core/ui/constants.dart';
 import 'package:tcc_app/src/core/ui/widgets/app_loader.dart';
@@ -40,17 +41,32 @@ class UserClinicProfilePage extends ConsumerWidget {
             appBar: AppBar(
               title: const Text('Minha Clínica'),
               actions: [
-                IconButton(
-                  onPressed: () async{
-                    await Navigator.of(context).pushNamed('/updateClinic', arguments: placeModel);
+                Offstage(
+                  offstage: !GlobalConst.isADM,
+                  child: IconButton(
+                    onPressed: () async{
+                      await Navigator.of(context).pushNamed('/updateClinic', arguments: placeModel);
 
-                  }, 
-                  icon: const Icon(
-                    // Icons.work_outline,
-                    Icons.edit,
-                    color: Colors.green,
-                  ),
+                    }, 
+                    icon: const Icon(
+                      // Icons.work_outline,
+                      Icons.edit,
+                      color: Colors.green,
+                    ),
+                  )
+
                 )
+                // IconButton(
+                //   onPressed: () async{
+                //     await Navigator.of(context).pushNamed('/updateClinic', arguments: placeModel);
+
+                //   }, 
+                //   icon: const Icon(
+                //     // Icons.work_outline,
+                //     Icons.edit,
+                //     color: Colors.green,
+                //   ),
+                // )
               ],
             ),
             

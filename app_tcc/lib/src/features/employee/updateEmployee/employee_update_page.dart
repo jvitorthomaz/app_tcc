@@ -150,19 +150,19 @@ class _EmployeeUpdatePageState extends ConsumerState<EmployeeUpdatePage> {
                       const SizedBox(
                         height: 30,
                       ),
-                     const Row(
-                        children: [
+                    //  const Row(
+                    //     children: [
                         
-                           Expanded(
-                            child: Text(
-                              'Os campos de Nome e E-mail só podem ser alterados pelo próprio usuario em sua tela de Perfil',
-                              style: TextStyle(
-                                fontSize: 14,
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
+                    //        Expanded(
+                    //         child: Text(
+                    //           'Os campos de Nome e E-mail só podem ser alterados pelo próprio usuario em sua tela de Perfil',
+                    //           style: TextStyle(
+                    //             fontSize: 14,
+                    //           ),
+                    //         ),
+                    //       )
+                    //     ],
+                    //   ),
                       Offstage(
                         offstage: isAdm,
                         child: Column(
@@ -266,7 +266,7 @@ class _EmployeeUpdatePageState extends ConsumerState<EmployeeUpdatePage> {
 
                               if (!hasWorkDays || !hasWorkHours) {
                                 MessagesHelper.showErrorSnackBar(
-                                  'Por favor, selecione os dias das semana e horário de atendimento para editar', 
+                                  'Por favor, selecione os dias das semana e horário de atendimento.', 
                                   context,
                                 );
                                 return;
@@ -285,7 +285,7 @@ class _EmployeeUpdatePageState extends ConsumerState<EmployeeUpdatePage> {
                              Navigator.of(context).pop();
                           }
                         }, 
-                        child: Text('Editar')
+                        child: const Text('Alterar'),
                       )
                       
               

@@ -441,56 +441,54 @@ class UserRepositoryImpl implements UserRespository {
   ) async{
     try {
       // final userModelResult = await me();
+      // final name = userModel.name;
+      // final email = userModel.email;
+      // const password = '123123';
 
-      print("====================");
-      print("====================");
-      print("E-mail entrando no repository");
-      print(userModel.email);
-      print("====================");
-      print("====================");
-      print("====================");
-
-      final name = userModel.name;
-      final email = userModel.email;
-      const password = '123123';
-
-      await authRepository.updateUserProfileFirebase(email, name, password);
+      // await authRepository.updateUserProfileFirebase(email, name, password);
 
       final int userId = userModel.userId;
+      await restClient.auth.put('/users/$userId', data: {
+        'name': userModel.name,
+        'email': userModel.email,
+        'work_days': userModel.workDays,
+        'work_hours': userModel.workHours,
+      });
 
-      if (userModel.workDays.isEmpty && userModel.workHours.isEmpty) {
 
-        await restClient.auth.put('/users/$userId', data: {
-          'name': userModel.name,
-          'email': userModel.email,
-        });
+      // if (userModel.workDays.isEmpty && userModel.workHours.isEmpty) {
+
+      //   await restClient.auth.put('/users/$userId', data: {
+      //     'name': userModel.name,
+      //     'email': userModel.email,
+      //   });
         
-      } else if(userModel.workDays.isEmpty){
+      // } else if(userModel.workDays.isEmpty){
 
-        await restClient.auth.put('/users/$userId', data: {
-          'name': userModel.name,
-          'email': userModel.email,
-          'work_hours': userModel.workHours,
-        });
+      //   await restClient.auth.put('/users/$userId', data: {
+      //     'name': userModel.name,
+      //     'email': userModel.email,
+      //     'work_hours': userModel.workHours,
+      //   });
         
-      } else if(userModel.workHours.isEmpty){
+      // } else if(userModel.workHours.isEmpty){
         
-        await restClient.auth.put('/users/$userId', data: {
-          'name': userModel.name,
-          'email': userModel.email,
-          'work_days': userModel.workDays,
-        });
+      //   await restClient.auth.put('/users/$userId', data: {
+      //     'name': userModel.name,
+      //     'email': userModel.email,
+      //     'work_days': userModel.workDays,
+      //   });
 
 
-      } else {
-        await restClient.auth.put('/users/$userId', data: {
-          'name': userModel.name,
-          'email': userModel.email,
-          'work_days': userModel.workDays,
-          'work_hours': userModel.workHours,
-        });
+      // } else {
+      //   await restClient.auth.put('/users/$userId', data: {
+      //     'name': userModel.name,
+      //     'email': userModel.email,
+      //     'work_days': userModel.workDays,
+      //     'work_hours': userModel.workHours,
+      //   });
 
-      }
+      // }
 
 
       return Success(nil);
