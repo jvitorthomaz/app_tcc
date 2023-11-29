@@ -1,11 +1,8 @@
-
-
 import 'package:asyncstate/asyncstate.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:tcc_app/src/core/functionalPrograming/either.dart';
 import 'package:tcc_app/src/core/providers/aplication_providers.dart';
 import 'package:tcc_app/src/features/employee/updateSchedule/update_schedule_state.dart';
-import 'package:tcc_app/src/features/schedules/schedules_state.dart';
 import 'package:tcc_app/src/models/place_model.dart';
 import 'package:tcc_app/src/models/users_model.dart';
 
@@ -72,5 +69,31 @@ class UpdateSchedulesVm extends _$UpdateSchedulesVm{
 
     asyncLoaderHandler.close();
   }
-  
+
+  Future<void> insertScheduleNote(
+    {required String note, required int scheduleId}
+  ) async {
+    final asyncLoaderHandler = AsyncLoaderHandler()..start();
+
+    final scheduleRepository = ref.read(schedulesRepositoryProvider);
+
+    final dto = (
+      note: note,
+      scheduleId: scheduleId,
+    );
+
+    final insertScheduleNote = await scheduleRepository.insertScheduleNote(dto);
+    //final scheduleResult = await scheduleRepository.sheduleClient(dto);
+
+    switch (insertScheduleNote) {
+      case Success():
+        state = state.copyWith(status: UpdateSchedulesStateStatus.success);
+
+      case Failure():
+        state = state.copyWith(status: UpdateSchedulesStateStatus.error);
+        
+    }
+
+    asyncLoaderHandler.close();
+  }
 }

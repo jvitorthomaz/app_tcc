@@ -14,6 +14,7 @@ import 'package:tcc_app/src/features/employee/mySchedules/employee_schedules_pag
 import 'package:tcc_app/src/features/employee/register/employee_register_page.dart';
 import 'package:tcc_app/src/features/employee/updateEmployee/employee_update_page.dart';
 import 'package:tcc_app/src/features/employee/updateSchedule/update_schedule_page.dart';
+import 'package:tcc_app/src/features/history/user_schedules_history_page.dart';
 import 'package:tcc_app/src/features/home/home_adm/home_adm_page.dart';
 import 'package:tcc_app/src/features/home/home_employee/home_employee_page.dart';
 import 'package:tcc_app/src/features/profile/my_profile/my_profile_page.dart';
@@ -54,6 +55,7 @@ class AppWidget extends StatelessWidget {
 
             '/schedule': (_) => const SchedulesPage(),
             '/employee/updateSchedule': (_) => const UpdateSchedulesPage(),
+            '/userSchedulesHistory': (_) => const UserSchedulesHistory(),
 
             '/myProfile': (_) => const MyProfilePage(),
             '/profileEmployee': (_) => const Center(child: Text('tela de perfil Adm')),

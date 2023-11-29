@@ -30,6 +30,7 @@ class SchedulesRepositoryImpl implements SchedulesRepository{
           'place_id': scheduleData.placeId,
           'user_id': scheduleData.userId,
           'client_name': scheduleData.clientName,
+          'schedule_note': '',
           'date': scheduleData.date.toIso8601String(),
           'time': scheduleData.time,
         },
@@ -114,7 +115,7 @@ class SchedulesRepositoryImpl implements SchedulesRepository{
   }
 
 
-    @override
+  @override
   Future<Either<RepositoryException, Nil>> updateSchedule(
     ({int scheduleId, String clientName, DateTime date, int time,}) scheduleData
   ) async{
@@ -175,6 +176,75 @@ class SchedulesRepositoryImpl implements SchedulesRepository{
       );
     } 
 
+  }
+
+
+    @override
+  Future<Either<RepositoryException, List<SchedulesModel>>> getAllSchedules(
+    int userId,) async {
+    try {
+      final Response(:List data) = await restClient.auth.get(
+        '/schedules', queryParameters: {
+          'user_id': userId,
+        }
+      );
+
+      final schedules = data.map((s) => SchedulesModel.fromMap(s)).toList();
+      return Success(schedules);
+
+    } on DioException catch (e, s) {
+      log('Erro ao buscar agendamentos de uma data', error: e, stackTrace: s);
+
+      return Failure(
+        RepositoryException(
+          message: 'Erro ao buscar agendamentos de uma data'
+        )
+      );
+
+    } on ArgumentError catch (e, s) {
+      log('Json Invalido', error: e, stackTrace: s);
+  
+      return Failure(RepositoryException(message: 'Json Invalido'));
+    }
+  }
+
+  @override
+  Future<Either<RepositoryException, Nil>> insertScheduleNote(
+    ({int scheduleId, String note}) scheduleData
+  ) async{
+    try {
+      // final userModelResult = await me();
+
+      final int scheduleId = scheduleData.scheduleId;
+
+      // switch (userModelResult) {
+      //   case Success(value: UserModel(:var id)):
+      //     userId = id;
+          
+      //   case Failure(:var exception):
+      //     return Failure(exception);
+      // }
+
+      await restClient.auth.patch('/schedules/$scheduleId', data: {
+        'schedule_note': scheduleData.note,
+      });
+
+      return Success(nil);
+
+    } on DioException catch (e, s) {
+
+      log(
+        'Erro ao inserir nota sobre agendamento',
+        error: e, 
+        stackTrace: s
+      );
+
+      return Failure(
+        RepositoryException(
+          message: 'Erro ao editar agendamento'
+        )
+      );
+    }
   }
   
 }

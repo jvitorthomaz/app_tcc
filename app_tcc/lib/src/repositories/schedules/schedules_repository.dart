@@ -23,7 +23,7 @@ abstract interface class SchedulesRepository {
     }) filter 
   );
 
-      Future<Either<RepositoryException, Nil>> updateSchedule(
+  Future<Either<RepositoryException, Nil>> updateSchedule(
     ({
       //String name,
       //int placeId, 
@@ -35,4 +35,14 @@ abstract interface class SchedulesRepository {
   );
 
   Future<Either<RepositoryException, Nil>> deleteSchedule( int idSchedule );
+
+  Future<Either<RepositoryException, List<SchedulesModel>>> getAllSchedules(int userId);
+
+
+  Future<Either<RepositoryException, Nil>> insertScheduleNote(
+    ({
+      int scheduleId,
+      String note
+    }) scheduleData
+  );
 }

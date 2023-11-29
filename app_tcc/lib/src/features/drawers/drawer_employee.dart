@@ -85,6 +85,17 @@ class _DrawerEmployeeState extends ConsumerState<DrawerEmployee> {
 
               ListTile(
                 leading: const Icon(
+                  Icons.history,
+                  color: Colors.green,
+                ),
+                title: const Text("Histórico de agendamentos"),
+                onTap: () async{
+                  await Navigator.of(context).pushNamed('/userSchedulesHistory', arguments: myInfoData);
+                },
+              ),
+
+              ListTile(
+                leading: const Icon(
                   Icons.key,
                   color: Colors.green,
                 ),

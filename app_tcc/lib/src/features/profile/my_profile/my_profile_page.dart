@@ -54,26 +54,140 @@ class MyProfilePage extends ConsumerWidget {
       
       body: 
 
-      // placeAsyncValue.when(
-      //   error: (error, stackTrace) {
-      //     log(
-      //       'Erro ao carregar a página',
-      //       error: error, 
-      //       stackTrace: stackTrace
-      //     );
-      //     return const Center(
-      //       child: Column(
-      //         children: [
-      //           Icon(Icons.info_outline, size: 50,),
-      //           Text('Erro ao carregar a página'),
-      //         ],
-      //       ),
-      //     );
-      //   }, 
-      //   loading: () => const AppLoader(),
-      //   data: (placeModel){
-      //     final PlaceModel(:openingDays, :openingHours) = placeModel;
-      //     return 
+      placeAsyncValue.when(
+        error: (error, stackTrace) {
+          log(
+            'Erro ao carregar a página',
+            error: error, 
+            stackTrace: stackTrace
+          );
+          // return const Center(
+          //   child: Column(
+          //     children: [
+          //       Icon(Icons.info_outline, size: 50,),
+          //       Text('Erro ao carregar a página'),
+          //     ],
+          //   ),
+          // );
+          return Padding(
+            padding: const EdgeInsets.all(0.0),
+            child: SingleChildScrollView(
+              child: Center(
+                child: Column(
+                  //mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                   //Container(
+                    //   width: 350, 
+                    //   height: 200,
+                      
+                    //   margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                    //   padding: const EdgeInsets.all(10),
+                    //   decoration: BoxDecoration(
+
+                       
+                        
+                    //     //borderRadius: BorderRadius.circular(10),
+                    //     //border: Border.all(color: AppColors.colorGreen, width: 2),
+                    //   ),
+                    //   child: Text('Foto'),
+                    // ),
+
+                    //const Divider(thickness: 1,),
+
+
+                    Container(
+                      width: 350, 
+                      height: 80,
+                      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                      padding: const EdgeInsets.all(10),
+                      decoration: const BoxDecoration(
+                        //borderRadius: BorderRadius.circular(10),
+                        //border: Border.all(color: AppColors.colorGreen, width: 2),
+                      ),
+
+
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'Nome:',
+                            style: TextStyle(
+                              color: AppColors.colorGreen,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          Expanded(
+                            child: Text(
+                              userModel.name,
+                              overflow: TextOverflow.ellipsis,
+                              //maxLines: 2,
+                              softWrap: true,
+                              style: const TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    
+                    ),
+
+                    const Divider(thickness: 2,),
+
+
+                    Container(
+                      width: 350, 
+                      height: 80,
+                      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                      padding: const EdgeInsets.all(10),
+                      decoration: const BoxDecoration(
+                        //borderRadius: BorderRadius.circular(10),
+                        //border: Border.all(color: AppColors.colorGreen, width: 2),
+                      ),
+
+
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'E-mail:',
+                            style: TextStyle(
+                              color: AppColors.colorGreen,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          Expanded(
+                            child: Text(
+                              userModel.email,
+                              overflow: TextOverflow.ellipsis,
+                              //maxLines: 2,
+                              softWrap: true,
+                              style: const TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    
+                    ),
+
+                    const Divider(thickness: 2,),
+                  ]
+                )
+              )
+            )
+          );
+        }, 
+        loading: () => const AppLoader(),
+        data: (placeModel){
+          final PlaceModel(:openingDays, :openingHours) = placeModel;
+          return 
           Padding(
             padding: const EdgeInsets.all(0.0),
             child: SingleChildScrollView(
@@ -293,10 +407,10 @@ class MyProfilePage extends ConsumerWidget {
                 ),
               ),
             ),
-          )
+          );
 
-      //   }
-      // )
+        }
+      )
     );
   }
 }

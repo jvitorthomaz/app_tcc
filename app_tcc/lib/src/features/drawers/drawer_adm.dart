@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tcc_app/src/core/providers/aplication_providers.dart';
 import 'package:tcc_app/src/core/ui/app_icons.dart';
 import 'package:tcc_app/src/core/ui/constants.dart';
-import 'package:tcc_app/src/core/ui/defaults_dialogs/delete_account_confirmation_dialog.dart';
 import 'package:tcc_app/src/core/ui/widgets/app_loader.dart';
 import 'package:tcc_app/src/features/home/home_adm/home_adm_vm.dart';
 import 'package:tcc_app/src/repositories/user/auth_repository_impl.dart';
@@ -72,7 +71,6 @@ class _DrawerAdmState extends ConsumerState<DrawerAdm> {
                 },
               ),
 
-
               ListTile(
                 leading: const Icon(
                   Icons.work,
@@ -81,6 +79,17 @@ class _DrawerAdmState extends ConsumerState<DrawerAdm> {
                 title: const Text("Clínica"),
                 onTap: () async{
                   await Navigator.of(context).pushNamed('/userClinicProfile',);
+                },
+              ),
+
+              ListTile(
+                leading: const Icon(
+                  Icons.history,
+                  color: Colors.green,
+                ),
+                title: const Text("Histórico de agendamentos"),
+                onTap: () async{
+                  await Navigator.of(context).pushNamed('/userSchedulesHistory', arguments: myInfoData);
                 },
               ),
 
@@ -95,8 +104,6 @@ class _DrawerAdmState extends ConsumerState<DrawerAdm> {
               //     await Navigator.of(context).pushNamed('/updateClinic', arguments: clinicInfo);
               //   },
               // ),
-
-
 
               ListTile(
                 leading: const Icon(
@@ -140,6 +147,8 @@ class _DrawerAdmState extends ConsumerState<DrawerAdm> {
                         idUserSelected: myInfoData.id, 
 
                       );
+
+
                     },
                   ),
                 ],

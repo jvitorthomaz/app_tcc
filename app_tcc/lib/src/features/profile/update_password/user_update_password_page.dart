@@ -48,12 +48,15 @@ class _UserUpdatePasswordPageState extends ConsumerState<UserUpdatePasswordPage>
         case UserUpdatePasswordStateStatus.initial:
           break;
         case UserUpdatePasswordStateStatus.success:
-          print('----------------\n----------------\nEntrou no case\n--------------\n--------------');
-            showSnackBar(
-              context: context,
-              mensagem: "Senha alterada com sucesso!",
-              isErro: false,
-            );
+          MessagesHelper.showSuccessSnackBar(
+            'Senha alterada com sucesso!', 
+            context
+          );
+            // showSnackBar(
+            //   context: context,
+            //   mensagem: "Senha alterada com sucesso!",
+            //   isErro: false,
+            // );
           Navigator.of(context).pop();
           //Navigator.of(context).pushNamedAndRemoveUntil('/auth/register/place', (route) => false);
 
