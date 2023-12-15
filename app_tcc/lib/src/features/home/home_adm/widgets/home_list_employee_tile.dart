@@ -1,3 +1,4 @@
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tcc_app/src/core/providers/aplication_providers.dart';
@@ -28,7 +29,13 @@ class HomeListEmployeeTile extends ConsumerStatefulWidget {
 
 class _HomeListEmployeeTileState extends ConsumerState<HomeListEmployeeTile> {
 
-
+// @override
+// void initState() {
+//   imageCache.clear();
+//   imageCache.clearLiveImages();
+//   super.initState();
+  
+// }
   @override
   Widget build(BuildContext context) {
     final homeState = ref.watch(homeAdmVmProvider);
@@ -106,21 +113,55 @@ class _HomeListEmployeeTileState extends ConsumerState<HomeListEmployeeTile> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    // Container(
-                    //   width: 40,
-                    //   height: 40,
-                    //   decoration: BoxDecoration(
-                    //     image: DecorationImage(
-                    //       image: switch (widget.employee.avatar) {
-                    //         final avatar ? => NetworkImage(avatar),
-                    //         _ => const AssetImage(AppImages.avatarImage),
-                    //       } as ImageProvider,
-                    //     )
-                    //   ),
-                    // ),
-                    // const SizedBox(
-                    //   width: 10,
-                    // ),
+                    Container(
+                      width: 40,
+                      height: 40,
+                      child: FutureBuilder(
+                        future: FirebaseStorage.instance
+                            .ref("${widget.employee.firebaseUUID}/${widget.employee.profileFileName}.png")
+                            .getDownloadURL(),
+                            
+                        builder: (context, snapshot) {
+                          
+                          if (snapshot.connectionState == ConnectionState.waiting) {
+                            return const Center(
+                              child: CircularProgressIndicator()
+                            );
+                          } else if(snapshot.data == null){
+                            print(' list item');
+                            return const CircleAvatar(
+                              radius: 15,
+                              backgroundColor: Colors.white,
+                              child: Icon(
+                                Icons.person_2_outlined, 
+                                size: 25, 
+                                color: AppColors.colorGreen,
+                              ),
+                            );
+                          }
+                          else{
+                            //return Image.network(snapshot.data!);
+                            return CircleAvatar(
+                              radius: 15,
+                              backgroundImage: NetworkImage(snapshot.data!),
+                            );
+                          }
+                          
+                        },
+                        
+                      ),
+                      // decoration: BoxDecoration(
+                      //   image: DecorationImage(
+                      //     image: switch (widget.employee.avatar) {
+                      //       final avatar ? => NetworkImage(avatar),
+                      //       _ => const AssetImage(AppImages.avatarImage),
+                      //     } as ImageProvider,
+                      //   )
+                      // ),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
                     Expanded(
                       child: Text(
                         widget.employee.name,

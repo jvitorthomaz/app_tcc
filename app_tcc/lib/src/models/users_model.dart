@@ -1,15 +1,19 @@
 sealed class UserModel {
   final int id;
-  //final String firebaseUUID;
+  final String? firebaseUUID;
+  final String? profileFileName;
   final String name;
   final String email;
   //final String cpf;
   //final String telefone;
   final String? avatar;
+      //  "firebase_UUID":"",
+      // "profile_file_name":"",
 
   UserModel({
     required this.id,
-    //required this.firebaseUUID,
+    required this.firebaseUUID,
+    required this.profileFileName,
     required this.name,
     required this.email,
 
@@ -35,7 +39,8 @@ final class AdmUserModel extends UserModel {
 
   AdmUserModel({
     required super.id,
-    //required super.firebaseUUID,
+    super.firebaseUUID,
+    super.profileFileName,
     required super.name,
     required super.email,
     //required super.firebaseUUID,
@@ -51,7 +56,8 @@ final class AdmUserModel extends UserModel {
     return switch (json) {
       {
         'id': final int id,
-        //'firebaseUUID': final String firebaseUUID,
+        // 'firebase_UUID': final String firebaseUUID,
+        // 'profile_file_name': final String profileFileName,
         'name': final String name,
         'email': final String email,
         //'cpf': final String cpf,
@@ -60,11 +66,12 @@ final class AdmUserModel extends UserModel {
       } =>
         AdmUserModel(
           id: id,
-          //firebaseUUID: firebaseUUID,
           name: name,
           email: email,
           //cpf: cpf,
           //telefone: telefone,
+          firebaseUUID: json['firebase_UUID'],
+          profileFileName: json['profile_file_name'],
           avatar: json['avatar'],
           workDays: json['work_days']?.cast<String>(),
           workHours: json['work_hours']?.cast<int>(), 
@@ -83,7 +90,8 @@ final class EmployeeUserModel extends UserModel {
 
   EmployeeUserModel({
     required super.id,
-    //required super.firebaseUUID,
+    super.firebaseUUID,
+    super.profileFileName,
     required super.name,
     required super.email,
     //required super.cpf,
@@ -98,7 +106,8 @@ final class EmployeeUserModel extends UserModel {
     return switch (json) {
       {
         'id': final int id,
-        //'firebaseUUID': final String firebaseUUID,
+        // 'firebase_UUID': final String firebaseUUID,
+        // 'profile_file_name': final String profileFileName,
         'name': final String name,
         'email': final String email,
         //'cpf': final String cpf,
@@ -111,7 +120,8 @@ final class EmployeeUserModel extends UserModel {
           id: id,
           name: name,
           email: email,
-          //firebaseUUID: firebaseUUID,
+          firebaseUUID: json['firebase_UUID'],
+          profileFileName: json['profile_file_name'],
           //cpf: cpf,
           //telefone: telefone,
           workDays: workDays.cast<String>(),

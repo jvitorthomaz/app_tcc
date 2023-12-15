@@ -8,7 +8,7 @@ import 'package:tcc_app/src/app_widget.dart';
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    // name: 'my-clinic-app',
+    //name: 'my-clinic-app',
     options: DefaultFirebaseOptions.currentPlatform,
   );
 

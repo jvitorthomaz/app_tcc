@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tcc_app/src/core/providers/aplication_providers.dart';
@@ -11,13 +12,29 @@ class DrawerAdm extends ConsumerStatefulWidget {
   final String? userName;
   final String? useEmail;
 
-  const DrawerAdm({ super.key, this.userName, this.useEmail });
+  const DrawerAdm({ super.key, this.userName, this.useEmail});
 
   @override
   ConsumerState<DrawerAdm> createState() => _DrawerAdmState();
 }
 
 class _DrawerAdmState extends ConsumerState<DrawerAdm> {
+
+
+  final user = FirebaseAuth.instance.currentUser;
+
+
+  @override
+  void initState() {
+    user;
+    super.initState();
+  }
+  // @override
+  // void dispose() {
+  //   user;
+  //   super.dispose();
+  // }
+
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +47,18 @@ class _DrawerAdmState extends ConsumerState<DrawerAdm> {
           return Column(
             children: [
               UserAccountsDrawerHeader(
+                currentAccountPicture: FirebaseAuth.instance.currentUser!.photoURL != null ?
+                CircleAvatar(
+                  backgroundImage: (FirebaseAuth.instance.currentUser!.photoURL != null)
+                      ? NetworkImage(FirebaseAuth.instance.currentUser!.photoURL!)
+                      : null,
+                )
+                :
+                const CircleAvatar(
+                  radius: 20,
+                  backgroundColor: Colors.white,
+                  child: Icon(Icons.person, size: 50, color: AppColors.colorGreen,),
+                ),
                 decoration: const BoxDecoration(
                     color: AppColors.colorGreen
                 ),
@@ -50,6 +79,21 @@ class _DrawerAdmState extends ConsumerState<DrawerAdm> {
                 onTap: () async{
                   await Navigator.of(context).pushNamed('/myProfile', arguments: myInfoData);
                   //showSenhaConfirmacaoDialog(context: context, email: "");
+                },
+              ),
+
+              ListTile(
+                leading: const Icon(
+                  Icons.image,
+                  color: Colors.green,
+                ),
+                title: const Text("Alterar foto de perfil"),
+                onTap: () async {
+                  await Navigator.of(context).pushNamed('/profilePicture', arguments: myInfoData);
+                    //.then((value) => Navigator.of(context).pop());
+                  setState(() {
+                    FirebaseAuth.instance.currentUser;
+                  });
                 },
               ),
 

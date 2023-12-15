@@ -18,6 +18,7 @@ import 'package:tcc_app/src/features/history/user_schedules_history_page.dart';
 import 'package:tcc_app/src/features/home/home_adm/home_adm_page.dart';
 import 'package:tcc_app/src/features/home/home_employee/home_employee_page.dart';
 import 'package:tcc_app/src/features/profile/my_profile/my_profile_page.dart';
+import 'package:tcc_app/src/features/profile/profile_picture/profile_picture_page.dart';
 import 'package:tcc_app/src/features/profile/update_password/user_update_password_page.dart';
 import 'package:tcc_app/src/features/profile/update_profile/profile_update_page.dart';
 import 'package:tcc_app/src/features/schedules/schedules_page.dart';
@@ -61,6 +62,7 @@ class AppWidget extends StatelessWidget {
             '/profileEmployee': (_) => const Center(child: Text('tela de perfil Adm')),
             '/updatePassword': (_) => const UserUpdatePasswordPage(),
             '/updateProfile': (_) => const ProfileUpdatePage(),
+            '/profilePicture':(_) => const ProfilePicturePage(),
             '/userClinicProfile': (_) => const UserClinicProfilePage(),
             '/employeeProfile': (_) => const EmployeeProfilePage(),
             '/updateClinic': (_) => const PlaceUpdatePage(),

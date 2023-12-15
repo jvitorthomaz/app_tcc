@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:tcc_app/src/core/exceptions/auth_exception.dart';
 import 'package:tcc_app/src/core/exceptions/repository_exception.dart';
 import 'package:tcc_app/src/core/functionalPrograming/either.dart';
@@ -70,5 +72,11 @@ abstract interface class UserRespository {
       List<int> workHours,
     }) userModel
   );
+
+  Future<String> uploadUserProfilePicture({
+    required File file,
+    required String fileName,
+    required int userId
+  });
 
 }

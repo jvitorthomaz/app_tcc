@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tcc_app/src/core/providers/aplication_providers.dart';
@@ -18,6 +19,13 @@ class DrawerEmployee extends ConsumerStatefulWidget {
 }
 
 class _DrawerEmployeeState extends ConsumerState<DrawerEmployee> {
+  final user = FirebaseAuth.instance.currentUser;
+
+  @override
+  void initState() {
+    user;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +38,18 @@ class _DrawerEmployeeState extends ConsumerState<DrawerEmployee> {
           return ListView(
             children: [
               UserAccountsDrawerHeader(
+                currentAccountPicture: FirebaseAuth.instance.currentUser!.photoURL != null ?
+                CircleAvatar(
+                  backgroundImage: (FirebaseAuth.instance.currentUser!.photoURL != null)
+                      ? NetworkImage(FirebaseAuth.instance.currentUser!.photoURL!)
+                      : null,
+                )
+                :
+                const CircleAvatar(
+                  radius: 20,
+                  backgroundColor: Colors.white,
+                  child: Icon(Icons.person, size: 50, color: AppColors.colorGreen,),
+                ),
                 decoration: const BoxDecoration(
                     color: AppColors.colorGreen
                 ),
@@ -52,6 +72,21 @@ class _DrawerEmployeeState extends ConsumerState<DrawerEmployee> {
                 title: const Text("Perfil"),
                 onTap: () async{
                   await Navigator.of(context).pushNamed('/myProfile', arguments: myInfoData);
+                },
+              ),
+
+              ListTile(
+                leading: const Icon(
+                  Icons.image,
+                  color: Colors.green,
+                ),
+                title: const Text("Alterar foto de perfil"),
+                onTap: () async {
+                  await Navigator.of(context).pushNamed('/profilePicture', arguments: myInfoData);
+                  //.then((value) => Navigator.of(context).pop());
+                  setState(() {
+                    FirebaseAuth.instance.currentUser;
+                  });
                 },
               ),
 

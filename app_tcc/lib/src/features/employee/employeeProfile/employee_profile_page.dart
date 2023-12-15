@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tcc_app/src/core/providers/aplication_providers.dart';
@@ -34,7 +35,7 @@ class EmployeeProfilePage extends ConsumerWidget {
 
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Meu perfil'),),
+      appBar: AppBar(title: const Text('Perfil de colaborador'),),
       
       body: 
 
@@ -66,23 +67,60 @@ class EmployeeProfilePage extends ConsumerWidget {
                   //mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                   //Container(
-                    //   width: 350, 
-                    //   height: 200,
+                   Container(
+                      // width: 350, 
+                      // height: 200,
                       
-                    //   margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                    //   padding: const EdgeInsets.all(10),
-                    //   decoration: BoxDecoration(
+                      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
 
                        
                         
-                    //     //borderRadius: BorderRadius.circular(10),
-                    //     //border: Border.all(color: AppColors.colorGreen, width: 2),
-                    //   ),
-                    //   child: Text('Foto'),
-                    // ),
+                        //borderRadius: BorderRadius.circular(10),
+                        //border: Border.all(color: AppColors.colorGreen, width: 2),
+                      ),
+                      child: FutureBuilder(
+                        future: FirebaseStorage.instance
+                            .ref("${userModel.firebaseUUID}/${userModel.profileFileName}.png")
+                            .getDownloadURL(),
+                        builder: (context, snapshot) {
+                          
+                          if (snapshot.connectionState == ConnectionState.waiting) {
+                            return const Center(
+                              child: CircularProgressIndicator()
+                            );
+                          } else if(snapshot.data == null){
+                            return const CircleAvatar(
+                              radius: 64,
+                              child: Icon(
+                                Icons.person, 
+                                size: 50,
+                                color: AppColors.colorGreen,
+                              ),
+                            );
+                            // return const CircleAvatar(
+                            //   radius: 15,
+                            //   backgroundColor: Colors.white,
+                            //   child: Icon(
+                            //     Icons.person_2_outlined, 
+                            //     size: 25, 
+                            //     color: AppColors.colorGreen,
+                            //   ),
+                            // );
+                          }
+                          else{
+                            //return Image.network(snapshot.data!);
+                            return CircleAvatar(
+                              radius: 64,
+                              backgroundImage: NetworkImage(snapshot.data!),
+                            );
+                          }
+                        },
+                      ),
+                    ),
 
-                    //const Divider(thickness: 2,),
+                    const Divider(thickness: 2,),
 
 
                     Container(

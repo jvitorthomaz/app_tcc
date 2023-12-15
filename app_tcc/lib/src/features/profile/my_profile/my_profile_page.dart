@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tcc_app/src/core/providers/aplication_providers.dart';
@@ -8,21 +9,36 @@ import 'package:tcc_app/src/core/ui/widgets/app_loader.dart';
 import 'package:tcc_app/src/models/place_model.dart';
 import 'package:tcc_app/src/models/users_model.dart';
 
-class MyProfilePage extends ConsumerWidget {
+class MyProfilePage extends ConsumerStatefulWidget {
 
   const MyProfilePage({ super.key });
 
+  @override
+  ConsumerState<MyProfilePage> createState() => _MyProfilePageState();
+}
+
+class _MyProfilePageState extends ConsumerState<MyProfilePage> {
+
+  final user = FirebaseAuth.instance.currentUser;
+  @override
+  void initState() {
+    user;
+    super.initState();
+  }
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final userModel = ModalRoute.of(context)!.settings.arguments as UserModel;
     final myInfo = ref.watch(getMeProvider);
     final placeAsyncValue = ref.watch(getAdmPlaceProvider);
+    //  final user = FirebaseAuth.instance.currentUser;
 
     final userData = switch (userModel) {
       AdmUserModel(:final workDays, :final workHours) => (
-        workDays: workDays!,
-        workHours: workHours!,
+        workDays: workDays != null ? workDays :  [],
+        workHours: workHours != null ? workHours :  [],
+        // workDays: workDays!,
+        // workHours: workHours!,
       ),
 
       EmployeeUserModel(:final workDays, :final workHours) => (
@@ -32,6 +48,7 @@ class MyProfilePage extends ConsumerWidget {
 
     };
 
+    
 
     return Scaffold(
       appBar: AppBar(
@@ -77,23 +94,38 @@ class MyProfilePage extends ConsumerWidget {
                   //mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                   //Container(
-                    //   width: 350, 
-                    //   height: 200,
+                   Container(
+                      width: 350, 
+                      height: 200,
                       
-                    //   margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                    //   padding: const EdgeInsets.all(10),
-                    //   decoration: BoxDecoration(
+                      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        //borderRadius: BorderRadius.circular(10),
+                        //border: Border.all(color: AppColors.colorGreen, width: 2),
+                      ),
+                      child: 
+                          (FirebaseAuth.instance.currentUser!.photoURL != null) ? 
+                          ClipRRect(
+                              borderRadius: BorderRadius.circular(64),
+                              child: Image.network(
+                                FirebaseAuth.instance.currentUser!.photoURL!,
+                                width: 128,
+                                height: 128,
+                                fit: BoxFit.cover,
+                              ),
+                            )
+                          : const CircleAvatar(
+                              radius: 64,
+                              child: Icon(
+                                Icons.person, 
+                                size: 50,
+                                color: AppColors.colorGreen,
+                              ),
+                            ),
+                    ),
 
-                       
-                        
-                    //     //borderRadius: BorderRadius.circular(10),
-                    //     //border: Border.all(color: AppColors.colorGreen, width: 2),
-                    //   ),
-                    //   child: Text('Foto'),
-                    // ),
-
-                    //const Divider(thickness: 1,),
+                    const Divider(thickness: 2,),
 
 
                     Container(
@@ -196,23 +228,40 @@ class MyProfilePage extends ConsumerWidget {
                   //mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                   //Container(
-                    //   width: 350, 
-                    //   height: 200,
+                    Container(
+                      // width: 350, 
+                      // height: 200,
                       
-                    //   margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                    //   padding: const EdgeInsets.all(10),
-                    //   decoration: BoxDecoration(
+                      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        //borderRadius: BorderRadius.circular(10),
+                        //border: Border.all(color: AppColors.colorGreen, width: 2),
+                      ),
+                      child: SizedBox(
+                        child: 
+                        (FirebaseAuth.instance.currentUser!.photoURL != null) ? 
+                          CircleAvatar(
+                            radius: 70,
+                            backgroundImage: NetworkImage(
+                              FirebaseAuth.instance.currentUser!.photoURL!,
+                              
+                            )
+                               
+                          )
+                          : const CircleAvatar(
+                              radius: 64,
+                              child: Icon(
+                                Icons.person,
+                                size: 50,
+                                color: AppColors.colorGreen,
+                              ),
+                            ),
+                      ),
+                          
+                    ),
 
-                       
-                        
-                    //     //borderRadius: BorderRadius.circular(10),
-                    //     //border: Border.all(color: AppColors.colorGreen, width: 2),
-                    //   ),
-                    //   child: Text('Foto'),
-                    // ),
-
-                    //const Divider(thickness: 1,),
+                    const Divider(thickness: 2,),
 
 
                     Container(

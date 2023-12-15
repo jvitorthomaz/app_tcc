@@ -5,12 +5,14 @@ import 'package:tcc_app/src/core/restClient/interceptors/auth_interceptor.dart';
 final class RestClient extends DioForNative{
   RestClient() : super(
     BaseOptions(
+      //baseUrl: 'http://186.217.114.84:8080',
+      //baseUrl: 'http://10.255.1.74:8080',
+     baseUrl: 'http://192.168.1.184:8080',
       //baseUrl: 'http://192.168.0.12:8080',
       //baseUrl: 'http://192.168.0.7:8080',
-      baseUrl: 'http://192.168.1.184:8080',
-     // baseUrl: 'http://localhost:8080',
+     //baseUrl: 'http://localhost:8080',
      // baseUrl: 'http://0.0.0.0:8080',
-    //  baseUrl: 'http://192.168.0.2:8080',
+      //baseUrl: 'http://192.168.0.3:8080',
     //  baseUrl: 'http://192.168.0.14:8080',
 
       connectTimeout: const Duration(seconds: 20),
