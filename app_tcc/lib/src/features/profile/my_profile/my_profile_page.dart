@@ -35,8 +35,10 @@ class _MyProfilePageState extends ConsumerState<MyProfilePage> {
 
     final userData = switch (userModel) {
       AdmUserModel(:final workDays, :final workHours) => (
-        workDays: workDays != null ? workDays :  [],
-        workHours: workHours != null ? workHours :  [],
+        workDays: workDays ?? [],
+        workHours: workHours ?? [],
+        //workDays: workDays != null ? workDays :  [],
+        //workHours: workHours != null ? workHours :  [],
         // workDays: workDays!,
         // workHours: workHours!,
       ),
