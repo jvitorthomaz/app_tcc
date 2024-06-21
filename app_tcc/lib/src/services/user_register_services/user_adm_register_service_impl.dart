@@ -18,17 +18,6 @@ class UserAdmRegisterServiceImpl implements UserAdmRegisterService{
   
   @override
   Future<Either<ServiceException, Nil>> execute(({String email, String name, String password}) userData) async{
-      // final firebaseAuth = FirebaseAuth.instance;
-
-      // final userMethods = await firebaseAuth.fetchSignInMethodsForEmail(userData.email);
-
-      // print('=====================');
-      // print(userMethods);
-      // print('=====================');
-      // if (userMethods.isNotEmpty) {
-      //   throw UserExistsException();
-      // }
-
     final registerResult = await userRepository.registerUserAdm(userData);
 
     switch(registerResult) {

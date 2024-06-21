@@ -48,12 +48,10 @@ class _LoginPageState extends ConsumerState<LoginPage> {
           break;
 
         case LoginState(status: LoginStateStatus.error, errorMessage: final errorMessage?):
-          // context.showError(errorMessage);
           MessagesHelper.showErrorSnackBar(errorMessage, context);
 
 
         case LoginState(status: LoginStateStatus.error):
-          // context.showError('Erro ao realizar login');
           MessagesHelper.showErrorSnackBar('Ocorreu um erro ao realizar a login', context);
 
 
@@ -72,20 +70,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
 
     return Scaffold(
       backgroundColor: AppColors.colorWhite,
-      //Tirar imagem e deixar cor de fundo igual ã da tela de login
-      //backgroundColor: Colors.black,
       body: 
-      // DecoratedBox(
-      //   decoration: const BoxDecoration(
-      //     image: DecorationImage(
-      //       image: AssetImage(
-      //         AppImages.backgroundImage,
-      //       ),
-      //       opacity: 0.2,
-      //       fit: BoxFit.cover,
-      //     )
-      //   ),
-      // child: 
         Form(
           key: formKey,
           child: Padding(
@@ -145,7 +130,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
 
                           TextFormField(
                             onTapOutside: (_) => context.unfocus(),
-                             validator: Validatorless.multiple([
+                            validator: Validatorless.multiple([
                               Validatorless.required('A Senha é obrigatória'),
                               Validatorless.min(6, 'A Senha deve conter pelo menos 6 caracteres'), 
                             ]),
@@ -166,18 +151,6 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                               ),
                             ),
                           ),
-                          // const SizedBox(
-                          //    height: 15,
-                          // ),
-
-
-                          // Align(
-                          //   alignment: Alignment.centerLeft,
-                          //   child: Text(
-                          //     'Esqueceu a senha?', 
-                          //     style: TextStyle(fontSize: 14, color: AppColors.colorBlack),
-                          //   )
-                          // ),
         
                           const SizedBox(
                              height: 24,
@@ -207,15 +180,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
-                              //  InkWell(
-                              //   onTap: () {
-                              //     handleForgotPassword(height, width);
-                              //   },
-                              //   child: const Text(
-                              //     'Redefinir senha', 
-                              //     style: TextStyle(fontSize: 12, color: AppColors.colorBlack),
-                              //   ),
-                              // ),
+
                               InkWell(
                                 onTap: () {
                                   Navigator.of(context).pushNamed('/auth/register/user');
@@ -233,18 +198,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                           )
                         ],
                       ),
-                      // const Align(
-                      //   alignment: Alignment.bottomCenter,
-                      
-                      //   child: Text(
-                      //     'Criar conta', 
-                      //     style: TextStyle(
-                      //       fontSize: 16,
-                      //       color: AppColors.colorBlack,
-                      //       fontWeight: FontWeight.w500,
-                      //     ),
-                      //   )
-                      // ),
+
                     ],
                   )
                 )
@@ -258,8 +212,6 @@ class _LoginPageState extends ConsumerState<LoginPage> {
 
   handleForgotPassword(height, width) {
 
-    // return Theme(
-    //       data: ThemeData(dialogBackgroundColor: Colors.white),
     String email = emailEC.text;
     
     return showDialog(
@@ -296,7 +248,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                      height: 10,
                   ),
                   TextFormField(
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 16,
                       color: AppColors.colorBlack,
                     ),
@@ -343,7 +295,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                      
         
                     }, 
-                    child: Text(
+                    child: const Text(
                     'Redefinir Senha', style: TextStyle(
                         fontSize: 16,)
                     

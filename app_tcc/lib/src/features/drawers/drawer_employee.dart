@@ -53,15 +53,11 @@ class _DrawerEmployeeState extends ConsumerState<DrawerEmployee> {
                 decoration: const BoxDecoration(
                     color: AppColors.colorGreen
                 ),
-                // currentAccountPicture: const CircleAvatar(
-                //   backgroundColor: Colors.white,
-                // ),
+                
                 accountName: Text(
                   myInfoData.name
                 ),
                 accountEmail: Text(myInfoData.email),
-                
-                //arrowColor: Colors.black,
               ),
 
               ListTile(
@@ -83,7 +79,6 @@ class _DrawerEmployeeState extends ConsumerState<DrawerEmployee> {
                 title: const Text("Alterar foto de perfil"),
                 onTap: () async {
                   await Navigator.of(context).pushNamed('/profilePicture', arguments: myInfoData);
-                  //.then((value) => Navigator.of(context).pop());
                   setState(() {
                     FirebaseAuth.instance.currentUser;
                   });
@@ -92,12 +87,10 @@ class _DrawerEmployeeState extends ConsumerState<DrawerEmployee> {
 
               ListTile(
                 leading: const Icon(
-                  //Icons.person_2_outlined,
                   Icons.mode_edit,
                   color: Colors.green,
                 ),
                 title: const Text("Editar meus horários"),
-                //  title: const Text("Editar Perfil"),
                 onTap: () async{
                   Navigator.of(context).pop();
                   await Navigator.of(context).pushNamed('/updateProfile', arguments: myInfoData);
@@ -113,8 +106,6 @@ class _DrawerEmployeeState extends ConsumerState<DrawerEmployee> {
                 title: const Text("Clínica"),
                 onTap: () async{
                   await Navigator.of(context).pushNamed('/userClinicProfile',);
-                  
-                  //showSenhaConfirmacaoDialog(context: context, email: "");
                 },
               ),
 
@@ -136,7 +127,6 @@ class _DrawerEmployeeState extends ConsumerState<DrawerEmployee> {
                 ),
                 title: const Text("Alterar senha"),
                 onTap: () async{
-                  //Navigator.of(context).pop();
                   await Navigator.of(context).pushNamed('/updatePassword');
                   ref.invalidate(getMeProvider);  
                   ref.invalidate(homeAdmVmProvider);
@@ -144,7 +134,6 @@ class _DrawerEmployeeState extends ConsumerState<DrawerEmployee> {
               ),
 
               Column(
-                ///mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   ListTile(
@@ -171,7 +160,6 @@ class _DrawerEmployeeState extends ConsumerState<DrawerEmployee> {
                         context: context, 
                         email: "",
                         idUserSelected: myInfoData.id, 
-
                       );
                     },
                   ),
@@ -195,7 +183,6 @@ class _DrawerEmployeeState extends ConsumerState<DrawerEmployee> {
     required String email,
     required int idUserSelected,
   }) {
-    //bool obscure = true;
     showDialog(
       context: context,
       builder: (context) {
@@ -232,15 +219,8 @@ class _DrawerEmployeeState extends ConsumerState<DrawerEmployee> {
                 TextFormField(
                   controller: senhaConfirmacaoController,
                   obscureText: true,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     label: Text("Senha"),
-                    // suffixIcon: IconButton(
-                    //   onPressed: () => setState(() => obscure = !obscure),
-                    //   icon: Icon(
-                    //     obscure ? Icons.visibility : Icons.visibility_off,
-                    //     color: AppColors.colorGreen,
-                    //   )
-                    // ),
                   ),
                 )
               ],
@@ -250,24 +230,6 @@ class _DrawerEmployeeState extends ConsumerState<DrawerEmployee> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                // OutlinedButton(
-                //   style: ElevatedButton.styleFrom(
-                //     padding: const EdgeInsets.symmetric(horizontal: 20)
-                //   ),
-                //   onPressed: () {
-                //       Navigator.pop(context, false);
-                //   },
-                //   child: const Text('CENCELAR'),
-                // ),
-                // TextButton(
-                //   onPressed: () {
-                //     Navigator.of(context).pop();
-                
-                    
-                //   },
-                //   child: const Text("Cancelar", style: TextStyle(fontSize: 18, color: AppColors.colorGreen),),
-                // ),
-
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -282,12 +244,10 @@ class _DrawerEmployeeState extends ConsumerState<DrawerEmployee> {
                                   
                         ref.read(homeAdmVmProvider.notifier).deleteUserVm(idUserSelected);
 
-                        //employeeSchedule.deleteScheduleVm(idScheduleSelected);
                         print('Deletou o usuario de id ${idUserSelected}');
-                      // ref.invalidate(getMeProvider);  
                         ref.invalidate(homeAdmVmProvider);
                         Navigator.of(context).pushNamedAndRemoveUntil('/auth/login', (route) => false);
-                        //Navigator.pop(context);
+
                       }
                     });
 
@@ -296,28 +256,6 @@ class _DrawerEmployeeState extends ConsumerState<DrawerEmployee> {
                   child: const Text("EXCLUIR CONTA"),
                 ),
 
-
-                // TextButton(
-                //   onPressed: () {
-
-                //     AuthRepositoryImpl()
-                //       .removerConta(senha: senhaConfirmacaoController.text)
-                //       .then((String? erro) {
-                //       if (erro == null) {
-                                  
-                //         ref.read(homeAdmVmProvider.notifier).deleteUserVm(idUserSelected);
-
-                //         //employeeSchedule.deleteScheduleVm(idScheduleSelected);
-                //         print('Deletou o usuario de id ${idUserSelected}');
-                //       // ref.invalidate(getMeProvider);  
-                //         ref.invalidate(homeAdmVmProvider);
-                //         Navigator.pop(context);
-                //       }
-                //     });
-                    
-                //   },
-                //   child: const Text("EXCLUIR CONTA"),
-                // ),
               ],
             )
           ],

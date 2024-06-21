@@ -23,13 +23,11 @@ class SchedulesHistoryListTile extends ConsumerStatefulWidget {
 
   final SchedulesModel schedules;
   final int userId;
-  //final EmployeeUserModel? test;//
 
   const SchedulesHistoryListTile( {
     super.key,
     required this.schedules,
     required this.userId,
-    //this.test,//
   });
 
   @override
@@ -62,9 +60,6 @@ class _SchedulesHistoryListTileState extends ConsumerState<SchedulesHistoryListT
             print('Deletou o agendamento de id ${idScheduleSelected}');
             
             ref.invalidate(userSchedulesHistoryVmProvider);
-            // ref.invalidate(getTotalSchedulesTodayProvider(userId));
-            // ref.invalidate(getTotalSchedulesTomorrowProvider(userId));
-            // ref.invalidate(employeeSchedulesVmProvider(userId, dateSelected));   
            
           } 
         }
@@ -120,7 +115,6 @@ class _SchedulesHistoryListTileState extends ConsumerState<SchedulesHistoryListT
                         PopupMenuItem<SampleItem>(
                           value: SampleItem.itemOne,
                           child: ListTile(
-                            //shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                             onTap: () async{
                               Navigator.of(context).pop();
                               await showDialog(context: context, builder: (context) => 
@@ -158,11 +152,7 @@ class _SchedulesHistoryListTileState extends ConsumerState<SchedulesHistoryListT
                                   scheduleNote: widget.schedules.scheduleNote!, 
                                 )
                               );
-                              //await InsertScheduleNote();
                               ref.invalidate(userSchedulesHistoryVmProvider);
-                              // ref.invalidate(getMeProvider);  
-                              // // ref.invalidate(homeAdmVmProvider);
-                              // ref.invalidate(getAdmPlaceProvider);
                             },
                              leading: const Icon(
                               AppIcons.editIcon,
@@ -176,37 +166,6 @@ class _SchedulesHistoryListTileState extends ConsumerState<SchedulesHistoryListT
                             ),
                           ),
                         ),
-
-                        // PopupMenuItem<SampleItem>(
-                        //   value: SampleItem.itemThree,
-                        //   child: ListTile(
-                        //     onTap: () async{
-                        //       Navigator.of(context).pop();
-                        //       await showDialog(context: context, builder: (context) => 
-                        //         UpdateScheduleNote(
-                        //           scheduleId: widget.schedules.id, 
-                        //           idUserSelected: widget.userId, 
-                        //           scheduleNote: widget.schedules.scheduleNote!,
-                        //         )
-                        //       );
-                        //       //await InsertScheduleNote();
-                        //       ref.invalidate(userSchedulesHistoryVmProvider);
-                        //       // ref.invalidate(getMeProvider);  
-                        //       // // ref.invalidate(homeAdmVmProvider);
-                        //       // ref.invalidate(getAdmPlaceProvider);
-                        //     },
-                        //      leading: const Icon(
-                        //       AppIcons.editIcon,
-                        //       size: 18,
-                        //       color: AppColors.colorGreen,
-                        //     ),
-                        //     title: const Text(
-                        //       'Editar nota',
-                        //       //'Editar Colaborador',
-                        //       style: TextStyle(color: AppColors.colorGreen, fontSize: 14, fontWeight: FontWeight.w600),
-                        //     ),
-                        //   ),
-                        // ),
                       
                         PopupMenuItem<SampleItem>(
                           value: SampleItem.itemFour,
@@ -214,7 +173,6 @@ class _SchedulesHistoryListTileState extends ConsumerState<SchedulesHistoryListT
                             onTap: () {
                               Navigator.of(context).pop();
                                deleteScheduleSelected(widget.schedules.id);
-                              //deleteUserSelected(widget.employee.id);
                             },
                             leading: const Icon(
                               AppIcons.trashIcon,
@@ -234,7 +192,6 @@ class _SchedulesHistoryListTileState extends ConsumerState<SchedulesHistoryListT
                 Text(
                   'Data: ${dateFormat.format(widget.schedules.date)}',
                   overflow: TextOverflow.ellipsis,
-                  //maxLines: 2,
                   softWrap: true,
                   style: const TextStyle(
                     fontSize: 14,

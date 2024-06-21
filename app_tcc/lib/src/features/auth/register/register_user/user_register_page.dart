@@ -22,16 +22,12 @@ class _UserRegisterPageState extends ConsumerState<UserRegisterPage> {
   final passwordEC = TextEditingController();
   bool obscure = true;
   bool obscureConfirm = true;
-  // final cpfEC = TextEditingController();
-  // final celularEC = TextEditingController();
 
   @override
   void dispose() {
     nameEC.dispose();
     emailEC.dispose();
     passwordEC.dispose();
-    // cpfEC.dispose();
-    // celularEC.dispose();
     super.dispose();
   }
 
@@ -81,24 +77,6 @@ class _UserRegisterPageState extends ConsumerState<UserRegisterPage> {
                     label: Text('Nome')
                   ),
                 ),
-          
-                // const SizedBox(
-                //   height: 25,
-                // ),
-                // TextFormField(
-                //   decoration: InputDecoration(
-                //     label: Text('CPF')
-                //   ),
-                // ),
-          
-                // const SizedBox(
-                //   height: 25,
-                // ),
-                // TextFormField(
-                //   decoration: InputDecoration(
-                //     label: Text('Numero do Celular')
-                //   ),
-                // ),
           
                 const SizedBox(
                   height: 25,

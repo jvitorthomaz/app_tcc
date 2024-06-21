@@ -25,17 +25,3 @@ sealed class MessagesHelper {
   }
 
 }
-
-// extension MessagesHelper on BuildContext {
-//   void showErrorSnackBar(String message) =>
-//       _showCommonSnackBar(CustomSnackBar.error(message: message));
-
-//   void showSuccessSnackBar(String message) =>
-//       _showCommonSnackBar(CustomSnackBar.success(message: message));
-
-//   void showInfoSnackBar(String message) =>
-//       _showCommonSnackBar(CustomSnackBar.info(message: message));
-
-//   void _showCommonSnackBar(Widget child) =>
-//       showTopSnackBar(Overlay.of(this), child);
-// }

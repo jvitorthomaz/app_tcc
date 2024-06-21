@@ -20,22 +20,14 @@ class DrawerAdm extends ConsumerStatefulWidget {
 
 class _DrawerAdmState extends ConsumerState<DrawerAdm> {
 
-
   final user = FirebaseAuth.instance.currentUser;
-
 
   @override
   void initState() {
     user;
     super.initState();
   }
-  // @override
-  // void dispose() {
-  //   user;
-  //   super.dispose();
-  // }
-
-
+ 
   @override
   Widget build(BuildContext context) {
     final clinicInfo = ref.watch(getAdmPlaceProvider);
@@ -48,6 +40,7 @@ class _DrawerAdmState extends ConsumerState<DrawerAdm> {
             children: [
               UserAccountsDrawerHeader(
                 currentAccountPicture: FirebaseAuth.instance.currentUser!.photoURL != null ?
+
                 CircleAvatar(
                   backgroundImage: (FirebaseAuth.instance.currentUser!.photoURL != null)
                       ? NetworkImage(FirebaseAuth.instance.currentUser!.photoURL!)
@@ -67,7 +60,6 @@ class _DrawerAdmState extends ConsumerState<DrawerAdm> {
                 ),
                 accountEmail: Text(myInfoData.email),
                 
-                //arrowColor: Colors.black,
               ),
 
               ListTile(
@@ -78,7 +70,6 @@ class _DrawerAdmState extends ConsumerState<DrawerAdm> {
                 title: const Text("Perfil"),
                 onTap: () async{
                   await Navigator.of(context).pushNamed('/myProfile', arguments: myInfoData);
-                  //showSenhaConfirmacaoDialog(context: context, email: "");
                 },
               ),
 
@@ -90,7 +81,7 @@ class _DrawerAdmState extends ConsumerState<DrawerAdm> {
                 title: const Text("Alterar foto de perfil"),
                 onTap: () async {
                   await Navigator.of(context).pushNamed('/profilePicture', arguments: myInfoData);
-                    //.then((value) => Navigator.of(context).pop());
+                  
                   setState(() {
                     FirebaseAuth.instance.currentUser;
                   });
@@ -99,19 +90,14 @@ class _DrawerAdmState extends ConsumerState<DrawerAdm> {
 
               ListTile(
                 leading: const Icon(
-                  // Icons.person_2_outlined,
                   Icons.mode_edit,
                   color: Colors.green,
                 ),
                 title: const Text("Editar meus horários"),
-                //  title: const Text("Editar Perfil"),
                 onTap: () async{
-                  //Navigator.of(context).pop();
                   await Navigator.of(context).pushNamed('/updateProfile', arguments: myInfoData);
                   ref.invalidate(getMeProvider);  
                   ref.invalidate(homeAdmVmProvider);
-                   
-                  //showSenhaConfirmacaoDialog(context: context, email: "");
                 },
               ),
 
@@ -137,18 +123,6 @@ class _DrawerAdmState extends ConsumerState<DrawerAdm> {
                 },
               ),
 
-              //   ListTile(
-              //   leading: const Icon(
-              //     // Icons.work_outline,
-              //     Icons.edit,
-              //     color: Colors.green,
-              //   ),
-              //   title: const Text("Editar Clínica"),
-              //   onTap: () async{
-              //     await Navigator.of(context).pushNamed('/updateClinic', arguments: clinicInfo);
-              //   },
-              // ),
-
               ListTile(
                 leading: const Icon(
                   Icons.key,
@@ -156,13 +130,11 @@ class _DrawerAdmState extends ConsumerState<DrawerAdm> {
                 ),
                 title: const Text("Alterar senha"),
                 onTap: () async{
-                  //Navigator.of(context).pop();
                   await Navigator.of(context).pushNamed('/updatePassword');
                 },
               ),
 
               Column(
-                ///mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   ListTile(
@@ -189,18 +161,11 @@ class _DrawerAdmState extends ConsumerState<DrawerAdm> {
                         context: context, 
                         email: "",
                         idUserSelected: myInfoData.id, 
-
                       );
-
-
                     },
                   ),
                 ],
               ),
-
-              // const SizedBox(
-              //   height: 200,
-              // ),
 
               Expanded(
                 child: Align(
@@ -208,7 +173,6 @@ class _DrawerAdmState extends ConsumerState<DrawerAdm> {
                   child: 
                     InkWell(
                       onTap: () async{
-                        //Navigator.of(context).pop();
                         await Navigator.of(context).pushNamed('/employee/registerEmployee');
                         ref.invalidate(getMeProvider);  
                         ref.invalidate(homeAdmVmProvider);
@@ -233,28 +197,7 @@ class _DrawerAdmState extends ConsumerState<DrawerAdm> {
                         ],
                       ),
                     ),
-                  // ElevatedButton(
-                  //   style: ElevatedButton.styleFrom(
-                  //     minimumSize: Size.fromHeight(55),
-                  //   ),
-                  //   onPressed: () async{
-                  //     //Navigator.of(context).pop();
-                  //     await Navigator.of(context).pushNamed('/employee/registerEmployee');
-                  //     ref.invalidate(getMeProvider);  
-                  //     ref.invalidate(homeAdmVmProvider);
-                
-                  //   }, 
-                  //   child: Row(
-                  //     mainAxisAlignment: MainAxisAlignment.center,
-                  //     children: [
-                  //       Text('Adicionar Colaborador'),
-                  //       const SizedBox(
-                  //         width: 5,
-                  //       ),
-                  //       Icon(Icons.person_add),
-                  //     ],
-                  //   ),
-                  // ),
+
                 ),
               ),
               const SizedBox(
@@ -276,7 +219,6 @@ class _DrawerAdmState extends ConsumerState<DrawerAdm> {
     required String email,
     required int idUserSelected,
   }) {
-    //var obscure = true;
     showDialog(
       context: context,
       builder: (context) {
@@ -303,7 +245,6 @@ class _DrawerAdmState extends ConsumerState<DrawerAdm> {
               borderRadius: BorderRadius.all(Radius.circular(32))
           ),
           content: SizedBox(
-            //width: width,
             height: 280,
             child: Column(
               children: [
@@ -316,13 +257,7 @@ class _DrawerAdmState extends ConsumerState<DrawerAdm> {
                   obscureText: true,
                   decoration: InputDecoration(
                     label: Text("Senha"),
-                    // suffixIcon: IconButton(
-                    //   onPressed: () => setState(() => obscure = !obscure),
-                    //   icon: Icon(
-                    //     obscure ? Icons.visibility : Icons.visibility_off,
-                    //     color: AppColors.colorGreen,
-                    //   )
-                    // ),
+
                   ),
                 )
               ],
@@ -332,23 +267,6 @@ class _DrawerAdmState extends ConsumerState<DrawerAdm> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                // OutlinedButton(
-                //   style: ElevatedButton.styleFrom(
-                //     padding: const EdgeInsets.symmetric(horizontal: 20)
-                //   ),
-                //   onPressed: () {
-                //       Navigator.pop(context, false);
-                //   },
-                //   child: const Text('CENCELAR'),
-                // ),
-                // TextButton(
-                //   onPressed: () {
-                //     Navigator.of(context).pop();
-                
-                    
-                //   },
-                //   child: const Text("Cancelar", style: TextStyle(fontSize: 18, color: AppColors.colorGreen),),
-                // ),
 
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
@@ -364,12 +282,11 @@ class _DrawerAdmState extends ConsumerState<DrawerAdm> {
                                   
                         ref.read(homeAdmVmProvider.notifier).deleteUserVm(idUserSelected);
 
-                        //employeeSchedule.deleteScheduleVm(idScheduleSelected);
                         print('Deletou o usuario de id ${idUserSelected}');
-                      // ref.invalidate(getMeProvider);  
+                      
                         ref.invalidate(homeAdmVmProvider);
                         Navigator.of(context).pushNamedAndRemoveUntil('/auth/login', (route) => false);
-                        //Navigator.pop(context);
+                       
                       }
                     });
 
@@ -377,29 +294,6 @@ class _DrawerAdmState extends ConsumerState<DrawerAdm> {
                   },
                   child: const Text("EXCLUIR CONTA"),
                 ),
-
-
-                // TextButton(
-                //   onPressed: () {
-
-                //     AuthRepositoryImpl()
-                //       .removerConta(senha: senhaConfirmacaoController.text)
-                //       .then((String? erro) {
-                //       if (erro == null) {
-                                  
-                //         ref.read(homeAdmVmProvider.notifier).deleteUserVm(idUserSelected);
-
-                //         //employeeSchedule.deleteScheduleVm(idScheduleSelected);
-                //         print('Deletou o usuario de id ${idUserSelected}');
-                //       // ref.invalidate(getMeProvider);  
-                //         ref.invalidate(homeAdmVmProvider);
-                //         Navigator.pop(context);
-                //       }
-                //     });
-                    
-                //   },
-                //   child: const Text("EXCLUIR CONTA"),
-                // ),
               ],
             )
           ],

@@ -25,13 +25,7 @@ class ProfilePictureVm extends _$ProfilePictureVm{
     required String fileName,
   }) async {
     final userUploadProfilePicture = ref.watch(userRespositoryProvider);//
-    //final userModel = await ref.watch(getMeProvider.future);
 
-    // final userDTO = (
-    //   userId: userModel.id,
-    //   oldPassword: oldPassword,
-    //   newPassword: newPassword,
-    // );
 
     final userUploadProfilePictureResult = await userUploadProfilePicture.uploadUserProfilePicture(
       fileName: fileName, 

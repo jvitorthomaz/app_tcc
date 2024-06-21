@@ -1,6 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tcc_app/src/core/ui/constants.dart';
 import 'package:tcc_app/src/features/home/home_adm/home_adm_vm.dart';
@@ -59,15 +58,9 @@ class _DeleteAccountConfirmationDialogState extends ConsumerState<DeleteAccountC
             TextFormField(
               controller: senhaConfirmacaoController,
               obscureText: true,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 label: Text("Senha"),
-                // suffixIcon: IconButton(
-                //   onPressed: () => setState(() => obscure = !obscure),
-                //   icon: Icon(
-                //     obscure ? Icons.visibility : Icons.visibility_off,
-                //     color: AppColors.colorGreen,
-                //   )
-                // ),
+
               ),
             )
           ],
@@ -77,23 +70,6 @@ class _DeleteAccountConfirmationDialogState extends ConsumerState<DeleteAccountC
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            // OutlinedButton(
-            //   style: ElevatedButton.styleFrom(
-            //     padding: const EdgeInsets.symmetric(horizontal: 20)
-            //   ),
-            //   onPressed: () {
-            //       Navigator.pop(context, false);
-            //   },
-            //   child: const Text('CENCELAR'),
-            // ),
-            // TextButton(
-            //   onPressed: () {
-            //     Navigator.of(context).pop();
-            
-                
-            //   },
-            //   child: const Text("Cancelar", style: TextStyle(fontSize: 18, color: AppColors.colorGreen),),
-            // ),
 
             ElevatedButton(
               style: ElevatedButton.styleFrom(
@@ -111,7 +87,7 @@ class _DeleteAccountConfirmationDialogState extends ConsumerState<DeleteAccountC
 
                     //employeeSchedule.deleteScheduleVm(idScheduleSelected);
                     print('Deletou o usuario de id ${widget.idUserSelected}');
-                  // ref.invalidate(getMeProvider);  
+                    // ref.invalidate(getMeProvider);  
                     ref.invalidate(homeAdmVmProvider);
                     Navigator.of(context).pushNamedAndRemoveUntil('/auth/login', (route) => false);
                     //Navigator.pop(context);
@@ -121,28 +97,6 @@ class _DeleteAccountConfirmationDialogState extends ConsumerState<DeleteAccountC
               child: const Text("EXCLUIR CONTA"),
             ),
 
-
-            // TextButton(
-            //   onPressed: () {
-
-            //     AuthRepositoryImpl()
-            //       .removerConta(senha: senhaConfirmacaoController.text)
-            //       .then((String? erro) {
-            //       if (erro == null) {
-                              
-            //         ref.read(homeAdmVmProvider.notifier).deleteUserVm(idUserSelected);
-
-            //         //employeeSchedule.deleteScheduleVm(idScheduleSelected);
-            //         print('Deletou o usuario de id ${idUserSelected}');
-            //       // ref.invalidate(getMeProvider);  
-            //         ref.invalidate(homeAdmVmProvider);
-            //         Navigator.pop(context);
-            //       }
-            //     });
-                
-            //   },
-            //   child: const Text("EXCLUIR CONTA"),
-            // ),
           ],
         )
       ],

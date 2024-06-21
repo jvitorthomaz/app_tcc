@@ -31,23 +31,17 @@ class _MyProfilePageState extends ConsumerState<MyProfilePage> {
     final userModel = ModalRoute.of(context)!.settings.arguments as UserModel;
     final myInfo = ref.watch(getMeProvider);
     final placeAsyncValue = ref.watch(getAdmPlaceProvider);
-    //  final user = FirebaseAuth.instance.currentUser;
 
     final userData = switch (userModel) {
       AdmUserModel(:final workDays, :final workHours) => (
         workDays: workDays ?? [],
         workHours: workHours ?? [],
-        //workDays: workDays != null ? workDays :  [],
-        //workHours: workHours != null ? workHours :  [],
-        // workDays: workDays!,
-        // workHours: workHours!,
       ),
 
       EmployeeUserModel(:final workDays, :final workHours) => (
         workDays: workDays,
         workHours: workHours,
       ),
-
     };
 
     
@@ -55,20 +49,7 @@ class _MyProfilePageState extends ConsumerState<MyProfilePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Meu perfil'),
-        actions: [
-          // IconButton(
-          //   onPressed: () async{
-          //     await Navigator.of(context).pushNamed('/updateProfile', arguments: userModel);
-
-          //   }, 
-          //   icon: const Icon(
-          //     // Icons.work_outline,
-          //     Icons.edit,
-          //     color: Colors.green,
-          //   ),
-          // )
-
-        ],
+ 
       ),
       
       body: 
@@ -80,20 +61,11 @@ class _MyProfilePageState extends ConsumerState<MyProfilePage> {
             error: error, 
             stackTrace: stackTrace
           );
-          // return const Center(
-          //   child: Column(
-          //     children: [
-          //       Icon(Icons.info_outline, size: 50,),
-          //       Text('Erro ao carregar a página'),
-          //     ],
-          //   ),
-          // );
           return Padding(
             padding: const EdgeInsets.all(0.0),
             child: SingleChildScrollView(
               child: Center(
                 child: Column(
-                  //mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                    Container(
@@ -102,10 +74,7 @@ class _MyProfilePageState extends ConsumerState<MyProfilePage> {
                       
                       margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                       padding: const EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        //borderRadius: BorderRadius.circular(10),
-                        //border: Border.all(color: AppColors.colorGreen, width: 2),
-                      ),
+                      
                       child: 
                           (FirebaseAuth.instance.currentUser!.photoURL != null) ? 
                           ClipRRect(
@@ -135,12 +104,7 @@ class _MyProfilePageState extends ConsumerState<MyProfilePage> {
                       height: 80,
                       margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                       padding: const EdgeInsets.all(10),
-                      decoration: const BoxDecoration(
-                        //borderRadius: BorderRadius.circular(10),
-                        //border: Border.all(color: AppColors.colorGreen, width: 2),
-                      ),
-
-
+                      
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -156,7 +120,7 @@ class _MyProfilePageState extends ConsumerState<MyProfilePage> {
                             child: Text(
                               userModel.name,
                               overflow: TextOverflow.ellipsis,
-                              //maxLines: 2,
+                              
                               softWrap: true,
                               style: const TextStyle(
                                 fontSize: 16,
@@ -177,12 +141,7 @@ class _MyProfilePageState extends ConsumerState<MyProfilePage> {
                       height: 80,
                       margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                       padding: const EdgeInsets.all(10),
-                      decoration: const BoxDecoration(
-                        //borderRadius: BorderRadius.circular(10),
-                        //border: Border.all(color: AppColors.colorGreen, width: 2),
-                      ),
-
-
+                      
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -198,7 +157,6 @@ class _MyProfilePageState extends ConsumerState<MyProfilePage> {
                             child: Text(
                               userModel.email,
                               overflow: TextOverflow.ellipsis,
-                              //maxLines: 2,
                               softWrap: true,
                               style: const TextStyle(
                                 fontSize: 16,
@@ -227,19 +185,12 @@ class _MyProfilePageState extends ConsumerState<MyProfilePage> {
             child: SingleChildScrollView(
               child: Center(
                 child: Column(
-                  //mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
-                      // width: 350, 
-                      // height: 200,
-                      
                       margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                       padding: const EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        //borderRadius: BorderRadius.circular(10),
-                        //border: Border.all(color: AppColors.colorGreen, width: 2),
-                      ),
+                      
                       child: SizedBox(
                         child: 
                         (FirebaseAuth.instance.currentUser!.photoURL != null) ? 
@@ -271,12 +222,7 @@ class _MyProfilePageState extends ConsumerState<MyProfilePage> {
                       height: 80,
                       margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                       padding: const EdgeInsets.all(10),
-                      decoration: const BoxDecoration(
-                        //borderRadius: BorderRadius.circular(10),
-                        //border: Border.all(color: AppColors.colorGreen, width: 2),
-                      ),
-
-
+                     
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -313,12 +259,7 @@ class _MyProfilePageState extends ConsumerState<MyProfilePage> {
                       height: 80,
                       margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                       padding: const EdgeInsets.all(10),
-                      decoration: const BoxDecoration(
-                        //borderRadius: BorderRadius.circular(10),
-                        //border: Border.all(color: AppColors.colorGreen, width: 2),
-                      ),
-
-
+                     
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -353,12 +294,7 @@ class _MyProfilePageState extends ConsumerState<MyProfilePage> {
                       width: 350, 
                       margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                       padding: const EdgeInsets.all(10),
-                      decoration: const BoxDecoration(
-                        //borderRadius: BorderRadius.circular(10),
-                        //border: Border.all(color: AppColors.colorGreen, width: 2),
-                      ),
-
-
+                     
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -385,7 +321,6 @@ class _MyProfilePageState extends ConsumerState<MyProfilePage> {
                                     const SizedBox(
                                         width: 1,
                                     ),
-                                    //Text(userData.workDays[index]),
                                     Text(
                                       userData.workDays[index] == 'Seg'? 'Segunda':
                                       userData.workDays[index] == 'Ter'? 'Terça':
@@ -410,15 +345,9 @@ class _MyProfilePageState extends ConsumerState<MyProfilePage> {
 
                     Container(
                       width: 350, 
-                      //height: 80,
                       margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                       padding: const EdgeInsets.all(10),
-                      decoration: const BoxDecoration(
-                        //borderRadius: BorderRadius.circular(10),
-                        //border: Border.all(color: AppColors.colorGreen, width: 2),
-                      ),
-
-
+                     
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [

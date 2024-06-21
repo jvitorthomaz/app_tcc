@@ -82,10 +82,6 @@ class _SchedulesPageState extends ConsumerState<SchedulesPage> {
             child: Center(
               child: Column(
                 children: [
-                  // const UserAvatarWidget.withoutButton(),
-                  // const SizedBox(
-                  //   height: 20,
-                  // ),
                   Text(
                     userModel.name,
                     style: const TextStyle(
@@ -116,7 +112,6 @@ class _SchedulesPageState extends ConsumerState<SchedulesPage> {
                     onTap: () {
                       setState(() {
                         showCalendar = true;
-                        //showCalendar = !showCalendar;
                       });
                       context.unfocus();
                     },
@@ -142,7 +137,6 @@ class _SchedulesPageState extends ConsumerState<SchedulesPage> {
                           cancelPressed: () {
                             setState(() {
                               showCalendar = false;
-                              // showCalendar = !showCalendar;
                             });
                           },
                           onOkPressed: (DateTime value) {
@@ -181,7 +175,6 @@ class _SchedulesPageState extends ConsumerState<SchedulesPage> {
                         MessagesHelper.showErrorSnackBar('Os dados estão incompletos', context);
           
                         case true:
-                          // //   login(emailEC.text, passwordEC.text);
                           final hourSelected = ref.watch(
                             schedulesVmProvider.select((state) => state.scheduleTime != null),
                           );
@@ -198,9 +191,7 @@ class _SchedulesPageState extends ConsumerState<SchedulesPage> {
                     },
                     child: const Text('AGENDAR'),
                   )
-                
                 ],
-                
               ),
             ),
           ),

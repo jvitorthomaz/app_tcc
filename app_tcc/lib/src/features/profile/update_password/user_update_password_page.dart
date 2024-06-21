@@ -20,21 +20,15 @@ class _UserUpdatePasswordPageState extends ConsumerState<UserUpdatePasswordPage>
 
   final formKey = GlobalKey<FormState>();
   final oldPasswordEC = TextEditingController();
-  //final emailEC = TextEditingController();
   final newPasswordEC = TextEditingController();
-  // final cpfEC = TextEditingController();
-  // final celularEC = TextEditingController();
   bool obscureOld = true;
   bool obscureNew = true;
   bool obscureConfirmNew = true;
 
   @override
   void dispose() {
-    // nameEC.dispose();
     oldPasswordEC.dispose();
     newPasswordEC.dispose();
-    // cpfEC.dispose();
-    // celularEC.dispose();
     super.dispose();
   }
 
@@ -52,13 +46,7 @@ class _UserUpdatePasswordPageState extends ConsumerState<UserUpdatePasswordPage>
             'Senha alterada com sucesso!', 
             context
           );
-            // showSnackBar(
-            //   context: context,
-            //   mensagem: "Senha alterada com sucesso!",
-            //   isErro: false,
-            // );
           Navigator.of(context).pop();
-          //Navigator.of(context).pushNamedAndRemoveUntil('/auth/register/place', (route) => false);
 
         case UserUpdatePasswordStateStatus.error:
           MessagesHelper.showErrorSnackBar(
@@ -164,7 +152,6 @@ class _UserUpdatePasswordPageState extends ConsumerState<UserUpdatePasswordPage>
                 height: 25,
                 ),
 
-
                 Column(
                   children: [
                     const Row(
@@ -224,8 +211,6 @@ class _UserUpdatePasswordPageState extends ConsumerState<UserUpdatePasswordPage>
                   },
                   child: const Text('ALTERAR SENHA'),
                 )
-          
-          
               ],
             ),
           ),

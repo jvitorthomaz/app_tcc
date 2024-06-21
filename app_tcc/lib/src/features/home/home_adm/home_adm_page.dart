@@ -12,7 +12,6 @@ import 'package:tcc_app/src/features/home/home_adm/home_adm_vm.dart';
 import 'package:tcc_app/src/features/home/home_adm/widgets/home_list_employee_tile.dart';
 import 'package:tcc_app/src/features/home/widgets/home_header.dart';
 
-// TODO - padding: const EdgeInsets.fromLTRB(10, 10, 10, 100),
 class HomeAdmPage extends ConsumerWidget {
 
   const HomeAdmPage({ super.key });
@@ -47,58 +46,13 @@ class HomeAdmPage extends ConsumerWidget {
           ],
         ),
         backgroundColor: Colors.white,
-        
-        // floatingActionButton: FloatingActionButton(
-        //   shape: const CircleBorder(),
-        //   backgroundColor: AppColors.colorGreen,
-        //   onPressed: () async {
-        //     await Navigator.of(context).pushNamed('/employee/registerEmployee');
 
-        //   },
-          
-        //   child: const CircleAvatar(
-        //     backgroundColor: Colors.white,
-        //     maxRadius: 16,
-        //     child: Icon(
-        //       AppIcons.addNewEmplyeeeIcon,
-        //       color: AppColors.colorGreen,
-        //     ),
-        //   ),
-        // ),
-
-        // body: CustomScrollView(
-        //   slivers: [
-        //     SliverToBoxAdapter(
-        //       child: HomeHeader(),
-        //     ),
-        //     SliverList(
-        //       delegate: SliverChildBuilderDelegate(
-        //         (context, index) => HomeListEmployeeTile(),
-        //         childCount: 20
-        //       )
-        //     )
-            
-        //   ],
-        // )
         body: homeState.when(
           data: (HomeAdmState data) {
             return Padding(
               padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-              child: 
-              // (data.employees.isEmpty)
-              // ? const Center(
-              //     child: Text(
-              //       "Sua Clínica ainda não possui colaboradores cadastrados",
-              //       textAlign: TextAlign.center,
-              //       style: TextStyle(fontSize: 18),
-              //     ),
-              //   )
-              // : 
-              RefreshIndicator(
+              child: RefreshIndicator(
                 onRefresh: () async{
-                  // const AppLoader();
-                  // Future.delayed(Duration(seconds: 1));
-                  // return ref.invalidate(homeAdmVmProvider);
                   Navigator.of(context).pushNamed('/home/admUser');
                   
 
@@ -112,8 +66,6 @@ class HomeAdmPage extends ConsumerWidget {
                       delegate: SliverChildBuilderDelegate(
                         (context, index) => HomeListEmployeeTile(
                           employee: data.employees[index],
-                          //PASSAR INFO PROFILE PHOTO AQUI
-                          //test:  data.modelEmployees[index],
                         ),
                         childCount: data.employees.length,
                       )
@@ -138,28 +90,6 @@ class HomeAdmPage extends ConsumerWidget {
             return const AppLoader();
           },
         ),
-      //   bottomNavigationBar: BottomNavigationBar(
-      //   items: const <BottomNavigationBarItem>[
-      //     BottomNavigationBarItem(
-      //       icon: Icon(
-      //         AppIcons.addNewEmplyeeeIcon,
-      //         color: AppColors.colorGreen,
-      //       ),
-      //       label: 'Adicionar Colaborador',
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Icon(
-      //         AppIcons.addNewEmplyeeeIcon,
-      //         color: AppColors.colorGreen,
-      //       ),
-      //       label: 'Adicionar Colaborador',
-      //     ),
-         
-      //   ],
-      //   // currentIndex: _selectedIndex,
-      //   // selectedItemColor: Colors.red[800],
-      //   // onTap: _onItemTapped,
-      // ),
       ),
       
     );

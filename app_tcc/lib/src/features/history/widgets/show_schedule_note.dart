@@ -5,8 +5,6 @@ import 'package:tcc_app/src/core/ui/helpers/messages_helper.dart';
 import 'package:tcc_app/src/features/employee/updateSchedule/update_schedule_vm.dart';
 
 class ShowScheduleNote extends ConsumerStatefulWidget {
-
-    // required BuildContext context,
     final int idUserSelected;
     final int scheduleId;
     final String? scheduleNote;

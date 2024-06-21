@@ -4,11 +4,7 @@ sealed class UserModel {
   final String? profileFileName;
   final String name;
   final String email;
-  //final String cpf;
-  //final String telefone;
   final String? avatar;
-      //  "firebase_UUID":"",
-      // "profile_file_name":"",
 
   UserModel({
     required this.id,
@@ -16,9 +12,6 @@ sealed class UserModel {
     required this.profileFileName,
     required this.name,
     required this.email,
-
-    //required this.cpf,
-    //required this.telefone,
     this.avatar,
   });
 
@@ -43,9 +36,6 @@ final class AdmUserModel extends UserModel {
     super.profileFileName,
     required super.name,
     required super.email,
-    //required super.firebaseUUID,
-    //required super.cpf,
-    //required super.telefone, 
     super.avatar,
     this.workDays,
     this.workHours, 
@@ -56,20 +46,14 @@ final class AdmUserModel extends UserModel {
     return switch (json) {
       {
         'id': final int id,
-        // 'firebase_UUID': final String firebaseUUID,
-        // 'profile_file_name': final String profileFileName,
         'name': final String name,
         'email': final String email,
-        //'cpf': final String cpf,
-        //'telefone': final String telefone,
 
       } =>
         AdmUserModel(
           id: id,
           name: name,
           email: email,
-          //cpf: cpf,
-          //telefone: telefone,
           firebaseUUID: json['firebase_UUID'],
           profileFileName: json['profile_file_name'],
           avatar: json['avatar'],
@@ -94,8 +78,6 @@ final class EmployeeUserModel extends UserModel {
     super.profileFileName,
     required super.name,
     required super.email,
-    //required super.cpf,
-    //required super.telefone,
     required this.placeId,
     required this.workDays,
     required this.workHours,
@@ -106,12 +88,8 @@ final class EmployeeUserModel extends UserModel {
     return switch (json) {
       {
         'id': final int id,
-        // 'firebase_UUID': final String firebaseUUID,
-        // 'profile_file_name': final String profileFileName,
         'name': final String name,
         'email': final String email,
-        //'cpf': final String cpf,
-        //'telefone': final String telefone,
         'place_id': final int placeId,
         'work_days': final List workDays,
         'work_hours': final List workHours,
@@ -122,8 +100,6 @@ final class EmployeeUserModel extends UserModel {
           email: email,
           firebaseUUID: json['firebase_UUID'],
           profileFileName: json['profile_file_name'],
-          //cpf: cpf,
-          //telefone: telefone,
           workDays: workDays.cast<String>(),
           workHours: workHours.cast<int>(),
           avatar: json['avatar'],

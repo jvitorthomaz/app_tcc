@@ -25,10 +25,6 @@ class PlaceUpdateState {
     required this.openingHours
   });
 
-
-  
-  
-
   PlaceUpdateState copyWith({
     PlaceUpdateStateStatus? status,
     List<String>? openingDays,

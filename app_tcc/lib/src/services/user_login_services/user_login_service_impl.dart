@@ -20,17 +20,6 @@ class UserLoginServiceImpl implements UserLoginService {
   @override
   Future<Either<ServiceException, Nil>> execute(String email, String password) async {
 
-      // final firebaseAuth = FirebaseAuth.instance;
-
-      // final userMethods = await firebaseAuth.fetchSignInMethodsForEmail(email);
-
-      // print('=====================');
-      // print(userMethods);
-      // print('=====================');
-      // if (userMethods.isNotEmpty) {
-      //   throw UserNotExistsException();
-      // }
-    
     final loginResult = await userRespository.login(email, password);
 
     switch (loginResult) {
@@ -48,43 +37,4 @@ class UserLoginServiceImpl implements UserLoginService {
     }
 
   }
-
-
-  // @override
-  // Future<Either<ServiceException, Nil>> executeLoginFirebase(
-  //   ({
-  //     int userId,
-  //     String name,
-  //     String email,
-  //     List<String> workDays,
-  //     List<int> workHours,
-  //   }) userModel
-  // ) async {
-
-
-  //     await _firebaseAuth.signInWithEmailAndPassword(
-  //       email: _firebaseAuth.currentUser!.email!,
-  //       password: '123123',
-  //     );
-    
-  //   final loginResult = await userRespository.updateUserProfile(
-  //     userModel
-  //   );
-
-  //   switch(loginResult) {
-
-  //     case Success():
-  //       return Success(nil);
-
-  //     case Failure(:final exception):
-  //       return Failure(
-  //         ServiceException(
-  //           message: exception.message
-  //         )
-  //       );
-  //   }
-
-
-
-  // }
 }

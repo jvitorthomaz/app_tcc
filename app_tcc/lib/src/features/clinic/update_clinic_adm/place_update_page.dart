@@ -37,15 +37,12 @@ class _PlaceUpdatePageState extends ConsumerState<PlaceUpdatePage> {
   @override
   Widget build(BuildContext context) {
     final placeUpdateVm = ref.watch(placeUpdateVmProvider.notifier);
-    //final clinicInfo = ref.watch(getAdmPlaceProvider);
 
     final clinicData = ModalRoute.of(context)!.settings.arguments as PlaceModel;
 
       setState(() {
         nameEC.text = clinicData.name;
         emailEC.text = clinicData.email;
-        // nameEC.text = employeeUserModel.name;
-        // emailEC.text = employeeUserModel.email;
         
       });
       print('${nameEC.text}--');

@@ -28,14 +28,6 @@ class HomeListEmployeeTile extends ConsumerStatefulWidget {
 }
 
 class _HomeListEmployeeTileState extends ConsumerState<HomeListEmployeeTile> {
-
-// @override
-// void initState() {
-//   imageCache.clear();
-//   imageCache.clearLiveImages();
-//   super.initState();
-  
-// }
   @override
   Widget build(BuildContext context) {
     final homeState = ref.watch(homeAdmVmProvider);
@@ -43,9 +35,6 @@ class _HomeListEmployeeTileState extends ConsumerState<HomeListEmployeeTile> {
 
     deleteUser(idUserSelected, profile) {
       bool isCurrentUser = false;
-      //   if(me case UserModel(:final id)) {
-      //     isCurrentUser == true;
-      //   }
       me.maybeWhen(
         data: (meData){
           meData.id.toString() == idUserSelected.toString() ?
@@ -76,14 +65,8 @@ class _HomeListEmployeeTileState extends ConsumerState<HomeListEmployeeTile> {
           
               ref.read(homeAdmVmProvider.notifier).deleteUserVm(idUserSelected);
 
-              //employeeSchedule.deleteScheduleVm(idScheduleSelected);
               print('Deletou o usuario de id ${idUserSelected}');
-            // ref.invalidate(getMeProvider);  
-              ref.invalidate(homeAdmVmProvider);
-              
-              // ref.invalidate(getTotalSchedulesTodayProvider(userId));
-              // ref.invalidate(getTotalSchedulesTomorrowProvider(userId));
-              // ref.invalidate(employeeSchedulesVmProvider(userId, dateSelected));   
+              ref.invalidate(homeAdmVmProvider); 
             
             } 
           }
@@ -94,7 +77,7 @@ class _HomeListEmployeeTileState extends ConsumerState<HomeListEmployeeTile> {
     }
 
     return Container(
-      width: 260, //MediaQuery.of(context).size.width*0.5,
+      width: 260, 
       height: 120,
       margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
       padding: const EdgeInsets.all(10),
@@ -140,24 +123,13 @@ class _HomeListEmployeeTileState extends ConsumerState<HomeListEmployeeTile> {
                             );
                           }
                           else{
-                            //return Image.network(snapshot.data!);
                             return CircleAvatar(
                               radius: 15,
                               backgroundImage: NetworkImage(snapshot.data!),
                             );
                           }
-                          
                         },
-                        
                       ),
-                      // decoration: BoxDecoration(
-                      //   image: DecorationImage(
-                      //     image: switch (widget.employee.avatar) {
-                      //       final avatar ? => NetworkImage(avatar),
-                      //       _ => const AssetImage(AppImages.avatarImage),
-                      //     } as ImageProvider,
-                      //   )
-                      // ),
                     ),
                     const SizedBox(
                       width: 10,
@@ -181,20 +153,11 @@ class _HomeListEmployeeTileState extends ConsumerState<HomeListEmployeeTile> {
                       padding: EdgeInsets.zero,
                       position: PopupMenuPosition.under,
                       icon: const Icon(Icons.more_vert, color: AppColors.colorGreen),
-                      //initialValue: selectedMenu,
 
-                      // // Callback that sets the selected popup menu item.
-                      // onSelected: (SampleItem item) {
-                      //   setState(() {
-                      //     selectedMenu = item;
-                          
-                      //   });
-                      // },
                       itemBuilder: (BuildContext context) => <PopupMenuEntry<SampleItem>>[
                         PopupMenuItem<SampleItem>(
                           value: SampleItem.itemOne,
                           child: ListTile(
-                            //shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                             onTap: () async{
                               Navigator.of(context).pop();
                               await Navigator.of(context).pushNamed('/employeeProfile', arguments: widget.employee);
@@ -218,10 +181,9 @@ class _HomeListEmployeeTileState extends ConsumerState<HomeListEmployeeTile> {
                               Navigator.of(context).pop();
                               await Navigator.of(context).pushNamed(
                                 '/employee/updateEmployee', 
-                                arguments: widget.employee // widget.test 
+                                arguments: widget.employee 
                               );
                               ref.invalidate(getMeProvider);  
-                              // ref.invalidate(homeAdmVmProvider);
                               ref.invalidate(getAdmPlaceProvider);
                             },
                              leading: const Icon(
@@ -231,7 +193,6 @@ class _HomeListEmployeeTileState extends ConsumerState<HomeListEmployeeTile> {
                             ),
                             title: const Text(
                               'Editar horários',
-                              //'Editar Colaborador',
                               style: TextStyle(color: AppColors.colorGreen, fontSize: 14, fontWeight: FontWeight.w600),
                             ),
                           ),
@@ -243,7 +204,6 @@ class _HomeListEmployeeTileState extends ConsumerState<HomeListEmployeeTile> {
                             onTap: () {
                               Navigator.of(context).pop();
                               deleteUser(widget.employee.id, widget.employee);
-                              //deleteUserSelected(widget.employee.id);
                             },
                             leading: const Icon(
                               AppIcons.trashIcon,
@@ -260,20 +220,6 @@ class _HomeListEmployeeTileState extends ConsumerState<HomeListEmployeeTile> {
                     ),
                   ],
                 ),
-                //  Expanded(
-                //    child: Text(
-                //      employee.name,
-                //      //maxLines: 2,
-                //      softWrap: true,
-                //      style: const TextStyle(
-                //        fontSize: 18,
-                //        fontWeight: FontWeight.w500,
-                //      ),
-                //    ),
-                //  ),
-                // const SizedBox(
-                //    height: 25,
-                // ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -295,16 +241,9 @@ class _HomeListEmployeeTileState extends ConsumerState<HomeListEmployeeTile> {
                       ),
                       onPressed: () {
                         Navigator.of(context).pushNamed('/employee/schedulesEmployee', arguments: widget.employee);
-                        //context.pushNamed('/employee/schedule', arguments: employee);
                       },
                       child: const Text('Ver Agenda'),
                     ),
-                  
-                    // const Icon(
-                    //   AppIcons.trashIcon,
-                    //   size: 25,
-                    //   color: AppColors.colorRed,
-                    // ),
                   ],
                 )
               ],

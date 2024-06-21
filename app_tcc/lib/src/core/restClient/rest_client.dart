@@ -7,7 +7,8 @@ final class RestClient extends DioForNative{
     BaseOptions(
       //baseUrl: 'http://186.217.114.84:8080',
       //baseUrl: 'http://10.255.1.74:8080',
-     baseUrl: 'http://192.168.1.184:8080',
+     //baseUrl: 'http://192.168.1.184:8080',
+     baseUrl: 'http://192.168.0.16:8080',
       //baseUrl: 'http://192.168.0.12:8080',
       //baseUrl: 'http://192.168.0.7:8080',
      //baseUrl: 'http://localhost:8080',

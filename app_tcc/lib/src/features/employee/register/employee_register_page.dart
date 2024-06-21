@@ -54,8 +54,6 @@ class _EmployeeRegisterPageState extends ConsumerState<EmployeeRegisterPage> {
 
           case EmployeeRegisterStateStatus.success:
             MessagesHelper.showSuccessSnackBar('O Colaborador foi cadastrado com sucesso.', context);
-            // Future.delayed(Duration(seconds: 1));
-            //Navigator.of(context).pushNamed('/home/admUser');
             Navigator.of(context).pop();
 
           case EmployeeRegisterStateStatus.error:
@@ -93,8 +91,6 @@ class _EmployeeRegisterPageState extends ConsumerState<EmployeeRegisterPage> {
                 child: Center(
                   child: Column(
                     children: [
-
-                      // const UserAvatarWidget(),
                       const Text(
                         'MyClinic App', 
                         style: TextStyle(
@@ -106,11 +102,6 @@ class _EmployeeRegisterPageState extends ConsumerState<EmployeeRegisterPage> {
                       const SizedBox(
                         height: 30,
                       ),
-                      // Offstage(
-                      //   offstage: GlobalConst.clinicAlreadyHasADM,
-                      //   child:
-
-                      // ),
                       Row(
                         children: [
                           Checkbox.adaptive(
@@ -167,26 +158,6 @@ class _EmployeeRegisterPageState extends ConsumerState<EmployeeRegisterPage> {
                                 label: Text('E-mail')
                               ),
                             ),
-                            // const SizedBox(
-                            //   height: 24,
-                            // ),
-                            // TextFormField(
-                            //   onTapOutside: (_) => context.unfocus(),
-                            //   controller: passwordEC,
-                            //   validator: isAdm
-                            //       ? null
-                            //       : Validatorless.multiple([
-                            //           Validatorless.required('A senha é obrigatória'),
-                            //           Validatorless.min(
-                            //             6,
-                            //             'Senha deve conter no mínimo 6 caracteres'
-                            //           ),
-                            //         ]),
-                            //   obscureText: true,
-                            //   decoration: const InputDecoration(
-                            //     label: Text('Senha')
-                            //   ),
-                            // )
                           ],
                         ),
                       ),
@@ -195,7 +166,6 @@ class _EmployeeRegisterPageState extends ConsumerState<EmployeeRegisterPage> {
                       ),
                       WeekdaysWidget(
                         enabledDays: openingDays,
-                        //['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
                         onDayPressed: employeeRegisterVm.addOrRemoveWorkdays
                       ),
               
@@ -204,7 +174,6 @@ class _EmployeeRegisterPageState extends ConsumerState<EmployeeRegisterPage> {
                       ),
                       HoursWidget(
                         enabledTimes: openingHours,
-                        //[ 9, 10, 11, 13, 14, 15, 16, 17, 18],
                         startTime: 8, 
                         endTime: 19, 
                         onHourPressed: employeeRegisterVm.addOrRemoveWorkhours
@@ -243,21 +212,17 @@ class _EmployeeRegisterPageState extends ConsumerState<EmployeeRegisterPage> {
 
                               final name = nameEC.text;
                               final email = emailEC.text;
-                              //final password = passwordEC.text;
 
                               employeeRegisterVm.register(
                                 name: name,
                                 email: email,
-                                //password: password
                               );
-                                          ref.invalidate(getMeProvider);  
-                                          ref.invalidate(homeAdmVmProvider);
+                              ref.invalidate(getMeProvider);  
+                              ref.invalidate(homeAdmVmProvider);
                           }
                         }, 
-                        child: Text('Cadastrar')
+                        child: const Text('Cadastrar')
                       )
-                      
-              
                     ],
                   ),
                 ),

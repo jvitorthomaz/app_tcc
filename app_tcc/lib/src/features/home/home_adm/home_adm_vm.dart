@@ -22,9 +22,8 @@ class HomeAdmVm extends _$HomeAdmVm{
     switch(employeesListResult) {
       case Success(value: final employeesData) :
         final employees = <UserModel>[];
-        //final fullModel = <EmployeeUserModel>[];//
 
-        //Usuario adm tbm é colaborador?
+        // Usuario adm tbm é colaborador?
         if(me case AdmUserModel(workDays: _?, workHours: _?)) {
           employees.add(me);
         }
@@ -33,13 +32,11 @@ class HomeAdmVm extends _$HomeAdmVm{
 
         return HomeAdmState(
           status: HomeAdmStateStatus.loaded, employees: employees, 
-          //modelEmployees: fullModel//
         );
 
       case Failure(): 
         return HomeAdmState(
           status: HomeAdmStateStatus.loaded, employees: [],
-          //modelEmployees: [] //
         );
     }
 
@@ -53,20 +50,8 @@ class HomeAdmVm extends _$HomeAdmVm{
       final userRepository = ref.read(userRespositoryProvider);
       final deleteUserResult = await userRepository.deleteUser(idUser);
 
-      // switch (deleteUserResult) {
-      //   case Success():
-      //     state = state.copyWith(status: SchedulesStateStatus.success);
-
-      //   case Failure():
-      //     state = state.copyWith(status: SchedulesStateStatus.error);
-          
-      // }
 
       asyncLoaderHandler.close();
     }
-
-  //TENTAR COM .WATCH
-  //Future<void> logout() => ref.watch(logoutProvider.future).asyncLoader();
-  
 }
 

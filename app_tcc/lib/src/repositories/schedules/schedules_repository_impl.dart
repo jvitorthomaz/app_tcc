@@ -86,13 +86,11 @@ class SchedulesRepositoryImpl implements SchedulesRepository{
   ({
     DateTime date,
     int userId,
-    //int idSchedule
   }) filter) async {
     try {
       final Response(:List data) = await restClient.auth.get('/schedules', queryParameters: {
         'user_id': filter.userId,
         'date': filter.date.toIso8601String(),
-        //'id' : filter.idSchedule
       });
 
       final schedules = data.map((s) => SchedulesModel.fromMap(s)).toList();
@@ -120,20 +118,10 @@ class SchedulesRepositoryImpl implements SchedulesRepository{
     ({int scheduleId, String clientName, DateTime date, int time,}) scheduleData
   ) async{
     try {
-      // final userModelResult = await me();
 
       final int scheduleId = scheduleData.scheduleId;
 
-      // switch (userModelResult) {
-      //   case Success(value: UserModel(:var id)):
-      //     userId = id;
-          
-      //   case Failure(:var exception):
-      //     return Failure(exception);
-      // }
-
       await restClient.auth.put('/schedules/$scheduleId', data: {
-        //'name': userModel.name,
           'client_name': scheduleData.clientName,
           'date': scheduleData.date.toIso8601String(),
           'time': scheduleData.time,
@@ -163,7 +151,6 @@ class SchedulesRepositoryImpl implements SchedulesRepository{
     try {
       final response = await restClient.auth.delete(
         '/schedules/$idSchedule', 
-        //queryParameters: {'id': ${scheduleData.idSchedule}}
       );
 
       return Success(nil);
@@ -213,17 +200,8 @@ class SchedulesRepositoryImpl implements SchedulesRepository{
     ({int scheduleId, String note}) scheduleData
   ) async{
     try {
-      // final userModelResult = await me();
 
       final int scheduleId = scheduleData.scheduleId;
-
-      // switch (userModelResult) {
-      //   case Success(value: UserModel(:var id)):
-      //     userId = id;
-          
-      //   case Failure(:var exception):
-      //     return Failure(exception);
-      // }
 
       await restClient.auth.patch('/schedules/$scheduleId', data: {
         'schedule_note': scheduleData.note,

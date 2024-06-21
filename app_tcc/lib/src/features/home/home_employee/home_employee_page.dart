@@ -57,12 +57,7 @@ class HomeEmployeePage extends ConsumerWidget {
 
           return RefreshIndicator(
             onRefresh: () async{
-              // const AppLoader();
-              // Future.delayed(Duration(seconds: 1));
-              // return ref.invalidate(homeAdmVmProvider);
               Navigator.of(context).pushNamed('/home/employeeUser');
-                  
-
             },
             child: CustomScrollView(
               slivers: [
@@ -75,8 +70,6 @@ class HomeEmployeePage extends ConsumerWidget {
                     padding: const EdgeInsets.all(24),
                     child: Column(
                       children: [
-                        //const UserAvatarWidget.withoutButton(),
-                        //const SizedBox(height: 20),
                         Text(
                           name,
                           style: const TextStyle(
@@ -89,9 +82,9 @@ class HomeEmployeePage extends ConsumerWidget {
                         
                         const SizedBox(height: 35),
                         
-                        Text(
+                        const Text(
                           'Seus agendamentos:',
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w500,
                           ),
@@ -213,7 +206,6 @@ class HomeEmployeePage extends ConsumerWidget {
                                     '/schedule',
                                     arguments: user,
                                   );
-                                  //getTotalSchedulesTodayProvider(id)
                                   ref.invalidate(getTotalSchedulesTodayProvider(id));
                                   ref.invalidate(getTotalSchedulesTomorrowProvider(id));
                                 },
@@ -239,34 +231,6 @@ class HomeEmployeePage extends ConsumerWidget {
                             ],
                           ),
                         ),
-          
-                        // ElevatedButton(
-                        //   onPressed: () async {
-                        //     await Navigator.of(context).pushNamed(
-                        //       '/schedule',
-                        //       arguments: user,
-                        //     );
-                        //     //getTotalSchedulesTodayProvider(id)
-                        //     ref.invalidate(getTotalSchedulesTodayProvider(id));
-                        //   },
-                        //   style: ElevatedButton.styleFrom(
-                        //     minimumSize: const Size.fromHeight(56),
-                        //   ),
-                        //   child: const Text('AGENDAR CLIENTE'),
-                        // ),
-                        // const SizedBox(height: 24),
-                        // OutlinedButton(
-                        //   style: ElevatedButton.styleFrom(
-                        //     minimumSize: const Size.fromHeight(56),
-                        //   ),
-                        //   onPressed: () {
-                        //     Navigator.of(context).pushNamed(
-                        //       '/employee/schedule',
-                        //       arguments: user,
-                        //     );
-                        //   },
-                        //   child: const Text('VER AGENDA'),
-                        // ),
                       ],
                     ),
                   ),

@@ -24,8 +24,6 @@ class UserRepositoryImpl implements UserRespository {
   UserRepositoryImpl({
     required this.restClient
   });
-    // String pathService = FirebaseAuth.instance.currentUser!.uid;
-    // final FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
 
   @override
   Future<Either<AuthException, String>> login(String email, String password) async{
@@ -318,21 +316,11 @@ class UserRepositoryImpl implements UserRespository {
     ({int employeeId, List<String> workDays, List<int> workHours}) userModel
   ) async{
     try {
-      // final userModelResult = await me();
 
       final int employeeId = userModel.employeeId;
-
-      // switch (userModelResult) {
-      //   case Success(value: UserModel(:var id)):
-      //     userId = id;
-          
-      //   case Failure(:var exception):
-      //     return Failure(exception);
-      // }
       
 
       await restClient.auth.put('/users/$employeeId', data: {
-        //'name': userModel.name,
         'work_days': userModel.workDays,
         'work_hours': userModel.workHours,
       });
@@ -374,11 +362,9 @@ class UserRepositoryImpl implements UserRespository {
       );
 
       final user = _firebaseAuth.currentUser;
-      // await user?.updateEmail(email);
       await user?.updatePassword(userModel.newPassword);
 
       await restClient.auth.put('/users/$userId', data: {
-        //'name': userModel.name,
         'password': userModel.newPassword
       });
 
@@ -417,15 +403,9 @@ class UserRepositoryImpl implements UserRespository {
   @override
   Future<Either<RepositoryException, Nil>> deleteUser(int idUser) async{
     try {
-      // await _firebaseAuth.signInWithEmailAndPassword(
-      //   email: _firebaseAuth.currentUser!.email!,
-      //   password: senha,
-      // );
-      // await _firebaseAuth.currentUser!.delete();
 
       final response = await restClient.auth.delete(
         '/users/$idUser', 
-        //queryParameters: {'id': ${scheduleData.idSchedule}}
       );
 
       return Success(nil);
@@ -436,23 +416,7 @@ class UserRepositoryImpl implements UserRespository {
         RepositoryException(message: 'Erro Deletar Usuario')
       );
     } 
-    // on FirebaseAuthException catch (e) {
-    //   return e.code;
-    // }
   }
-
-
-  //   Future<String?> redefinicaoSenha({required String email}) async {
-  //   try {
-  //     await _firebaseAuth.sendPasswordResetEmail(email: email);
-  //   } on FirebaseAuthException catch (e) {
-  //     if (e.code == "user-not-found") {
-  //       return "E-mail não cadastrado.";
-  //     }
-  //     return e.code;
-  //   }
-  //   return null;
-  // }
 
 
   @override
@@ -472,12 +436,6 @@ class UserRepositoryImpl implements UserRespository {
     ({int userId, String name, String email, List<String> workDays, List<int> workHours}) userModel
   ) async{
     try {
-      // final userModelResult = await me();
-      // final name = userModel.name;
-      // final email = userModel.email;
-      // const password = '123123';
-
-      // await authRepository.updateUserProfileFirebase(email, name, password);
 
       final int userId = userModel.userId;
       await restClient.auth.put('/users/$userId', data: {
@@ -486,42 +444,6 @@ class UserRepositoryImpl implements UserRespository {
         'work_days': userModel.workDays,
         'work_hours': userModel.workHours,
       });
-
-
-      // if (userModel.workDays.isEmpty && userModel.workHours.isEmpty) {
-
-      //   await restClient.auth.put('/users/$userId', data: {
-      //     'name': userModel.name,
-      //     'email': userModel.email,
-      //   });
-        
-      // } else if(userModel.workDays.isEmpty){
-
-      //   await restClient.auth.put('/users/$userId', data: {
-      //     'name': userModel.name,
-      //     'email': userModel.email,
-      //     'work_hours': userModel.workHours,
-      //   });
-        
-      // } else if(userModel.workHours.isEmpty){
-        
-      //   await restClient.auth.put('/users/$userId', data: {
-      //     'name': userModel.name,
-      //     'email': userModel.email,
-      //     'work_days': userModel.workDays,
-      //   });
-
-
-      // } else {
-      //   await restClient.auth.put('/users/$userId', data: {
-      //     'name': userModel.name,
-      //     'email': userModel.email,
-      //     'work_days': userModel.workDays,
-      //     'work_hours': userModel.workHours,
-      //   });
-
-      // }
-
 
       return Success(nil);
 
@@ -555,44 +477,6 @@ class UserRepositoryImpl implements UserRespository {
     }
   }
 
-
-  //   @override
-  // Future<Either<RepositoryException, Nil>> uploadUserProfilePicture(
-  //   ({int userId, String firebaseUUID, String fileName}) userModel
-  // ) async{
-  //   try {
-
-  //     final int userId = userModel.userId;
-  //     final String firebaseUUID = userModel.firebaseUUID;
-  //     final String fileName = userModel.fileName;
-
-  //     await restClient.auth.put('/users/$userId', data: {
-  //       //'name': userModel.name,
-  //       'firebase_UUID': firebaseUUID,
-  //       'profile_file_name': fileName,
-  //     });
-
-  //     return Success(nil);
-
-  //   } 
-  //   on DioException catch (e, s) {
-
-  //     log(
-  //       'Erro ao editar colaborador',
-  //       error: e, 
-  //       stackTrace: s
-  //     );
-
-  //     return Failure(
-  //       RepositoryException(
-  //         message: 'Erro ao editar colaborador'
-  //       )
-  //     );
-  //   }
-  // }
-
-
-
   @override
   Future<String> uploadUserProfilePicture(
     {required File file, required String fileName, required int userId,}
@@ -613,63 +497,7 @@ class UserRepositoryImpl implements UserRespository {
         'firebase_UUID': firebaseUUID,
         'profile_file_name': fileName,
     });
-
-
-
-
     return url;
   }
 
-  // Future<String> getDownloadUrlByFileName({required String fileName}) async {
-  //   String pathService = await FirebaseAuth.instance.currentUser!.uid;
-  //   final FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
-  //   return await _firebaseStorage
-  //       .ref("$pathService/$fileName.png")
-  //       .getDownloadURL();
-  // }
-
-  // Future<List<ImageCustomInfoModel>> listAllFiles() async {
-  //   //String pathService = await FirebaseAuth.instance.currentUser!.uid;
-  //   final firebaseUUID = _firebaseAuth.currentUser!.uid;
-  //   final FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
-
-  //   ListResult result = await _firebaseStorage.ref(pathService).listAll();
-  //   List<Reference> listReferences = result.items;
-
-  //   List<ImageCustomInfoModel> listFiles = [];
-
-  //   for (Reference reference in listReferences) {
-  //     String urlDownload = await reference.getDownloadURL();
-  //     String name = reference.name;
-
-  //     FullMetadata metadados = await reference.getMetadata();
-  //     int? size = metadados.size;
-
-  //     String sizeString = "Sem informação de tamanho.";
-
-  //     if (size != null) {
-  //       sizeString = "${size / 1000} Kb";
-  //     }
-
-  //     listFiles.add(
-  //       ImageCustomInfoModel(
-  //         urlDownload: urlDownload,
-  //         name: name,
-  //         size: sizeString,
-  //         ref: reference
-  //       )
-  //     );
-  //   }
-
-  //   return listFiles;
-  // }
-
-  // Future<void> deleteByReference({required ImageCustomInfoModel imageInfo}) async {
-  //   if (_firebaseAuth.currentUser!.photoURL != null) {
-  //     if (_firebaseAuth.currentUser!.photoURL! == imageInfo.urlDownload) {
-  //       await _firebaseAuth.currentUser!.updatePhotoURL(null);
-  //     }
-  //   }
-  //   return await imageInfo.ref.delete();
-  // }
 }

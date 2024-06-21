@@ -43,13 +43,6 @@ class _UpdateButtonDayState extends State<UpdateButtonDay> {
     var buttonBorderColor = selectedButton ? AppColors.colorGreen : 
        AppColors.colorGrey;
     
-    // final textColor = selectedButton ? Colors.white : AppColors.colorGrey;
-    // var buttonColor = selectedButton ? AppColors.colorGreenLight : Colors.white;
-    // final buttonBorderColor = selectedButton ? AppColors.colorGreen : AppColors.colorGrey;
-
-
-
-
     final bool disableDay = enabledDays != null && !enabledDays.contains(label);
 
     if (disableDay) {

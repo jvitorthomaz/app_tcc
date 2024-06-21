@@ -18,7 +18,6 @@ class EmployeeRegisterVm extends _$EmployeeRegisterVm{
 
 
   void setRegisterADM(bool isRegisterAdm) {
-    //    GlobalConst.clinicAlreadyHasADM = true;
     state = state.copyWith(registerAdm: isRegisterAdm);
 
   }

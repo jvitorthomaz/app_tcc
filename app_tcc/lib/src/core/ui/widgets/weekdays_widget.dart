@@ -20,7 +20,6 @@ class WeekdaysWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Text de ajuda (Icon de "?")
           const Text(
             'Selecione os dias da semana',
             style: TextStyle(

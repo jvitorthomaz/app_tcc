@@ -17,14 +17,6 @@ class SplashPage extends ConsumerStatefulWidget {
   ConsumerState<SplashPage> createState() => _SplashPageState();
 }
 
-/*
-#fbf3f2;
-#f5867e;
-#fbb4b3;
-#e6a4ac
-#f8cec1;
-*/
-
 
 class _SplashPageState extends ConsumerState<SplashPage> {
   var _scale = 10.0;
@@ -71,23 +63,18 @@ class _SplashPageState extends ConsumerState<SplashPage> {
           log('Erro ao Validar', error: error, stackTrace: stackTrace);
 
           MessagesHelper.showErrorSnackBar('Erro ao Validar o login', context);
-          //Navigator.of(context).pushNamedAndRemoveUntil('/auth/login', (route) => false);
           _redirectRoute('/auth/login');
         },
 
         data: (data) {
           switch (data) {
             case SplashPageState.loggedAdm:
-              //Navigator.of(context).pushNamedAndRemoveUntil('/home/admUser', (route) => false);
               _redirectRoute('/home/admUser');
 
             case SplashPageState.loggedEmployee:
-              //Navigator.of(context).pushNamedAndRemoveUntil('/home/employeeUser', (route) => false);
               _redirectRoute('/home/employeeUser');
 
             case _:
-              //Navigator.of(context).pushNamedAndRemoveUntil('/auth/login', (route) => false);
-              //Future.delayed(Duration(seconds: 3));
               _redirectRoute('/auth/login');
           }
         },
@@ -95,18 +82,6 @@ class _SplashPageState extends ConsumerState<SplashPage> {
     });
     return Scaffold(
       backgroundColor: Colors.white,
-      //Tirar imagem e deixar cor de fundo igual ã da tela de login
-      // body: DecoratedBox(
-      //   decoration: const BoxDecoration(
-      //     image: DecorationImage(
-      //       image: AssetImage(
-      //         AppImages.backgroundImage,
-      //       ),
-      //       opacity: 0.2,
-      //       fit: BoxFit.cover,
-      //     )
-      //   ),
-      //   child: 
         body: Center(
           child: AnimatedOpacity(
             duration: const Duration(milliseconds: 1500),
@@ -116,21 +91,6 @@ class _SplashPageState extends ConsumerState<SplashPage> {
               setState(() {
                 endAnimation = true;
               });
-              // Navigator.of(context).pushAndRemoveUntil(
-              //   PageRouteBuilder(
-              //     settings: const RouteSettings(name: '/auth/login'),
-              //     pageBuilder: (
-              //       context, 
-              //       animation, 
-              //       secondaryAnimation,
-              //     ) {
-              //       return const LoginPage();
-              //     },
-              //     transitionsBuilder: (_, animation, __, child) {
-              //       return FadeTransition(opacity: animation, child: child,);
-              //     }
-              //   ), (route) => false
-              // );
             },
             child: AnimatedContainer(
               duration: const Duration(seconds: 3),

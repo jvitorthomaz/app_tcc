@@ -14,13 +14,7 @@ part 'profile_update_vm.g.dart';
 @riverpod
 class ProfileUpdateVm extends _$ProfileUpdateVm{
 
- ProfileUpdateState build() => ProfileUpdateState.initial();//.copyWith();
-
-
-
-  // void setUpdateADM(bool isUpdateAdm) {
-  //   state = state.copyWith(updateAdm: isUpdateAdm);
-  // }
+ ProfileUpdateState build() => ProfileUpdateState.initial();
 
   void addOrRemoveWorkdays(String weekDay) {
     final ProfileUpdateState(:workdays) = state;
@@ -52,38 +46,17 @@ class ProfileUpdateVm extends _$ProfileUpdateVm{
 
   Future<void> update({int? userId, String? name, String? email, String? password}) async {
     final ProfileUpdateState(
-      // :updateAdm, 
       :workdays, 
       :workhours
     ) = state;
 
-    print("====================");
-    print("====================");
-    print("E-mail entrando na VM");
-    print(email);
-    print("====================");
-    print("====================");
-    print("====================");
-
     final asyncLoadHandler = AsyncLoaderHandler()..start();
     
     final UserRespository(
-      //:registerAdmAsEmployee, 
       :updateUserProfile
     ) = ref.read(userRespositoryProvider);
 
     final Either<RepositoryException, Nil> resultUpdate;   
-
-    // if(updateAdm) {
-    //   final dtoRegisterAdm = (
-    //     workDays: workdays,
-    //     workHours: workhours
-    //   );
-    //   resultRegister = await registerAdmAsEmployee(dtoRegisterAdm);
-
-    // } else {
-
-      //final PlaceModel(:id) = await ref.watch(getAdmPlaceProvider.future);
 
       final dtoRegisterEmployee = (
         userId: userId!,
@@ -93,17 +66,7 @@ class ProfileUpdateVm extends _$ProfileUpdateVm{
         workHours: workhours
       );
 
-    print("====================");
-    print("====================");
-    print("indo para repository");
-    print(dtoRegisterEmployee);
-    print("====================");
-    print("====================");
-    print("====================");
-
-      resultUpdate = await updateUserProfile(dtoRegisterEmployee);
-
-    //}
+    resultUpdate = await updateUserProfile(dtoRegisterEmployee);
 
     switch(resultUpdate) {
       case Success():

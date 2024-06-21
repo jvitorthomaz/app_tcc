@@ -7,7 +7,6 @@ import 'package:tcc_app/src/features/history/user_schedules_history_vm.dart';
 
 class UpdateScheduleNote extends ConsumerStatefulWidget {
 
-    // required BuildContext context,
     final int idUserSelected;
     final int scheduleId;
     final String scheduleNote;
@@ -71,12 +70,6 @@ class _UpdateScheduleNoteState extends ConsumerState<UpdateScheduleNote> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            // TextButton(
-            //   onPressed: () {
-            //     Navigator.of(context).pop();
-            //   },
-            //   child: const Text("Cancelar", style: TextStyle(fontSize: 18, color: AppColors.colorGreen),),
-            // ),
 
             ElevatedButton(
               style: ElevatedButton.styleFrom(

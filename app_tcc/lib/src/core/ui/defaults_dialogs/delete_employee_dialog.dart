@@ -10,7 +10,6 @@ Future<dynamic>showDeleteEmployeeDialog(BuildContext context, {
   String affirmativeOption = "Confirmar",
 }){
 
-
   return isAdmUser ? 
    showDialog(
     context: context,
@@ -124,43 +123,4 @@ Future<dynamic>showDeleteEmployeeDialog(BuildContext context, {
     })
   );
 
-      // :
-      //       AlertDialog(
-      //   title: Text(
-      //     title,
-      //     style: const TextStyle(
-      //         fontSize: 18,
-      //         color: AppColors.colorRed,
-      //       ),
-      //   ),
-
-      //   content: const Column(
-      //     children: [
-      //       Text(
-      //         "Você está tenatndo deletar sua própria conta!",
-      //       ),
-      //        Text(
-      //         "Se você realmente deseja fazer isso, acesse sua tela de perfil.",
-      //       ),
-      //     ],
-      //   ),
-
-      //   actions: [
-
-      //     Row(
-      //       mainAxisAlignment: MainAxisAlignment.spaceAround,
-      //       children: [
-      //         OutlinedButton(
-      //           style: ElevatedButton.styleFrom(
-      //             padding: const EdgeInsets.symmetric(horizontal: 20)
-      //           ),
-      //           onPressed: () {
-      //              Navigator.pop(context, false);
-      //           },
-      //           child: const Text('VOLTAR'),
-      //         ),
-      //       ],
-      //     ),
-      //   ],
-      // )
 }

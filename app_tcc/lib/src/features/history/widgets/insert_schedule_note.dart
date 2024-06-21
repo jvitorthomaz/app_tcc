@@ -7,8 +7,6 @@ import 'package:tcc_app/src/features/history/user_schedules_history_vm.dart';
 import 'package:tcc_app/src/features/history/widgets/update_schedule_note.dart';
 
 class InsertScheduleNote extends ConsumerStatefulWidget {
-
-    // required BuildContext context,
     final int idUserSelected;
     final int scheduleId;
     final bool alreadyHas;
@@ -80,8 +78,6 @@ class _InsertScheduleNoteState extends ConsumerState<InsertScheduleNote> {
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
-            
-                
               },
               child: const Text("Cancelar", style: TextStyle(fontSize: 18, color: AppColors.colorGreen),),
             ),
@@ -109,12 +105,6 @@ class _InsertScheduleNoteState extends ConsumerState<InsertScheduleNote> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            // TextButton(
-            //   onPressed: () {
-            //     Navigator.of(context).pop(); 
-            //   },
-            //   child: const Text("Cancelar", style: TextStyle(fontSize: 18, color: AppColors.colorGreen),),
-            // ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.symmetric(horizontal: 80),

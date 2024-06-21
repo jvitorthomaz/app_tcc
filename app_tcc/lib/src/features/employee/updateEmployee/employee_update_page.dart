@@ -38,13 +38,6 @@ class _EmployeeUpdatePageState extends ConsumerState<EmployeeUpdatePage> {
 
   }
 
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   bringData(userModel);
-  // }
-
   void dispose(){
     nameEC.dispose();
     emailEC.dispose();
@@ -55,7 +48,6 @@ class _EmployeeUpdatePageState extends ConsumerState<EmployeeUpdatePage> {
   @override
   Widget build(BuildContext context) {
     final userModel = ModalRoute.of(context)!.settings.arguments as UserModel;
-    //final employeeUserModel = ModalRoute.of(context)!.settings.arguments as EmployeeUserModel;
 
     final employeeData = switch (userModel) {
       AdmUserModel(:final workDays, :final workHours) => (
@@ -73,9 +65,7 @@ class _EmployeeUpdatePageState extends ConsumerState<EmployeeUpdatePage> {
       setState(() {
         nameEC.text = userModel.name;
         emailEC.text = userModel.email;
-        // nameEC.text = employeeUserModel.name;
-        // emailEC.text = employeeUserModel.email;
-        
+
       });
       print('${nameEC.text}--');
       print('${emailEC.text}-----');
@@ -87,19 +77,11 @@ class _EmployeeUpdatePageState extends ConsumerState<EmployeeUpdatePage> {
       employeeUpdateVmProvider.select((state) => state.status), (_, status) {
         switch (status) {
           case EmployeeUpdateStateStatus.initial:
-          // setState(() {
-          //   nameEC.text == userModel.name;
-          //   emailEC.text == userModel.email;
-            
-          // });
-          // print('${nameEC.text}');
-          // print('${emailEC.text}');
           
             break;
 
           case EmployeeUpdateStateStatus.success:
             MessagesHelper.showSuccessSnackBar('O Colaborador foi editado com sucesso.', context);
-            // Future.delayed(Duration(seconds: 1));
             Navigator.of(context).pop();
 
           case EmployeeUpdateStateStatus.error:
@@ -137,8 +119,6 @@ class _EmployeeUpdatePageState extends ConsumerState<EmployeeUpdatePage> {
                 child: Center(
                   child: Column(
                     children: [
-
-                      // const UserAvatarWidget(),
                       const Text(
                         'MyClinic App', 
                         style: TextStyle(
@@ -150,19 +130,6 @@ class _EmployeeUpdatePageState extends ConsumerState<EmployeeUpdatePage> {
                       const SizedBox(
                         height: 30,
                       ),
-                    //  const Row(
-                    //     children: [
-                        
-                    //        Expanded(
-                    //         child: Text(
-                    //           'Os campos de Nome e E-mail só podem ser alterados pelo próprio usuario em sua tela de Perfil',
-                    //           style: TextStyle(
-                    //             fontSize: 14,
-                    //           ),
-                    //         ),
-                    //       )
-                    //     ],
-                    //   ),
                       Offstage(
                         offstage: isAdm,
                         child: Column(
@@ -198,26 +165,6 @@ class _EmployeeUpdatePageState extends ConsumerState<EmployeeUpdatePage> {
                                 label: Text('E-mail')
                               ),
                             ),
-                            // const SizedBox(
-                            //   height: 24,
-                            // ),
-                            // TextFormField(
-                            //   onTapOutside: (_) => context.unfocus(),
-                            //   controller: passwordEC,
-                            //   validator: isAdm
-                            //       ? null
-                            //       : Validatorless.multiple([
-                            //           Validatorless.required('A senha é obrigatória'),
-                            //           Validatorless.min(
-                            //             6,
-                            //             'Senha deve conter no mínimo 6 caracteres'
-                            //           ),
-                            //         ]),
-                            //   obscureText: true,
-                            //   decoration: const InputDecoration(
-                            //     label: Text('Senha')
-                            //   ),
-                            // )
                           ],
                         ),
                       ),
@@ -226,7 +173,6 @@ class _EmployeeUpdatePageState extends ConsumerState<EmployeeUpdatePage> {
                       ),
                       WeekdaysWidget(
                         enabledDays: openingDays,
-                        //['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
                         onDayPressed: employeeUpdateVm.addOrRemoveWorkdays //TIRAR
                       ),
               
@@ -235,7 +181,6 @@ class _EmployeeUpdatePageState extends ConsumerState<EmployeeUpdatePage> {
                       ),
                       HoursWidget(
                         enabledTimes: openingHours,
-                        //[ 9, 10, 11, 13, 14, 15, 16, 17, 18],
                         startTime: 8, 
                         endTime: 19, 
                         onHourPressed: employeeUpdateVm.addOrRemoveWorkhours //TIRAR
@@ -274,13 +219,11 @@ class _EmployeeUpdatePageState extends ConsumerState<EmployeeUpdatePage> {
 
                               final name = nameEC.text;
                               final email = emailEC.text;
-                              //final password = passwordEC.text;
 
                               await employeeUpdateVm.update(
                                 employeeId: userModel.id,
                                 name: name,
                                 email: email,
-                                //password: password
                               );
                              Navigator.of(context).pop();
                           }

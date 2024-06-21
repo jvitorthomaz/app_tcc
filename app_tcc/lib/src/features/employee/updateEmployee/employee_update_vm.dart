@@ -53,36 +53,18 @@ class EmployeeUpdateVm extends _$EmployeeUpdateVm{
     final asyncLoadHandler = AsyncLoaderHandler()..start();
 
     final UserRespository(
-      //:registerAdmAsEmployee, 
       :updateEmployee
     ) = ref.read(userRespositoryProvider);
 
     final Either<RepositoryException, Nil> resultUpdate;   
 
-    // if(updateAdm) {
-    //   final dtoRegisterAdm = (
-    //     workDays: workdays,
-    //     workHours: workhours
-    //   );
-    //   resultRegister = await registerAdmAsEmployee(dtoRegisterAdm);
-
-    // } else {
-
-      //final PlaceModel(:id) = await ref.watch(getAdmPlaceProvider.future);
-
       final dtoRegisterEmployee = (
-        //placeId: id,
-        // name: name!,
-        // email: email!,
-        //password: password!,//
         employeeId: employeeId!,
         workDays: workdays,
         workHours: workhours
       );
 
       resultUpdate = await updateEmployee(dtoRegisterEmployee);
-
-    //}
 
     switch(resultUpdate) {
       case Success():

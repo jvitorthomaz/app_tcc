@@ -37,39 +37,4 @@ class PlaceModel {
     };
   }
 
-  // Map<String, dynamic> toMap(){
-  //   return {
-  //     'name': name,
-  //     'email': email,
-  //     'opening_days': openingDays,
-  //     'opening_hours': openingHours,
-
-  //   };
-  // }
 }
-
-/* [
-    {
-        "id": 2,
-        "user_id": "5",
-        "name": "Clinica 1",
-        "email": "clinica@gmail.com",
-        "opening_days": [
-            "Seg",
-            "Qua",
-            "Sex"
-        ],
-        "opening_hours": [
-            6,
-            7,
-            8,
-            9,
-            18,
-            19,
-            20,
-            12,
-            13
-        ]
-    }
-] */
-

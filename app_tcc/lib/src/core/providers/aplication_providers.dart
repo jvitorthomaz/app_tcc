@@ -76,15 +76,6 @@ Future<void> logout(LogoutRef ref) async {
   Navigator.of(AppNavGlobalKey.instance.navKey.currentContext!)
     .pushNamedAndRemoveUntil('/auth/login', (route) => false);
 
-
-  //ou
-  // Navigator.of(AppNavGlobalKey.instance.navKey.currentContext!)
-  //  .pushNamedAndRemoveUntil('/auth/login', (route) => false);
-
-  // await Future.delayed(const Duration(milliseconds: 500));
-
-  // ref.invalidate(getMeProvider);
-  // ref.invalidate(getAdmPlaceProvider);
 }
 
 @riverpod

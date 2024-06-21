@@ -44,10 +44,6 @@ class _UpdateSchedulesPageState extends ConsumerState<UpdateSchedulesPage> {
     final userModel = args[0] as UserModel;
     final scheduleModel = args[1] ;
 
-
-    // final userModel = ModalRoute.of(context)!.settings.arguments[0] as UserModel;
-    // final scheduleModel = ModalRoute.of(context)!.settings.arguments as SchedulesModel;
-
     final schedulesVm = ref.watch(updateSchedulesVmProvider.notifier);
 
     final employeeData = switch (userModel) {
@@ -64,30 +60,13 @@ class _UpdateSchedulesPageState extends ConsumerState<UpdateSchedulesPage> {
 
       setState(() {
         clientEC.text = scheduleModel.subject;
-        //dateEC.text = '${scheduleModel.startTime}';
-        //dateEC.text = '${dateFormat.format(scheduleModel.startTime)}';
-        // nameEC.text = employeeUserModel.name;
-        // emailEC.text = employeeUserModel.email;
-        
       });
 
-      // print('------------------------------');
-      // print('------------------------------');
-      // print('${clientEC.text}--');
-      // print('${dateEC.text}-----');
-      // print(scheduleModel.id);
-      // print('------------------------------');
-      // print('------------------------------');
-
-
-    
     ref.listen(
       updateSchedulesVmProvider.select((state) => state.status),
       (_, status) {
         switch (status) {
           case UpdateSchedulesStateStatus.initial:
-            //schedulesVm.firstHour(scheduleModel.)
-
             break;
 
           case UpdateSchedulesStateStatus.success:
@@ -111,10 +90,6 @@ class _UpdateSchedulesPageState extends ConsumerState<UpdateSchedulesPage> {
             child: Center(
               child: Column(
                 children: [
-                  // const UserAvatarWidget.withoutButton(),
-                  // const SizedBox(
-                  //   height: 20,
-                  // ),
                   Text(
                     userModel.name,
                     style: const TextStyle(
@@ -145,16 +120,17 @@ class _UpdateSchedulesPageState extends ConsumerState<UpdateSchedulesPage> {
                     onTap: () {
                       setState(() {
                         showCalendar = true;
-                        //schedulesVm.deteSelected(scheduleModel.startTime);
-                        //showCalendar = !showCalendar;
                       });
                       context.unfocus();
                     },
-                    decoration:  InputDecoration(
-                      label: Text('${dateFormat.format(scheduleModel.startTime)}', style: TextStyle(color: Colors.black),),
+                    decoration: InputDecoration(
+                      label: Text(
+                        '${dateFormat.format(scheduleModel.startTime)}', 
+                        style: const TextStyle(color: Colors.black),
+                      ),
                       hintText: 'Selecione uma data',
                       floatingLabelBehavior: FloatingLabelBehavior.never,
-                      suffixIcon: Icon(
+                      suffixIcon: const Icon(
                         AppIcons.calendarAppIcon,
                         color: AppColors.colorGreen,
                         size: 20,
@@ -172,7 +148,6 @@ class _UpdateSchedulesPageState extends ConsumerState<UpdateSchedulesPage> {
                           cancelPressed: () {
                             setState(() {
                               showCalendar = false;
-                              // showCalendar = !showCalendar;
                             });
                           },
                           onOkPressed: (DateTime value) {
@@ -222,21 +197,6 @@ class _UpdateSchedulesPageState extends ConsumerState<UpdateSchedulesPage> {
                         MessagesHelper.showErrorSnackBar('Os dados estão incompletos', context);
           
                         case true:
-
-                          // final UpdateSchedulesState(
-                          //   scheduleDate: ,
-                          //   scheduleTime: ,
-                          // ) = ref.watch(updateSchedulesVmProvider);
-
-                          // if (!hasWorkDays || !hasWorkHours) {
-                          //   MessagesHelper.showErrorSnackBar(
-                          //     'Por favor, selecione os dias das semana e horário de atendimento.', 
-                          //     context,
-                          //   );
-                          //   return;
-                          // }
-                        
-                          // //   login(emailEC.text, passwordEC.text);
                           final hourSelected = ref.watch(
                             updateSchedulesVmProvider.select((state) => state.scheduleTime != null),
                           );
@@ -246,7 +206,6 @@ class _UpdateSchedulesPageState extends ConsumerState<UpdateSchedulesPage> {
                               clientName: clientEC.text, 
                               scheduleId: scheduleModel.id,
                             );
-          
                           } else {
                             MessagesHelper.showErrorSnackBar('Por favor selecione um horário de atendimento', context);
                           }
@@ -254,9 +213,7 @@ class _UpdateSchedulesPageState extends ConsumerState<UpdateSchedulesPage> {
                     },
                     child: const Text('EDITAR'),
                   )
-                
                 ],
-                
               ),
             ),
           ),

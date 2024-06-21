@@ -30,16 +30,6 @@ class _ProfileUpdatePageState extends ConsumerState<ProfileUpdatePage> {
   final emailEC = TextEditingController();
   final passwordEC = TextEditingController();
 
-  bringData(UserModel userModel){
-
-  }
-
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   bringData(userModel);
-  // }
 
   void dispose(){
     nameEC.dispose();
@@ -62,22 +52,11 @@ class _ProfileUpdatePageState extends ConsumerState<ProfileUpdatePage> {
       print('${userModel.id}');
       print('${nameEC.text}');
       print('${emailEC.text}');
-    // nameEC.text = userModel.name;
-    // emailEC.text = userModel.email;
-    
-    // var height = MediaQuery.of(context).size.height;
-    // var width = MediaQuery.of(context).size.width;
-    // final userModel = ref.watch(getMeProvider.future);
-    //final employeeUserModel = ModalRoute.of(context)!.settings.arguments as EmployeeUserModel;
 
     final userData = switch (userModel) {
       AdmUserModel(:final workDays, :final workHours) => (
         workDays: workDays ?? [],
         workHours: workHours ?? [],
-        // workDays: workDays != null ? workDays :  [],
-        // workHours: workHours != null ? workHours :  [],
-        // workDays: workDays!,
-        // workHours: workHours!,
       ),
 
       EmployeeUserModel(:final workDays, :final workHours) => (
@@ -87,9 +66,6 @@ class _ProfileUpdatePageState extends ConsumerState<ProfileUpdatePage> {
 
     };
 
-    // final profileUpdateVm = ref.watch(profileUpdateVmProvider.notifier);
-    // final placeAsyncValue = ref.watch(getAdmPlaceProvider);
-
     ref.listen(
       profileUpdateVmProvider.select((state) => state.status), (_, status) {
         switch (status) {
@@ -98,7 +74,6 @@ class _ProfileUpdatePageState extends ConsumerState<ProfileUpdatePage> {
 
           case ProfileUpdateStateStatus.success:
             MessagesHelper.showSuccessSnackBar('O seu perfil foi editado com sucesso.', context);
-            // Future.delayed(Duration(seconds: 1));
             Navigator.of(context).pop();
 
           case ProfileUpdateStateStatus.error:
@@ -137,8 +112,6 @@ class _ProfileUpdatePageState extends ConsumerState<ProfileUpdatePage> {
                 child: Center(
                   child: Column(
                     children: [
-
-                      // const UserAvatarWidget(),
                       const Text(
                         'MyClinic App', 
                         style: TextStyle(
@@ -157,7 +130,6 @@ class _ProfileUpdatePageState extends ConsumerState<ProfileUpdatePage> {
                           ),
                           TextFormField(
                             readOnly: true,
-                            //onTapOutside: (_) => context.unfocus(),
                             controller: nameEC,
                             validator: Validatorless.required('Nome obrigatório'),
                             decoration: const InputDecoration(
@@ -169,7 +141,6 @@ class _ProfileUpdatePageState extends ConsumerState<ProfileUpdatePage> {
                           ),
                           TextFormField(
                             readOnly: true,
-                            //onTapOutside: (_) => context.unfocus(),
                             controller: emailEC,
                             validator: Validatorless.multiple([
                                     Validatorless.required('E-mail obrigatório'),
@@ -186,7 +157,6 @@ class _ProfileUpdatePageState extends ConsumerState<ProfileUpdatePage> {
                       ),
                       WeekdaysWidget(
                         enabledDays: openingDays,
-                        //['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
                         onDayPressed: profileUpdateVm.addOrRemoveWorkdays //TIRAR
                       ),
               
@@ -195,7 +165,6 @@ class _ProfileUpdatePageState extends ConsumerState<ProfileUpdatePage> {
                       ),
                       HoursWidget(
                         enabledTimes: openingHours,
-                        //[ 9, 10, 11, 13, 14, 15, 16, 17, 18],
                         startTime: 8, 
                         endTime: 19, 
                         onHourPressed: profileUpdateVm.addOrRemoveWorkhours //TIRAR
@@ -219,7 +188,6 @@ class _ProfileUpdatePageState extends ConsumerState<ProfileUpdatePage> {
                               );
 
                             case true:
-                              //handleConfirmWithPassword(height, width);
 
                               final ProfileUpdateState(
                                 workdays: List(isNotEmpty: hasWorkDays),
@@ -236,8 +204,6 @@ class _ProfileUpdatePageState extends ConsumerState<ProfileUpdatePage> {
 
                               final name = nameEC.text;
                               final email = emailEC.text;
-
-                              //final password = passwordEC.text;
 
                               await profileUpdateVm.update(
                                 userId: userModel.id,
@@ -264,8 +230,6 @@ class _ProfileUpdatePageState extends ConsumerState<ProfileUpdatePage> {
 
 
   handleConfirmWithPassword(height, width) {
-    // return Theme(
-    //       data: ThemeData(dialogBackgroundColor: Colors.white),
     String password = passwordEC.text;
     
     return showDialog(
@@ -330,29 +294,12 @@ class _ProfileUpdatePageState extends ConsumerState<ProfileUpdatePage> {
                     ),
                     onPressed: (){
                       
-                      //   authRepository
-                      //     .redefinicaoSenha(email: redefincaoSenhaController.text)
-                      //     .then((String? erro) {
-        
-                      //   if (erro == null) {
-                      //     showSnackBar(
-                      //       context: context,
-                      //       mensagem: "E-mail de redefinição enviado!",
-                      //       isErro: false,
-                      //     );
-        
-                      //   } else {
-                      //     showSnackBar(context: context, mensagem: erro);
-                      //   }
-        
-                      //   Navigator.pop(context);
-                      // });
                      
         
                     }, 
-                    child: Text(
-                    'Confirmar', style: TextStyle(
-                        fontSize: 16,)
+                    child: const Text(
+                      'Confirmar', 
+                      style: TextStyle(fontSize: 16,)
                     
                     ),
                   ),
@@ -362,21 +309,7 @@ class _ProfileUpdatePageState extends ConsumerState<ProfileUpdatePage> {
                   TextButton(
                     onPressed: () {
                       Navigator.of(context).pop();
-                      // authRepository
-                      //     .redefinicaoSenha(email: redefincaoSenhaController.text)
-                      //     .then((String? erro) {
-                      //   if (erro == null) {
-                      //     showSnackBar(
-                      //       context: context,
-                      //       mensagem: "E-mail de redefinição enviado!",
-                      //       isErro: false,
-                      //     );
-                      //   } else {
-                      //     showSnackBar(context: context, mensagem: erro);
-                      //   }
-        
-                      //   Navigator.pop(context);
-                      // });
+
                     },
                     child: const Text(
                       "Voltar",

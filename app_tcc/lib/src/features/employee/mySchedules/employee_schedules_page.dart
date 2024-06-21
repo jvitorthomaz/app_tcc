@@ -13,8 +13,6 @@ import 'package:tcc_app/src/features/employee/mySchedules/employee_schedules_vm.
 import 'package:tcc_app/src/features/home/home_employee/home_employee_provider.dart';
 import 'package:tcc_app/src/models/users_model.dart';
 
-//DESFAZER ALTERAÇÕES NESSE
-
 class EmployeeSchedulesPage extends ConsumerStatefulWidget {
 
   const EmployeeSchedulesPage({ super.key });
@@ -127,14 +125,6 @@ class _EmployeeSchedulesPageState extends ConsumerState<EmployeeSchedulesPage> {
                     ignoreFirstLoad = false;
                     return;
                   }
-
-                  // ref.read(
-                  //   employeeSchedulesVmProvider(userId, dateSelected).notifier,
-                  // ).changeDate(
-                  //   userId,
-                  //   viewChangedDetails.visibleDates.first,
-                  // );
-
                   final employeeSchedule = ref.read(
                     employeeSchedulesVmProvider(userId, dateSelected).notifier,
                   );
@@ -164,7 +154,7 @@ class _EmployeeSchedulesPageState extends ConsumerState<EmployeeSchedulesPage> {
                                   children: [
                                     Text(
                                       'Detalhes do Agendamento',
-                                       style: const TextStyle(
+                                       style: TextStyle(
                                         color: AppColors.colorGreen,
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold,
@@ -251,9 +241,7 @@ class _EmployeeSchedulesPageState extends ConsumerState<EmployeeSchedulesPage> {
                                         ref.invalidate(getTotalSchedulesTomorrowProvider(userId));
                                         ref.invalidate(employeeSchedulesVmProvider(userId, dateSelected));   
                                       },
-                                      child: const Text('Editar Agendamento', 
-                                        //style: TextStyle(fontSize: 12),
-                                      ),
+                                      child: const Text('Editar Agendamento'),
                                     ),
 
                                     ElevatedButton(
@@ -274,16 +262,6 @@ class _EmployeeSchedulesPageState extends ConsumerState<EmployeeSchedulesPage> {
                                     
                                   ],
                                 ),
-
-
-                                  // final employeeSchedule = ref.read(
-                                  //   employeeSchedulesVmProvider(userId, dateSelected).notifier,
-                                  // );
-
-                                  // employeeSchedule.changeDate(
-                                  //   userId,
-                                  //   viewChangedDetails.visibleDates.first,
-                                  // );
                               ],
                             ),
                           ),
@@ -291,10 +269,6 @@ class _EmployeeSchedulesPageState extends ConsumerState<EmployeeSchedulesPage> {
                       },
                     );
                   } 
-                  // else{
-                  //     Navigator.of(context).pushNamed('/employee/schedulesEmployee');
-                  // }
-
                 },
               ),
 
