@@ -1,15 +1,8 @@
 name: Json Rest Server
 port: 8080
-#host: 186.217.114.84
-#host: 10.255.1.74
-#host: 192.168.0.12
-#host: 192.168.1.184
-host: 192.168.0.16
-#host: 192.168.0.7
 
-#host: 192.168.0.3 
-#host: 192.168.0.14
-#host: 0.0.0.0
+host: 192.168.1.184
+
 database: database.json
 
 auth:
