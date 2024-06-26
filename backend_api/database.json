@@ -1,1 +1,565 @@
-{"users":[{"id":18,"name":"Vitor Adm","email":"vitor@email.com","password":"123123","profile":"ADM","work_days":["Seg","Ter","Qua","Qui","Sex"],"work_hours":[9,10,11,14,15,16,17,18,13]},{"id":20,"name":"Colaborador 2","email":"colaborador2@email.com","password":"123123","place_id":3,"profile":"EMPLOYEE","work_days":["Seg","Qua","Sex"],"work_hours":[9,10,11,13,14,15,16,17]},{"id":21,"name":"nome user","email":"user@email.com","password":"123123","profile":"ADM","work_days":["Seg","Ter","Qua","Qui","Sex","Sab"],"work_hours":[9,11,10,13,14,15,16,17,18],"firebase_UUID":"cRXTeDXylqXkjIBYMmzNNWKLyTF2","profile_file_name":"2023-12-01 19:40:34.538058"},{"id":23,"name":"Nome De Usuário Adm","email":"email_adm@email.com","password":"123123","profile":"ADM","work_days":["Seg","Ter","Qua","Qui","Sex"],"work_hours":[9,10,11,13,14,15,16,17,18]},{"id":26,"name":"novo colaborador","email":"email.colab@email.com","password":"MyClinic#123!","place_id":4,"profile":"EMPLOYEE","work_days":["Seg","Ter","Qua","Qui","Sex"],"work_hours":[9,10,11,13,14,15,16,17,18]},{"id":27,"name":"colaborador teste","email":"teste2@email.com","password":"MyClinic#123!","place_id":4,"profile":"EMPLOYEE","work_days":["Seg","Qua","Sex"],"work_hours":[9,10,11,14,15]},{"id":28,"name":"novo colaborador","email":"new@email.com","password":"MyClinic#123!","place_id":4,"profile":"EMPLOYEE","work_days":["Seg","Qua","Sex"],"work_hours":[9,10,11,18,17]},{"id":29,"name":"Nome New ADM","email":"newadm@email.com","password":"123123","profile":"ADM","work_days":["Seg","Ter","Qua","Qui","Sex","Sab","Dom"],"work_hours":[9,10,11,12,13,14,15,16,17,18]},{"id":31,"name":"colabee","email":"colabee@email.com.br","password":"MyClinic#123!","place_id":4,"profile":"EMPLOYEE","work_days":["Seg","Ter","Qua","Qui","Sex"],"work_hours":[9,10,11,13,14,15,16,17,18]},{"id":33,"name":"colaborador Drawe","email":"drawer@email.com","password":"123123","place_id":4,"profile":"EMPLOYEE","work_days":["Seg","Ter","Qua","Qui","Sex"],"work_hours":[9,10,11,13,14,15,16,17,18],"firebase_UUID":"tvSFJWuFG8cXXiYidyy9p8z3uly1","profile_file_name":"2023-11-29 17:29:50.465980"},{"id":34,"name":"drawer","email":"drawer2@email.com","password":"123123","place_id":4,"profile":"EMPLOYEE","work_days":["Seg","Ter","Qua","Qui","Sex"],"work_hours":[10,11,13,14,15,16,17,18],"firebase_UUID":"sVAiEHa4khgBgPkXeWUOUS4eonl2","profile_file_name":"2023-11-30 00:10:53.186413"},{"id":35,"name":"Mindfullness","email":"thaina.zanfolin@gmail.com","password":"Thaina2023","profile":"ADM"},{"id":36,"name":"Thaina","email":"thaina@email.com","password":"Thaina2023","profile":"ADM"},{"id":37,"name":"User","email":"user@email.com.br","password":"123123","profile":"ADM"},{"id":38,"name":"Eu","email":"eu@email.com","password":"123123","profile":"ADM"},{"id":39,"name":"euteste@email.com","email":"emaileu@email.com","password":"123123","profile":"ADM"},{"id":40,"name":"Thaina","email":"thaina.zanfolin@email.com","password":"Thaina2023","profile":"ADM","work_days":["Seg","Ter","Qua"],"work_hours":[15,16],"firebase_UUID":"BL1FSf3U8IhqmauA3jgwpDrwi662","profile_file_name":"2023-12-01 12:47:41.248461"},{"id":41,"name":"Lais Pereira","email":"laispereira12@email.com","password":"LaisP2023","place_id":8,"profile":"EMPLOYEE","work_days":["Seg","Ter","Qua","Qui","Sex"],"work_hours":[8,9,15,16],"firebase_UUID":"dV8llDkt7EOJ56XbSMQgdootVjL2","profile_file_name":"2023-12-01 12:49:35.473649"},{"id":42,"name":"Julia Cesar","email":"julia.c@email.com","password":"MyClinic#123!","place_id":8,"profile":"EMPLOYEE","work_days":["Qua","Qui","Sex"],"work_hours":[14,10,9,8]},{"id":43,"name":"Colaborador teste demonstracao","email":"demosntracao@email.com","password":"MyClinic#123!","place_id":4,"profile":"EMPLOYEE","work_days":["Seg","Ter","Qua","Qui","Sex"],"work_hours":[9,10,11,12,13,14,15,16,17,18]},{"id":44,"name":"demonstracao2","email":"demonstraco2@email.com","password":"123123","place_id":4,"profile":"EMPLOYEE","work_days":["Seg","Qua","Sex"],"work_hours":[9,10,11,13,14,15,16,17],"firebase_UUID":"AiHL8WaPtOVxYZOpQ1sBrGLZjxX2","profile_file_name":"2023-12-01 14:47:19.422547"},{"id":45,"name":"Maria","email":"maria@email.com","password":"123123","place_id":4,"profile":"EMPLOYEE","work_days":["Seg","Ter","Qua","Qui","Sex"],"work_hours":[9,10,11,13,14,15,16,17,18],"firebase_UUID":"F9AP1kQpMGTys1R9Z1QwT2iAdJN2","profile_file_name":"2023-12-01 16:08:16.636419"},{"id":46,"name":"Carlos","email":"carlos@email.com","password":"MyClinic#123!","place_id":4,"profile":"EMPLOYEE","work_days":["Seg","Qua","Sex"],"work_hours":[9,10,11,13,14,15,16,17,18]},{"id":47,"name":"Joao","email":"joao@email.com","password":"123123","place_id":4,"profile":"EMPLOYEE","work_days":["Seg","Ter","Qua","Qui","Sex"],"work_hours":[9,10,11,13,14,15,16,17,18],"firebase_UUID":"8IWvhmE9aHgkhN0mWOzrFx4Fbg92","profile_file_name":"2023-12-01 19:03:26.876108"},{"id":48,"name":"Jose","email":"jose@email.com","password":"MyClinic#123!","place_id":4,"profile":"EMPLOYEE","work_days":["Seg","Qua","Sex"],"work_hours":[9,10,11,13,14,15,16,17,18]},{"id":49,"name":"Vitor","email":"vitor@email.com","password":"MyClinic#123!","place_id":4,"profile":"EMPLOYEE","work_days":["Seg","Ter","Qua","Qui","Sex","Sab"],"work_hours":[9,10,11,13,14,15,16,17,18]},{"id":50,"name":"Thaina","email":"thaina2@email.com","password":"123123","place_id":4,"profile":"EMPLOYEE","work_days":["Seg","Qua","Sex","Sab"],"work_hours":[9,10,11,13,14,15,16,17,18],"firebase_UUID":"K9j0vEDq4dOpny5oivFjBiUyFLj2","profile_file_name":"2023-12-01 19:49:21.252194"}],"adm_users":[],"place":[{"id":2,"user_id":"5","name":"fornecedor X","email":"fornecedorx@gmail.com","opening_days":["Seg","Qua","Sab"],"opening_hours":[6,7,8,9,18,19,20,12,13]},{"id":3,"user_id":"18","name":"Clínica 1","email":"clinica1@email.com","opening_days":["Seg","Ter","Qua","Qui","Sex"],"opening_hours":[9,10,11,13,14,15,16,17,18]},{"id":4,"user_id":"21","name":"Clinic One ","email":"clinicone@email.com","opening_days":["Seg","Ter","Qua","Qui","Sex","Sab"],"opening_hours":[9,10,11,13,14,15,16,17,18]},{"id":5,"user_id":"36","name":"Mindfullness","email":"clinicamindfullness@email.com","opening_days":["Seg","Ter","Qua","Qui","Sex"],"opening_hours":[8,9,10,11,14,15,16]},{"id":6,"user_id":"37","name":"clinica teste","email":"teste@email.com","opening_days":["Seg","Ter","Qua","Qui","Sex"],"opening_hours":[9,10,11,13,14,15,16,17,18]},{"id":7,"user_id":"39","name":"teste@email.com","email":"email1@email.com","opening_days":["Seg","Ter","Qua","Qui","Sex","Sab"],"opening_hours":[9,10,11,13,14,15,16,17,18]},{"id":8,"user_id":"40","name":"Clinica Mind","email":"mind.clinica@email.com","opening_days":["Seg","Ter","Qua","Qui","Sex"],"opening_hours":[8,9,10,11,14,15,16]}],"schedules":[{"id":4,"place_id":3,"user_id":18,"client_name":"Cliente teste agenda","date":"2023-11-08T00:00:00.000Z","time":9,"schedule_note":""},{"id":5,"place_id":4,"user_id":22,"client_name":"cliente 1","date":"2023-11-20T00:00:00.000Z","time":10,"schedule_note":""},{"id":6,"place_id":8,"user_id":40,"client_name":"Vitor","schedule_note":"","date":"2023-12-05T00:00:00.000Z","time":16},{"id":7,"place_id":8,"user_id":41,"client_name":"Jose","schedule_note":"","date":"2023-12-04T00:00:00.000Z","time":8},{"id":8,"place_id":8,"user_id":41,"client_name":"Eduardo","schedule_note":"","date":"2023-12-04T00:00:00.000Z","time":15},{"id":10,"place_id":4,"user_id":43,"client_name":"cliente dem2","schedule_note":"","date":"2023-12-05T00:00:00.000Z","time":14},{"id":11,"place_id":4,"user_id":44,"client_name":"paciente","schedule_note":"","date":"2023-12-01T00:00:00.000Z","time":17},{"id":12,"place_id":4,"user_id":45,"client_name":"Paciente 1","schedule_note":"","date":"2023-12-08T00:00:00.000Z","time":17},{"id":13,"place_id":4,"user_id":45,"client_name":"paciente demonstracao","schedule_note":"","date":"2023-12-01T00:00:00.000Z","time":18},{"id":15,"place_id":4,"user_id":48,"client_name":"Paciente","schedule_note":"","date":"2023-12-08T00:00:00.000Z","time":15},{"id":16,"place_id":4,"user_id":47,"client_name":"Paciente ","schedule_note":"","date":"2023-12-01T00:00:00.000Z","time":18},{"id":17,"place_id":4,"user_id":50,"client_name":"Eduardo","schedule_note":"","date":"2023-12-02T00:00:00.000Z","time":10}],"clients":[{"id":1,"client_name":"cliente teste 3","employee_id":21,"date":"2023-11-28T00:00:00.000Z","time":9},{"id":2,"client_name":"Vitor","employee_id":40,"date":"2023-12-05T00:00:00.000Z","time":16},{"id":3,"client_name":"Jose","employee_id":41,"date":"2023-12-04T00:00:00.000Z","time":8},{"id":4,"client_name":"Eduardo","employee_id":41,"date":"2023-12-04T00:00:00.000Z","time":15},{"id":5,"client_name":"cliente dem","employee_id":21,"date":"2023-12-04T00:00:00.000Z","time":9},{"id":6,"client_name":"cliente dem2","employee_id":43,"date":"2023-12-05T00:00:00.000Z","time":14},{"id":7,"client_name":"paciente","employee_id":44,"date":"2023-12-01T00:00:00.000Z","time":17},{"id":8,"client_name":"Paciente 1","employee_id":45,"date":"2023-12-08T00:00:00.000Z","time":17},{"id":9,"client_name":"Paciente 2","employee_id":21,"date":"2023-12-04T00:00:00.000Z","time":11},{"id":10,"client_name":"paciente demonstracao","employee_id":45,"date":"2023-12-01T00:00:00.000Z","time":18},{"id":11,"client_name":"Maria","employee_id":21,"date":"2023-12-04T00:00:00.000Z","time":13},{"id":12,"client_name":"Paciente","employee_id":48,"date":"2023-12-08T00:00:00.000Z","time":15},{"id":13,"client_name":"Paciente ","employee_id":47,"date":"2023-12-01T00:00:00.000Z","time":18},{"id":14,"client_name":"Eduardo","employee_id":50,"date":"2023-12-02T00:00:00.000Z","time":10},{"id":15,"client_name":"Rosa","employee_id":21,"date":"2023-12-11T00:00:00.000Z","time":17}]}
+{
+  "users": [
+    {
+      "id": 18,
+      "name": "Vitor Adm",
+      "email": "vitor@email.com",
+      "password": "123123",
+      "profile": "ADM",
+      "work_days": ["Seg", "Ter", "Qua", "Qui", "Sex"],
+      "work_hours": [9, 10, 11, 14, 15, 16, 17, 18, 13]
+    },
+    {
+      "id": 20,
+      "name": "Colaborador 2",
+      "email": "colaborador2@email.com",
+      "password": "123123",
+      "place_id": 3,
+      "profile": "EMPLOYEE",
+      "work_days": ["Seg", "Qua", "Sex"],
+      "work_hours": [9, 10, 11, 13, 14, 15, 16, 17]
+    },
+    {
+      "id": 21,
+      "name": "nome user",
+      "email": "user@email.com",
+      "password": "123123",
+      "profile": "ADM",
+      "work_days": ["Seg", "Ter", "Qua", "Qui", "Sex", "Sab"],
+      "work_hours": [9, 11, 10, 13, 14, 15, 16, 17, 18],
+      "firebase_UUID": "cRXTeDXylqXkjIBYMmzNNWKLyTF2",
+      "profile_file_name": "2023-12-01 19:40:34.538058"
+    },
+    {
+      "id": 23,
+      "name": "Nome De Usuário Adm",
+      "email": "email_adm@email.com",
+      "password": "123123",
+      "profile": "ADM",
+      "work_days": ["Seg", "Ter", "Qua", "Qui", "Sex"],
+      "work_hours": [9, 10, 11, 13, 14, 15, 16, 17, 18]
+    },
+    {
+      "id": 26,
+      "name": "novo colaborador",
+      "email": "email.colab@email.com",
+      "password": "MyClinic#123!",
+      "place_id": 4,
+      "profile": "EMPLOYEE",
+      "work_days": ["Seg", "Ter", "Qua", "Qui", "Sex"],
+      "work_hours": [9, 10, 11, 13, 14, 15, 16, 17, 18]
+    },
+    {
+      "id": 27,
+      "name": "colaborador teste",
+      "email": "teste2@email.com",
+      "password": "MyClinic#123!",
+      "place_id": 4,
+      "profile": "EMPLOYEE",
+      "work_days": ["Seg", "Qua", "Sex"],
+      "work_hours": [9, 10, 11, 14, 15]
+    },
+    {
+      "id": 28,
+      "name": "novo colaborador",
+      "email": "new@email.com",
+      "password": "MyClinic#123!",
+      "place_id": 4,
+      "profile": "EMPLOYEE",
+      "work_days": ["Seg", "Qua", "Sex"],
+      "work_hours": [9, 10, 11, 18, 17]
+    },
+    {
+      "id": 29,
+      "name": "Nome New ADM",
+      "email": "newadm@email.com",
+      "password": "123123",
+      "profile": "ADM",
+      "work_days": ["Seg", "Ter", "Qua", "Qui", "Sex", "Sab", "Dom"],
+      "work_hours": [9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
+    },
+    {
+      "id": 31,
+      "name": "colabee",
+      "email": "colabee@email.com.br",
+      "password": "MyClinic#123!",
+      "place_id": 4,
+      "profile": "EMPLOYEE",
+      "work_days": ["Seg", "Ter", "Qua", "Qui", "Sex"],
+      "work_hours": [9, 10, 11, 13, 14, 15, 16, 17, 18]
+    },
+    {
+      "id": 33,
+      "name": "colaborador Drawe",
+      "email": "drawer@email.com",
+      "password": "123123",
+      "place_id": 4,
+      "profile": "EMPLOYEE",
+      "work_days": ["Seg", "Ter", "Qua", "Qui", "Sex"],
+      "work_hours": [9, 10, 11, 13, 14, 15, 16, 17, 18],
+      "firebase_UUID": "tvSFJWuFG8cXXiYidyy9p8z3uly1",
+      "profile_file_name": "2023-11-29 17:29:50.465980"
+    },
+    {
+      "id": 34,
+      "name": "drawer",
+      "email": "drawer2@email.com",
+      "password": "123123",
+      "place_id": 4,
+      "profile": "EMPLOYEE",
+      "work_days": ["Seg", "Ter", "Qua", "Qui", "Sex"],
+      "work_hours": [10, 11, 13, 14, 15, 16, 17, 18],
+      "firebase_UUID": "sVAiEHa4khgBgPkXeWUOUS4eonl2",
+      "profile_file_name": "2023-11-30 00:10:53.186413"
+    },
+    {
+      "id": 35,
+      "name": "Mindfullness",
+      "email": "thaina.zanfolin@gmail.com",
+      "password": "Thaina2023",
+      "profile": "ADM"
+    },
+    {
+      "id": 36,
+      "name": "Thaina",
+      "email": "thaina@email.com",
+      "password": "Thaina2023",
+      "profile": "ADM"
+    },
+    {
+      "id": 37,
+      "name": "User",
+      "email": "user@email.com.br",
+      "password": "123123",
+      "profile": "ADM"
+    },
+    {
+      "id": 38,
+      "name": "Eu",
+      "email": "eu@email.com",
+      "password": "123123",
+      "profile": "ADM"
+    },
+    {
+      "id": 39,
+      "name": "euteste@email.com",
+      "email": "emaileu@email.com",
+      "password": "123123",
+      "profile": "ADM"
+    },
+    {
+      "id": 40,
+      "name": "Thaina",
+      "email": "thaina.zanfolin@email.com",
+      "password": "Thaina2023",
+      "profile": "ADM",
+      "work_days": ["Seg", "Ter", "Qua"],
+      "work_hours": [15, 16],
+      "firebase_UUID": "BL1FSf3U8IhqmauA3jgwpDrwi662",
+      "profile_file_name": "2023-12-01 12:47:41.248461"
+    },
+    {
+      "id": 41,
+      "name": "Lais Pereira",
+      "email": "laispereira12@email.com",
+      "password": "LaisP2023",
+      "place_id": 8,
+      "profile": "EMPLOYEE",
+      "work_days": ["Seg", "Ter", "Qua", "Qui", "Sex"],
+      "work_hours": [8, 9, 15, 16],
+      "firebase_UUID": "dV8llDkt7EOJ56XbSMQgdootVjL2",
+      "profile_file_name": "2023-12-01 12:49:35.473649"
+    },
+    {
+      "id": 42,
+      "name": "Julia Cesar",
+      "email": "julia.c@email.com",
+      "password": "MyClinic#123!",
+      "place_id": 8,
+      "profile": "EMPLOYEE",
+      "work_days": ["Qua", "Qui", "Sex"],
+      "work_hours": [14, 10, 9, 8]
+    },
+    {
+      "id": 43,
+      "name": "Colaborador teste demonstracao",
+      "email": "demosntracao@email.com",
+      "password": "MyClinic#123!",
+      "place_id": 4,
+      "profile": "EMPLOYEE",
+      "work_days": ["Seg", "Ter", "Qua", "Qui", "Sex"],
+      "work_hours": [9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
+    },
+    {
+      "id": 44,
+      "name": "demonstracao2",
+      "email": "demonstraco2@email.com",
+      "password": "123123",
+      "place_id": 4,
+      "profile": "EMPLOYEE",
+      "work_days": ["Seg", "Qua", "Sex"],
+      "work_hours": [9, 10, 11, 13, 14, 15, 16, 17],
+      "firebase_UUID": "AiHL8WaPtOVxYZOpQ1sBrGLZjxX2",
+      "profile_file_name": "2023-12-01 14:47:19.422547"
+    },
+    {
+      "id": 45,
+      "name": "Maria",
+      "email": "maria@email.com",
+      "password": "123123",
+      "place_id": 4,
+      "profile": "EMPLOYEE",
+      "work_days": ["Seg", "Ter", "Qua", "Qui", "Sex"],
+      "work_hours": [9, 10, 11, 13, 14, 15, 16, 17, 18],
+      "firebase_UUID": "F9AP1kQpMGTys1R9Z1QwT2iAdJN2",
+      "profile_file_name": "2023-12-01 16:08:16.636419"
+    },
+    {
+      "id": 46,
+      "name": "Carlos",
+      "email": "carlos@email.com",
+      "password": "MyClinic#123!",
+      "place_id": 4,
+      "profile": "EMPLOYEE",
+      "work_days": ["Seg", "Qua", "Sex"],
+      "work_hours": [9, 10, 11, 13, 14, 15, 16, 17, 18]
+    },
+    {
+      "id": 47,
+      "name": "Joao",
+      "email": "joao@email.com",
+      "password": "123123",
+      "place_id": 4,
+      "profile": "EMPLOYEE",
+      "work_days": ["Seg", "Ter", "Qua", "Qui", "Sex"],
+      "work_hours": [9, 10, 11, 13, 14, 15, 16, 17, 18],
+      "firebase_UUID": "8IWvhmE9aHgkhN0mWOzrFx4Fbg92",
+      "profile_file_name": "2023-12-01 19:03:26.876108"
+    },
+    {
+      "id": 48,
+      "name": "Jose",
+      "email": "jose@email.com",
+      "password": "MyClinic#123!",
+      "place_id": 4,
+      "profile": "EMPLOYEE",
+      "work_days": ["Seg", "Qua", "Sex"],
+      "work_hours": [9, 10, 11, 13, 14, 15, 16, 17, 18]
+    },
+    {
+      "id": 49,
+      "name": "Vitor",
+      "email": "vitor@email.com",
+      "password": "MyClinic#123!",
+      "place_id": 4,
+      "profile": "EMPLOYEE",
+      "work_days": ["Seg", "Ter", "Qua", "Qui", "Sex", "Sab"],
+      "work_hours": [9, 10, 11, 13, 14, 15, 16, 17, 18]
+    },
+    {
+      "id": 50,
+      "name": "Thaina",
+      "email": "thaina2@email.com",
+      "password": "123123",
+      "place_id": 4,
+      "profile": "EMPLOYEE",
+      "work_days": ["Seg", "Qua", "Sex", "Sab"],
+      "work_hours": [9, 10, 11, 13, 14, 15, 16, 17, 18],
+      "firebase_UUID": "K9j0vEDq4dOpny5oivFjBiUyFLj2",
+      "profile_file_name": "2023-12-01 19:49:21.252194"
+    },
+    {
+      "id": 51,
+      "name": "Vitor ADM",
+      "email": "vitor_mind@email.com",
+      "password": "123123",
+      "profile": "ADM",
+      "work_days": ["Seg", "Ter", "Qua", "Qui", "Sex"],
+      "work_hours": [8, 9, 10, 11, 12, 14, 15, 16, 17]
+    }
+  ],
+  "adm_users": [],
+  "place": [
+    {
+      "id": 2,
+      "user_id": "5",
+      "name": "fornecedor X",
+      "email": "fornecedorx@gmail.com",
+      "opening_days": ["Seg", "Qua", "Sab"],
+      "opening_hours": [6, 7, 8, 9, 18, 19, 20, 12, 13]
+    },
+    {
+      "id": 3,
+      "user_id": "18",
+      "name": "Clínica 1",
+      "email": "clinica1@email.com",
+      "opening_days": ["Seg", "Ter", "Qua", "Qui", "Sex"],
+      "opening_hours": [9, 10, 11, 13, 14, 15, 16, 17, 18]
+    },
+    {
+      "id": 4,
+      "user_id": "21",
+      "name": "Clinic One ",
+      "email": "clinicone@email.com",
+      "opening_days": ["Seg", "Ter", "Qua", "Qui", "Sex", "Sab"],
+      "opening_hours": [9, 10, 11, 13, 14, 15, 16, 17, 18]
+    },
+    {
+      "id": 5,
+      "user_id": "36",
+      "name": "Mindfullness",
+      "email": "clinicamindfullness@email.com",
+      "opening_days": ["Seg", "Ter", "Qua", "Qui", "Sex"],
+      "opening_hours": [8, 9, 10, 11, 14, 15, 16]
+    },
+    {
+      "id": 6,
+      "user_id": "37",
+      "name": "clinica teste",
+      "email": "teste@email.com",
+      "opening_days": ["Seg", "Ter", "Qua", "Qui", "Sex"],
+      "opening_hours": [9, 10, 11, 13, 14, 15, 16, 17, 18]
+    },
+    {
+      "id": 7,
+      "user_id": "39",
+      "name": "teste@email.com",
+      "email": "email1@email.com",
+      "opening_days": ["Seg", "Ter", "Qua", "Qui", "Sex", "Sab"],
+      "opening_hours": [9, 10, 11, 13, 14, 15, 16, 17, 18]
+    },
+    {
+      "id": 8,
+      "user_id": "40",
+      "name": "Clinica Mind",
+      "email": "mind.clinica@email.com",
+      "opening_days": ["Seg", "Ter", "Qua", "Qui", "Sex"],
+      "opening_hours": [8, 9, 10, 11, 14, 15, 16]
+    },
+    {
+      "id": 9,
+      "user_id": "51",
+      "name": "Clinica Mind",
+      "email": "mind_clinica@email.com",
+      "opening_days": ["Seg", "Ter", "Qua", "Qui", "Sex"],
+      "opening_hours": [8, 9, 10, 11, 12, 14, 15, 16, 17]
+    }
+  ],
+  "schedules": [
+    {
+      "id": 4,
+      "place_id": 3,
+      "user_id": 18,
+      "client_name": "Cliente teste agenda",
+      "date": "2023-11-08T00:00:00.000Z",
+      "time": 9,
+      "schedule_note": ""
+    },
+    {
+      "id": 5,
+      "place_id": 4,
+      "user_id": 22,
+      "client_name": "cliente 1",
+      "date": "2023-11-20T00:00:00.000Z",
+      "time": 10,
+      "schedule_note": ""
+    },
+    {
+      "id": 6,
+      "place_id": 8,
+      "user_id": 40,
+      "client_name": "Vitor",
+      "schedule_note": "",
+      "date": "2023-12-05T00:00:00.000Z",
+      "time": 16
+    },
+    {
+      "id": 7,
+      "place_id": 8,
+      "user_id": 41,
+      "client_name": "Jose",
+      "schedule_note": "",
+      "date": "2023-12-04T00:00:00.000Z",
+      "time": 8
+    },
+    {
+      "id": 8,
+      "place_id": 8,
+      "user_id": 41,
+      "client_name": "Eduardo",
+      "schedule_note": "",
+      "date": "2023-12-04T00:00:00.000Z",
+      "time": 15
+    },
+    {
+      "id": 10,
+      "place_id": 4,
+      "user_id": 43,
+      "client_name": "cliente dem2",
+      "schedule_note": "",
+      "date": "2023-12-05T00:00:00.000Z",
+      "time": 14
+    },
+    {
+      "id": 11,
+      "place_id": 4,
+      "user_id": 44,
+      "client_name": "paciente",
+      "schedule_note": "",
+      "date": "2023-12-01T00:00:00.000Z",
+      "time": 17
+    },
+    {
+      "id": 12,
+      "place_id": 4,
+      "user_id": 45,
+      "client_name": "Paciente 1",
+      "schedule_note": "",
+      "date": "2023-12-08T00:00:00.000Z",
+      "time": 17
+    },
+    {
+      "id": 13,
+      "place_id": 4,
+      "user_id": 45,
+      "client_name": "paciente demonstracao",
+      "schedule_note": "",
+      "date": "2023-12-01T00:00:00.000Z",
+      "time": 18
+    },
+    {
+      "id": 15,
+      "place_id": 4,
+      "user_id": 48,
+      "client_name": "Paciente",
+      "schedule_note": "",
+      "date": "2023-12-08T00:00:00.000Z",
+      "time": 15
+    },
+    {
+      "id": 16,
+      "place_id": 4,
+      "user_id": 47,
+      "client_name": "Paciente ",
+      "schedule_note": "",
+      "date": "2023-12-01T00:00:00.000Z",
+      "time": 18
+    },
+    {
+      "id": 17,
+      "place_id": 4,
+      "user_id": 50,
+      "client_name": "Eduardo",
+      "schedule_note": "",
+      "date": "2023-12-02T00:00:00.000Z",
+      "time": 10
+    }
+  ],
+  "clients": [
+    {
+      "id": 1,
+      "client_name": "cliente teste 3",
+      "employee_id": 21,
+      "date": "2023-11-28T00:00:00.000Z",
+      "time": 9
+    },
+    {
+      "id": 2,
+      "client_name": "Vitor",
+      "employee_id": 40,
+      "date": "2023-12-05T00:00:00.000Z",
+      "time": 16
+    },
+    {
+      "id": 3,
+      "client_name": "Jose",
+      "employee_id": 41,
+      "date": "2023-12-04T00:00:00.000Z",
+      "time": 8
+    },
+    {
+      "id": 4,
+      "client_name": "Eduardo",
+      "employee_id": 41,
+      "date": "2023-12-04T00:00:00.000Z",
+      "time": 15
+    },
+    {
+      "id": 5,
+      "client_name": "cliente dem",
+      "employee_id": 21,
+      "date": "2023-12-04T00:00:00.000Z",
+      "time": 9
+    },
+    {
+      "id": 6,
+      "client_name": "cliente dem2",
+      "employee_id": 43,
+      "date": "2023-12-05T00:00:00.000Z",
+      "time": 14
+    },
+    {
+      "id": 7,
+      "client_name": "paciente",
+      "employee_id": 44,
+      "date": "2023-12-01T00:00:00.000Z",
+      "time": 17
+    },
+    {
+      "id": 8,
+      "client_name": "Paciente 1",
+      "employee_id": 45,
+      "date": "2023-12-08T00:00:00.000Z",
+      "time": 17
+    },
+    {
+      "id": 9,
+      "client_name": "Paciente 2",
+      "employee_id": 21,
+      "date": "2023-12-04T00:00:00.000Z",
+      "time": 11
+    },
+    {
+      "id": 10,
+      "client_name": "paciente demonstracao",
+      "employee_id": 45,
+      "date": "2023-12-01T00:00:00.000Z",
+      "time": 18
+    },
+    {
+      "id": 11,
+      "client_name": "Maria",
+      "employee_id": 21,
+      "date": "2023-12-04T00:00:00.000Z",
+      "time": 13
+    },
+    {
+      "id": 12,
+      "client_name": "Paciente",
+      "employee_id": 48,
+      "date": "2023-12-08T00:00:00.000Z",
+      "time": 15
+    },
+    {
+      "id": 13,
+      "client_name": "Paciente ",
+      "employee_id": 47,
+      "date": "2023-12-01T00:00:00.000Z",
+      "time": 18
+    },
+    {
+      "id": 14,
+      "client_name": "Eduardo",
+      "employee_id": 50,
+      "date": "2023-12-02T00:00:00.000Z",
+      "time": 10
+    },
+    {
+      "id": 15,
+      "client_name": "Rosa",
+      "employee_id": 21,
+      "date": "2023-12-11T00:00:00.000Z",
+      "time": 17
+    }
+  ]
+}

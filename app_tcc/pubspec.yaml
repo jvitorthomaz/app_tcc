@@ -46,11 +46,11 @@ dependencies:
   validatorless: ^1.2.3
   top_snackbar_flutter: ^3.1.0
   table_calendar: ^3.0.9
-  intl: ^0.18.1
+  intl: ^0.19.0
   firebase_core: ^2.22.0
   firebase_auth: ^4.14.0
   uuid: ^3.0.7
-  syncfusion_flutter_calendar: ^23.1.44
+  syncfusion_flutter_calendar: ^26.1.38
   firebase_storage: ^11.5.2
   image_picker: ^1.0.4
 
